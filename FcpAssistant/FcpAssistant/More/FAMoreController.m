@@ -32,6 +32,7 @@ NSMutableArray *dataSource;
     [self registerXibFile];
     
     self.navigationItem.title = @"更多";
+    self.tableView.sectionFooterHeight = 0;
     
     dataSource =[[FAStoreManager shareInstance] getMoreConfigureArray];
 }
@@ -73,9 +74,10 @@ NSMutableArray *dataSource;
     if(!cell)
     {
         cell = [[FAMoreViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
+        
     }
     
-   
+   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if(indexPath.section <dataSource.count)
     {
         NSDictionary *moreDictionary = dataSource[indexPath.section];
@@ -96,6 +98,15 @@ NSMutableArray *dataSource;
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
