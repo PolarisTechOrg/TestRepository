@@ -26,6 +26,7 @@ NSString* itemCellIdentifier;
     [self registerXibFile];
     self.navigationItem.title = @"委托";
     
+    // modify test
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
