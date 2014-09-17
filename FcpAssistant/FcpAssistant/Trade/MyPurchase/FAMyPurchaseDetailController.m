@@ -212,12 +212,12 @@ NSString* positionCellIdentifier;
         case 0:
             return 0.1;
 case positionSectionIndex:
-            return 74;
+            return 73;
         case signalSectionIndex:
-            return 74;
+            return 73;
         case orderSectionIndex:
-            return 74;
-        case profitSectionIndex:return 20;
+            return 73;
+        case profitSectionIndex:return 38;
         default:
             break;
     }
@@ -228,11 +228,11 @@ case positionSectionIndex:
 {
     switch (indexPath.section)
     {
-        case topSecitonIndex:            return 146;
-        case positionSectionIndex:return 20;
-        case signalSectionIndex:return 20;
-        case orderSectionIndex:return 20;
-        case profitSectionIndex:return 187;
+        case topSecitonIndex: return 146;
+        case positionSectionIndex:return 30;
+        case signalSectionIndex:return 30;
+        case orderSectionIndex:return 30;
+        case profitSectionIndex:return 170;
         default:return 0;
     }
 }

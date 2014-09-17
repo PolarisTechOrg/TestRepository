@@ -76,6 +76,7 @@
 		592A83F719C9257700DDE1B5 /* FAJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F219C9257700DDE1B5 /* FAJSONSerialization.m */; };
 		592A83F819C9257700DDE1B5 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F419C9257700DDE1B5 /* Jastor.m */; };
 		592A83F919C9257700DDE1B5 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */; };
+		592A83FC19C97AEB00DDE1B5 /* tmp_purchase_profit.png in Resources */ = {isa = PBXBuildFile; fileRef = 592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */; };
 		592B87C419C7BEC900B6EDF9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C219C7BEC900B6EDF9 /* icon.png */; };
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		593EA69119BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */; };
@@ -288,6 +289,7 @@
 		592A83F419C9257700DDE1B5 /* Jastor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Jastor.m; path = Json/Jastor.m; sourceTree = "<group>"; };
 		592A83F519C9257700DDE1B5 /* JastorRuntimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JastorRuntimeHelper.h; path = Json/JastorRuntimeHelper.h; sourceTree = "<group>"; };
 		592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JastorRuntimeHelper.m; path = Json/JastorRuntimeHelper.m; sourceTree = "<group>"; };
+		592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_purchase_profit.png; path = ImageSource/temp/tmp_purchase_profit.png; sourceTree = "<group>"; };
 		592B87C219C7BEC900B6EDF9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ImageSource/icon.png; sourceTree = "<group>"; };
 		592B87C319C7BEC900B6EDF9 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "ImageSource/icon@2x.png"; sourceTree = "<group>"; };
 		593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailPositionHeaderView.xib; path = Trade/MyPurchase/FAMyPurchaseDetailPositionHeaderView.xib; sourceTree = "<group>"; };
@@ -705,6 +707,14 @@
 				592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */,
 			);
 			name = Json;
+			sourceTree = "<group>";
+		};
+		592A83FA19C97AD200DDE1B5 /* temp */ = {
+			isa = PBXGroup;
+			children = (
+				592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */,
+			);
+			name = temp;
 			sourceTree = "<group>";
 		};
 		593EA6B519C025EF00E9F2BC /* HeaderView */ = {
@@ -1152,6 +1162,7 @@
 		59EC7F1A19B8593600972C0A /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				592A83FA19C97AD200DDE1B5 /* temp */,
 				594FB08E19C8232F008EA26F /* MyCollect */,
 				594FB08519C81C50008EA26F /* Common */,
 				594FB07E19C81BD3008EA26F /* MyPurchase */,
@@ -1378,6 +1389,7 @@
 			files = (
 				592735BC19C28EB900FF42A1 /* FAFeddbackController.xib in Resources */,
 				5916F34D19B9617900BE7D1D /* More@2x.png in Resources */,
+				592A83FC19C97AEB00DDE1B5 /* tmp_purchase_profit.png in Resources */,
 				594FB08A19C81D2E008EA26F /* common_holding_no.png in Resources */,
 				591B218A19C17FCB00064F24 /* moreItem_about.png in Resources */,
 				593EA69819BFF58100E9F2BC /* FAMyPurchaseDetailOrderHeaderView.xib in Resources */,
