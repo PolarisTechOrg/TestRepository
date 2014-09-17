@@ -43,6 +43,7 @@ NSString* itemCellIdentifier;
     [self registerXibFile];
 
     self.navigationItem.title = @"交易";
+    self.tableView.sectionFooterHeight = 0.5;
     
     dataSource =[[FAStoreManager shareInstance] getTradeConfigArray];
 }
@@ -123,17 +124,10 @@ NSString* itemCellIdentifier;
         cell.logoImage.image = [UIImage imageNamed:[tradeDic valueForKey:@"image"][indexPath.row]];
         cell.menuLabel.text = [tradeDic valueForKey:@"title"][indexPath.row];
         cell.backgroundColor =  [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
-    if(indexPath.section == 2)
-    {
-//        cell.contentView.frame
-//        cell.contentView.badgeViewFrame = CGRectMake(120, 12, 50, 20);
-//        cell.contentView.badgeView.font = [UIFont systemFontOfSize:13];
-//        cell.contentView.badgeView.text = @"new";
-//        cell.contentView.badgeView.textColor = [UIColor whiteColor];
-//        cell.contentView.badgeView.badgeColor = [UIColor redColor];
-    }
+    
     
     
     
