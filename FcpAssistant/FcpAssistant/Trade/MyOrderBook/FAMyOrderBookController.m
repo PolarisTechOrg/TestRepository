@@ -25,7 +25,7 @@ NSString* itemCellIdentifier;
     [self initializeData];
     [self registerXibFile];
     self.navigationItem.title = @"委托";
-    
+    self.tableView.sectionFooterHeight = 0;
     // modify test
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -42,7 +42,7 @@ NSString* itemCellIdentifier;
 
 -(void)registerXibFile
 {
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAMyPositionTotalViewCell" bundle:nil];
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAMyOrderBookItemViewCell" bundle:nil];
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
@@ -74,15 +74,13 @@ NSString* itemCellIdentifier;
     if (!cell)
     {
         cell = [[FAMyOrderBookItemViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 47;
+    return 73;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

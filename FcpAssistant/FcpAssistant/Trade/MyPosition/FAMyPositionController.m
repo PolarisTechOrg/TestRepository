@@ -72,35 +72,15 @@ NSString* strategyCellIdentifier;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section)
-    {
-        FAMyPositionTotalViewCell* cell= (FAMyPositionTotalViewCell*)[tableView dequeueReusableCellWithIdentifier:totalCellIdentifier];
+    FAMyPositionStrategyViewCell* cell= (FAMyPositionStrategyViewCell*)[tableView dequeueReusableCellWithIdentifier:strategyCellIdentifier];
         
-        if (!cell)
-        {
-            cell = [[FAMyPositionTotalViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:totalCellIdentifier];
-            cell.textLabel.font = [UIFont systemFontOfSize:15];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-        }
-        return cell;
-
-    }
-    else
-    {
-        FAMyPositionStrategyViewCell* cell= (FAMyPositionStrategyViewCell*)[tableView dequeueReusableCellWithIdentifier:strategyCellIdentifier];
-        
-        if (!cell)
-        {
-            cell = [[FAMyPositionStrategyViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:strategyCellIdentifier];
-            cell.textLabel.font = [UIFont systemFontOfSize:15];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-        }
-        return cell;
-    }
-    
-    
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    
+     if (!cell)
+     {
+         cell = [[FAMyPositionStrategyViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:strategyCellIdentifier];
+         cell.textLabel.font = [UIFont systemFontOfSize:15];
+         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+     }
+     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -110,30 +90,17 @@ NSString* strategyCellIdentifier;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 20;
+    return 30;
 }
 
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section == totalSecitonIndex)
-    {
-        NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPositionTotalHeaderView" owner:self options:nil];
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPositionStrategyHeaderView" owner:self options:nil];
         
-        UIView *headerView = (UIView *) [nib objectAtIndex:0];
-        headerView.frame = CGRectMake(0, 0, 320, 50);
-        return headerView;
-    }
-    else
-    {
-        
-        NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPositionStrategyHeaderView" owner:self options:nil];
-        
-        UIView *headerView = (UIView *) [nib objectAtIndex:0];
-        headerView.frame = CGRectMake(0, 0, 320, 50);
-        return headerView;
-    }
-    
+    UIView *headerView = (UIView *) [nib objectAtIndex:0];
+    headerView.frame = CGRectMake(0, 0, 320, 50);
+    return headerView;
 }
 
 /*
