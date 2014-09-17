@@ -156,6 +156,7 @@
 		59EC7F0F19B83E5600972C0A /* FATradeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59EC7F0D19B83E5600972C0A /* FATradeController.xib */; };
 		59EC7F1819B8515A00972C0A /* FATradeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC7F1619B8515A00972C0A /* FATradeViewCell.m */; };
 		59EC7F1919B8515A00972C0A /* FATradeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59EC7F1719B8515A00972C0A /* FATradeViewCell.xib */; };
+		84844A2319C930E9001C2EC4 /* Strategy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84844A2219C930E9001C2EC4 /* Strategy.storyboard */; };
 		84EFF74819C92BCD00DE7848 /* FAStrategyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFF74619C92BCD00DE7848 /* FAStrategyViewCell.m */; };
 		84EFF74919C92BCD00DE7848 /* FAStrategyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EFF74719C92BCD00DE7848 /* FAStrategyViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -379,6 +380,7 @@
 		59EC7F1519B8515A00972C0A /* FATradeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FATradeViewCell.h; path = Trade/FATradeViewCell.h; sourceTree = "<group>"; };
 		59EC7F1619B8515A00972C0A /* FATradeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FATradeViewCell.m; path = Trade/FATradeViewCell.m; sourceTree = "<group>"; };
 		59EC7F1719B8515A00972C0A /* FATradeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FATradeViewCell.xib; path = Trade/FATradeViewCell.xib; sourceTree = "<group>"; };
+		84844A2219C930E9001C2EC4 /* Strategy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Strategy.storyboard; path = Strategy/Strategy.storyboard; sourceTree = "<group>"; };
 		84EFF74519C92BCD00DE7848 /* FAStrategyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyViewCell.h; path = Strategy/FAStrategyViewCell.h; sourceTree = "<group>"; };
 		84EFF74619C92BCD00DE7848 /* FAStrategyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyViewCell.m; path = Strategy/FAStrategyViewCell.m; sourceTree = "<group>"; };
 		84EFF74719C92BCD00DE7848 /* FAStrategyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategyViewCell.xib; path = Strategy/FAStrategyViewCell.xib; sourceTree = "<group>"; };
@@ -1040,6 +1042,7 @@
 				84EFF74519C92BCD00DE7848 /* FAStrategyViewCell.h */,
 				84EFF74619C92BCD00DE7848 /* FAStrategyViewCell.m */,
 				84EFF74719C92BCD00DE7848 /* FAStrategyViewCell.xib */,
+				84844A2219C930E9001C2EC4 /* Strategy.storyboard */,
 			);
 			name = Strategy;
 			sourceTree = "<group>";
@@ -1247,6 +1250,7 @@
 				5916F34A19B95FA600BE7D1D /* tabbarBkg@2x.png in Resources */,
 				593EA6FF19C05B2900E9F2BC /* FAMyCollectViewCell.xib in Resources */,
 				592B87C419C7BEC900B6EDF9 /* icon.png in Resources */,
+				84844A2319C930E9001C2EC4 /* Strategy.storyboard in Resources */,
 				593EA6F719C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib in Resources */,
 				592735CE19C292F000FF42A1 /* FAMoreProductViewCell.xib in Resources */,
 				592735B619C28DFC00FF42A1 /* FAMyFcpController.xib in Resources */,
