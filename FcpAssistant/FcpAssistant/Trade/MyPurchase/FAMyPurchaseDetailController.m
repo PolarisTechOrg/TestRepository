@@ -121,7 +121,7 @@ NSString* positionCellIdentifier;
 {
     switch (section)
     {
-        case topSecitonIndex :            return 1;
+        case topSecitonIndex :    return 1;
         case positionSectionIndex:return 3;
         case signalSectionIndex:return 3;
         case orderSectionIndex:return 3;
@@ -209,7 +209,7 @@ NSString* positionCellIdentifier;
     switch (section)
     {
         case topSecitonIndex:
-            return 0;
+            return 1;
 case positionSectionIndex:
             return 47;
         case signalSectionIndex:
