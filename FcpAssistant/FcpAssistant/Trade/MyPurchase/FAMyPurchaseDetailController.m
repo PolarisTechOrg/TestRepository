@@ -56,7 +56,8 @@ NSString* positionCellIdentifier;
     shareBtn.title = @"分享";
     self.navigationItem.rightBarButtonItem = shareBtn;
     
-    
+    self.tableView.sectionFooterHeight = 1;
+        self.tableView.sectionHeaderHeight = 1;
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -208,14 +209,14 @@ NSString* positionCellIdentifier;
 {
     switch (section)
     {
-        case topSecitonIndex:
-            return 1;
+        case 0:
+            return 0.1;
 case positionSectionIndex:
-            return 47;
+            return 74;
         case signalSectionIndex:
-            return 47;
+            return 74;
         case orderSectionIndex:
-            return 47;
+            return 74;
         case profitSectionIndex:return 20;
         default:
             break;
@@ -227,7 +228,7 @@ case positionSectionIndex:
 {
     switch (indexPath.section)
     {
-        case topSecitonIndex:            return 140;
+        case topSecitonIndex:            return 146;
         case positionSectionIndex:return 20;
         case signalSectionIndex:return 20;
         case orderSectionIndex:return 20;
@@ -237,6 +238,7 @@ case positionSectionIndex:
 }
 
 
+
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
@@ -244,7 +246,7 @@ case positionSectionIndex:
     {
         case topSecitonIndex:
         {
-            return [super tableView:tableView viewForHeaderInSection:section];
+           return [super tableView:tableView viewForHeaderInSection:section];
         }
         case positionSectionIndex:
         {
