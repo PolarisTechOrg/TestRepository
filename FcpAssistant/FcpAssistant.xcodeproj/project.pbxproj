@@ -71,6 +71,11 @@
 		592735E019C2A1A100FF42A1 /* FAMemberRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592735DE19C2A1A100FF42A1 /* FAMemberRegisterController.xib */; };
 		592735E519C2A37600FF42A1 /* FAForgetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592735E319C2A37600FF42A1 /* FAForgetPasswordController.m */; };
 		592735E619C2A37600FF42A1 /* FAForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592735E419C2A37600FF42A1 /* FAForgetPasswordController.xib */; };
+		592A83EF19C9256500DDE1B5 /* FAHttpHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83EC19C9256500DDE1B5 /* FAHttpHead.m */; };
+		592A83F019C9256500DDE1B5 /* FAHttpUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83EE19C9256500DDE1B5 /* FAHttpUtility.m */; };
+		592A83F719C9257700DDE1B5 /* FAJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F219C9257700DDE1B5 /* FAJSONSerialization.m */; };
+		592A83F819C9257700DDE1B5 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F419C9257700DDE1B5 /* Jastor.m */; };
+		592A83F919C9257700DDE1B5 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */; };
 		592B87C419C7BEC900B6EDF9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C219C7BEC900B6EDF9 /* icon.png */; };
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		593EA69119BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */; };
@@ -255,6 +260,16 @@
 		592735E219C2A37600FF42A1 /* FAForgetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAForgetPasswordController.h; path = More/ForgetPassword/FAForgetPasswordController.h; sourceTree = "<group>"; };
 		592735E319C2A37600FF42A1 /* FAForgetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAForgetPasswordController.m; path = More/ForgetPassword/FAForgetPasswordController.m; sourceTree = "<group>"; };
 		592735E419C2A37600FF42A1 /* FAForgetPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAForgetPasswordController.xib; path = More/ForgetPassword/FAForgetPasswordController.xib; sourceTree = "<group>"; };
+		592A83EB19C9256500DDE1B5 /* FAHttpHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAHttpHead.h; path = Http/FAHttpHead.h; sourceTree = "<group>"; };
+		592A83EC19C9256500DDE1B5 /* FAHttpHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAHttpHead.m; path = Http/FAHttpHead.m; sourceTree = "<group>"; };
+		592A83ED19C9256500DDE1B5 /* FAHttpUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAHttpUtility.h; path = Http/FAHttpUtility.h; sourceTree = "<group>"; };
+		592A83EE19C9256500DDE1B5 /* FAHttpUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAHttpUtility.m; path = Http/FAHttpUtility.m; sourceTree = "<group>"; };
+		592A83F119C9257700DDE1B5 /* FAJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAJSONSerialization.h; path = Json/FAJSONSerialization.h; sourceTree = "<group>"; };
+		592A83F219C9257700DDE1B5 /* FAJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAJSONSerialization.m; path = Json/FAJSONSerialization.m; sourceTree = "<group>"; };
+		592A83F319C9257700DDE1B5 /* Jastor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jastor.h; path = Json/Jastor.h; sourceTree = "<group>"; };
+		592A83F419C9257700DDE1B5 /* Jastor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Jastor.m; path = Json/Jastor.m; sourceTree = "<group>"; };
+		592A83F519C9257700DDE1B5 /* JastorRuntimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JastorRuntimeHelper.h; path = Json/JastorRuntimeHelper.h; sourceTree = "<group>"; };
+		592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JastorRuntimeHelper.m; path = Json/JastorRuntimeHelper.m; sourceTree = "<group>"; };
 		592B87C219C7BEC900B6EDF9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ImageSource/icon.png; sourceTree = "<group>"; };
 		592B87C319C7BEC900B6EDF9 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "ImageSource/icon@2x.png"; sourceTree = "<group>"; };
 		593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailPositionHeaderView.xib; path = Trade/MyPurchase/FAMyPurchaseDetailPositionHeaderView.xib; sourceTree = "<group>"; };
@@ -421,6 +436,8 @@
 		5903746519B80E8200F5B0C3 /* FcpAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				592A83EA19C9255400DDE1B5 /* Json */,
+				592A83E919C9254C00DDE1B5 /* Http */,
 				5921B94319C6BDA300ACD5C4 /* Macro */,
 				59137A4F19BEA371001F4977 /* Model */,
 				598F290219B9AAB10078C6C6 /* DataManager */,
@@ -619,6 +636,30 @@
 				592735E419C2A37600FF42A1 /* FAForgetPasswordController.xib */,
 			);
 			name = ForgetPassword;
+			sourceTree = "<group>";
+		};
+		592A83E919C9254C00DDE1B5 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				592A83EB19C9256500DDE1B5 /* FAHttpHead.h */,
+				592A83EC19C9256500DDE1B5 /* FAHttpHead.m */,
+				592A83ED19C9256500DDE1B5 /* FAHttpUtility.h */,
+				592A83EE19C9256500DDE1B5 /* FAHttpUtility.m */,
+			);
+			name = Http;
+			sourceTree = "<group>";
+		};
+		592A83EA19C9255400DDE1B5 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				592A83F119C9257700DDE1B5 /* FAJSONSerialization.h */,
+				592A83F219C9257700DDE1B5 /* FAJSONSerialization.m */,
+				592A83F319C9257700DDE1B5 /* Jastor.h */,
+				592A83F419C9257700DDE1B5 /* Jastor.m */,
+				592A83F519C9257700DDE1B5 /* JastorRuntimeHelper.h */,
+				592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */,
+			);
+			name = Json;
 			sourceTree = "<group>";
 		};
 		593EA6B519C025EF00E9F2BC /* HeaderView */ = {
@@ -1261,6 +1302,7 @@
 				594FB07919C7FCA7008EA26F /* FAMember.m in Sources */,
 				593EA6F119C04DA700E9F2BC /* FAMyOrderBookItemViewCell.m in Sources */,
 				59137A3E19BE8C32001F4977 /* FAMyOrderBookController.m in Sources */,
+				592A83F919C9257700DDE1B5 /* JastorRuntimeHelper.m in Sources */,
 				598F290519B9AB260078C6C6 /* FAStoreManager.m in Sources */,
 				59137A3919BE8C10001F4977 /* FAMyPositionController.m in Sources */,
 				5903746C19B80E8200F5B0C3 /* main.m in Sources */,
@@ -1277,6 +1319,7 @@
 				593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */,
 				592735E519C2A37600FF42A1 /* FAForgetPasswordController.m in Sources */,
 				59137A4319BE8C57001F4977 /* FAMySignalController.m in Sources */,
+				592A83F719C9257700DDE1B5 /* FAJSONSerialization.m in Sources */,
 				592735C119C28F5C00FF42A1 /* FATermOfServiceController.m in Sources */,
 				593EA69B19BFF5A300E9F2BC /* FAMyPurchaseDetailOrderHeaderView.m in Sources */,
 				59EC7F0E19B83E5600972C0A /* FATradeController.m in Sources */,
@@ -1290,7 +1333,9 @@
 				59EC7EF419B82B4600972C0A /* FAJingXuanController.m in Sources */,
 				5921B94A19C6DFFF00ACD5C4 /* FAConstants.m in Sources */,
 				59EC7EFF19B82BBF00972C0A /* FAMoreController.m in Sources */,
+				592A83EF19C9256500DDE1B5 /* FAHttpHead.m in Sources */,
 				592735C719C2916000FF42A1 /* FAMoreProductController.m in Sources */,
+				592A83F819C9257700DDE1B5 /* Jastor.m in Sources */,
 				592735D319C2947000FF42A1 /* FAAbountProductController.m in Sources */,
 				593EA6FE19C05B2900E9F2BC /* FAMyCollectViewCell.m in Sources */,
 				593EA6E919C0495300E9F2BC /* FAMySignalItemHeaderView.m in Sources */,
@@ -1298,6 +1343,7 @@
 				593EA6AE19BFF9F100E9F2BC /* FAMyPurchaseDetailOrderViewCell.m in Sources */,
 				598F291919B9D1710078C6C6 /* FAMyPurchaseController.m in Sources */,
 				592735DF19C2A1A100FF42A1 /* FAMemberRegisterController.m in Sources */,
+				592A83F019C9256500DDE1B5 /* FAHttpUtility.m in Sources */,
 				59EC7EE419B8122100972C0A /* FAStrategyController.m in Sources */,
 				59EC7F0419B82C0600972C0A /* FAMessageController.m in Sources */,
 				593EA69619BFF50700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.m in Sources */,
