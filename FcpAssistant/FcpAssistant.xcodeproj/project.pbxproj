@@ -1182,9 +1182,6 @@
 			children = (
 				84844A4F19C969BA001C2EC4 /* StrategyDetailCellView */,
 				84844A2519C9647F001C2EC4 /* StrategyDetailView */,
-				84844A5019C969F8001C2EC4 /* FAStrategyViewCell.h */,
-				84844A5119C969F8001C2EC4 /* FAStrategyViewCell.m */,
-				84844A5219C969F8001C2EC4 /* FAStrategyViewCell.xib */,
 			);
 			name = CellView;
 			sourceTree = "<group>";
@@ -1192,6 +1189,9 @@
 		84844A2519C9647F001C2EC4 /* StrategyDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				84844A5019C969F8001C2EC4 /* FAStrategyViewCell.h */,
+				84844A5119C969F8001C2EC4 /* FAStrategyViewCell.m */,
+				84844A5219C969F8001C2EC4 /* FAStrategyViewCell.xib */,
 			);
 			name = StrategyDetailView;
 			sourceTree = "<group>";

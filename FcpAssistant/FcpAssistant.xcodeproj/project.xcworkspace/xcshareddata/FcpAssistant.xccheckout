@@ -22,7 +22,7 @@
 		<key>C2ECA86ACC1F423E347199380CC6146E9E723D98</key>
 		<string>../../..</string>
 		<key>EFF78C5CBA17C8BCE28FC3A82576126222A007E1</key>
-		<string>../../../../TestRepositoryOrg</string>
+		<string>../../..Org</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/PolarisTechOrg/TestRepository.git</string>
