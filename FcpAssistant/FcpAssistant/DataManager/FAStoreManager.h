@@ -14,24 +14,9 @@
 
 -(NSMutableArray *) getTradeConfigArray;
 
-- (NSMutableArray *)getMoreConfigureArray;
+-(NSMutableArray *) getMoreConfigureArray;
+
+-(NSMutableArray *) getMoreProductConfigureArray;
 
 @end
 
-//@interface XHStoreManager : NSObject
-
-//+ (instancetype)shareStoreManager;
-
-//- (NSMutableArray *)getDiscoverConfigureArray;
-//
-//- (NSMutableArray *)getContactConfigureArray;
-//
-//- (NSMutableArray *)getAlbumConfigureArray;
-//
-//- (NSMutableArray *)getProfileConfigureArray;
-//
-//- (NSMutableArray *)getLocationServiceArray;
-//
-//- (NSMutableArray *)getSettingConfigureArray;
-
-//@end

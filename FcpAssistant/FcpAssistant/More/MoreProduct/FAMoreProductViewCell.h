@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMoreProductViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgProductLogo;
+@property (weak, nonatomic) IBOutlet UILabel *lblProductName;
+@property (weak, nonatomic) IBOutlet UILabel *lblVersion;
+@property (weak, nonatomic) IBOutlet UILabel *lblProductDescription;
 
 @end

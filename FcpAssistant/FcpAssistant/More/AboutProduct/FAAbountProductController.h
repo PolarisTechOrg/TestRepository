@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FAAbountProductController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *lblProductDescription;
 
 @end
