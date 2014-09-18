@@ -10,8 +10,13 @@
 
 @interface FAMyCollectViewCell : UITableViewCell
 
+
+
+
+
 @property (weak, nonatomic) IBOutlet UILabel *strategyName;
 @property (weak, nonatomic) IBOutlet UILabel *collectCount;
 @property (weak, nonatomic) IBOutlet UILabel *provider;
+
 
 @end

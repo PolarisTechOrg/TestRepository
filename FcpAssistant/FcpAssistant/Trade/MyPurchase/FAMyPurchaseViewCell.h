@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyPurchaseViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgProfitBackground;
 @property (weak, nonatomic) IBOutlet UILabel *strategyName;
 @property (weak, nonatomic) IBOutlet UILabel *purchaseDate;
 @property (weak, nonatomic) IBOutlet UILabel *orderMultiple;
