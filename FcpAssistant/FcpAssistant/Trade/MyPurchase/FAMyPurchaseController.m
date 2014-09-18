@@ -91,6 +91,7 @@ NSString* itemCellIdentifier;
     if (!cell)
     {
         cell = [[FAMyPurchaseViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
@@ -101,6 +102,20 @@ NSString* itemCellIdentifier;
     {
         FAPurchaseDetail * purchaseDetail = (FAPurchaseDetail *)self.dataSource[indexPath.row];
         cell.strategyName.text = purchaseDetail.strategyName;
+        NSString* profitBackgroundImageName =@"mypurchase_profit_red.png";
+        if(indexPath.row % 3 ==0)
+        {
+            profitBackgroundImageName =@"mypurchase_profit_yellow.png";
+        }
+        else if(indexPath.row % 3 == 1)
+        {
+            profitBackgroundImageName = @"mypurchase_profit_red.png";
+        }
+        else
+        {
+            profitBackgroundImageName = @"mypurchase_profit_green.png";
+        }
+        cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
     }
     
     

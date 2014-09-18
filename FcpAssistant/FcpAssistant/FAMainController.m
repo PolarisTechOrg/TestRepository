@@ -73,7 +73,7 @@
     
     // setup UI Image
     UIColor *color = [UIColor colorWithRed:0.176 green:0.576 blue:0.980 alpha:1.000];
-    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbarBkg"]];
+    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"bg_menu"]];
     [self.tabBar setSelectedImageTintColor:color];
     
     if (CURRENT_SYS_VERSION >= 7.0)

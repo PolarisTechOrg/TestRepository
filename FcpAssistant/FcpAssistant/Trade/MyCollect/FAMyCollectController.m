@@ -97,11 +97,20 @@ NSString* itemCellIdentifier;
     {
         FAMyCollectItem* collectItem = (FAMyCollectItem *)self.dataSource[indexPath.row];
         cell.strategyName.text = collectItem.strategyName;
+//        cell.imgProfit.image = [self drawPic:cell.imgProfit.image];
     }
     
     
     return cell;
 }
+
+//-(id)drawPic:(UIImage*) image
+//{
+//    UIGraphicsBeginImageContext(image.size);
+//    [image drawAtPoint:CGPointMake(15,15)];
+//    UIGraphicsEndImageContext();
+//    return image;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

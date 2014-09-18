@@ -114,6 +114,8 @@
 		593EA6FF19C05B2900E9F2BC /* FAMyCollectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6FD19C05B2900E9F2BC /* FAMyCollectViewCell.xib */; };
 		594DD2BF19CA8374009D4A48 /* moreProduct_loto.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2BE19CA8374009D4A48 /* moreProduct_loto.png */; };
 		594DD2C319CAA55A009D4A48 /* aboutProduct_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2C219CAA55A009D4A48 /* aboutProduct_big.png */; };
+		594DD2C519CAC25F009D4A48 /* bg_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2C419CAC25F009D4A48 /* bg_menu.png */; };
+		594DD2C919CAC7C1009D4A48 /* FAPurchaseProfitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 594DD2C819CAC7C1009D4A48 /* FAPurchaseProfitView.m */; };
 		594FB07019C7D621008EA26F /* bg_line_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 594FB06F19C7D621008EA26F /* bg_line_80.png */; };
 		594FB07619C7FC81008EA26F /* FAAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 594FB07519C7FC81008EA26F /* FAAccountManager.m */; };
 		594FB07919C7FCA7008EA26F /* FAMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 594FB07819C7FCA7008EA26F /* FAMember.m */; };
@@ -345,6 +347,9 @@
 		593EA6FD19C05B2900E9F2BC /* FAMyCollectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyCollectViewCell.xib; path = Trade/MyCollect/FAMyCollectViewCell.xib; sourceTree = "<group>"; };
 		594DD2BE19CA8374009D4A48 /* moreProduct_loto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moreProduct_loto.png; path = ImageSource/moreProduct/moreProduct_loto.png; sourceTree = "<group>"; };
 		594DD2C219CAA55A009D4A48 /* aboutProduct_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aboutProduct_big.png; path = ImageSource/aboutProduct/aboutProduct_big.png; sourceTree = "<group>"; };
+		594DD2C419CAC25F009D4A48 /* bg_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_menu.png; path = ImageSource/bg_menu.png; sourceTree = "<group>"; };
+		594DD2C719CAC7C1009D4A48 /* FAPurchaseProfitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAPurchaseProfitView.h; path = CustomView/FAPurchaseProfitView.h; sourceTree = "<group>"; };
+		594DD2C819CAC7C1009D4A48 /* FAPurchaseProfitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAPurchaseProfitView.m; path = CustomView/FAPurchaseProfitView.m; sourceTree = "<group>"; };
 		594FB06F19C7D621008EA26F /* bg_line_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_line_80.png; path = ImageSource/bg_line_80.png; sourceTree = "<group>"; };
 		594FB07419C7FC81008EA26F /* FAAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAAccountManager.h; path = DataManager/FAAccountManager.h; sourceTree = "<group>"; };
 		594FB07519C7FC81008EA26F /* FAAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAAccountManager.m; path = DataManager/FAAccountManager.m; sourceTree = "<group>"; };
@@ -487,6 +492,7 @@
 		5903746519B80E8200F5B0C3 /* FcpAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				594DD2C619CAC6F7009D4A48 /* CustomView */,
 				592A83EA19C9255400DDE1B5 /* Json */,
 				592A83E919C9254C00DDE1B5 /* Http */,
 				5921B94319C6BDA300ACD5C4 /* Macro */,
@@ -977,6 +983,15 @@
 			name = aboutProduct;
 			sourceTree = "<group>";
 		};
+		594DD2C619CAC6F7009D4A48 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				594DD2C719CAC7C1009D4A48 /* FAPurchaseProfitView.h */,
+				594DD2C819CAC7C1009D4A48 /* FAPurchaseProfitView.m */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
 		594FB07E19C81BD3008EA26F /* MyPurchase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1182,6 +1197,7 @@
 		59EC7F1A19B8593600972C0A /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				594DD2C419CAC25F009D4A48 /* bg_menu.png */,
 				594DD2C019CAA53B009D4A48 /* aboutProduct */,
 				594DD2BD19CA8363009D4A48 /* moreProduct */,
 				592A83FA19C97AD200DDE1B5 /* temp */,
@@ -1498,6 +1514,7 @@
 				591B218C19C17FCB00064F24 /* moreItem_contractUs.png in Resources */,
 				594FB08219C81C44008EA26F /* mypurchase_profit_green.png in Resources */,
 				5916F34719B95FA600BE7D1D /* JingXuan@2x.png in Resources */,
+				594DD2C519CAC25F009D4A48 /* bg_menu.png in Resources */,
 				592735C219C28F5C00FF42A1 /* FATermOfServiceController.xib in Resources */,
 				594FB07D19C8155C008EA26F /* check_yes.png in Resources */,
 				594FB0A419C82BDA008EA26F /* common_purchase_flag.png in Resources */,
@@ -1550,6 +1567,7 @@
 				84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */,
 				593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */,
 				592735E519C2A37600FF42A1 /* FAForgetPasswordController.m in Sources */,
+				594DD2C919CAC7C1009D4A48 /* FAPurchaseProfitView.m in Sources */,
 				59137A4319BE8C57001F4977 /* FAMySignalController.m in Sources */,
 				592A83F719C9257700DDE1B5 /* FAJSONSerialization.m in Sources */,
 				592735C119C28F5C00FF42A1 /* FATermOfServiceController.m in Sources */,
