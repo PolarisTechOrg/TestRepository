@@ -10,6 +10,7 @@
 
 @implementation FAStoreManager
 
+//获取FAStoreManager实例。
 +(instancetype) shareInstance
 {
     static FAStoreManager * storeManager;
@@ -21,6 +22,7 @@
     return storeManager;
 }
 
+//获取交易菜单子项配置
 -(NSMutableArray *) getTradeConfigArray
 {
     NSMutableArray * traderConfigArray = [[NSMutableArray alloc] initWithCapacity:5];
@@ -39,6 +41,7 @@
     return traderConfigArray;
 }
 
+//获取更多菜单子项配置
 - (NSMutableArray *)getMoreConfigureArray
 {
     NSMutableArray *moreConfigureArray = [[NSMutableArray alloc] initWithCapacity:3];
@@ -57,6 +60,17 @@
     [moreConfigureArray addObject:@[contractUsDictionary, checkUpdateDictionary,aboutDictionary]];
     
     return moreConfigureArray;
+}
+
+//获取更多产品配置信息
+-(NSMutableArray *) getMoreProductConfigureArray;
+{
+    NSMutableArray *moreProductConfigureArray = [[NSMutableArray alloc] initWithCapacity:1];
+    
+    NSDictionary * lotoDictionary = @{@"title": @"擎研期权乐翻天", @"image" : @"moreProduct_loto",@"version":@"1.0.0.1",@"description":@"选择交易品种以及对该品种后市走势看法，根据自己的投资偏好，参考期权合约到期日选择要投资的合约系列"};
+    [moreProductConfigureArray addObject:@[lotoDictionary]];
+    
+    return moreProductConfigureArray;
 }
 
 @end

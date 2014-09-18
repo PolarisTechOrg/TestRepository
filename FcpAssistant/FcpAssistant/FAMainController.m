@@ -42,6 +42,10 @@
     strategyController.tabBarItem.title = @"策略";
     strategyController.tabBarItem.image = [UIImage imageNamed:@"Strategy"];
     
+    UINavigationController * navStrategyController = [[UINavigationController alloc] initWithRootViewController:strategyController];
+    navStrategyController.tabBarItem.title = @"策略";
+    navStrategyController.tabBarItem.image = [UIImage imageNamed:@"Strategy"];
+    
     FATradeController * tradeController =[[FATradeController alloc] initWithNibName:@"FATradeController" bundle:nil];
     tradeController.tabBarItem.title= @"交易";
     tradeController.tabBarItem.image = [UIImage imageNamed:@"Trade"];
@@ -87,7 +91,7 @@
                                                            [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]];
     
     
-    self.viewControllers = [NSArray arrayWithObjects:jingXuanController,strategyController,navTradeController,messageController,navMoreController,nil];
+    self.viewControllers = [NSArray arrayWithObjects:jingXuanController,navStrategyController,navTradeController,messageController,navMoreController,nil];
     //    mainController.tabBar.tintColor = [UIColor purpleColor];
     // setup UI Image
     //UIColor *color = [UIColor colorWithRed:241.0/255 green:241.0/255 blue:241.0/255 alpha:1.0];

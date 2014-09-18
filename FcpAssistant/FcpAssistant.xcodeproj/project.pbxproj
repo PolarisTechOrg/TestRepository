@@ -112,6 +112,8 @@
 		593EA6F719C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6F619C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib */; };
 		593EA6FE19C05B2900E9F2BC /* FAMyCollectViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6FC19C05B2900E9F2BC /* FAMyCollectViewCell.m */; };
 		593EA6FF19C05B2900E9F2BC /* FAMyCollectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6FD19C05B2900E9F2BC /* FAMyCollectViewCell.xib */; };
+		594DD2BF19CA8374009D4A48 /* moreProduct_loto.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2BE19CA8374009D4A48 /* moreProduct_loto.png */; };
+		594DD2C319CAA55A009D4A48 /* aboutProduct_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2C219CAA55A009D4A48 /* aboutProduct_big.png */; };
 		594FB07019C7D621008EA26F /* bg_line_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 594FB06F19C7D621008EA26F /* bg_line_80.png */; };
 		594FB07619C7FC81008EA26F /* FAAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 594FB07519C7FC81008EA26F /* FAAccountManager.m */; };
 		594FB07919C7FCA7008EA26F /* FAMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 594FB07819C7FCA7008EA26F /* FAMember.m */; };
@@ -341,6 +343,8 @@
 		593EA6FB19C05B2900E9F2BC /* FAMyCollectViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyCollectViewCell.h; path = Trade/MyCollect/FAMyCollectViewCell.h; sourceTree = "<group>"; };
 		593EA6FC19C05B2900E9F2BC /* FAMyCollectViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyCollectViewCell.m; path = Trade/MyCollect/FAMyCollectViewCell.m; sourceTree = "<group>"; };
 		593EA6FD19C05B2900E9F2BC /* FAMyCollectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyCollectViewCell.xib; path = Trade/MyCollect/FAMyCollectViewCell.xib; sourceTree = "<group>"; };
+		594DD2BE19CA8374009D4A48 /* moreProduct_loto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moreProduct_loto.png; path = ImageSource/moreProduct/moreProduct_loto.png; sourceTree = "<group>"; };
+		594DD2C219CAA55A009D4A48 /* aboutProduct_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aboutProduct_big.png; path = ImageSource/aboutProduct/aboutProduct_big.png; sourceTree = "<group>"; };
 		594FB06F19C7D621008EA26F /* bg_line_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_line_80.png; path = ImageSource/bg_line_80.png; sourceTree = "<group>"; };
 		594FB07419C7FC81008EA26F /* FAAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAAccountManager.h; path = DataManager/FAAccountManager.h; sourceTree = "<group>"; };
 		594FB07519C7FC81008EA26F /* FAAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAAccountManager.m; path = DataManager/FAAccountManager.m; sourceTree = "<group>"; };
@@ -957,6 +961,22 @@
 			name = CollectDetailCellView;
 			sourceTree = "<group>";
 		};
+		594DD2BD19CA8363009D4A48 /* moreProduct */ = {
+			isa = PBXGroup;
+			children = (
+				594DD2BE19CA8374009D4A48 /* moreProduct_loto.png */,
+			);
+			name = moreProduct;
+			sourceTree = "<group>";
+		};
+		594DD2C019CAA53B009D4A48 /* aboutProduct */ = {
+			isa = PBXGroup;
+			children = (
+				594DD2C219CAA55A009D4A48 /* aboutProduct_big.png */,
+			);
+			name = aboutProduct;
+			sourceTree = "<group>";
+		};
 		594FB07E19C81BD3008EA26F /* MyPurchase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1162,6 +1182,8 @@
 		59EC7F1A19B8593600972C0A /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				594DD2C019CAA53B009D4A48 /* aboutProduct */,
+				594DD2BD19CA8363009D4A48 /* moreProduct */,
 				592A83FA19C97AD200DDE1B5 /* temp */,
 				594FB08E19C8232F008EA26F /* MyCollect */,
 				594FB08519C81C50008EA26F /* Common */,
@@ -1400,6 +1422,7 @@
 				59EC7F1919B8515A00972C0A /* FATradeViewCell.xib in Resources */,
 				5903746A19B80E8200F5B0C3 /* InfoPlist.strings in Resources */,
 				591EA2DB19BEDCCB00EED52C /* FAMyPurchaseDetailController.xib in Resources */,
+				594DD2C319CAA55A009D4A48 /* aboutProduct_big.png in Resources */,
 				84844A3E19C96899001C2EC4 /* FAStrategyFilterController.xib in Resources */,
 				593EA6A519BFF94000E9F2BC /* FAMyPurchaseDetailPositionViewCell.xib in Resources */,
 				594FB08419C81C44008EA26F /* mypurchase_profit_yellow.png in Resources */,
@@ -1443,6 +1466,7 @@
 				592735CE19C292F000FF42A1 /* FAMoreProductViewCell.xib in Resources */,
 				592735B619C28DFC00FF42A1 /* FAMyFcpController.xib in Resources */,
 				59137A4419BE8C57001F4977 /* FAMySignalController.xib in Resources */,
+				594DD2BF19CA8374009D4A48 /* moreProduct_loto.png in Resources */,
 				594FB09E19C82819008EA26F /* mycollect_profit_green.png in Resources */,
 				591B218119C16AB800064F24 /* FAMoreViewCell.xib in Resources */,
 				598F291A19B9D1710078C6C6 /* FAMyPurchaseController.xib in Resources */,

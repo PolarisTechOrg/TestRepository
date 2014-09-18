@@ -7,9 +7,7 @@
 //
 
 #import "FAMyPositionController.h"
-#import "FAMyPositionTotalViewCell.h"
 #import "FAMyPositionStrategyViewCell.h"
-#import "FAMyPositionTotalHeaderView.h"
 #import "FAMyPositionStrategyHeaderView.h"
 
 @interface FAMyPositionController ()
@@ -19,7 +17,6 @@
 @implementation FAMyPositionController
 
 int totalSecitonIndex = 0;
-NSString* totalCellIdentifier;
 NSString* strategyCellIdentifier;
 
 - (void)viewDidLoad
@@ -37,15 +34,11 @@ NSString* strategyCellIdentifier;
 
 -(void)initializeData
 {
-    totalCellIdentifier = @"myPositonTotalCell";
     strategyCellIdentifier = @"myPositonStrategyCell";
 }
 
 -(void)registerXibFile
 {
-    UINib *totalCellNib = [UINib nibWithNibName:@"FAMyPositionTotalViewCell" bundle:nil];
-    [self.tableView registerNib:totalCellNib forCellReuseIdentifier:totalCellIdentifier];
-    
     UINib *strategyCellNib = [UINib nibWithNibName:@"FAMyPositionStrategyViewCell" bundle:nil];
     [self.tableView registerNib:strategyCellNib forCellReuseIdentifier:strategyCellIdentifier];
 }
@@ -77,8 +70,6 @@ NSString* strategyCellIdentifier;
      if (!cell)
      {
          cell = [[FAMyPositionStrategyViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:strategyCellIdentifier];
-         cell.textLabel.font = [UIFont systemFontOfSize:15];
-         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
      }
      return cell;
 }
