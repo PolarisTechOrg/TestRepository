@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyPositionStrategyViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *instrumentCode;
-@property (weak, nonatomic) IBOutlet UILabel *orderPosition;
-@property (weak, nonatomic) IBOutlet UILabel *positionProfit;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblInstrumentCode;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrderPosition;
+@property (weak, nonatomic) IBOutlet UILabel *lblPositionProfit;
 
 @end

@@ -17,7 +17,7 @@
 
 @implementation FAMyPurchaseController
 
-NSString* itemCellIdentifier;
+
 
 - (void)viewDidLoad
 {
@@ -86,6 +86,7 @@ NSString* itemCellIdentifier;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    itemCellIdentifier = @"purchaseViewCell";
     FAMyPurchaseViewCell *cell = (FAMyPurchaseViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if (!cell)
@@ -101,7 +102,7 @@ NSString* itemCellIdentifier;
     if (indexPath.row < self.dataSource.count)
     {
         FAPurchaseDetail * purchaseDetail = (FAPurchaseDetail *)self.dataSource[indexPath.row];
-        cell.strategyName.text = purchaseDetail.strategyName;
+//        cell.strategyName.text = purchaseDetail.strategyName;
         NSString* profitBackgroundImageName =@"mypurchase_profit_red.png";
         if(indexPath.row % 3 ==0)
         {
@@ -115,7 +116,7 @@ NSString* itemCellIdentifier;
         {
             profitBackgroundImageName = @"mypurchase_profit_green.png";
         }
-        cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
+//        cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
     }
     
     

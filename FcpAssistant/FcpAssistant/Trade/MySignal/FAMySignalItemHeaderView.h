@@ -10,5 +10,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMySignalItemHeaderView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *lblHeaderName;
 
 @end

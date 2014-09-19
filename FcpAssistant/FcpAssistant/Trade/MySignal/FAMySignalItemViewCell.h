@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMySignalItemViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *signalTime;
-@property (weak, nonatomic) IBOutlet UILabel *signalSeqNum;
-@property (weak, nonatomic) IBOutlet UILabel *instrumentCode;
-@property (weak, nonatomic) IBOutlet UILabel *strategyPosition;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblSignalTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblSignalSeqNum;
+@property (weak, nonatomic) IBOutlet UILabel *lblInstrumentCode;
+@property (weak, nonatomic) IBOutlet UILabel *lblPosition;
 
 @end

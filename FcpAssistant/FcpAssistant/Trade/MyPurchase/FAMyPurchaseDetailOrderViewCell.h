@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyPurchaseDetailOrderViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *instrumentCode;
-@property (weak, nonatomic) IBOutlet UILabel *orderQty;
-@property (weak, nonatomic) IBOutlet UILabel *tradeQty;
-@property (weak, nonatomic) IBOutlet UILabel *tradePrice;
-@property (weak, nonatomic) IBOutlet UILabel *orderTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblInstrumentCode;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrderQty;
+@property (weak, nonatomic) IBOutlet UILabel *lblTradeQty;
+@property (weak, nonatomic) IBOutlet UILabel *lblTradePrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrderTime;
 
 @end

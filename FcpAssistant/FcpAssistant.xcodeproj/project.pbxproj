@@ -79,6 +79,8 @@
 		592A83FC19C97AEB00DDE1B5 /* tmp_purchase_profit.png in Resources */ = {isa = PBXBuildFile; fileRef = 592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */; };
 		592ABF9819CBBFEB002F0A8E /* FAMyCollectItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 592ABF9619CBBFEB002F0A8E /* FAMyCollectItemViewCell.m */; };
 		592ABF9919CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9719CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib */; };
+		592ABF9C19CC067E002F0A8E /* tmp_collect_profit_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9A19CC067E002F0A8E /* tmp_collect_profit_green.png */; };
+		592ABF9D19CC067E002F0A8E /* tmp_collect_profit_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9B19CC067E002F0A8E /* tmp_collect_profit_red.png */; };
 		592B87C419C7BEC900B6EDF9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C219C7BEC900B6EDF9 /* icon.png */; };
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		593EA69119BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */; };
@@ -96,12 +98,8 @@
 		593EA6AF19BFF9F100E9F2BC /* FAMyPurchaseDetailOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6AD19BFF9F100E9F2BC /* FAMyPurchaseDetailOrderViewCell.xib */; };
 		593EA6B319BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6B119BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.m */; };
 		593EA6B419BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6B219BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.xib */; };
-		593EA6C619C0381200E9F2BC /* FAMyPositionTotalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6C519C0381200E9F2BC /* FAMyPositionTotalHeaderView.xib */; };
-		593EA6C919C0383000E9F2BC /* FAMyPositionTotalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6C819C0383000E9F2BC /* FAMyPositionTotalHeaderView.m */; };
 		593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6CB19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m */; };
 		593EA6CE19C0386C00E9F2BC /* FAMyPositionStrategyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6CD19C0386C00E9F2BC /* FAMyPositionStrategyHeaderView.xib */; };
-		593EA6D719C038C800E9F2BC /* FAMyPositionTotalViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6D519C038C800E9F2BC /* FAMyPositionTotalViewCell.m */; };
-		593EA6D819C038C800E9F2BC /* FAMyPositionTotalViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6D619C038C800E9F2BC /* FAMyPositionTotalViewCell.xib */; };
 		593EA6DC19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6DA19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m */; };
 		593EA6DD19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6DB19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib */; };
 		593EA6E519C0491900E9F2BC /* FAMySignalItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6E319C0491900E9F2BC /* FAMySignalItemViewCell.m */; };
@@ -297,6 +295,8 @@
 		592ABF9519CBBFEB002F0A8E /* FAMyCollectItemViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyCollectItemViewCell.h; path = Trade/MyCollect/FAMyCollectItemViewCell.h; sourceTree = "<group>"; };
 		592ABF9619CBBFEB002F0A8E /* FAMyCollectItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyCollectItemViewCell.m; path = Trade/MyCollect/FAMyCollectItemViewCell.m; sourceTree = "<group>"; };
 		592ABF9719CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyCollectItemViewCell.xib; path = Trade/MyCollect/FAMyCollectItemViewCell.xib; sourceTree = "<group>"; };
+		592ABF9A19CC067E002F0A8E /* tmp_collect_profit_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_collect_profit_green.png; path = ImageSource/temp/tmp_collect_profit_green.png; sourceTree = "<group>"; };
+		592ABF9B19CC067E002F0A8E /* tmp_collect_profit_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_collect_profit_red.png; path = ImageSource/temp/tmp_collect_profit_red.png; sourceTree = "<group>"; };
 		592B87C219C7BEC900B6EDF9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ImageSource/icon.png; sourceTree = "<group>"; };
 		592B87C319C7BEC900B6EDF9 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "ImageSource/icon@2x.png"; sourceTree = "<group>"; };
 		593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailPositionHeaderView.xib; path = Trade/MyPurchase/FAMyPurchaseDetailPositionHeaderView.xib; sourceTree = "<group>"; };
@@ -321,15 +321,9 @@
 		593EA6B019BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPurchaseDetailProfitViewCell.h; path = Trade/MyPurchase/FAMyPurchaseDetailProfitViewCell.h; sourceTree = "<group>"; };
 		593EA6B119BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPurchaseDetailProfitViewCell.m; path = Trade/MyPurchase/FAMyPurchaseDetailProfitViewCell.m; sourceTree = "<group>"; };
 		593EA6B219BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailProfitViewCell.xib; path = Trade/MyPurchase/FAMyPurchaseDetailProfitViewCell.xib; sourceTree = "<group>"; };
-		593EA6C519C0381200E9F2BC /* FAMyPositionTotalHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPositionTotalHeaderView.xib; path = Trade/MyPosition/FAMyPositionTotalHeaderView.xib; sourceTree = "<group>"; };
-		593EA6C719C0383000E9F2BC /* FAMyPositionTotalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPositionTotalHeaderView.h; path = Trade/MyPosition/FAMyPositionTotalHeaderView.h; sourceTree = "<group>"; };
-		593EA6C819C0383000E9F2BC /* FAMyPositionTotalHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPositionTotalHeaderView.m; path = Trade/MyPosition/FAMyPositionTotalHeaderView.m; sourceTree = "<group>"; };
 		593EA6CA19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPositionStrategyHeaderView.h; path = Trade/MyPosition/FAMyPositionStrategyHeaderView.h; sourceTree = "<group>"; };
 		593EA6CB19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPositionStrategyHeaderView.m; path = Trade/MyPosition/FAMyPositionStrategyHeaderView.m; sourceTree = "<group>"; };
 		593EA6CD19C0386C00E9F2BC /* FAMyPositionStrategyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPositionStrategyHeaderView.xib; path = Trade/MyPosition/FAMyPositionStrategyHeaderView.xib; sourceTree = "<group>"; };
-		593EA6D419C038C800E9F2BC /* FAMyPositionTotalViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPositionTotalViewCell.h; path = Trade/MyPosition/FAMyPositionTotalViewCell.h; sourceTree = "<group>"; };
-		593EA6D519C038C800E9F2BC /* FAMyPositionTotalViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPositionTotalViewCell.m; path = Trade/MyPosition/FAMyPositionTotalViewCell.m; sourceTree = "<group>"; };
-		593EA6D619C038C800E9F2BC /* FAMyPositionTotalViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPositionTotalViewCell.xib; path = Trade/MyPosition/FAMyPositionTotalViewCell.xib; sourceTree = "<group>"; };
 		593EA6D919C038EE00E9F2BC /* FAMyPositionStrategyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPositionStrategyViewCell.h; path = Trade/MyPosition/FAMyPositionStrategyViewCell.h; sourceTree = "<group>"; };
 		593EA6DA19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPositionStrategyViewCell.m; path = Trade/MyPosition/FAMyPositionStrategyViewCell.m; sourceTree = "<group>"; };
 		593EA6DB19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPositionStrategyViewCell.xib; path = Trade/MyPosition/FAMyPositionStrategyViewCell.xib; sourceTree = "<group>"; };
@@ -722,6 +716,8 @@
 		592A83FA19C97AD200DDE1B5 /* temp */ = {
 			isa = PBXGroup;
 			children = (
+				592ABF9A19CC067E002F0A8E /* tmp_collect_profit_green.png */,
+				592ABF9B19CC067E002F0A8E /* tmp_collect_profit_red.png */,
 				592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */,
 			);
 			name = temp;
@@ -844,7 +840,6 @@
 		593EA6C119C0375000E9F2BC /* CellView */ = {
 			isa = PBXGroup;
 			children = (
-				593EA6DF19C0391B00E9F2BC /* TotalCellView */,
 				593EA6DE19C038FF00E9F2BC /* StrategyCellView */,
 			);
 			name = CellView;
@@ -854,19 +849,8 @@
 			isa = PBXGroup;
 			children = (
 				593EA6C419C037B500E9F2BC /* StrategyHeaderView */,
-				593EA6C319C0377800E9F2BC /* TotalHeaderView */,
 			);
 			name = HeaderView;
-			sourceTree = "<group>";
-		};
-		593EA6C319C0377800E9F2BC /* TotalHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				593EA6C519C0381200E9F2BC /* FAMyPositionTotalHeaderView.xib */,
-				593EA6C719C0383000E9F2BC /* FAMyPositionTotalHeaderView.h */,
-				593EA6C819C0383000E9F2BC /* FAMyPositionTotalHeaderView.m */,
-			);
-			name = TotalHeaderView;
 			sourceTree = "<group>";
 		};
 		593EA6C419C037B500E9F2BC /* StrategyHeaderView */ = {
@@ -887,16 +871,6 @@
 				593EA6DB19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib */,
 			);
 			name = StrategyCellView;
-			sourceTree = "<group>";
-		};
-		593EA6DF19C0391B00E9F2BC /* TotalCellView */ = {
-			isa = PBXGroup;
-			children = (
-				593EA6D419C038C800E9F2BC /* FAMyPositionTotalViewCell.h */,
-				593EA6D519C038C800E9F2BC /* FAMyPositionTotalViewCell.m */,
-				593EA6D619C038C800E9F2BC /* FAMyPositionTotalViewCell.xib */,
-			);
-			name = TotalCellView;
 			sourceTree = "<group>";
 		};
 		593EA6E019C048BE00E9F2BC /* HeaderView */ = {
@@ -1448,9 +1422,9 @@
 				598F290D19B9AED10078C6C6 /* tradeItem_Order@2x.png in Resources */,
 				59137A4919BE9800001F4977 /* FAMyPurchaseViewCell.xib in Resources */,
 				594FB08319C81C44008EA26F /* mypurchase_profit_red.png in Resources */,
-				593EA6C619C0381200E9F2BC /* FAMyPositionTotalHeaderView.xib in Resources */,
 				592735E019C2A1A100FF42A1 /* FAMemberRegisterController.xib in Resources */,
 				598F290E19B9AED10078C6C6 /* tradeItem_OrderBook@2x.png in Resources */,
+				592ABF9C19CC067E002F0A8E /* tmp_collect_profit_green.png in Resources */,
 				593EA69D19BFF64400E9F2BC /* FAMyPurchaseDetailProfitHeaderView.xib in Resources */,
 				594FB07019C7D621008EA26F /* bg_line_80.png in Resources */,
 				5916F34819B95FA600BE7D1D /* Strategy@2x.png in Resources */,
@@ -1471,7 +1445,6 @@
 				594FB07B19C80277008EA26F /* FAMeberLoginController.xib in Resources */,
 				5916F34919B95FA600BE7D1D /* Trade@2x.png in Resources */,
 				594FB09819C82637008EA26F /* common_star_3.png in Resources */,
-				593EA6D819C038C800E9F2BC /* FAMyPositionTotalViewCell.xib in Resources */,
 				591B218E19C17FCB00064F24 /* moreItem_moreProduct.png in Resources */,
 				5916F34A19B95FA600BE7D1D /* tabbarBkg@2x.png in Resources */,
 				84844A6719C96AEF001C2EC4 /* FAMessageViewCell.xib in Resources */,
@@ -1516,6 +1489,7 @@
 				5916F34719B95FA600BE7D1D /* JingXuan@2x.png in Resources */,
 				594DD2C519CAC25F009D4A48 /* bg_menu.png in Resources */,
 				592735C219C28F5C00FF42A1 /* FATermOfServiceController.xib in Resources */,
+				592ABF9D19CC067E002F0A8E /* tmp_collect_profit_red.png in Resources */,
 				594FB07D19C8155C008EA26F /* check_yes.png in Resources */,
 				594FB0A419C82BDA008EA26F /* common_purchase_flag.png in Resources */,
 				591B218B19C17FCB00064F24 /* moreItem_checkUpdate.png in Resources */,
@@ -1543,7 +1517,6 @@
 			files = (
 				593EA6B319BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.m in Sources */,
 				591EA2DA19BEDCCB00EED52C /* FAMyPurchaseDetailController.m in Sources */,
-				593EA6D719C038C800E9F2BC /* FAMyPositionTotalViewCell.m in Sources */,
 				593EA6A019BFF8AD00E9F2BC /* FAMyPurchaseDetailProfitHeaderView.m in Sources */,
 				594FB07919C7FCA7008EA26F /* FAMember.m in Sources */,
 				593EA6F119C04DA700E9F2BC /* FAMyOrderBookItemViewCell.m in Sources */,
@@ -1606,7 +1579,6 @@
 				592735D919C2950900FF42A1 /* FAModifyPasswordController.m in Sources */,
 				5903747019B80E8200F5B0C3 /* FAAppDelegate.m in Sources */,
 				591B217B19C1687D00064F24 /* FAMeberLoginController.m in Sources */,
-				593EA6C919C0383000E9F2BC /* FAMyPositionTotalHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1728,7 +1700,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1745,7 +1717,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

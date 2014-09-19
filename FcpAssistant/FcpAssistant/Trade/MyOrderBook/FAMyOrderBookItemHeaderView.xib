@@ -58,6 +58,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lblHeaderName" destination="t7L-7o-REY" id="U0l-vT-dyN"/>
+            </connections>
             <point key="canvasLocation" x="502.5" y="532.5"/>
         </view>
     </objects>

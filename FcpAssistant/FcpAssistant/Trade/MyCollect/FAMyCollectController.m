@@ -26,6 +26,7 @@ NSString* itemCellIdentifier;
     [self registerXibFile];
     
     self.navigationItem.title = @"收藏";
+    self.tableView.sectionFooterHeight = 0.1;
     
     NSMutableArray *dataSource = [[NSMutableArray alloc] init ];
     
@@ -97,9 +98,15 @@ NSString* itemCellIdentifier;
     {
         FAMyCollectItem* collectItem = (FAMyCollectItem *)self.dataSource[indexPath.row];
 
+        NSString* profitBackgroundImageName = @"mycollect_profit_red";
+        cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
+        
+        NSString* profitLineImageName = @"tmp_collect_profit_red";
+        cell.imgProfitLine.image = [UIImage imageNamed:profitLineImageName];
 //        cell.imgProfitBackground
 //        cell.strategyName.text = collectItem.strategyName;
         cell.imgProfitLine.image = [self drawPic:cell.imgProfitLine.image];
+        cell.lblStrategyName.text = collectItem.strategyName;
     }
     
     
@@ -108,13 +115,22 @@ NSString* itemCellIdentifier;
 
 -(id)drawPic:(UIImage*) image
 {
-//    UIGraphicsBeginImageContext(image.size);
-//    
-//    CGPoint first = CGPointMake(15,15);
-//    CGPoint second = CGPointMake(35, 35);
-//    [image dra]
-//    [image drawAtPoint:CGPointMake(15,15)];
-//    UIGraphicsEndImageContext();
+     UIGraphicsBeginImageContext(image.size);
+    
+    [image drawAtPoint:CGPointZero];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context,5);
+        CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+    
+    CGPoint first = CGPointMake(0,0);
+    CGPoint second = CGPointMake(200, 165);
+    
+    CGContextMoveToPoint(context,first.x
+                         ,first.y);
+    CGContextAddLineToPoint(context, second.x, second.y);
+    CGContextStrokePath(context);
+   
+    UIGraphicsEndImageContext();
     return image;
 }
 

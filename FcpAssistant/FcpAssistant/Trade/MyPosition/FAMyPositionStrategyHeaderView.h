@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyPositionStrategyHeaderView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *lblHeaderName;
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -17,6 +17,13 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="精选赢家一号测试" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DP-0i-2H4">
                         <rect key="frame" x="10" y="18" width="108" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCx-mV-q7B">
+                        <rect key="frame" x="123" y="57" width="190" height="79"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2014-07-14" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4m-zM-V4E">
@@ -49,13 +56,6 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="订购" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJe-q3-G3x">
                         <rect key="frame" x="249" y="20" width="16" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCx-mV-q7B">
-                        <rect key="frame" x="124" y="57" width="190" height="79"/>
-                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="交易品种" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jb-Rh-XyV">
@@ -108,13 +108,16 @@
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="orderMultiple" destination="ir5-us-JrL" id="n3f-AX-cyv"/>
-                <outlet property="profitImage" destination="w8N-fm-vy8" id="HeJ-ps-2P5"/>
-                <outlet property="purchaseDate" destination="Y4m-zM-V4E" id="rw0-fs-8C9"/>
-                <outlet property="strategyName" destination="4DP-0i-2H4" id="RG3-gc-jfx"/>
-                <outlet property="strategyProfit" destination="E1U-w8-9BB" id="e2Q-Op-YTi"/>
-                <outlet property="varieties" destination="xjZ-KI-wNv" id="p3f-QR-9RM"/>
-                <outlet property="yestordayProfit" destination="mxg-6v-6BI" id="Ozj-Gr-BCB"/>
+                <outlet property="btnStrategyDetail" destination="36s-NK-ltX" id="30x-Du-Ksn"/>
+                <outlet property="imgProfitBackground" destination="w8N-fm-vy8" id="WKo-sp-YQc"/>
+                <outlet property="imgStrategyGrade" destination="ybl-9B-jft" id="XQo-Cg-8PE"/>
+                <outlet property="lblOrderMultiple" destination="ir5-us-JrL" id="6D7-H1-09x"/>
+                <outlet property="lblPurchaseDate" destination="Y4m-zM-V4E" id="FEu-cz-HJk"/>
+                <outlet property="lblStrategyName" destination="4DP-0i-2H4" id="yZ6-NN-lC7"/>
+                <outlet property="lblStrategyProfit" destination="E1U-w8-9BB" id="cij-ai-qJa"/>
+                <outlet property="lblTodayProfit" destination="qiE-Oc-Q7D" id="Evo-1X-t9g"/>
+                <outlet property="lblVarieties" destination="xjZ-KI-wNv" id="6mN-RI-gtz"/>
+                <outlet property="lblYestordayProfit" destination="mxg-6v-6BI" id="Xfo-Fc-MFt"/>
             </connections>
             <point key="canvasLocation" x="430" y="354"/>
         </tableViewCell>
