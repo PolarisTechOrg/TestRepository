@@ -10,4 +10,6 @@
 
 @interface FAStrategyController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *dataSource;
+
 @end

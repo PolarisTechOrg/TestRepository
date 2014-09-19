@@ -7,6 +7,8 @@
 //
 
 #import "FAJingXuanController.h"
+#import "FAJingXuanViewCell.h"
+#import "FAMyCollectItem.h"
 
 @interface FAJingXuanController ()
 
@@ -14,21 +16,41 @@
 
 @implementation FAJingXuanController
 
+NSString* itemCellIdentifier;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
-    self.tabBarItem.title = @"精选";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    // test
-    //sdfsdafadf
-    ///asdfasdfdf
-    //aaaaaa
-    //bbbb
+    [self initializeData];
+    [self registerXibFile];
+    
+    self.navigationItem.title = @"精选";
+    
+    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+    
+    for(int i=0; i<10; i++)
+    {
+        FAMyCollectItem *detail = [[FAMyCollectItem alloc] initWithStrategyId:i];
+        detail.strategyName = [NSString stringWithFormat:@"精选赢家%d号", i];
+        
+        [dataSource addObject:detail];
+    }
+    
+    self.dataSource = dataSource;
+    
+}
+
+- (void)initializeData
+{
+    itemCellIdentifier = @"JingXuaViewCell";
+}
+
+- (void)registerXibFile
+{
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAJingXuanViewCell" bundle:nil];
+    
+    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,19 +71,44 @@
 {
 
     // Return the number of rows in the section.
-    return 0;
+    return 5;
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 202;
+}
+
+- (void)enterDetailView
+{
+    
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    FAJingXuanViewCell *cell = (FAJingXuanViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     // Configure the cell...
+    if(!cell)
+    {
+        cell = [[FAJingXuanViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        
+        cell.textLabel.font = [UIFont systemFontOfSize:15];
+        
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+    }
+    
+    if(indexPath.row < self.dataSource.count)
+    {
+        FAMyCollectItem *items = (FAMyCollectItem *)self.dataSource[indexPath.row];
+        
+        cell.lblStrategyName1.text = items.strategyName;
+    }
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

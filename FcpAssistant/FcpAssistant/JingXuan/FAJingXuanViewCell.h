@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FAJingXuanViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyName1;
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyName2;
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyName3;
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "FAStrategyController.h"
+#import "FAStrategyDetailViewCell.h"
+#import "FAMyCollectItem.h"
 
 @interface FAStrategyController ()
 
@@ -14,16 +16,40 @@
 
 @implementation FAStrategyController
 
+NSString* itemCellIdentifier;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     //self.tabBarItem.title = @"策略";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    // testaaaaa ffff
-    // sfdf
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self initializeData];
+    [self registerXibFile];
+    
+    self.navigationItem.title = @"策略";
+    
+    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+    
+    for(int i=0; i<10; i++)
+    {
+        FAMyCollectItem *detail = [[FAMyCollectItem alloc] initWithStrategyId:i];
+        detail.strategyName = [NSString stringWithFormat:@"赢家%d号", i];
+        
+        [dataSource addObject:detail];
+    }
+    
+    self.dataSource = dataSource;
+}
+
+- (void)initializeData
+{
+    itemCellIdentifier = @"StrategyViewCell";
+}
+
+- (void)registerXibFile
+{
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategyDetailViewCell" bundle:nil];
+    
+    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,25 +64,50 @@
 {
 
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return 5;
 }
 
-/*
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 104;
+}
+
+- (void)enterDetailView
+{
+    
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    FAStrategyDetailViewCell *cell = (FAStrategyDetailViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     // Configure the cell...
+    if(!cell)
+    {
+        cell = [[FAStrategyDetailViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        
+        cell.textLabel.font = [UIFont systemFontOfSize:15];
+        
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+    }
+    
+    if(indexPath.row < self.dataSource.count)
+    {
+        FAMyCollectItem *items = (FAMyCollectItem *)self.dataSource[indexPath.row];
+        
+        cell.lblStrategyName.text = items.strategyName;
+    }
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

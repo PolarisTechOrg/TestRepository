@@ -10,4 +10,6 @@
 
 @interface FAJingXuanController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *dataSource;
+
 @end
