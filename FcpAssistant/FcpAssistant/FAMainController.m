@@ -36,6 +36,10 @@
     FAJingXuanController * jingXuanController = [[FAJingXuanController alloc] init];
     jingXuanController.tabBarItem.title = @"精选";
     jingXuanController.tabBarItem.image = [UIImage imageNamed:@"JingXuan"];
+    
+    UINavigationController * navJingXuanController = [[UINavigationController alloc] initWithRootViewController:jingXuanController];
+    navJingXuanController.tabBarItem.title = @"精选";
+    navJingXuanController.tabBarItem.image = [UIImage imageNamed:@"JingXuan"];
 
     
     FAStrategyController * strategyController = [[FAStrategyController alloc] init];
@@ -62,6 +66,10 @@
     messageController.tabBarItem.title = @"消息";
     messageController.tabBarItem.image = [UIImage imageNamed:@"Message"];
     messageController.tabBarItem.badgeValue = @"5";
+    
+    UINavigationController * navMessageController = [[UINavigationController alloc] initWithRootViewController:messageController];
+    navMessageController.tabBarItem.title = @"消息";
+    navMessageController.tabBarItem.image = [UIImage imageNamed:@"Message"];
     
     FAMoreController * moreController = [[FAMoreController alloc] init];
     moreController.tabBarItem.title = @"更多";
@@ -91,7 +99,7 @@
                                                            [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]];
     
     
-    self.viewControllers = [NSArray arrayWithObjects:jingXuanController,navStrategyController,navTradeController,messageController,navMoreController,nil];
+    self.viewControllers = [NSArray arrayWithObjects:navJingXuanController,navStrategyController,navTradeController,navMessageController,navMoreController,nil];
     //    mainController.tabBar.tintColor = [UIColor purpleColor];
     // setup UI Image
     //UIColor *color = [UIColor colorWithRed:241.0/255 green:241.0/255 blue:241.0/255 alpha:1.0];
