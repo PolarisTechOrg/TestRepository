@@ -7,7 +7,7 @@
 //
 
 #import "FAMyCollectController.h"
-#import "FAMyCollectViewCell.h"
+#import "FAMyCollectItemViewCell.h"
 #import "FAMyCollectItem.h"
 
 @interface FAMyCollectController ()
@@ -43,12 +43,12 @@ NSString* itemCellIdentifier;
 
 -(void)initializeData
 {
-    itemCellIdentifier = @"collectViewCell";
+    itemCellIdentifier = @"collectItemViewCell";
 }
 
 -(void)registerXibFile
 {
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAMyCollectViewCell" bundle:nil];
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAMyCollectItemViewCell" bundle:nil];
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
@@ -71,7 +71,7 @@ NSString* itemCellIdentifier;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 300;
+    return 104;
 }
 
 - (void)enterDetailView
@@ -82,11 +82,11 @@ NSString* itemCellIdentifier;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FAMyCollectViewCell *cell = (FAMyCollectViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    FAMyCollectItemViewCell *cell = (FAMyCollectItemViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if (!cell)
     {
-        cell = [[FAMyCollectViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        cell = [[FAMyCollectItemViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
@@ -96,21 +96,27 @@ NSString* itemCellIdentifier;
     if (indexPath.row < self.dataSource.count)
     {
         FAMyCollectItem* collectItem = (FAMyCollectItem *)self.dataSource[indexPath.row];
-        cell.strategyName.text = collectItem.strategyName;
-//        cell.imgProfit.image = [self drawPic:cell.imgProfit.image];
+
+//        cell.imgProfitBackground
+//        cell.strategyName.text = collectItem.strategyName;
+        cell.imgProfitLine.image = [self drawPic:cell.imgProfitLine.image];
     }
     
     
     return cell;
 }
 
-//-(id)drawPic:(UIImage*) image
-//{
+-(id)drawPic:(UIImage*) image
+{
 //    UIGraphicsBeginImageContext(image.size);
+//    
+//    CGPoint first = CGPointMake(15,15);
+//    CGPoint second = CGPointMake(35, 35);
+//    [image dra]
 //    [image drawAtPoint:CGPointMake(15,15)];
 //    UIGraphicsEndImageContext();
-//    return image;
-//}
+    return image;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

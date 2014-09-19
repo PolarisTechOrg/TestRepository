@@ -77,6 +77,8 @@
 		592A83F819C9257700DDE1B5 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F419C9257700DDE1B5 /* Jastor.m */; };
 		592A83F919C9257700DDE1B5 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */; };
 		592A83FC19C97AEB00DDE1B5 /* tmp_purchase_profit.png in Resources */ = {isa = PBXBuildFile; fileRef = 592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */; };
+		592ABF9819CBBFEB002F0A8E /* FAMyCollectItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 592ABF9619CBBFEB002F0A8E /* FAMyCollectItemViewCell.m */; };
+		592ABF9919CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9719CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib */; };
 		592B87C419C7BEC900B6EDF9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C219C7BEC900B6EDF9 /* icon.png */; };
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		593EA69119BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */; };
@@ -110,8 +112,6 @@
 		593EA6F219C04DA700E9F2BC /* FAMyOrderBookItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6F019C04DA700E9F2BC /* FAMyOrderBookItemViewCell.xib */; };
 		593EA6F519C04DDF00E9F2BC /* FAMyOrderBookItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6F419C04DDF00E9F2BC /* FAMyOrderBookItemHeaderView.m */; };
 		593EA6F719C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6F619C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib */; };
-		593EA6FE19C05B2900E9F2BC /* FAMyCollectViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6FC19C05B2900E9F2BC /* FAMyCollectViewCell.m */; };
-		593EA6FF19C05B2900E9F2BC /* FAMyCollectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6FD19C05B2900E9F2BC /* FAMyCollectViewCell.xib */; };
 		594DD2BF19CA8374009D4A48 /* moreProduct_loto.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2BE19CA8374009D4A48 /* moreProduct_loto.png */; };
 		594DD2C319CAA55A009D4A48 /* aboutProduct_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2C219CAA55A009D4A48 /* aboutProduct_big.png */; };
 		594DD2C519CAC25F009D4A48 /* bg_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 594DD2C419CAC25F009D4A48 /* bg_menu.png */; };
@@ -294,6 +294,9 @@
 		592A83F519C9257700DDE1B5 /* JastorRuntimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JastorRuntimeHelper.h; path = Json/JastorRuntimeHelper.h; sourceTree = "<group>"; };
 		592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JastorRuntimeHelper.m; path = Json/JastorRuntimeHelper.m; sourceTree = "<group>"; };
 		592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_purchase_profit.png; path = ImageSource/temp/tmp_purchase_profit.png; sourceTree = "<group>"; };
+		592ABF9519CBBFEB002F0A8E /* FAMyCollectItemViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyCollectItemViewCell.h; path = Trade/MyCollect/FAMyCollectItemViewCell.h; sourceTree = "<group>"; };
+		592ABF9619CBBFEB002F0A8E /* FAMyCollectItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyCollectItemViewCell.m; path = Trade/MyCollect/FAMyCollectItemViewCell.m; sourceTree = "<group>"; };
+		592ABF9719CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyCollectItemViewCell.xib; path = Trade/MyCollect/FAMyCollectItemViewCell.xib; sourceTree = "<group>"; };
 		592B87C219C7BEC900B6EDF9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ImageSource/icon.png; sourceTree = "<group>"; };
 		592B87C319C7BEC900B6EDF9 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "ImageSource/icon@2x.png"; sourceTree = "<group>"; };
 		593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailPositionHeaderView.xib; path = Trade/MyPurchase/FAMyPurchaseDetailPositionHeaderView.xib; sourceTree = "<group>"; };
@@ -342,9 +345,6 @@
 		593EA6F319C04DDF00E9F2BC /* FAMyOrderBookItemHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyOrderBookItemHeaderView.h; path = Trade/MyOrderBook/FAMyOrderBookItemHeaderView.h; sourceTree = "<group>"; };
 		593EA6F419C04DDF00E9F2BC /* FAMyOrderBookItemHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyOrderBookItemHeaderView.m; path = Trade/MyOrderBook/FAMyOrderBookItemHeaderView.m; sourceTree = "<group>"; };
 		593EA6F619C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyOrderBookItemHeaderView.xib; path = Trade/MyOrderBook/FAMyOrderBookItemHeaderView.xib; sourceTree = "<group>"; };
-		593EA6FB19C05B2900E9F2BC /* FAMyCollectViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyCollectViewCell.h; path = Trade/MyCollect/FAMyCollectViewCell.h; sourceTree = "<group>"; };
-		593EA6FC19C05B2900E9F2BC /* FAMyCollectViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyCollectViewCell.m; path = Trade/MyCollect/FAMyCollectViewCell.m; sourceTree = "<group>"; };
-		593EA6FD19C05B2900E9F2BC /* FAMyCollectViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyCollectViewCell.xib; path = Trade/MyCollect/FAMyCollectViewCell.xib; sourceTree = "<group>"; };
 		594DD2BE19CA8374009D4A48 /* moreProduct_loto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moreProduct_loto.png; path = ImageSource/moreProduct/moreProduct_loto.png; sourceTree = "<group>"; };
 		594DD2C219CAA55A009D4A48 /* aboutProduct_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aboutProduct_big.png; path = ImageSource/aboutProduct/aboutProduct_big.png; sourceTree = "<group>"; };
 		594DD2C419CAC25F009D4A48 /* bg_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_menu.png; path = ImageSource/bg_menu.png; sourceTree = "<group>"; };
@@ -960,9 +960,9 @@
 		593EA6FA19C05A9C00E9F2BC /* CollectDetailCellView */ = {
 			isa = PBXGroup;
 			children = (
-				593EA6FB19C05B2900E9F2BC /* FAMyCollectViewCell.h */,
-				593EA6FC19C05B2900E9F2BC /* FAMyCollectViewCell.m */,
-				593EA6FD19C05B2900E9F2BC /* FAMyCollectViewCell.xib */,
+				592ABF9519CBBFEB002F0A8E /* FAMyCollectItemViewCell.h */,
+				592ABF9619CBBFEB002F0A8E /* FAMyCollectItemViewCell.m */,
+				592ABF9719CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib */,
 			);
 			name = CollectDetailCellView;
 			sourceTree = "<group>";
@@ -1475,7 +1475,6 @@
 				591B218E19C17FCB00064F24 /* moreItem_moreProduct.png in Resources */,
 				5916F34A19B95FA600BE7D1D /* tabbarBkg@2x.png in Resources */,
 				84844A6719C96AEF001C2EC4 /* FAMessageViewCell.xib in Resources */,
-				593EA6FF19C05B2900E9F2BC /* FAMyCollectViewCell.xib in Resources */,
 				592B87C419C7BEC900B6EDF9 /* icon.png in Resources */,
 				84844A4319C968D8001C2EC4 /* FAStrategyFilterViewCell.xib in Resources */,
 				593EA6F719C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib in Resources */,
@@ -1498,6 +1497,7 @@
 				592735C819C2916000FF42A1 /* FAMoreProductController.xib in Resources */,
 				593EA6EB19C0498400E9F2BC /* FAMySignalItemHeaderView.xib in Resources */,
 				598F291019B9AED10078C6C6 /* tradeItem_Signal@2x.png in Resources */,
+				592ABF9919CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib in Resources */,
 				84844A6D19C96B25001C2EC4 /* FAMessageDetailViewCell.xib in Resources */,
 				594FB09619C82637008EA26F /* common_star_1.png in Resources */,
 				59EC7EF519B82B4600972C0A /* FAJingXuanController.xib in Resources */,
@@ -1592,8 +1592,8 @@
 				84844A5319C969F8001C2EC4 /* FAStrategyViewCell.m in Sources */,
 				84844A5819C96A36001C2EC4 /* FAStrategyDetailViewCell.m in Sources */,
 				84844A6C19C96B25001C2EC4 /* FAMessageDetailViewCell.m in Sources */,
-				593EA6FE19C05B2900E9F2BC /* FAMyCollectViewCell.m in Sources */,
 				84844A5F19C96A9F001C2EC4 /* FAJingXuanViewCell.m in Sources */,
+				592ABF9819CBBFEB002F0A8E /* FAMyCollectItemViewCell.m in Sources */,
 				593EA6E919C0495300E9F2BC /* FAMySignalItemHeaderView.m in Sources */,
 				593EA6A419BFF94000E9F2BC /* FAMyPurchaseDetailPositionViewCell.m in Sources */,
 				593EA6AE19BFF9F100E9F2BC /* FAMyPurchaseDetailOrderViewCell.m in Sources */,
