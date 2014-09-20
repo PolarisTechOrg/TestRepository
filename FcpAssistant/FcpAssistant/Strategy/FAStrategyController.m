@@ -110,12 +110,12 @@ NSString* itemCellIdentifier;
     if(indexPath.row < 10)
     {
         cell.lblStrategyName.text = @"策略赢家1号测试";
-//        cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_purchase_flag.png"];
+        cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_purchase_flag.png"];
         cell.imgStrategyStar.image = [UIImage imageNamed:@"common_star_5.png"];
-//        cell.lblCollectionPeopleNumber.text = @"132";
+        cell.lblCollectionPeopleNumber.text = @"132";
         cell.lblProvider.text = @"常胜将军";
-//        cell.imgPerformanceBackMap.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
-//        cell.lblPerformance.text = @"150.5%";
+        cell.imgPerformanceBackMap.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+        cell.lblPerformance.text = @"150.5%";
     }
     
     return cell;

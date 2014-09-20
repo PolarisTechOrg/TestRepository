@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -13,9 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mycollect_profit_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-as-TzV">
-                        <rect key="frame" x="8" y="10" width="125" height="85"/>
-                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="策略赢家一号测试" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xig-37-ekC">
                         <rect key="frame" x="141" y="10" width="83" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -23,13 +21,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="150.5%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtW-YN-XnO">
-                        <rect key="frame" x="8" y="18" width="74" height="21"/>
+                        <rect key="frame" x="8" y="15" width="74" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXL-P9-WKZ">
-                        <rect key="frame" x="11" y="42" width="118" height="48"/>
+                        <rect key="frame" x="11" y="41" width="118" height="48"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhW-Qp-Fft">
                         <rect key="frame" x="137" y="34" width="176" height="1"/>
@@ -79,16 +77,24 @@
                         <rect key="frame" x="253" y="15" width="59" height="11"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="common_purchase_flag.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kfr-Mv-UFd">
-                        <rect key="frame" x="229" y="13" width="16" height="15"/>
+                        <rect key="frame" x="229" y="14" width="16" height="17"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mycollect_profit_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-as-TzV">
+                        <rect key="frame" x="8" y="10" width="125" height="85"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgPerformanceBackMap" destination="JkV-as-TzV" id="0i1-xn-GZt"/>
+                <outlet property="imgPerformanceMap" destination="mXL-P9-WKZ" id="QKp-ym-Ypc"/>
+                <outlet property="imgStrategyMarked" destination="Kfr-Mv-UFd" id="vlS-s8-cwo"/>
                 <outlet property="imgStrategyStar" destination="qVV-H4-sre" id="8Ac-50-CH3"/>
+                <outlet property="lblCollectionPeopleNumber" destination="tQP-yL-y22" id="ZDB-C1-Mmf"/>
+                <outlet property="lblPerformance" destination="YtW-YN-XnO" id="afo-v4-OZc"/>
                 <outlet property="lblProvider" destination="Y1p-rE-duB" id="aOD-1k-qdV"/>
                 <outlet property="lblStrategyName" destination="xig-37-ekC" id="9oz-xe-OyH"/>
             </connections>
-            <point key="canvasLocation" x="140" y="153"/>
+            <point key="canvasLocation" x="140" y="152"/>
         </tableViewCell>
     </objects>
     <resources>
