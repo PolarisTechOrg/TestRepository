@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyPurchaseViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *imgProfitBackground;
-@property (weak, nonatomic) IBOutlet UILabel *strategyName;
-@property (weak, nonatomic) IBOutlet UILabel *purchaseDate;
-@property (weak, nonatomic) IBOutlet UILabel *orderMultiple;
-@property (weak, nonatomic) IBOutlet UILabel *todaySignalCount;
+@property (weak, nonatomic) IBOutlet UILabel *lblProfit;
+@property (weak, nonatomic) IBOutlet UIImageView *imgSignalOrCombineFlag;
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyName;
+@property (weak, nonatomic) IBOutlet UIImageView *imgHoldingFlag;
+@property (weak, nonatomic) IBOutlet UIImageView *imgStrategyGrade;
+@property (weak, nonatomic) IBOutlet UILabel *lblPurchaseDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblMultipleCount;
+@property (weak, nonatomic) IBOutlet UILabel *lblTodaySignalCount;
 
 @end

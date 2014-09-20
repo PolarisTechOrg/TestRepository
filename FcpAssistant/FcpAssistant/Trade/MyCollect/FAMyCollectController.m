@@ -7,7 +7,7 @@
 //
 
 #import "FAMyCollectController.h"
-#import "FAMyCollectViewCell.h"
+#import "FAMyCollectItemViewCell.h"
 #import "FAMyCollectItem.h"
 
 @interface FAMyCollectController ()
@@ -26,6 +26,7 @@ NSString* itemCellIdentifier;
     [self registerXibFile];
     
     self.navigationItem.title = @"收藏";
+    self.tableView.sectionFooterHeight = 0.1;
     
     NSMutableArray *dataSource = [[NSMutableArray alloc] init ];
     
@@ -43,12 +44,12 @@ NSString* itemCellIdentifier;
 
 -(void)initializeData
 {
-    itemCellIdentifier = @"collectViewCell";
+    itemCellIdentifier = @"collectItemViewCell";
 }
 
 -(void)registerXibFile
 {
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAMyCollectViewCell" bundle:nil];
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAMyCollectItemViewCell" bundle:nil];
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
@@ -71,7 +72,7 @@ NSString* itemCellIdentifier;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 300;
+    return 104;
 }
 
 - (void)enterDetailView
@@ -82,11 +83,11 @@ NSString* itemCellIdentifier;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FAMyCollectViewCell *cell = (FAMyCollectViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    FAMyCollectItemViewCell *cell = (FAMyCollectItemViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if (!cell)
     {
-        cell = [[FAMyCollectViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        cell = [[FAMyCollectItemViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
@@ -96,21 +97,42 @@ NSString* itemCellIdentifier;
     if (indexPath.row < self.dataSource.count)
     {
         FAMyCollectItem* collectItem = (FAMyCollectItem *)self.dataSource[indexPath.row];
-        cell.strategyName.text = collectItem.strategyName;
-//        cell.imgProfit.image = [self drawPic:cell.imgProfit.image];
+
+        NSString* profitBackgroundImageName = @"mycollect_profit_red";
+        cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
+        
+        NSString* profitLineImageName = @"tmp_collect_profit_red";
+        cell.imgProfitLine.image = [UIImage imageNamed:profitLineImageName];
+//        cell.imgProfitBackground
+//        cell.strategyName.text = collectItem.strategyName;
+        cell.imgProfitLine.image = [self drawPic:cell.imgProfitLine.image];
+        cell.lblStrategyName.text = collectItem.strategyName;
     }
     
     
     return cell;
 }
 
-//-(id)drawPic:(UIImage*) image
-//{
-//    UIGraphicsBeginImageContext(image.size);
-//    [image drawAtPoint:CGPointMake(15,15)];
-//    UIGraphicsEndImageContext();
-//    return image;
-//}
+-(id)drawPic:(UIImage*) image
+{
+     UIGraphicsBeginImageContext(image.size);
+    
+    [image drawAtPoint:CGPointZero];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context,5);
+        CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+    
+    CGPoint first = CGPointMake(0,0);
+    CGPoint second = CGPointMake(200, 165);
+    
+    CGContextMoveToPoint(context,first.x
+                         ,first.y);
+    CGContextAddLineToPoint(context, second.x, second.y);
+    CGContextStrokePath(context);
+   
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

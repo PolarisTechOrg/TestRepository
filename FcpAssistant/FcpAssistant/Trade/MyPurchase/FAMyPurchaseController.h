@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyPurchaseController : UITableViewController
+{
+    NSString* itemCellIdentifier;
+}
+
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @end

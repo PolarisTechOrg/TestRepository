@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -43,10 +44,10 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="instrumentCode" destination="7dk-hj-q4t" id="0EI-Ne-dsT"/>
-                <outlet property="signalSeq" destination="oaO-K9-1GO" id="Z8g-RZ-QeX"/>
-                <outlet property="signalTime" destination="9vR-zV-UAH" id="8ek-3b-JLA"/>
-                <outlet property="strategyPositon" destination="oNa-sN-9VL" id="xAk-JX-ore"/>
+                <outlet property="lblInstrumentCode" destination="7dk-hj-q4t" id="jy5-6J-cQj"/>
+                <outlet property="lblSignalSeq" destination="oaO-K9-1GO" id="TBC-Pz-nc1"/>
+                <outlet property="lblSignalTime" destination="9vR-zV-UAH" id="lOq-RX-1bW"/>
+                <outlet property="lblStrategyPosition" destination="oNa-sN-9VL" id="5HM-c2-toc"/>
             </connections>
             <point key="canvasLocation" x="140" y="239"/>
         </tableViewCell>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -50,11 +50,11 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="instrumentCode" destination="SHc-Ym-g7R" id="g5L-sc-49u"/>
-                <outlet property="orderQtyAndTradeQty" destination="zxY-C3-zAI" id="Owv-jU-nih"/>
-                <outlet property="orderTime" destination="Crj-SV-HeH" id="cLt-8e-WYx"/>
-                <outlet property="tradePrice" destination="ajx-sP-h9p" id="fLM-ZA-AzD"/>
-                <outlet property="tradeStaus" destination="V4J-cK-uda" id="wz3-VA-4h6"/>
+                <outlet property="lblInstrumentCode" destination="SHc-Ym-g7R" id="uxy-Vv-hbo"/>
+                <outlet property="lblOrderQtyAndTradeQty" destination="zxY-C3-zAI" id="lDm-An-tqp"/>
+                <outlet property="lblOrderStatus" destination="V4J-cK-uda" id="TaQ-W5-niT"/>
+                <outlet property="lblOrderTime" destination="Crj-SV-HeH" id="8Sn-pp-Nis"/>
+                <outlet property="lblTradePrice" destination="ajx-sP-h9p" id="AG6-If-Ag0"/>
             </connections>
             <point key="canvasLocation" x="430" y="563"/>
         </tableViewCell>

@@ -10,5 +10,6 @@
 
 @interface FAMyPurchaseDetailProfitViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *profitImage;
+@property (weak, nonatomic) IBOutlet UIImageView *imgProfit;
+
 @end

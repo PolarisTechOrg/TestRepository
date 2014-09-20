@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyOrderBookItemViewCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UILabel *instrumentCode;
-@property (weak, nonatomic) IBOutlet UILabel *orderQtyAndTradeQty;
-@property (weak, nonatomic) IBOutlet UILabel *tradePrice;
-@property (weak, nonatomic) IBOutlet UILabel *tradeStaus;
-@property (weak, nonatomic) IBOutlet UILabel *orderTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblInstrumentCode;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrderQtyAndTradeQty;
+@property (weak, nonatomic) IBOutlet UILabel *lblTradePrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrderStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrderTime;
 @end

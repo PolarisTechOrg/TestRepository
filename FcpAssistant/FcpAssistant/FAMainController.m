@@ -81,20 +81,25 @@
     
     // setup UI Image
     UIColor *color = [UIColor colorWithRed:0.176 green:0.576 blue:0.980 alpha:1.000];
-    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"bg_menu"]];
+//    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"bg_menu"]];
     [self.tabBar setSelectedImageTintColor:color];
     
     if (CURRENT_SYS_VERSION >= 7.0)
     {
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0/255 green:68.0/255 blue:209.0/255 alpha:1.0]];
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        
     }
     else
     {
           [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:106.0/255 green:68.0/255 blue:209.0/255 alpha:1.0]];
     }
     
+    [[UINavigationBar appearance] setTranslucent:NO];
+
+
     
+   
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]];
     
