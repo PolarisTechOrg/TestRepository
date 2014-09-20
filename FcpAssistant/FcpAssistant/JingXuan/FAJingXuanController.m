@@ -99,11 +99,34 @@ NSString* itemCellIdentifier;
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     
-    if(indexPath.row < self.dataSource.count)
+//    if(indexPath.row < self.dataSource.count)
+//    {
+//        FAMyCollectItem *items = (FAMyCollectItem *)self.dataSource[indexPath.row];
+//        
+//        cell.lblStrategyName1.text = items.strategyName;
+//    }
+
+    if(indexPath.row < 10)
     {
-        FAMyCollectItem *items = (FAMyCollectItem *)self.dataSource[indexPath.row];
+        cell.imgTitle.image = [UIImage imageNamed:@"common_purchase_flag.png"];
+        cell.lblTitle.text = @"策略精选";
         
-        cell.lblStrategyName1.text = items.strategyName;
+        cell.lblStrategyName1.text = @"精选赢家1号测试";
+        cell.imgStrategyStar1.image = [UIImage imageNamed:@"common_star_5.png"];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        cell.lblUpdateDate1.text = [dateFormat stringFromDate:[NSDate date]];
+        cell.lblStrategyStatus1.text = @"上架";
+        cell.lblCollectionPeople1.text = @"5";
+        cell.lblProviderName1.text = @"常胜将军";
+        cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+        cell.lblPerformanceNumber1.text = @"150.5%";
+        
+        cell.lblStrategyName2.text = @"精选赢家2号测试";
+        cell.lblCollectionPeople2.text = @"4";
+        
+        cell.lblStrategyName3.text = @"精选赢家3号测试";
+        cell.lblCollectionPeople3.text = @"3";
     }
     
     return cell;
