@@ -1,5 +1,5 @@
 //
-//  FAMessageDetailViewCell.h
+//  FAStrategyViewCell.h
 //  FcpAssistant
 //
 //  Created by admin on 9/17/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FAMessageDetailViewCell : UITableViewCell
-
-
+@interface FAStrategyDetailTopViewCell : UITableViewCell
 
 @end

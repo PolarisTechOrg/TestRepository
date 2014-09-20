@@ -81,7 +81,6 @@ NSString* itemCellIdentifier;
 
 - (void)enterDetailView
 {
-    
 }
 
 

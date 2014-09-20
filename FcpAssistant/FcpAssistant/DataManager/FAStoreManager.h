@@ -18,5 +18,6 @@
 
 -(NSMutableArray *) getMoreProductConfigureArray;
 
+-(NSMutableArray *) getMessageConfigArray;
 @end
 

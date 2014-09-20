@@ -73,4 +73,29 @@
     return moreProductConfigureArray;
 }
 
+//获取交易菜单子项配置
+-(NSMutableArray *) getMessageConfigArray
+{
+    NSMutableArray * traderConfigArray = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    NSDictionary * no1Dic = @{@"readFlag": @"common_collect_flag.png",                                 @"image":@"tradeItem_Position.png",
+        @"provider":@"赢家一号",
+        @"arriveTime":@"5分钟前",
+    @"body":@"赢家一号的信号刚刚发出买入信号测试"};
+    
+    NSDictionary * no2Dic = @{@"readFlag": @"common_collect_flag.png",                                 @"image":@"tradeItem_Position.png",
+                              @"provider":@"乔帮主",
+                              @"arriveTime":@"8月10日",
+                              @"body":@"赢家一号的跟单人数已经突破2万了测试"};
+    
+    NSDictionary * no3Dic = @{@"readFlag": @"common_collect_flag.png",                                 @"image":@"tradeItem_Position.png",
+                              @"provider":@"系统信息",
+                              @"arriveTime":@"8月8日",
+                              @"body":@"2.0.0版本已自动更新，请放心使用测试"};
+
+    [traderConfigArray addObject:@[no1Dic,no2Dic, no3Dic]];
+    
+    return traderConfigArray;
+}
+
 @end

@@ -1,18 +1,18 @@
 //
-//  FAStrategySearchController.m
+//  FAMessageDetailViewController.m
 //  FcpAssistant
 //
-//  Created by admin on 9/17/14.
+//  Created by admin on 9/20/14.
 //  Copyright (c) 2014 polaris. All rights reserved.
 //
 
-#import "FAStrategySearchController.h"
+#import "FAMessageDetailViewController.h"
 
-@interface FAStrategySearchController ()
+@interface FAMessageDetailViewController ()
 
 @end
 
-@implementation FAStrategySearchController
+@implementation FAMessageDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,11 +32,13 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
 }

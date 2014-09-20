@@ -7,22 +7,52 @@
 //
 
 #import "FAMessageController.h"
+#import "FAMessageViewCell.h"
+#import "FAStoreManager.h"
 
 @interface FAMessageController ()
 
 @end
 
 @implementation FAMessageController
+{
+    NSString* itemCellIdentifier;
+    NSMutableArray *dataSource;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tabBarItem.title = @"消息";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self initializeData];
+    [self registerXibFile];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"消息";
+//    self.tableView.sectionFooterHeight = 0.5;
+    
+    dataSource = [[FAStoreManager shareInstance] getMessageConfigArray];
+}
+
+-(void)initializeData
+{
+    itemCellIdentifier = @"FAMessageCell";
+}
+
+-(void)registerXibFile
+{
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAMessageViewCell" bundle:nil];
+    
+    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,37 +65,67 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [dataSource[section] count];
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 61;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    FAMessageViewCell * cell = (FAMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
-    // Configure the cell...
+    if(!cell)
+    {
+        cell = [[FAMessageViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     
+    
+    if(indexPath.section < dataSource.count)
+    {
+        NSDictionary *messageDict = dataSource[indexPath.section];
+        
+        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
+        cell.imgMessageProvider.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
+        cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
+        cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
+        cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];
+    }
+                              
     return cell;
 }
-*/
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
 
 /*
 // Override to support editing the table view.
@@ -96,21 +156,34 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Navigation logic may go here, for example:
+//    // Create the next view controller.
+//    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+//    
+//    // Pass the selected object to the new view controller.
+//    
+//    // Push the view controller.
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+//}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    if(indexPath.section ==0 && indexPath.row ==0)
+    {
+        //[self pushNewViewController:[[FAMyCollectController alloc] init]];
+    }
 }
-*/
+
+- (void)pushNewViewController:(UIViewController *)newViewController {
+    [self.navigationController pushViewController:newViewController animated:YES];
+}
 
 @end
