@@ -21,4 +21,9 @@
     
     return instance;
 }
+
+-(void) Login:(NSString*) account withPassword:(NSString*) password
+{
+    
+}
 @end
