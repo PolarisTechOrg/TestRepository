@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FAStrategyDetailViewCell : UITableViewCell
+@interface FAStrategyInfoViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgStrategyMarked;

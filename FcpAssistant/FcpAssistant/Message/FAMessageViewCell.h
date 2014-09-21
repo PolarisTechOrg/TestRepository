@@ -10,4 +10,11 @@
 
 @interface FAMessageViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *iconMessageReadFlag;
+@property (weak, nonatomic) IBOutlet UIImageView *imgMessageProvider;
+@property (weak, nonatomic) IBOutlet UILabel *lblMessageProvider;
+@property (weak, nonatomic) IBOutlet UILabel *lblMessageDetail;
+@property (weak, nonatomic) IBOutlet UILabel *lblMessageArriveTime;
+
+
 @end

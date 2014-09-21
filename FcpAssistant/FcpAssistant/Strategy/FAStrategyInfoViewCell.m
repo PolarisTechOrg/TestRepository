@@ -1,14 +1,14 @@
 //
-//  FAStrategyViewCell.m
+//  FAStrategyDetailViewCell.m
 //  FcpAssistant
 //
 //  Created by admin on 9/17/14.
 //  Copyright (c) 2014 polaris. All rights reserved.
 //
 
-#import "FAStrategyViewCell.h"
+#import "FAStrategyInfoViewCell.h"
 
-@implementation FAStrategyViewCell
+@implementation FAStrategyInfoViewCell
 
 - (void)awakeFromNib {
     // Initialization code

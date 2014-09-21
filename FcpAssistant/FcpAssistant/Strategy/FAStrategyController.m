@@ -7,7 +7,7 @@
 //
 
 #import "FAStrategyController.h"
-#import "FAStrategyDetailViewCell.h"
+#import "FAStrategyInfoViewCell.h"
 #import "FAMyCollectItem.h"
 
 @interface FAStrategyController ()
@@ -47,7 +47,7 @@ NSString* itemCellIdentifier;
 
 - (void)registerXibFile
 {
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategyDetailViewCell" bundle:nil];
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategyInfoViewCell" bundle:nil];
     
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
@@ -88,12 +88,12 @@ NSString* itemCellIdentifier;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
      itemCellIdentifier = @"StrategyViewCell";
-    FAStrategyDetailViewCell *cell = (FAStrategyDetailViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    FAStrategyInfoViewCell *cell = (FAStrategyInfoViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     // Configure the cell...
     if(!cell)
     {
-        cell = [[FAStrategyDetailViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        cell = [[FAStrategyInfoViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
         
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         
