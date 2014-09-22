@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyCollectController : UITableViewController
-@property (nonatomic, strong) NSMutableArray *dataSource;
+{
+    //TableViewCell标识符
+    @private NSString* itemCellIdentifier;
+    
+    @private NSMutableArray *dataSource;
+}
+
 @end

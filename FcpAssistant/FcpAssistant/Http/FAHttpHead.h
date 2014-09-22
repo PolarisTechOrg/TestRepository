@@ -15,9 +15,12 @@
     NSString *Method;
 }
 
+
+
 @property NSTimeInterval TimeOut;
 @property NSString *Method;
 
++(instancetype) defaultInstance;
 
 - (FAHttpHead *)initDefault;
 

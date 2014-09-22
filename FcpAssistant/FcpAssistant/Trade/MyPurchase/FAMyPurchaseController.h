@@ -10,8 +10,9 @@
 
 @interface FAMyPurchaseController : UITableViewController
 {
-   NSString* itemCellIdentifier;
+    NSString *itemCellIdentifier;
+    NSMutableArray *dataSource;
+   
 }
 
-@property (nonatomic, strong) NSMutableArray *dataSource;
 @end

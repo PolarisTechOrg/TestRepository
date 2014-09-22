@@ -11,17 +11,23 @@
 
 @implementation FAHttpUtility
 
+//同步发送Get请求。
++ (NSData *)sendRequest:(NSURL *)url error:(NSError *)error
+{
+    FAHttpHead *defalutHeader = [FAHttpHead defaultInstance];
+    return [FAHttpUtility sendRequest:url withHead:defalutHeader httpBody:nil error:error];
+}
+
 // 同步发送请求
-+ (NSData *)sendRequest:(NSString *)url withHead:(FAHttpHead *)head httpBody:(id)body error:(NSError *)error
++ (NSData *)sendRequest:(NSURL *)url withHead:(FAHttpHead *)head httpBody:(id)body error:(NSError *)error
 {
     if(url == nil || head == nil)
     {
         return nil;
     }
     
-    NSURL *realUrl = [NSURL URLWithString:url];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:realUrl];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     [urlRequest setTimeoutInterval:head.TimeOut];
     [urlRequest setHTTPMethod:head.Method];
     

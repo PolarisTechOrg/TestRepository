@@ -12,8 +12,10 @@
 
 @interface FAJSONSerialization : NSObject
 
-+ (id) toObject:(NSString*)objClass fromData:(NSData *)data;
-+ (NSArray *) toArray:(NSString *)objClass fromData:(NSData *)data;
++ (id) toObject:(Class)objClass fromData:(NSData *)data;
+
++ (NSArray *) toArray:(Class)objClass fromData:(NSData *)data;
+
 + (NSDictionary *) toDictionary:(id)obj;
 
 //+ (id) toPageObject:(NSString*)objClass fromData:(NSObject*)data;

@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgProfitBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *imgProfitLine;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyProfitRate;
-@property (weak, nonatomic) IBOutlet UIImageView *imgSignalOrCombineFlag;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPurchaseFlag;
 @property (weak, nonatomic) IBOutlet UIImageView *imgStragetyGrade;

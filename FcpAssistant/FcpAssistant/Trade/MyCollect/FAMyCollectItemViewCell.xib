@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="策略赢家一号测试" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-Pv-ood">
-                        <rect key="frame" x="150" y="12" width="83" height="21"/>
+                        <rect key="frame" x="137" y="13" width="96" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -47,9 +47,6 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mycollect_profit_green.png" translatesAutoresizingMaskIntoConstraints="NO" id="3IO-Yt-Z8y">
                         <rect key="frame" x="6" y="10" width="125" height="85"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="common_combineStrategy.png" translatesAutoresizingMaskIntoConstraints="NO" id="3B9-7P-O1s">
-                        <rect key="frame" x="135" y="15" width="13" height="13"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMt-8w-S78">
                         <rect key="frame" x="143" y="70" width="57" height="21"/>
@@ -90,19 +87,17 @@
                 <outlet property="imgProfitBackground" destination="3IO-Yt-Z8y" id="oIh-xt-EsX"/>
                 <outlet property="imgProfitLine" destination="ewC-mG-bZG" id="t1t-nx-KWf"/>
                 <outlet property="imgPurchaseFlag" destination="TYg-mQ-qOR" id="p5w-PZ-pRu"/>
-                <outlet property="imgSignalOrCombineFlag" destination="3B9-7P-O1s" id="Pb5-aW-dJa"/>
                 <outlet property="imgStragetyGrade" destination="X2U-nd-0M5" id="waP-3u-gns"/>
                 <outlet property="lblCollectCount" destination="ZMt-8w-S78" id="LAd-yW-3Cc"/>
                 <outlet property="lblStrategyName" destination="JWa-Pv-ood" id="sRv-ds-Zew"/>
                 <outlet property="lblStrategyProfitRate" destination="smL-1R-49b" id="q3v-bz-osf"/>
                 <outlet property="lblStrategyProvider" destination="da2-QJ-eCj" id="p9N-qY-CTW"/>
             </connections>
-            <point key="canvasLocation" x="248" y="309"/>
+            <point key="canvasLocation" x="248" y="308"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="common_collect_flag.png" width="28" height="28"/>
-        <image name="common_combineStrategy.png" width="25" height="26"/>
         <image name="common_star_3.png" width="117" height="21"/>
         <image name="mycollect_profit_green.png" width="250" height="170"/>
     </resources>
