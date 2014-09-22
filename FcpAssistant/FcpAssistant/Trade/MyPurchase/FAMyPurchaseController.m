@@ -9,14 +9,17 @@
 #import "FAMyPurchaseController.h"
 #import "FAMyPurchaseDetailController.h"
 #import "FAMyPurchaseViewCell.h"
-#import "FAPurchaseDetail.h"
+#import "FABuyedStrategyDto.h"
+#import "FAFoundation.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
 
 @interface FAMyPurchaseController ()
 
 @end
 
 @implementation FAMyPurchaseController
-
 
 
 - (void)viewDidLoad
@@ -29,19 +32,15 @@
     self.navigationItem.title = @"订购";
 
     
-    NSMutableArray *dataSource = [[NSMutableArray alloc] init ];
+    dataSource = [[NSMutableArray alloc] init ];
     
-    for (int i=0; i<10; i++)
+    NSArray *buyedList = [self LoadDataFromServer];
+    if(buyedList != nil && [buyedList count] >0)
     {
-        FAPurchaseDetail * detail = [[FAPurchaseDetail alloc] initWithStrategyId:i];
-        detail.strategyName = [NSString stringWithFormat:@"赢家%d号",i];
-        
-        [dataSource addObject:detail];
+        [dataSource addObjectsFromArray:buyedList];
     }
-    
-    self.dataSource = dataSource;
-    
 }
+
 -(void)initializeData
 {
     itemCellIdentifier = @"purchaseViewCell";
@@ -53,6 +52,29 @@
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
+-(NSArray *) LoadDataFromServer
+{
+    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyList?fundAccount=%@&fundAcccountType=%@",WEB_URL,@"100146",@"33"];
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+
+    
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoObj =[FAJSONSerialization toArray:[FABuyedStrategyDto class] fromData:replyData];
+        
+        return  dtoObj;
+        
+    }
+    else
+    {
+        return nil;
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -69,8 +91,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
-//    return self.dataSource.count;
+    return dataSource.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,42 +102,34 @@
 - (void)enterDetailView
 {
     FAMyPurchaseDetailController * detailController = [[FAMyPurchaseDetailController alloc] init];
+
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    itemCellIdentifier = @"purchaseViewCell";
     FAMyPurchaseViewCell *cell = (FAMyPurchaseViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if (!cell)
     {
         cell = [[FAMyPurchaseViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
-        
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-        
     }
     
-    if (indexPath.row < self.dataSource.count)
+    if (indexPath.row < dataSource.count)
     {
-        FAPurchaseDetail * purchaseDetail = (FAPurchaseDetail *)self.dataSource[indexPath.row];
-//        cell.strategyName.text = purchaseDetail.strategyName;
-        NSString* profitBackgroundImageName =@"mypurchase_profit_red.png";
-        if(indexPath.row % 3 ==0)
+        FABuyedStrategyDto  *item = dataSource[indexPath.row];
+        cell.lblStrategyName.text = item.StrategyName;
+//        cell.lblProfit.text = item.TodayProfit;
+        NSString* profitBackgroundImageName =@"mypurchase_profit_yellow.png";
+        if(item.TodayProfit >0)
         {
-            profitBackgroundImageName =@"mypurchase_profit_yellow.png";
+            profitBackgroundImageName =@"mypurchase_profit_red.png";
         }
-        else if(indexPath.row % 3 == 1)
-        {
-            profitBackgroundImageName = @"mypurchase_profit_red.png";
-        }
-        else
+        else if(item.TodayProfit <0)
         {
             profitBackgroundImageName = @"mypurchase_profit_green.png";
         }
-//        cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
+        cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
     }
     
     

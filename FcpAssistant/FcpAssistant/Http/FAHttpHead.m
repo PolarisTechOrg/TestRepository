@@ -13,6 +13,11 @@
 @synthesize TimeOut;
 @synthesize Method;
 
++(instancetype) defaultInstance
+{
+    return [[FAHttpHead alloc] initDefault];
+}
+
 - (FAHttpHead *)initDefault
 {
     self.TimeOut = 30.0f;

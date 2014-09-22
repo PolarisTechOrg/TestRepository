@@ -23,6 +23,7 @@
 #define CURRENT_SYS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
 
+#define WEB_URL @"http://testweb.polaristech.com.cn:8080/FcpAssistant/"
 
 // iPad
 #define kIsiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

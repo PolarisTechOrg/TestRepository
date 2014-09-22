@@ -10,10 +10,10 @@
 
 @implementation FAJSONSerialization
 
-+ (id) toObject:(NSString *)objClass fromData:(NSData *)data
++ (id) toObject:(Class)objType fromData:(NSData *)data
 {
     NSError *error = nil;
-    Class objType = objClass == nil ? nil : NSClassFromString(objClass);
+
     
     id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     
@@ -30,10 +30,9 @@
 }
 
 
-+ (NSArray*) toArray:(NSString *)objClass fromData:(NSData *)data
++ (NSArray*) toArray:(Class)objType fromData:(NSData *)data
 {
     NSError *error = nil;
-    Class objType = objClass == nil ? nil : NSClassFromString(objClass);
     
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     

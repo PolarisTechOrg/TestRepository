@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface FAMember : NSObject
-
+@property (nonatomic,copy) NSString *account;
+@property(nonatomic,copy) NSString *password;
 @end

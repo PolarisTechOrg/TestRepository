@@ -9,6 +9,12 @@
 #import "FAMyCollectController.h"
 #import "FAMyCollectItemViewCell.h"
 #import "FAMyCollectItem.h"
+#import "FAFoundation.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
+#import "FAWishlistDto.h"
+#import "FADummieStrategyDetailViewModel.h"
 
 @interface FAMyCollectController ()
 
@@ -16,7 +22,7 @@
 
 @implementation FAMyCollectController
 
-NSString* itemCellIdentifier;
+
 
 - (void)viewDidLoad
 {
@@ -28,17 +34,37 @@ NSString* itemCellIdentifier;
     self.navigationItem.title = @"收藏";
     self.tableView.sectionFooterHeight = 0.1;
     
-    NSMutableArray *dataSource = [[NSMutableArray alloc] init ];
+    dataSource = [[NSMutableArray alloc] init ];
     
-    for (int i=0; i<10; i++)
+    FAWishlistDto *wishList = [self LoadDataFromServer];
+    if(wishList != nil && [wishList.Items count] >0)
     {
-        FAMyCollectItem * detail = [[FAMyCollectItem alloc] initWithStrategyId:i];
-        detail.strategyName = [NSString stringWithFormat:@"赢家%d号",i];
-        
-        [dataSource addObject:detail];
+        [dataSource addObjectsFromArray:wishList.Items];
     }
+  
+
+
+}
+
+-(FAWishlistDto *) LoadDataFromServer
+{
+    NSURL * requestUrl =[NSURL URLWithString:[WEB_URL stringByAppendingString:@"api/wishlist"]];
     
-    self.dataSource = dataSource;
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    
+    if(error == nil)
+    {
+        FAWishlistDto *dtoObj =[FAJSONSerialization toObject:[FAWishlistDto class] fromData:replyData];
+        
+        return  dtoObj;
+        
+    }
+    else
+    {
+        return nil;
+    }
 
 }
 
@@ -66,8 +92,7 @@ NSString* itemCellIdentifier;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
-    //    return self.dataSource.count;
+    return dataSource.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -94,19 +119,26 @@ NSString* itemCellIdentifier;
         
     }
     
-    if (indexPath.row < self.dataSource.count)
+    if (indexPath.row < dataSource.count)
     {
-        FAMyCollectItem* collectItem = (FAMyCollectItem *)self.dataSource[indexPath.row];
+        FADummieStrategyDetailViewModel* item = (FADummieStrategyDetailViewModel *)dataSource[indexPath.row];
+        
+        NSLog(@"Item:%@",item);
 
         NSString* profitBackgroundImageName = @"mycollect_profit_red";
         cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
         
         NSString* profitLineImageName = @"tmp_collect_profit_red";
         cell.imgProfitLine.image = [UIImage imageNamed:profitLineImageName];
-//        cell.imgProfitBackground
-//        cell.strategyName.text = collectItem.strategyName;
         cell.imgProfitLine.image = [self drawPic:cell.imgProfitLine.image];
-        cell.lblStrategyName.text = collectItem.strategyName;
+        cell.lblStrategyName.text = item.StrategyName;
+        int star = (int)ceil(item.Star);
+        NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+        NSLog(@"gradeImageName:%@",gradeImageName);
+        cell.imgStragetyGrade.image = [UIImage imageNamed:gradeImageName];
+        cell.lblStrategyProfitRate.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio *100];
+        cell.lblStrategyProvider.text = item.ProviderName;
+        cell.lblCollectCount.text = [NSString stringWithFormat:@"%d",item.FollowNumber];
     }
     
     
