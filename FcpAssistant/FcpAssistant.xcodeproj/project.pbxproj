@@ -197,6 +197,18 @@
 		84844A6719C96AEF001C2EC4 /* FAMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A6519C96AEF001C2EC4 /* FAMessageViewCell.xib */; };
 		84844A6C19C96B25001C2EC4 /* FAMessageDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A6A19C96B25001C2EC4 /* FAMessageDetailViewCell.m */; };
 		84844A6D19C96B25001C2EC4 /* FAMessageDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A6B19C96B25001C2EC4 /* FAMessageDetailViewCell.xib */; };
+		84F2C74719D10251006EBFC4 /* bg_index_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73A19D10251006EBFC4 /* bg_index_green.png */; };
+		84F2C74819D10251006EBFC4 /* bg_index_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73B19D10251006EBFC4 /* bg_index_red.png */; };
+		84F2C74919D10251006EBFC4 /* bg_index_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73C19D10251006EBFC4 /* bg_index_yellow.png */; };
+		84F2C74A19D10251006EBFC4 /* icon_index_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73D19D10251006EBFC4 /* icon_index_01.png */; };
+		84F2C74B19D10251006EBFC4 /* icon_index_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73E19D10251006EBFC4 /* icon_index_02.png */; };
+		84F2C74C19D10251006EBFC4 /* icon_index_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73F19D10251006EBFC4 /* icon_index_03.png */; };
+		84F2C74D19D10251006EBFC4 /* icon_index_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C74019D10251006EBFC4 /* icon_index_04.png */; };
+		84F2C74E19D10251006EBFC4 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C74119D10251006EBFC4 /* Thumbs.db */; };
+		84F2C74F19D10251006EBFC4 /* icon_message_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C74319D10251006EBFC4 /* icon_message_01.png */; };
+		84F2C75019D10251006EBFC4 /* icon_message_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C74419D10251006EBFC4 /* icon_message_02.png */; };
+		84F2C75119D10251006EBFC4 /* icon_message_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C74519D10251006EBFC4 /* icon_message_03.png */; };
+		84F2C75219D10251006EBFC4 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C74619D10251006EBFC4 /* Thumbs.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -479,6 +491,18 @@
 		84844A6919C96B25001C2EC4 /* FAMessageDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailViewCell.h; path = Message/FAMessageDetailViewCell.h; sourceTree = "<group>"; };
 		84844A6A19C96B25001C2EC4 /* FAMessageDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailViewCell.m; path = Message/FAMessageDetailViewCell.m; sourceTree = "<group>"; };
 		84844A6B19C96B25001C2EC4 /* FAMessageDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailViewCell.xib; path = Message/FAMessageDetailViewCell.xib; sourceTree = "<group>"; };
+		84F2C73A19D10251006EBFC4 /* bg_index_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_index_green.png; sourceTree = "<group>"; };
+		84F2C73B19D10251006EBFC4 /* bg_index_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_index_red.png; sourceTree = "<group>"; };
+		84F2C73C19D10251006EBFC4 /* bg_index_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_index_yellow.png; sourceTree = "<group>"; };
+		84F2C73D19D10251006EBFC4 /* icon_index_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_index_01.png; sourceTree = "<group>"; };
+		84F2C73E19D10251006EBFC4 /* icon_index_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_index_02.png; sourceTree = "<group>"; };
+		84F2C73F19D10251006EBFC4 /* icon_index_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_index_03.png; sourceTree = "<group>"; };
+		84F2C74019D10251006EBFC4 /* icon_index_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_index_04.png; sourceTree = "<group>"; };
+		84F2C74119D10251006EBFC4 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
+		84F2C74319D10251006EBFC4 /* icon_message_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_message_01.png; sourceTree = "<group>"; };
+		84F2C74419D10251006EBFC4 /* icon_message_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_message_02.png; sourceTree = "<group>"; };
+		84F2C74519D10251006EBFC4 /* icon_message_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_message_03.png; sourceTree = "<group>"; };
+		84F2C74619D10251006EBFC4 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1241,6 +1265,8 @@
 		59EC7F1A19B8593600972C0A /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				84F2C73919D10251006EBFC4 /* JingXuan */,
+				84F2C74219D10251006EBFC4 /* Message */,
 				594DD2C419CAC25F009D4A48 /* bg_menu.png */,
 				594DD2C019CAA53B009D4A48 /* aboutProduct */,
 				594DD2BD19CA8363009D4A48 /* moreProduct */,
@@ -1460,6 +1486,34 @@
 			name = HeaderView;
 			sourceTree = "<group>";
 		};
+		84F2C73919D10251006EBFC4 /* JingXuan */ = {
+			isa = PBXGroup;
+			children = (
+				84F2C73A19D10251006EBFC4 /* bg_index_green.png */,
+				84F2C73B19D10251006EBFC4 /* bg_index_red.png */,
+				84F2C73C19D10251006EBFC4 /* bg_index_yellow.png */,
+				84F2C73D19D10251006EBFC4 /* icon_index_01.png */,
+				84F2C73E19D10251006EBFC4 /* icon_index_02.png */,
+				84F2C73F19D10251006EBFC4 /* icon_index_03.png */,
+				84F2C74019D10251006EBFC4 /* icon_index_04.png */,
+				84F2C74119D10251006EBFC4 /* Thumbs.db */,
+			);
+			name = JingXuan;
+			path = ImageSource/JingXuan;
+			sourceTree = "<group>";
+		};
+		84F2C74219D10251006EBFC4 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				84F2C74319D10251006EBFC4 /* icon_message_01.png */,
+				84F2C74419D10251006EBFC4 /* icon_message_02.png */,
+				84F2C74519D10251006EBFC4 /* icon_message_03.png */,
+				84F2C74619D10251006EBFC4 /* Thumbs.db */,
+			);
+			name = Message;
+			path = ImageSource/Message;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1541,6 +1595,7 @@
 			files = (
 				592735BC19C28EB900FF42A1 /* FAFeddbackController.xib in Resources */,
 				5916F34D19B9617900BE7D1D /* More@2x.png in Resources */,
+				84F2C75119D10251006EBFC4 /* icon_message_03.png in Resources */,
 				592A83FC19C97AEB00DDE1B5 /* tmp_purchase_profit.png in Resources */,
 				594FB08A19C81D2E008EA26F /* common_holding_no.png in Resources */,
 				591B218A19C17FCB00064F24 /* moreItem_about.png in Resources */,
@@ -1556,6 +1611,7 @@
 				591EA2DB19BEDCCB00EED52C /* FAMyPurchaseDetailController.xib in Resources */,
 				594DD2C319CAA55A009D4A48 /* aboutProduct_big.png in Resources */,
 				84844A3E19C96899001C2EC4 /* FAStrategyFilterController.xib in Resources */,
+				84F2C74819D10251006EBFC4 /* bg_index_red.png in Resources */,
 				593EA6A519BFF94000E9F2BC /* FAMyPurchaseDetailPositionViewCell.xib in Resources */,
 				594FB08419C81C44008EA26F /* mypurchase_profit_yellow.png in Resources */,
 				594FB09719C82637008EA26F /* common_star_2.png in Resources */,
@@ -1568,11 +1624,14 @@
 				598F290E19B9AED10078C6C6 /* tradeItem_OrderBook@2x.png in Resources */,
 				592ABF9C19CC067E002F0A8E /* tmp_collect_profit_green.png in Resources */,
 				593EA69D19BFF64400E9F2BC /* FAMyPurchaseDetailProfitHeaderView.xib in Resources */,
+				84F2C74E19D10251006EBFC4 /* Thumbs.db in Resources */,
+				84F2C74919D10251006EBFC4 /* bg_index_yellow.png in Resources */,
 				594FB07019C7D621008EA26F /* bg_line_80.png in Resources */,
 				5916F34819B95FA600BE7D1D /* Strategy@2x.png in Resources */,
 				591B218D19C17FCB00064F24 /* moreItem_feedback.png in Resources */,
 				59EC7EEA19B8129200972C0A /* FAMainController.xib in Resources */,
 				840DD88819CD77920023885D /* FAStrategyDetailProfitViewCell.xib in Resources */,
+				84F2C74A19D10251006EBFC4 /* icon_index_01.png in Resources */,
 				59EC7EE519B8122100972C0A /* FAStrategyController.xib in Resources */,
 				594FB09919C82637008EA26F /* common_star_4.png in Resources */,
 				594FB09519C82637008EA26F /* common_star_0.png in Resources */,
@@ -1584,6 +1643,7 @@
 				59137A3A19BE8C10001F4977 /* FAMyPositionController.xib in Resources */,
 				59EC7F0519B82C0600972C0A /* FAMessageController.xib in Resources */,
 				594FB08C19C81D2E008EA26F /* common_combineStrategy.png in Resources */,
+				84F2C75219D10251006EBFC4 /* Thumbs.db in Resources */,
 				598F290C19B9AED10078C6C6 /* tradeItem_Collect@2x.png in Resources */,
 				594FB07B19C80277008EA26F /* FAMeberLoginController.xib in Resources */,
 				5916F34919B95FA600BE7D1D /* Trade@2x.png in Resources */,
@@ -1594,6 +1654,8 @@
 				592B87C419C7BEC900B6EDF9 /* icon.png in Resources */,
 				84844A4319C968D8001C2EC4 /* FAStrategyFilterViewCell.xib in Resources */,
 				593EA6F719C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib in Resources */,
+				84F2C74B19D10251006EBFC4 /* icon_index_02.png in Resources */,
+				84F2C74F19D10251006EBFC4 /* icon_message_01.png in Resources */,
 				592735CE19C292F000FF42A1 /* FAMoreProductViewCell.xib in Resources */,
 				592735B619C28DFC00FF42A1 /* FAMyFcpController.xib in Resources */,
 				59137A4419BE8C57001F4977 /* FAMySignalController.xib in Resources */,
@@ -1614,12 +1676,14 @@
 				594FB09F19C82819008EA26F /* mycollect_profit_red.png in Resources */,
 				840DD88319CD776E0023885D /* FAStrategyDetailDescribViewCell.xib in Resources */,
 				592735C819C2916000FF42A1 /* FAMoreProductController.xib in Resources */,
+				84F2C74719D10251006EBFC4 /* bg_index_green.png in Resources */,
 				593EA6EB19C0498400E9F2BC /* FAMySignalItemHeaderView.xib in Resources */,
 				598F291019B9AED10078C6C6 /* tradeItem_Signal@2x.png in Resources */,
 				592ABF9919CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib in Resources */,
 				84844A6D19C96B25001C2EC4 /* FAMessageDetailViewCell.xib in Resources */,
 				594FB09619C82637008EA26F /* common_star_1.png in Resources */,
 				59EC7EF519B82B4600972C0A /* FAJingXuanController.xib in Resources */,
+				84F2C74C19D10251006EBFC4 /* icon_index_03.png in Resources */,
 				59137A3F19BE8C32001F4977 /* FAMyOrderBookController.xib in Resources */,
 				84844A5419C969F8001C2EC4 /* FAStrategyDetailTopViewCell.xib in Resources */,
 				592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */,
@@ -1635,6 +1699,8 @@
 				5916F34719B95FA600BE7D1D /* JingXuan@2x.png in Resources */,
 				594DD2C519CAC25F009D4A48 /* bg_menu.png in Resources */,
 				592735C219C28F5C00FF42A1 /* FATermOfServiceController.xib in Resources */,
+				84F2C75019D10251006EBFC4 /* icon_message_02.png in Resources */,
+				84F2C74D19D10251006EBFC4 /* icon_index_04.png in Resources */,
 				592ABF9D19CC067E002F0A8E /* tmp_collect_profit_red.png in Resources */,
 				840DD87B19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.xib in Resources */,
 				840DD88F19CD790A0023885D /* FAStrategyDetailProfitHeaderView.xib in Resources */,
