@@ -141,6 +141,13 @@
 		594FB0A019C82819008EA26F /* mycollect_profit_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 594FB09D19C82819008EA26F /* mycollect_profit_yellow.png */; };
 		594FB0A319C82BDA008EA26F /* common_collect_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 594FB0A119C82BDA008EA26F /* common_collect_flag.png */; };
 		594FB0A419C82BDA008EA26F /* common_purchase_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 594FB0A219C82BDA008EA26F /* common_purchase_flag.png */; };
+		5982A2FF19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5982A2FE19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m */; };
+		5982A30219D11E31009EADD1 /* FAStrategyHoldingPositionDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5982A30119D11E31009EADD1 /* FAStrategyHoldingPositionDto.m */; };
+		5982A30519D11F4E009EADD1 /* FAStrategySignalDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5982A30419D11F4E009EADD1 /* FAStrategySignalDto.m */; };
+		5982A30819D11FAC009EADD1 /* FAStrategyOrderBookDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5982A30719D11FAC009EADD1 /* FAStrategyOrderBookDto.m */; };
+		5982A30B19D11FDD009EADD1 /* FAStrategyProfitDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5982A30A19D11FDD009EADD1 /* FAStrategyProfitDto.m */; };
+		5982A30E19D151FB009EADD1 /* FAFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5982A30D19D151FB009EADD1 /* FAFormater.m */; };
+		5982A31119D15AFF009EADD1 /* FAUnderlyingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5982A31019D15AFF009EADD1 /* FAUnderlyingViewModel.m */; };
 		598F290519B9AB260078C6C6 /* FAStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 598F290419B9AB260078C6C6 /* FAStoreManager.m */; };
 		598F290C19B9AED10078C6C6 /* tradeItem_Collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598F290719B9AED10078C6C6 /* tradeItem_Collect@2x.png */; };
 		598F290D19B9AED10078C6C6 /* tradeItem_Order@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598F290819B9AED10078C6C6 /* tradeItem_Order@2x.png */; };
@@ -409,6 +416,20 @@
 		594FB09D19C82819008EA26F /* mycollect_profit_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mycollect_profit_yellow.png; path = ImageSource/MyCollect/mycollect_profit_yellow.png; sourceTree = "<group>"; };
 		594FB0A119C82BDA008EA26F /* common_collect_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = common_collect_flag.png; path = ImageSource/Common/common_collect_flag.png; sourceTree = "<group>"; };
 		594FB0A219C82BDA008EA26F /* common_purchase_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = common_purchase_flag.png; path = ImageSource/Common/common_purchase_flag.png; sourceTree = "<group>"; };
+		5982A2FD19D10AEF009EADD1 /* FABuyedStrategyDetailDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FABuyedStrategyDetailDto.h; path = Model/ServerModel/FABuyedStrategyDetailDto.h; sourceTree = "<group>"; };
+		5982A2FE19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FABuyedStrategyDetailDto.m; path = Model/ServerModel/FABuyedStrategyDetailDto.m; sourceTree = "<group>"; };
+		5982A30019D11E31009EADD1 /* FAStrategyHoldingPositionDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyHoldingPositionDto.h; path = Model/ServerModel/FAStrategyHoldingPositionDto.h; sourceTree = "<group>"; };
+		5982A30119D11E31009EADD1 /* FAStrategyHoldingPositionDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyHoldingPositionDto.m; path = Model/ServerModel/FAStrategyHoldingPositionDto.m; sourceTree = "<group>"; };
+		5982A30319D11F4E009EADD1 /* FAStrategySignalDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategySignalDto.h; path = Model/ServerModel/FAStrategySignalDto.h; sourceTree = "<group>"; };
+		5982A30419D11F4E009EADD1 /* FAStrategySignalDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategySignalDto.m; path = Model/ServerModel/FAStrategySignalDto.m; sourceTree = "<group>"; };
+		5982A30619D11FAC009EADD1 /* FAStrategyOrderBookDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyOrderBookDto.h; path = Model/ServerModel/FAStrategyOrderBookDto.h; sourceTree = "<group>"; };
+		5982A30719D11FAC009EADD1 /* FAStrategyOrderBookDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyOrderBookDto.m; path = Model/ServerModel/FAStrategyOrderBookDto.m; sourceTree = "<group>"; };
+		5982A30919D11FDD009EADD1 /* FAStrategyProfitDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyProfitDto.h; path = Model/ServerModel/FAStrategyProfitDto.h; sourceTree = "<group>"; };
+		5982A30A19D11FDD009EADD1 /* FAStrategyProfitDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyProfitDto.m; path = Model/ServerModel/FAStrategyProfitDto.m; sourceTree = "<group>"; };
+		5982A30C19D151FB009EADD1 /* FAFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAFormater.h; path = Macro/FAFormater.h; sourceTree = "<group>"; };
+		5982A30D19D151FB009EADD1 /* FAFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAFormater.m; path = Macro/FAFormater.m; sourceTree = "<group>"; };
+		5982A30F19D15AFF009EADD1 /* FAUnderlyingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAUnderlyingViewModel.h; path = Model/ServerModel/FAUnderlyingViewModel.h; sourceTree = "<group>"; };
+		5982A31019D15AFF009EADD1 /* FAUnderlyingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAUnderlyingViewModel.m; path = Model/ServerModel/FAUnderlyingViewModel.m; sourceTree = "<group>"; };
 		598F290319B9AB260078C6C6 /* FAStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStoreManager.h; path = DataManager/FAStoreManager.h; sourceTree = "<group>"; };
 		598F290419B9AB260078C6C6 /* FAStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStoreManager.m; path = DataManager/FAStoreManager.m; sourceTree = "<group>"; };
 		598F290719B9AED10078C6C6 /* tradeItem_Collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tradeItem_Collect@2x.png"; path = "ImageSource/tradeItemImage/tradeItem_Collect@2x.png"; sourceTree = "<group>"; };
@@ -673,6 +694,8 @@
 				5921B94419C6BDE600ACD5C4 /* FAFoundation.h */,
 				5921B94819C6DFFF00ACD5C4 /* FAConstants.h */,
 				5921B94919C6DFFF00ACD5C4 /* FAConstants.m */,
+				5982A30C19D151FB009EADD1 /* FAFormater.h */,
+				5982A30D19D151FB009EADD1 /* FAFormater.m */,
 			);
 			name = Macro;
 			sourceTree = "<group>";
@@ -813,6 +836,18 @@
 				5938187419D006A800AF8A46 /* FADummieStrategyViewModelDto.m */,
 				5938187619D019D400AF8A46 /* FABuyedStrategyDto.h */,
 				5938187719D019D400AF8A46 /* FABuyedStrategyDto.m */,
+				5982A2FD19D10AEF009EADD1 /* FABuyedStrategyDetailDto.h */,
+				5982A2FE19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m */,
+				5982A30019D11E31009EADD1 /* FAStrategyHoldingPositionDto.h */,
+				5982A30119D11E31009EADD1 /* FAStrategyHoldingPositionDto.m */,
+				5982A30319D11F4E009EADD1 /* FAStrategySignalDto.h */,
+				5982A30419D11F4E009EADD1 /* FAStrategySignalDto.m */,
+				5982A30619D11FAC009EADD1 /* FAStrategyOrderBookDto.h */,
+				5982A30719D11FAC009EADD1 /* FAStrategyOrderBookDto.m */,
+				5982A30919D11FDD009EADD1 /* FAStrategyProfitDto.h */,
+				5982A30A19D11FDD009EADD1 /* FAStrategyProfitDto.m */,
+				5982A30F19D15AFF009EADD1 /* FAUnderlyingViewModel.h */,
+				5982A31019D15AFF009EADD1 /* FAUnderlyingViewModel.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -1740,6 +1775,7 @@
 			files = (
 				593EA6B319BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.m in Sources */,
 				591EA2DA19BEDCCB00EED52C /* FAMyPurchaseDetailController.m in Sources */,
+				5982A2FF19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m in Sources */,
 				593EA6A019BFF8AD00E9F2BC /* FAMyPurchaseDetailProfitHeaderView.m in Sources */,
 				594FB07919C7FCA7008EA26F /* FAMember.m in Sources */,
 				840DD88719CD77920023885D /* FAStrategyDetailProfitViewCell.m in Sources */,
@@ -1769,6 +1805,7 @@
 				84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */,
 				593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */,
 				592735E519C2A37600FF42A1 /* FAForgetPasswordController.m in Sources */,
+				5982A30B19D11FDD009EADD1 /* FAStrategyProfitDto.m in Sources */,
 				594DD2C919CAC7C1009D4A48 /* FAPurchaseProfitView.m in Sources */,
 				59137A4319BE8C57001F4977 /* FAMySignalController.m in Sources */,
 				592A83F719C9257700DDE1B5 /* FAJSONSerialization.m in Sources */,
@@ -1797,9 +1834,11 @@
 				592735D319C2947000FF42A1 /* FAAbountProductController.m in Sources */,
 				84844A5319C969F8001C2EC4 /* FAStrategyDetailTopViewCell.m in Sources */,
 				840DD88219CD776E0023885D /* FAStrategyDetailDescribViewCell.m in Sources */,
+				5982A30819D11FAC009EADD1 /* FAStrategyOrderBookDto.m in Sources */,
 				84844A5819C96A36001C2EC4 /* FAStrategyInfoViewCell.m in Sources */,
 				84844A6C19C96B25001C2EC4 /* FAMessageDetailViewCell.m in Sources */,
 				840DD87A19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m in Sources */,
+				5982A30E19D151FB009EADD1 /* FAFormater.m in Sources */,
 				84844A5F19C96A9F001C2EC4 /* FAJingXuanViewCell.m in Sources */,
 				592ABF9819CBBFEB002F0A8E /* FAMyCollectItemViewCell.m in Sources */,
 				593EA6E919C0495300E9F2BC /* FAMySignalItemHeaderView.m in Sources */,
@@ -1808,9 +1847,12 @@
 				598F291919B9D1710078C6C6 /* FAMyPurchaseController.m in Sources */,
 				592735DF19C2A1A100FF42A1 /* FAMemberRegisterController.m in Sources */,
 				592A83F019C9256500DDE1B5 /* FAHttpUtility.m in Sources */,
+				5982A30219D11E31009EADD1 /* FAStrategyHoldingPositionDto.m in Sources */,
 				840DD8A019CD7D470023885D /* FAMessageDetailHeaderView.m in Sources */,
 				59EC7EE419B8122100972C0A /* FAStrategyController.m in Sources */,
+				5982A30519D11F4E009EADD1 /* FAStrategySignalDto.m in Sources */,
 				59EC7F0419B82C0600972C0A /* FAMessageController.m in Sources */,
+				5982A31119D15AFF009EADD1 /* FAUnderlyingViewModel.m in Sources */,
 				593EA69619BFF50700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.m in Sources */,
 				592735D919C2950900FF42A1 /* FAModifyPasswordController.m in Sources */,
 				5903747019B80E8200F5B0C3 /* FAAppDelegate.m in Sources */,

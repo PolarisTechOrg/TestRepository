@@ -20,8 +20,8 @@
 @property(nonatomic,copy) NSString *StrategyName;
 /// 标的名称。
 @property(nonatomic,copy) NSString *UnderName;
-// 策略产品列表。
-//@property(nonatomic,retain) NSArray *Underlyings;
+// 策略品种列表。
+@property(nonatomic,retain) NSArray *Underlyings;
 // 订购时间。
 @property(nonatomic,retain) NSDate *BuyedTime;
 /// 星级。
@@ -34,4 +34,7 @@
 @property(nonatomic,assign) double TodayProfit;
 /// 昨日盈亏。
 @property(nonatomic,assign) double YesterdayProfit;
+
+//策略品种数据集合类型
++(Class) Underlyings_class;
 @end

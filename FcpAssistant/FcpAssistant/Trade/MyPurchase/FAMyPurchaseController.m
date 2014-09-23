@@ -14,6 +14,7 @@
 #import "FAJSONSerialization.h"
 #import "FAHttpUtility.h"
 #import "FAHttpHead.h"
+#import "FAFormater.h"
 
 @interface FAMyPurchaseController ()
 
@@ -100,10 +101,11 @@
     return 105;
 }
 
-- (void)enterDetailView:(int) strategyId
+- (void)enterDetailView:(int) combineStrategyId strategyId:(int) strategyId
 {
     FAMyPurchaseDetailController * detailController = [[FAMyPurchaseDetailController alloc] init];
     detailController.strategyId = strategyId;
+    detailController.combineStrategyId = combineStrategyId;
     
     [self.navigationController pushViewController:detailController animated:YES];
 }
@@ -122,16 +124,7 @@
         FABuyedStrategyDto  *item = dataSource[indexPath.row];
         cell.lblStrategyName.text = item.StrategyName;
         
-        NSNumberFormatter *decimalFormater = [[NSNumberFormatter alloc] init];
-        decimalFormater.numberStyle = NSNumberFormatterDecimalStyle;
-//        formater.positiveFormat = @"###,##0";
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        
-        
-        
-        cell.lblProfit.text = [decimalFormater stringForObjectValue:[NSNumber numberWithDouble:item.TodayProfit]];
+        cell.lblProfit.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:item.TodayProfit]];
         
         NSString* profitBackgroundImageName =@"mypurchase_profit_yellow.png";
         if(item.TodayProfit >0)
@@ -159,7 +152,7 @@
         cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
         
         //持仓标记图片，未完成
-        cell.lblPurchaseDate.text =[dateFormatter stringFromDate:item.BuyedTime];
+        cell.lblPurchaseDate.text =[[FAFormater dateFormater] stringFromDate:item.BuyedTime];
         cell.lblMultipleCount.text =[NSString stringWithFormat:@"%d",item.BuyedQuantity];
         cell.lblTodaySignalCount.text = [NSString stringWithFormat:@"%d",10];
 
@@ -174,7 +167,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     FABuyedStrategyDto  *item = dataSource[indexPath.row];
     
-    [self enterDetailView:item.StrategyId];
+    [self enterDetailView:item.CombineStrategyId strategyId:item.StrategyId];
 }
 
 

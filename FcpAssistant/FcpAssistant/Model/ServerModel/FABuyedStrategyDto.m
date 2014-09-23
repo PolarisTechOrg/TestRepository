@@ -7,6 +7,7 @@
 //
 
 #import "FABuyedStrategyDto.h"
+#import "FAUnderlyingViewModel.h"
 
 @implementation FABuyedStrategyDto
 
@@ -21,7 +22,7 @@
 // 标的名称。
 @synthesize UnderName;
 // 策略产品列表。
-//@synthesize Underlyings;
+@synthesize Underlyings;
 // 订购时间。
 @synthesize BuyedTime;
 /// 星级。
@@ -34,4 +35,11 @@
 @synthesize TodayProfit;
 /// 昨日盈亏。
 @synthesize YesterdayProfit;
+
+//策略品种数据集合类型
++(Class) Underlyings_class
+{
+    return [FAUnderlyingViewModel class];
+}
+
 @end

@@ -18,6 +18,12 @@
 #import "FAMyPurchaseDetailSignalHeaderView.h"
 #import "FAMyPurchaseDetailOrderHeaderView.h"
 #import "FAMyPurchaseDetailProfitHeaderView.h"
+#import "FAFoundation.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
+#import "FAFormater.h"
+#import "FAUnderlyingViewModel.h"
 
 
 @interface FAMyPurchaseDetailController ()
@@ -26,6 +32,8 @@
 
 @implementation FAMyPurchaseDetailController
 
+//组合策略ID
+@synthesize combineStrategyId;
 //策略ID
 @synthesize strategyId;
 
@@ -37,8 +45,6 @@ const int profitSectionIndex =4;
 
 - (void)viewDidLoad
 {
-    
-   
     [super viewDidLoad];
     [self initializeData];
     [self registerXibFile];
@@ -48,30 +54,24 @@ const int profitSectionIndex =4;
     shareBtn.title = @"分享";
     self.navigationItem.rightBarButtonItem = shareBtn;
     
+    
+    dataSource = [self LoadDataFromServer];
+    if(dataSource == nil)
+    {
+        dataSource = [[FABuyedStrategyDetailDto alloc] init];
+    }
+    
     self.tableView.sectionFooterHeight = 1;
-        self.tableView.sectionHeaderHeight = 1;
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.sectionHeaderHeight = 1;
 }
 
 -(void)initializeData
 {
-   
     topCellIdentifier = @"purchaseDetailTopCell";
     positionCellIdentifier = @"purchaseDetailPositionCell";
     signalCellIdentifier = @"purchaseDetailSignalCell";
     orderCellIdentifier = @"purchaseDetailOrderCell";
     profitCellIdentifier = @"purchaseDetailProfitCell";
-    
-//    positionHeaderIdentifier = @"purchaseDetailPositionHeader";
-//    signalHeaderIdentifier = @"purchaseDetailSignalHeader";
-//    orderHeaderIdentifier = @"purchaseDetailOrderHeader";
-//    profitHeaderIdentifier = @"purchaseProfitOrderHeader";
 }
 
 -(void)registerXibFile
@@ -90,23 +90,39 @@ const int profitSectionIndex =4;
     
     UINib *profitCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailProfitViewCell" bundle:nil];
     [self.tableView registerNib:profitCellNib forCellReuseIdentifier:profitCellIdentifier];
-//    static NSString * positionHeaderIdentifier = @"positionHeader";
-//    UINib *positionHeaderNib = [UINib nibWithNibName:@"FAMyPurchaseDetailPositionHeaderView" bundle:nil];
-//    [self.tableView registerNib:positionHeaderNib forHeaderFooterViewReuseIdentifier:positionHeaderIdentifier];
+}
+
+-(FABuyedStrategyDetailDto *) LoadDataFromServer
+{
+    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyDetail?fundAccount=%@&fundAcccountType=%@&combineStrategyId=%d&strategyId=%d",WEB_URL,@"100146",@"33",self.combineStrategyId,self.strategyId];
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    
+    if(error == nil)
+    {
+        FABuyedStrategyDetailDto *dtoObj =[FAJSONSerialization toObject:[FABuyedStrategyDetailDto class] fromData:replyData];
+        
+        return  dtoObj;
+        
+    }
+    else
+    {
+        return nil;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    // Return the number of sections.
     return 5;
 }
 
@@ -114,17 +130,60 @@ const int profitSectionIndex =4;
 {
     switch (section)
     {
-        case topSecitonIndex :    return 1;
+        case topSecitonIndex :return 1;
         case positionSectionIndex:return 3;
         case signalSectionIndex:return 3;
         case orderSectionIndex:return 3;
         case profitSectionIndex:return 1;
-        default:            return 0;
+        default: return 0;
     }
     return 0;
 }
 
 
+-(void)showTopViewCell:(FAMyPurchaseDetailTopViewCell *)cell
+{
+    FABuyedStrategyDto *strategy = dataSource.Strategy;
+    cell.lblStrategyName.text = strategy.StrategyName;
+    
+    int star = (int)ceil(strategy.Star);
+    NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+    cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
+    cell.lblPurchaseDate.text = [FAFormater toShortDateStringWithNSDate:strategy.BuyedTime];
+    cell.lblTodayProfit.text =  [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.TodayProfit]];
+    if(strategy.Underlyings != nil && [strategy.Underlyings count] >1)
+    {
+        cell.lblVarieties.text = @"多合约";
+    }
+    else if(strategy.Underlyings != nil && [strategy.Underlyings count] ==1)
+    {
+        FAUnderlyingViewModel *underlying =[strategy.Underlyings objectAtIndex:0];
+        cell.lblVarieties.text = underlying.UnderName;
+    }
+    cell.lblStrategyProfit.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.StrategyProfit]];
+    cell.lblOrderMultiple.text = [NSString stringWithFormat:@"%d",strategy.BuyedQuantity];
+    cell.lblYestordayProfit.text = [FAFormater toDecimalStringWithDouble:strategy.YesterdayProfit  decimalPlace:2];
+}
+
+-(void)showPositionViewCell:(FAMyPurchaseDetailPositionViewCell *)cell rowIndex:(NSInteger) rowIndex
+{
+    
+}
+
+-(void)showSignalViewCell:(FAMyPurchaseDetailSignalViewCell *)cell rowIndex:(NSInteger) rowIndex
+{
+    
+}
+
+-(void)showOrderViewCell:(FAMyPurchaseDetailOrderViewCell *)cell rowIndex:(NSInteger) rowIndex
+{
+    
+}
+
+-(void)showProfitViewCell:(FAMyPurchaseDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
+{
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -133,23 +192,22 @@ const int profitSectionIndex =4;
         case topSecitonIndex:
         {
             FAMyPurchaseDetailTopViewCell * cell= (FAMyPurchaseDetailTopViewCell*)[tableView dequeueReusableCellWithIdentifier:topCellIdentifier];
-            
             if (!cell)
             {
                 cell = [[FAMyPurchaseDetailTopViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topCellIdentifier];
-                cell.textLabel.font = [UIFont systemFontOfSize:15];
-                cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+
             }
+            [self showTopViewCell:cell];
             return cell;
         }
         case positionSectionIndex:
         {
             FAMyPurchaseDetailPositionViewCell * cell= (FAMyPurchaseDetailPositionViewCell*)[tableView dequeueReusableCellWithIdentifier:positionCellIdentifier];
-            
             if (!cell)
             {
                 cell = [[FAMyPurchaseDetailPositionViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:positionCellIdentifier];
             }
+            [self showPositionViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
         case signalSectionIndex:
@@ -160,6 +218,7 @@ const int profitSectionIndex =4;
             {
                 cell = [[FAMyPurchaseDetailSignalViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:signalCellIdentifier];
             }
+            [self showSignalViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
         case orderSectionIndex:
@@ -170,6 +229,7 @@ const int profitSectionIndex =4;
             {
                 cell = [[FAMyPurchaseDetailOrderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:orderCellIdentifier];
             }
+            [self showOrderViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
         case profitSectionIndex:
@@ -180,6 +240,7 @@ const int profitSectionIndex =4;
             {
                 cell = [[FAMyPurchaseDetailProfitViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:profitCellIdentifier];
             }
+            [self showProfitViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
             
@@ -201,19 +262,13 @@ const int profitSectionIndex =4;
 {
     switch (section)
     {
-        case 0:
-            return 0.1;
-case positionSectionIndex:
-            return 73;
-        case signalSectionIndex:
-            return 73;
-        case orderSectionIndex:
-            return 73;
-        case profitSectionIndex:return 38;
-        default:
-            break;
+        case topSecitonIndex: return 0.1;
+        case positionSectionIndex: return 73;
+        case signalSectionIndex: return 73;
+        case orderSectionIndex: return 73;
+        case profitSectionIndex: return 38;
+        default: return 60;
     }
-    return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -228,8 +283,6 @@ case positionSectionIndex:
         default:return 0;
     }
 }
-
-
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
