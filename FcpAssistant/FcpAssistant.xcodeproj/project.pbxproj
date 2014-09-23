@@ -617,6 +617,7 @@
 		59137A4F19BEA371001F4977 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				593CBC5D19D0F69B00B597A8 /* CustormModel */,
 				5938186919CFC3B200AF8A46 /* ServerModel */,
 				59137A5019BEA7AF001F4977 /* FAPurchaseDetail.h */,
 				59137A5119BEA7AF001F4977 /* FAPurchaseDetail.m */,
@@ -813,6 +814,13 @@
 				5938187719D019D400AF8A46 /* FABuyedStrategyDto.m */,
 			);
 			name = ServerModel;
+			sourceTree = "<group>";
+		};
+		593CBC5D19D0F69B00B597A8 /* CustormModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustormModel;
 			sourceTree = "<group>";
 		};
 		593EA6B519C025EF00E9F2BC /* HeaderView */ = {

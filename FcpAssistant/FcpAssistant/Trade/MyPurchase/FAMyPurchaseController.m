@@ -99,10 +99,11 @@
     return 105;
 }
 
-- (void)enterDetailView
+- (void)enterDetailView:(int) strategyId
 {
     FAMyPurchaseDetailController * detailController = [[FAMyPurchaseDetailController alloc] init];
-
+    detailController.strategyId = strategyId;
+    
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
@@ -119,7 +120,13 @@
     {
         FABuyedStrategyDto  *item = dataSource[indexPath.row];
         cell.lblStrategyName.text = item.StrategyName;
-//        cell.lblProfit.text = item.TodayProfit;
+        
+        NSNumberFormatter *formater = [[NSNumberFormatter alloc] init];
+        formater.numberStyle = NSNumberFormatterDecimalStyle;
+//        formater.positiveFormat = @"###,##0";
+        
+        cell.lblProfit.text = [formater stringForObjectValue:[NSNumber numberWithDouble:item.TodayProfit]];
+        
         NSString* profitBackgroundImageName =@"mypurchase_profit_yellow.png";
         if(item.TodayProfit >0)
         {
@@ -130,6 +137,23 @@
             profitBackgroundImageName = @"mypurchase_profit_green.png";
         }
         cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
+        
+        if(item.CombineStrategyId >0)
+        {
+            cell.imgSignalOrCombineFlag.image = [UIImage imageNamed:@"common_combineStrategy.png"];
+        }
+        else
+        {
+            cell.imgSignalOrCombineFlag.image = [UIImage imageNamed:@"common_singleStrategy.png"];
+        }
+        
+        int star = (int)ceil(item.Star);
+        NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+        NSLog(@"gradeImageName:%@",gradeImageName);
+        cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
+        
+        //持仓标记图片，未完成
+        cell.lblPurchaseDate.text = item.BuyedTime;
     }
     
     
@@ -139,7 +163,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self enterDetailView];
+    FABuyedStrategyDto  *item = dataSource[indexPath.row];
+    
+    [self enterDetailView:item.StrategyId];
 }
 
 /*
