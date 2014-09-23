@@ -159,6 +159,9 @@
         
         //持仓标记图片，未完成
         cell.lblPurchaseDate.text =[dateFormatter stringFromDate:item.BuyedTime];
+        cell.lblMultipleCount.text =[NSString stringWithFormat:@"%d",item.BuyedQuantity];
+        cell.lblTodaySignalCount.text = [NSString stringWithFormat:@"%d",10];
+
     }
     
     
