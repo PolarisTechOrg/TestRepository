@@ -86,6 +86,8 @@ NSString* itemCellIdentifier;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    tableView.separatorStyle = UITableViewCellEditingStyleNone;
+    
     FAJingXuanViewCell *cell = (FAJingXuanViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     // Configure the cell...
@@ -107,7 +109,7 @@ NSString* itemCellIdentifier;
 
     if(indexPath.row < 10)
     {
-        cell.imgTitle.image = [UIImage imageNamed:@"common_purchase_flag.png"];
+        cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_01"];
         cell.lblTitle.text = @"策略精选";
         
         cell.lblStrategyName1.text = @"精选赢家1号测试";
