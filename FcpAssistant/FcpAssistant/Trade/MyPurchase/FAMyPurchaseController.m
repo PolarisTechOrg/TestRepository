@@ -121,11 +121,16 @@
         FABuyedStrategyDto  *item = dataSource[indexPath.row];
         cell.lblStrategyName.text = item.StrategyName;
         
-        NSNumberFormatter *formater = [[NSNumberFormatter alloc] init];
-        formater.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumberFormatter *decimalFormater = [[NSNumberFormatter alloc] init];
+        decimalFormater.numberStyle = NSNumberFormatterDecimalStyle;
 //        formater.positiveFormat = @"###,##0";
         
-        cell.lblProfit.text = [formater stringForObjectValue:[NSNumber numberWithDouble:item.TodayProfit]];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        
+        
+        
+        cell.lblProfit.text = [decimalFormater stringForObjectValue:[NSNumber numberWithDouble:item.TodayProfit]];
         
         NSString* profitBackgroundImageName =@"mypurchase_profit_yellow.png";
         if(item.TodayProfit >0)
@@ -153,7 +158,7 @@
         cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
         
         //持仓标记图片，未完成
-        cell.lblPurchaseDate.text = item.BuyedTime;
+        cell.lblPurchaseDate.text =[dateFormatter stringFromDate:item.BuyedTime];
     }
     
     
@@ -168,25 +173,11 @@
     [self enterDetailView:item.StrategyId];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+
+
+
+
 
 /*
 // Override to support editing the table view.
