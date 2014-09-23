@@ -12,9 +12,15 @@
 @interface FAMyPurchaseDetailController : UITableViewController
 
 {
-   
+    NSString *topCellIdentifier;
+    NSString *positionCellIdentifier;
+    NSString *signalCellIdentifier;
+    NSString *orderCellIdentifier;
+    NSString *profitCellIdentifier;
 }
 
+//策略ID
+@property(nonatomic,assign) int strategyId;
 
 
 @end

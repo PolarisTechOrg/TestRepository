@@ -26,22 +26,14 @@
 
 @implementation FAMyPurchaseDetailController
 
+//策略ID
+@synthesize strategyId;
+
 const int topSecitonIndex =0;
 const int positionSectionIndex =1;
 const int signalSectionIndex =2;
 const int orderSectionIndex =3;
 const int profitSectionIndex =4;
-
-NSString* topCellIdentifier;
-NSString* positionCellIdentifier;
- NSString* signalCellIdentifier;
- NSString* orderCellIdentifier;
- NSString* profitCellIdentifier;
-
-// NSString* positionHeaderIdentifier;
-// NSString* signalHeaderIdentifier;
-// NSString* orderHeaderIdentifier;
-// NSString* profitHeaderIdentifier;
 
 - (void)viewDidLoad
 {
