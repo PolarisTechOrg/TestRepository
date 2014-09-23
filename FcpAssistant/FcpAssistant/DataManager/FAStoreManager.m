@@ -78,7 +78,7 @@
 {
     NSMutableArray * traderConfigArray = [[NSMutableArray alloc] initWithCapacity:3];
     
-    NSDictionary * no1Dic = @{@"readFlag": @"common_collect_flag.png",                                 @"image":@"tradeItem_Position.png",
+    NSDictionary * no1Dic = @{@"readFlag": @"common_collect_flag.png",                                 @"image":@"Message_icon_message_01",
         @"provider":@"赢家一号",
         @"arriveTime":@"5分钟前",
     @"body":@"赢家一号的信号刚刚发出买入信号测试"};

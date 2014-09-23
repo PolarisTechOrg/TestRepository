@@ -23,6 +23,7 @@
 @implementation FAMyPurchaseController
 
 
+// test
 - (void)viewDidLoad
 {
     [super viewDidLoad];

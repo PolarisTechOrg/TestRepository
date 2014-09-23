@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -50,21 +51,18 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5M8-5A-iTs">
-                        <rect key="frame" x="0.0" y="15" width="320" height="26"/>
+                        <rect key="frame" x="0.0" y="15" width="320" height="25"/>
                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="策略精选" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4d-py-J6N">
-                        <rect key="frame" x="50" y="22" width="80" height="14"/>
+                        <rect key="frame" x="45" y="21" width="80" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="common_purchase_flag.png" translatesAutoresizingMaskIntoConstraints="NO" id="lm1-L1-RvU">
-                        <rect key="frame" x="26" y="20" width="16" height="15"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上架" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA7-35-8up">
                         <rect key="frame" x="278" y="84" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -143,6 +141,9 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="JingXuan_icon_index_01.png" translatesAutoresizingMaskIntoConstraints="NO" id="lm1-L1-RvU">
+                        <rect key="frame" x="27" y="19" width="11" height="18"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -166,7 +167,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="common_purchase_flag.png" width="32" height="30"/>
+        <image name="JingXuan_icon_index_01.png" width="22" height="37"/>
         <image name="common_star_5.png" width="117" height="21"/>
         <image name="mycollect_profit_red.png" width="250" height="170"/>
     </resources>
