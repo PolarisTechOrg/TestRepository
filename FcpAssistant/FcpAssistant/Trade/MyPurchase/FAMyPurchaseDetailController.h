@@ -7,18 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FABuyedStrategyDetailDto.h"
 
 @interface FAMyPurchaseDetailController : UITableViewController
-
 {
     NSString *topCellIdentifier;
     NSString *positionCellIdentifier;
     NSString *signalCellIdentifier;
     NSString *orderCellIdentifier;
     NSString *profitCellIdentifier;
+    
+    FABuyedStrategyDetailDto *dataSource;
 }
 
+//组合策略ID
+@property(nonatomic,assign) int combineStrategyId;
 //策略ID
 @property(nonatomic,assign) int strategyId;
 
