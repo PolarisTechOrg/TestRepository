@@ -8,6 +8,7 @@
 
 #import "FAMessageController.h"
 #import "FAMessageViewCell.h"
+#import "FAMessageDetailViewController.h"
 #import "FAStoreManager.h"
 
 @interface FAMessageController ()
@@ -65,14 +66,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    return 1;
     // Return the number of sections.
-    return dataSource.count;
+//    return dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [dataSource[section] count];
+    return 10;
+//    return [dataSource[section] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -97,17 +100,17 @@
     }
     
     
-    if(indexPath.section < dataSource.count)
+    if(indexPath.section < dataSource.count-1)
     {
         NSDictionary *messageDict = dataSource[indexPath.section];
-        
-        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
+    
+//        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
         cell.imgMessageProvider.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
         cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
         cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
         cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];
     }
-                              
+    
     return cell;
 }
 
@@ -176,10 +179,13 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.section ==0 && indexPath.row ==0)
-    {
-        //[self pushNewViewController:[[FAMyCollectController alloc] init]];
-    }
+//    if(indexPath.section ==0 && indexPath.row ==0)
+//    {
+        FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];
+        subController.hidesBottomBarWhenPushed = YES;
+        [self pushNewViewController:subController];
+//    }
+    
 }
 
 - (void)pushNewViewController:(UIViewController *)newViewController {

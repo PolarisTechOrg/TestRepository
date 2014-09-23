@@ -20,21 +20,26 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="赢家一号是逆势交易策略，以摆荡指针为核心原理，但仍然是以顺势交易为依归，" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3H-Ic-RuX">
-                        <rect key="frame" x="49" y="18" width="232" height="39"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15:00:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdT-Vp-GvM">
                         <rect key="frame" x="235" y="60" width="57" height="13"/>
-                        <color key="backgroundColor" red="0.76932522811775361" green="0.76191069170548653" blue="0.81617272418478259" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.84098483643846311" green="0.8328796652260313" blue="0.89219599184782605" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="赢家一号是逆势交易策略，以摆荡指针为核心原理，但仍然是以顺势交易为依归，完毕。" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3H-Ic-RuX">
+                        <rect key="frame" x="49" y="20" width="232" height="39"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblLatedReceiveTime" destination="pdT-Vp-GvM" id="jGN-Lb-Bmw"/>
+                <outlet property="lblTextBackGround" destination="Gr3-Yk-wnX" id="6gR-BS-Rcm"/>
+                <outlet property="lblTextBody" destination="b3H-Ic-RuX" id="d7X-Mk-5hB"/>
+            </connections>
             <point key="canvasLocation" x="140" y="150.5"/>
         </tableViewCell>
     </objects>

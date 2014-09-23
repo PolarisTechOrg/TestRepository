@@ -10,6 +10,9 @@
 
 @interface FAMessageDetailViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lblTextBackGround;
+@property (weak, nonatomic) IBOutlet UILabel *lblTextBody;
+@property (weak, nonatomic) IBOutlet UILabel *lblLatedReceiveTime;
 
 
 @end
