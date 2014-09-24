@@ -53,6 +53,32 @@ NSString* itemCellIdentifier;
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
+/*
+ -(NSArray *) LoadDataFromServer
+ {
+ NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyList?fundAccount=%@&fundAcccountType=%@",WEB_URL,@"100146",@"33"];
+ NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+ 
+ 
+ 
+ NSError *error;
+ NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+ 
+ if(error == nil)
+ {
+ NSArray *dtoObj =[FAJSONSerialization toArray:[FABuyedStrategyDto class] fromData:replyData];
+ 
+ return  dtoObj;
+ 
+ }
+ else
+ {
+ return nil;
+ }
+ 
+ }
+ */
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -83,7 +109,7 @@ NSString* itemCellIdentifier;
 - (void)enterDetailView:(int) strategyId
 {
     FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
-//    detailController.strategyId = strategyId;
+    detailController.strategyId = strategyId;
     
     [self.navigationController pushViewController:detailController animated:YES];
 }
@@ -91,7 +117,6 @@ NSString* itemCellIdentifier;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     itemCellIdentifier = @"StrategyViewCell";
     FAStrategyInfoViewCell *cell = (FAStrategyInfoViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     // Configure the cell...
@@ -123,6 +148,16 @@ NSString* itemCellIdentifier;
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    FABuyedStrategyDto  *item = dataSource[indexPath.row];
+//    
+//    [self enterDetailView:item.CombineStrategyId strategyId:item.StrategyId];
+    
+    [self enterDetailView:1];
 }
 
 /*

@@ -8,6 +8,15 @@
 
 #import "FAStrategyDetailController.h"
 
+#import "FAStrategyDetailDescribHeaderView.h"
+#import "FAStrategyDetailProfitHeaderView.h"
+#import "FAStrategyDetailLatedRecordHeaderView.h"
+
+#import "FAStrategyDetailTopViewCell.h"
+#import "FAStrategyDetailDescribViewCell.h"
+#import "FAStrategyDetailProfitViewCell.h"
+#import "FAStrategyDetailLatedRecordViewCell.h"
+
 @interface FAStrategyDetailController ()
 
 @end
@@ -16,15 +25,81 @@
 
 @synthesize strategyId;
 
+const int topSectionIndex = 0;
+const int describSectionIndex = 1;
+const int profitsSectionIndex = 2;
+const int latedRecordSectionIndex = 3;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initializeData];
+    [self registerXibFile];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.title = @"策略详情";
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem* shareBtn = [[UIBarButtonItem alloc] init];
+    shareBtn.title = @"分享";
+    self.navigationItem.rightBarButtonItem = shareBtn;
+    
+    self.tableView.sectionFooterHeight = 1;
+    self.tableView.sectionHeaderHeight = 1;
+    
+    /* 
+     dataSource = [self LoadDataFromServer];
+     if(dataSource == nil)
+     {
+     dataSource = [[FABuyedStrategyDetailDto alloc] init];
+     }
+     */
 }
+
+-(void)initializeData
+{
+    topCellIdentifier = @"strategyDetailTopCell";
+    describCellIdentifier = @"strategyDetailDescribCell";
+    profitCellIdentifier = @"strategyDetailProfitCell";
+    latedRecordCellIdentifier = @"strategyDetailLatedRecordCell";
+}
+
+-(void)registerXibFile
+{
+    UINib *topCellNib = [UINib nibWithNibName:@"FAStrategyDetailTopViewCell" bundle:nil];
+    [self.tableView registerNib:topCellNib forCellReuseIdentifier:topCellIdentifier];
+    
+    UINib *describCellNib = [UINib nibWithNibName:@"FAStrategyDetailDescribViewCell" bundle:nil];
+    [self.tableView registerNib:describCellNib forCellReuseIdentifier:describCellIdentifier];
+    
+    UINib *profitCellNib = [UINib nibWithNibName:@"FAStrategyDetailProfitViewCell" bundle:nil];
+    [self.tableView registerNib:profitCellNib forCellReuseIdentifier:profitCellIdentifier];
+    
+    UINib *latedRecordCellNib = [UINib nibWithNibName:@"FAStrategyDetailLatedRecordViewCell" bundle:nil];
+    [self.tableView registerNib:latedRecordCellNib forCellReuseIdentifier:latedRecordCellIdentifier];
+    
+}
+
+/*
+ -(FABuyedStrategyDetailDto *) LoadDataFromServer
+ {
+ NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyDetail?fundAccount=%@&fundAcccountType=%@&combineStrategyId=%d&strategyId=%d",WEB_URL,@"100146",@"33",self.combineStrategyId,self.strategyId];
+ NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+ 
+ NSError *error;
+ NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+ 
+ if(error == nil)
+ {
+ FABuyedStrategyDetailDto *dtoObj =[FAJSONSerialization toObject:[FABuyedStrategyDetailDto class] fromData:replyData];
+ 
+ return  dtoObj;
+ 
+ }
+ else
+ {
+ return nil;
+ }
+ 
+ }
+ */
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,26 +109,159 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
+    
+    switch (section) {
+        case topSectionIndex:
+            return 1;
+            break;
+            
+            case describSectionIndex:
+            return 1;
+            
+            case profitsSectionIndex:
+            return 1;
+            
+            case latedRecordSectionIndex:
+            return 1;
+            
+        default:
+            return 0;
+    }
+    
     return 0;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    switch (indexPath.section)
+    {
+        case topSectionIndex:
+        {
+            FAStrategyDetailTopViewCell * cell= (FAStrategyDetailTopViewCell*)[tableView dequeueReusableCellWithIdentifier:topCellIdentifier];
+            if (!cell)
+            {
+                cell = [[FAStrategyDetailTopViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topCellIdentifier];
+                
+            }
+            //[self showTopViewCell:cell];
+            return cell;
+        }
+        case describSectionIndex:
+        {
+            FAStrategyDetailDescribViewCell * cell= (FAStrategyDetailDescribViewCell*)[tableView dequeueReusableCellWithIdentifier:describCellIdentifier];
+            if (!cell)
+            {
+                cell = [[FAStrategyDetailDescribViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:describCellIdentifier];
+            }
+//            [self showPositionViewCell:cell rowIndex:indexPath.row];
+            return cell;
+        }
+        case profitsSectionIndex:
+        {
+            FAStrategyDetailProfitViewCell * cell= (FAStrategyDetailProfitViewCell*)[tableView dequeueReusableCellWithIdentifier:profitCellIdentifier];
+            
+            if (!cell)
+            {
+                cell = [[FAStrategyDetailProfitViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:profitCellIdentifier];
+            }
+//            [self showProfitViewCell:cell rowIndex:indexPath.row];
+            return cell;
+        }
+        case latedRecordSectionIndex:
+        {
+            FAStrategyDetailLatedRecordViewCell * cell= (FAStrategyDetailLatedRecordViewCell*)[tableView dequeueReusableCellWithIdentifier:latedRecordCellIdentifier];
+            
+            if (!cell)
+            {
+                cell = [[FAStrategyDetailLatedRecordViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:latedRecordCellIdentifier];
+            }
+//            [self showSignalViewCell:cell rowIndex:indexPath.row];
+            return cell;
+        }
+            
+        default:
+            break;
+    }
     
-    return cell;
+    
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFotterInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    switch (section)
+    {
+        case topSectionIndex: return 0.1;
+        case describSectionIndex: return 73;
+        case profitsSectionIndex: return 38;
+        case latedRecordSectionIndex:return 38;
+        default: return 60;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section)
+    {
+        case topSectionIndex: return 146;
+        case describSectionIndex:return 30;
+        case profitsSectionIndex:return 170;
+        case latedRecordSectionIndex:return 170;
+        default:return 0;
+    }
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    switch (section)
+    {
+        case topSectionIndex:
+        {
+            return [super tableView:tableView viewForHeaderInSection:section];
+        }
+        case describSectionIndex:
+        {
+            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAStrategyDetailDescribHeaderView" owner:self options:nil];
+            
+            UIView *headerView = (UIView *) [nib objectAtIndex:0];
+            headerView.frame = CGRectMake(0, 0, 320, 50);
+            return headerView;
+        }
+        case profitsSectionIndex:
+        {
+            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAStrategyDetailProfitHeaderView" owner:self options:nil];
+            
+            UIView *headerView = (UIView *) [nib objectAtIndex:0];
+            headerView.frame = CGRectMake(0, 0, 320, 50);
+            return headerView;
+            break;
+        }
+        case latedRecordSectionIndex:
+        {
+            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAStrategyDetailLatedRecordHeaderView" owner:self options:nil];
+            
+            UIView *headerView = (UIView *) [nib objectAtIndex:0];
+            headerView.frame = CGRectMake(0, 0, 320, 50);
+            return headerView;
+        }
+        default:
+            return [super tableView:tableView viewForHeaderInSection:section];
+            break;
+    }    
+}
+
 
 /*
 // Override to support conditional editing of the table view.
