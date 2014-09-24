@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FAStrategyController : UITableViewController
-
-@property (nonatomic, strong) NSMutableArray *dataSource;
+{
+    NSString *itemCellIdentifier;
+    NSMutableArray *dataSource;
+}
 
 @end

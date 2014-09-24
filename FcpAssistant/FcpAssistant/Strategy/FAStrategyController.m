@@ -9,15 +9,20 @@
 #import "FAStrategyController.h"
 #import "FAStrategyInfoViewCell.h"
 #import "FAStrategyDetailController.h"
-#import "FAMyCollectItem.h"
+#import "FAPaginatedDto.h"
+#import "FADummieStrategyDetailViewModel.h"
+
+#import "FAFoundation.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
+#import "FAFormater.h"
 
 @interface FAStrategyController ()
 
 @end
 
 @implementation FAStrategyController
-
-NSString* itemCellIdentifier;
 
 - (void)viewDidLoad
 {
@@ -27,18 +32,26 @@ NSString* itemCellIdentifier;
     [self registerXibFile];
     
     self.navigationItem.title = @"策略";
-    
-    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
-    
-    for(int i=0; i<10; i++)
+
+    dataSource = [[NSMutableArray alloc] init];
+    NSArray *strategyList = [self LoadDataFromServer];
+    if(strategyList != nil && strategyList.count > 0)
     {
-        FAMyCollectItem *detail = [[FAMyCollectItem alloc] initWithStrategyId:i];
-        detail.strategyName = [NSString stringWithFormat:@"赢家%d号", i];
-        
-        [dataSource addObject:detail];
+        [dataSource addObjectsFromArray:strategyList];
     }
     
-    self.dataSource = dataSource;
+    
+//    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+    
+//    for(int i=0; i<10; i++)
+//    {
+//        FAMyCollectItem *detail = [[FAMyCollectItem alloc] initWithStrategyId:i];
+//        detail.strategyName = [NSString stringWithFormat:@"赢家%d号", i];
+//        
+//        [dataSource addObject:detail];
+//    }
+//    
+//    self.dataSource = dataSource;
 }
 
 - (void)initializeData
@@ -51,6 +64,27 @@ NSString* itemCellIdentifier;
     UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategyInfoViewCell" bundle:nil];
     
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
+}
+
+-(NSArray *)LoadDataFromServer
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=1", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    
+    if(error == nil)
+    {
+        FAPaginatedDto *dtoObj =[FAJSONSerialization toObject:[FAPaginatedDto class] fromData:replyData];
+        
+        return  dtoObj.Items;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 /*
@@ -79,6 +113,7 @@ NSString* itemCellIdentifier;
  }
  */
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -97,7 +132,7 @@ NSString* itemCellIdentifier;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return dataSource.count;
 }
 
 
@@ -129,23 +164,26 @@ NSString* itemCellIdentifier;
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     
-//    if(indexPath.row < self.dataSource.count)
-//    {
-//        FAMyCollectItem *items = (FAMyCollectItem *)self.dataSource[indexPath.row];
-//        
-//        cell.lblStrategyName.text = items.strategyName;
-//    }
-    
-    if(indexPath.row < 10)
+    if (indexPath.row < dataSource.count)
     {
-        cell.lblStrategyName.text = @"策略赢家1号测试";
-        cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_purchase_flag.png"];
-        cell.imgStrategyStar.image = [UIImage imageNamed:@"common_star_5.png"];
-        cell.lblCollectionPeopleNumber.text = @"132";
-        cell.lblProvider.text = @"常胜将军";
-        cell.imgPerformanceBackMap.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
-        cell.lblPerformance.text = @"150.5%";
+        FADummieStrategyDetailViewModel  *item = dataSource[indexPath.row];
+        cell.lblStrategyName.text = item.StrategyName;
+        
+        // [SH]
     }
+
+    
+    
+//    if(indexPath.row < 10)
+//    {
+//        cell.lblStrategyName.text = @"策略赢家1号测试";
+//        cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_purchase_flag.png"];
+//        cell.imgStrategyStar.image = [UIImage imageNamed:@"common_star_5.png"];
+//        cell.lblCollectionPeopleNumber.text = @"132";
+//        cell.lblProvider.text = @"常胜将军";
+//        cell.imgPerformanceBackMap.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+//        cell.lblPerformance.text = @"150.5%";
+//    }
     
     return cell;
 }
