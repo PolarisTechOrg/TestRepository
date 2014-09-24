@@ -7,6 +7,8 @@
 //
 
 #import "FAAccountManager.h"
+#import "FAHttpHead.h"
+#import "FAHttpUtility.h"
 
 @implementation FAAccountManager
 

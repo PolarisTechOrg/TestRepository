@@ -124,7 +124,7 @@
         FABuyedStrategyDto  *item = dataSource[indexPath.row];
         cell.lblStrategyName.text = item.StrategyName;
         
-        cell.lblProfit.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:item.TodayProfit]];
+        cell.lblProfit.text = [FAFormater toDecimalStringWithDouble:item.TodayProfit decimalPlace:2];
         
         NSString* profitBackgroundImageName =@"mypurchase_profit_yellow.png";
         if(item.TodayProfit >0)
@@ -152,7 +152,7 @@
         cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
         
         //持仓标记图片，未完成
-        cell.lblPurchaseDate.text =[[FAFormater dateFormater] stringFromDate:item.BuyedTime];
+        cell.lblPurchaseDate.text =[FAFormater toShortDateStringWithNSDate:item.BuyedTime];
         cell.lblMultipleCount.text =[NSString stringWithFormat:@"%d",item.BuyedQuantity];
         cell.lblTodaySignalCount.text = [NSString stringWithFormat:@"%d",10];
 

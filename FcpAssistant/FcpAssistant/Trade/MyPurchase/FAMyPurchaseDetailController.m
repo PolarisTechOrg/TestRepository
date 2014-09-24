@@ -24,6 +24,10 @@
 #import "FAHttpHead.h"
 #import "FAFormater.h"
 #import "FAUnderlyingViewModel.h"
+#import "FAStrategyHoldingPositionDto.h"
+#import "FAStrategySignalDto.h"
+#import "FAStrategyOrderBookDto.h"
+#import "FAStrategyProfitDto.h"
 
 
 @interface FAMyPurchaseDetailController ()
@@ -130,11 +134,16 @@ const int profitSectionIndex =4;
 {
     switch (section)
     {
-        case topSecitonIndex :return 1;
-        case positionSectionIndex:return 3;
-        case signalSectionIndex:return 3;
-        case orderSectionIndex:return 3;
-        case profitSectionIndex:return 1;
+        case topSecitonIndex :
+            return 1;
+        case positionSectionIndex:
+            return dataSource.HoldingPositionList.count;
+        case signalSectionIndex:
+            return dataSource.SignalList.count;
+        case orderSectionIndex:
+            return dataSource.OrderBookList.count;
+        case profitSectionIndex:
+            return dataSource.HistoryProfitList.count;
         default: return 0;
     }
     return 0;
@@ -167,22 +176,40 @@ const int profitSectionIndex =4;
 
 -(void)showPositionViewCell:(FAMyPurchaseDetailPositionViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
+    NSArray *positionList = dataSource.HoldingPositionList;
     
+    FAStrategyHoldingPositionDto *positionDto = positionList[rowIndex];
+    cell.lblInstrumentCode.text = positionDto.InstrumentCode;
+    cell.lblOrderPosition.text = [FAFormater toDecimalStringWithInt:positionDto.OrderPosition];
+    cell.lblPositionProfit.text = [FAFormater toDecimalStringWithDouble:positionDto.HoldingProfit decimalPlace:2];
 }
 
 -(void)showSignalViewCell:(FAMyPurchaseDetailSignalViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
+    NSArray *signalList = dataSource.SignalList;
     
+    FAStrategySignalDto *signalDto = signalList[rowIndex];
+    cell.lblInstrumentCode.text = signalDto.InstrumentCode;
+    cell.lblSignalSeq.text = [FAFormater toDecimalStringWithInt:signalDto.SignalNumber];
+    cell.lblSignalTime.text =[FAFormater toShortTimeStringWithNSDate:signalDto.SignalTime];
+    cell.lblStrategyPosition.text = [FAFormater toDecimalStringWithInt:signalDto.Position];
 }
 
 -(void)showOrderViewCell:(FAMyPurchaseDetailOrderViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
+    NSArray *orderBookList = dataSource.OrderBookList;
     
+    FAStrategyOrderBookDto *orderBookDto = orderBookList[rowIndex];
+    cell.lblInstrumentCode.text = orderBookDto.InstrumentCode;
+    cell.lblOrderQty.text = [FAFormater toDecimalStringWithInt:orderBookDto.OrderQty];
+    cell.lblTradeQty.text = [FAFormater toDecimalStringWithInt:orderBookDto.TradeQty];
+    cell.lblTradePrice.text = [FAFormater toDecimalStringWithDouble:orderBookDto.TradePrice decimalPlace:2];
+    cell.lblOrderTime.text = [FAFormater toShortTimeStringWithNSDate:orderBookDto.OrderTime];
 }
 
 -(void)showProfitViewCell:(FAMyPurchaseDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-    
+//    cell.imageView
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -333,17 +360,7 @@ const int profitSectionIndex =4;
     
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:{
- forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
