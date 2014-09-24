@@ -87,6 +87,9 @@
 		5938187219CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938187119CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.m */; };
 		5938187519D006A800AF8A46 /* FADummieStrategyViewModelDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938187419D006A800AF8A46 /* FADummieStrategyViewModelDto.m */; };
 		5938187819D019D400AF8A46 /* FABuyedStrategyDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938187719D019D400AF8A46 /* FABuyedStrategyDto.m */; };
+		593E7DF619D28878000997C6 /* FAStationLoginModelDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 593E7DF519D28878000997C6 /* FAStationLoginModelDto.m */; };
+		593E7DF919D2AD22000997C6 /* FASaltDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 593E7DF819D2AD22000997C6 /* FASaltDto.m */; };
+		593E7DFC19D2AD42000997C6 /* FAStampDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 593E7DFB19D2AD42000997C6 /* FAStampDto.m */; };
 		593EA69119BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */; };
 		593EA69319BFF4E700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA69219BFF4E700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.xib */; };
 		593EA69619BFF50700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA69519BFF50700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.m */; };
@@ -346,6 +349,12 @@
 		5938187419D006A800AF8A46 /* FADummieStrategyViewModelDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FADummieStrategyViewModelDto.m; path = Model/ServerModel/FADummieStrategyViewModelDto.m; sourceTree = "<group>"; };
 		5938187619D019D400AF8A46 /* FABuyedStrategyDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FABuyedStrategyDto.h; path = Model/ServerModel/FABuyedStrategyDto.h; sourceTree = "<group>"; };
 		5938187719D019D400AF8A46 /* FABuyedStrategyDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FABuyedStrategyDto.m; path = Model/ServerModel/FABuyedStrategyDto.m; sourceTree = "<group>"; };
+		593E7DF419D28878000997C6 /* FAStationLoginModelDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStationLoginModelDto.h; path = Model/ServerModel/FAStationLoginModelDto.h; sourceTree = "<group>"; };
+		593E7DF519D28878000997C6 /* FAStationLoginModelDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStationLoginModelDto.m; path = Model/ServerModel/FAStationLoginModelDto.m; sourceTree = "<group>"; };
+		593E7DF719D2AD22000997C6 /* FASaltDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FASaltDto.h; path = Model/ServerModel/FASaltDto.h; sourceTree = "<group>"; };
+		593E7DF819D2AD22000997C6 /* FASaltDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FASaltDto.m; path = Model/ServerModel/FASaltDto.m; sourceTree = "<group>"; };
+		593E7DFA19D2AD42000997C6 /* FAStampDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStampDto.h; path = Model/ServerModel/FAStampDto.h; sourceTree = "<group>"; };
+		593E7DFB19D2AD42000997C6 /* FAStampDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStampDto.m; path = Model/ServerModel/FAStampDto.m; sourceTree = "<group>"; };
 		593EA69019BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailPositionHeaderView.xib; path = Trade/MyPurchase/FAMyPurchaseDetailPositionHeaderView.xib; sourceTree = "<group>"; };
 		593EA69219BFF4E700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailSignalHeaderView.xib; path = Trade/MyPurchase/FAMyPurchaseDetailSignalHeaderView.xib; sourceTree = "<group>"; };
 		593EA69419BFF50700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPurchaseDetailSignalHeaderView.h; path = Trade/MyPurchase/FAMyPurchaseDetailSignalHeaderView.h; sourceTree = "<group>"; };
@@ -848,6 +857,12 @@
 				5982A30A19D11FDD009EADD1 /* FAStrategyProfitDto.m */,
 				5982A30F19D15AFF009EADD1 /* FAUnderlyingViewModel.h */,
 				5982A31019D15AFF009EADD1 /* FAUnderlyingViewModel.m */,
+				593E7DF419D28878000997C6 /* FAStationLoginModelDto.h */,
+				593E7DF519D28878000997C6 /* FAStationLoginModelDto.m */,
+				593E7DF719D2AD22000997C6 /* FASaltDto.h */,
+				593E7DF819D2AD22000997C6 /* FASaltDto.m */,
+				593E7DFA19D2AD42000997C6 /* FAStampDto.h */,
+				593E7DFB19D2AD42000997C6 /* FAStampDto.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -1795,12 +1810,14 @@
 				591EA2EA19BEED8400EED52C /* FAMyPurchaseDetailPositionHeaderView.m in Sources */,
 				59137A5219BEA7AF001F4977 /* FAPurchaseDetail.m in Sources */,
 				593EA6DC19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m in Sources */,
+				593E7DFC19D2AD42000997C6 /* FAStampDto.m in Sources */,
 				594FB07619C7FC81008EA26F /* FAAccountManager.m in Sources */,
 				592735CD19C292F000FF42A1 /* FAMoreProductViewCell.m in Sources */,
 				59137A4819BE9800001F4977 /* FAMyPurchaseViewCell.m in Sources */,
 				592735BB19C28EB900FF42A1 /* FAFeddbackController.m in Sources */,
 				591B218019C16AB800064F24 /* FAMoreViewCell.m in Sources */,
 				84844A6619C96AEF001C2EC4 /* FAMessageViewCell.m in Sources */,
+				593E7DF919D2AD22000997C6 /* FASaltDto.m in Sources */,
 				593EA6F519C04DDF00E9F2BC /* FAMyOrderBookItemHeaderView.m in Sources */,
 				84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */,
 				593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */,
@@ -1810,6 +1827,7 @@
 				59137A4319BE8C57001F4977 /* FAMySignalController.m in Sources */,
 				592A83F719C9257700DDE1B5 /* FAJSONSerialization.m in Sources */,
 				5938186C19CFC44000AF8A46 /* FAWishlistDto.m in Sources */,
+				593E7DF619D28878000997C6 /* FAStationLoginModelDto.m in Sources */,
 				592735C119C28F5C00FF42A1 /* FATermOfServiceController.m in Sources */,
 				5938187519D006A800AF8A46 /* FADummieStrategyViewModelDto.m in Sources */,
 				84844A4219C968D8001C2EC4 /* FAStrategyFilterViewCell.m in Sources */,
