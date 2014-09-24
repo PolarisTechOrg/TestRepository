@@ -8,6 +8,7 @@
 
 #import "FAStrategyController.h"
 #import "FAStrategyInfoViewCell.h"
+#import "FAStrategyDetailController.h"
 #import "FAMyCollectItem.h"
 
 @interface FAStrategyController ()
@@ -79,9 +80,12 @@ NSString* itemCellIdentifier;
     return 104;
 }
 
-- (void)enterDetailView
+- (void)enterDetailView:(int) strategyId
 {
+    FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
+//    detailController.strategyId = strategyId;
     
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 
