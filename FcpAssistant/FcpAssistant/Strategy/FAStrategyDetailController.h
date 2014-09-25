@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FADummieStrategyDetailDto.h"
 
 @interface FAStrategyDetailController : UITableViewController
 {
@@ -14,6 +15,8 @@
     NSString *describCellIdentifier;
     NSString *profitCellIdentifier;
     NSString *latedRecordCellIdentifier;
+    
+    FADummieStrategyDetailDto *dataSource;
 }
 
 //策略ID

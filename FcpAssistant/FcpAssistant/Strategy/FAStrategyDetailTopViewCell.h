@@ -10,4 +10,10 @@
 
 @interface FAStrategyDetailTopViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyName;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgStrategyStar;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyOnlineDate;
+
 @end

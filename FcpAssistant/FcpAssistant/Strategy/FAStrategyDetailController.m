@@ -7,15 +7,27 @@
 //
 
 #import "FAStrategyDetailController.h"
-
 #import "FAStrategyDetailDescribHeaderView.h"
 #import "FAStrategyDetailProfitHeaderView.h"
 #import "FAStrategyDetailLatedRecordHeaderView.h"
-
 #import "FAStrategyDetailTopViewCell.h"
 #import "FAStrategyDetailDescribViewCell.h"
 #import "FAStrategyDetailProfitViewCell.h"
 #import "FAStrategyDetailLatedRecordViewCell.h"
+
+#import "FADummieStrategyDetailDto.h"
+#import "FADummieStrategyDetailViewModel.h"
+#import "FADummieStrategyDetail2ViewModel.h"
+#import "FAStrategyDescriptionViewModel.h"
+#import "FAStrategyPerformanceViewModel.h"
+#import "FAStrategyModel.h"
+
+#import "FAFoundation.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
+#import "FAFormater.h"
+
 
 @interface FAStrategyDetailController ()
 
@@ -44,13 +56,11 @@ const int latedRecordSectionIndex = 3;
     self.tableView.sectionFooterHeight = 1;
     self.tableView.sectionHeaderHeight = 1;
     
-    /* 
-     dataSource = [self LoadDataFromServer];
-     if(dataSource == nil)
-     {
-     dataSource = [[FABuyedStrategyDetailDto alloc] init];
-     }
-     */
+    dataSource = [self LoadDataFromServer];
+    if(dataSource == nil)
+    {
+        dataSource = [[FADummieStrategyDetailDto alloc] init];
+    }
 }
 
 -(void)initializeData
@@ -74,32 +84,29 @@ const int latedRecordSectionIndex = 3;
     
     UINib *latedRecordCellNib = [UINib nibWithNibName:@"FAStrategyDetailLatedRecordViewCell" bundle:nil];
     [self.tableView registerNib:latedRecordCellNib forCellReuseIdentifier:latedRecordCellIdentifier];
-    
 }
 
-/*
- -(FABuyedStrategyDetailDto *) LoadDataFromServer
- {
- NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyDetail?fundAccount=%@&fundAcccountType=%@&combineStrategyId=%d&strategyId=%d",WEB_URL,@"100146",@"33",self.combineStrategyId,self.strategyId];
- NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
- 
- NSError *error;
- NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
- 
- if(error == nil)
- {
- FABuyedStrategyDetailDto *dtoObj =[FAJSONSerialization toObject:[FABuyedStrategyDetailDto class] fromData:replyData];
- 
- return  dtoObj;
- 
- }
- else
- {
- return nil;
- }
- 
- }
- */
+-(FADummieStrategyDetailDto *) LoadDataFromServer
+{
+    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/strategy?strategyId=%d",WEB_URL,self.strategyId];
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    
+    if(error == nil)
+    {
+        FADummieStrategyDetailDto *dtoObj =[FAJSONSerialization toObject:[FADummieStrategyDetailDto class] fromData:replyData];
+        
+        return  dtoObj;
+        
+    }
+    else
+    {
+        return nil;
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -136,6 +143,30 @@ const int latedRecordSectionIndex = 3;
     
     return 0;
 }
+
+//-(void)showTopViewCell:(FAStrategyDetailTopViewCell *)cell
+//{
+//    FAStrategyDescriptionViewModel *strategy = dataSource.StrategyDescription;
+//    cell.lbl = ;
+//    
+//    int star = (int)ceil(strategy.Star);
+//    NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+//    cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
+//    cell.lblPurchaseDate.text = [FAFormater toShortDateStringWithNSDate:strategy.BuyedTime];
+//    cell.lblTodayProfit.text =  [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.TodayProfit]];
+//    if(strategy.Underlyings != nil && [strategy.Underlyings count] >1)
+//    {
+//        cell.lblVarieties.text = @"多合约";
+//    }
+//    else if(strategy.Underlyings != nil && [strategy.Underlyings count] ==1)
+//    {
+//        FAUnderlyingViewModel *underlying =[strategy.Underlyings objectAtIndex:0];
+//        cell.lblVarieties.text = underlying.UnderName;
+//    }
+//    cell.lblStrategyProfit.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.StrategyProfit]];
+//    cell.lblOrderMultiple.text = [NSString stringWithFormat:@"%d",strategy.BuyedQuantity];
+//    cell.lblYestordayProfit.text = [FAFormater toDecimalStringWithDouble:strategy.YesterdayProfit  decimalPlace:2];
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
