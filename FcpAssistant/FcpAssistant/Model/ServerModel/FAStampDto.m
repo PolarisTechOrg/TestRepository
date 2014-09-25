@@ -9,5 +9,8 @@
 #import "FAStampDto.h"
 
 @implementation FAStampDto
-
+// 盐值时间戳。
+@synthesize Stamp;
+// Stamp的签名。
+@synthesize Sign;
 @end

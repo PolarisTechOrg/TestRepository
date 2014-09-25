@@ -10,4 +10,8 @@
 
 @interface FAStampDto : NSObject
 
+// 盐值时间戳。
+@property(nonatomic,copy) NSString *Stamp;
+// Stamp的签名。
+@property(nonatomic,copy) NSString *Sign;
 @end
