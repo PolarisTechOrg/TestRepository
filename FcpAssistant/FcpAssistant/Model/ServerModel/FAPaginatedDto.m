@@ -7,6 +7,7 @@
 //
 
 #import "FAPaginatedDto.h"
+#import "FADummieStrategyDetailViewModel.h"
 
 @implementation FAPaginatedDto
 
@@ -23,5 +24,11 @@
 @synthesize HasPreviousPage;
 
 @synthesize Items;
+
+
++(Class)Items_class
+{
+    return [FADummieStrategyDetailViewModel class];
+}
 
 @end

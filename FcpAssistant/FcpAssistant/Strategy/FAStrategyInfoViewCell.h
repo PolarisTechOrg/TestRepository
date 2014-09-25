@@ -20,4 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceMap;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceBackMap;
 
+@property (nonatomic, assign) int StrategyId;
+
 @end

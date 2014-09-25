@@ -10,6 +10,9 @@
 
 @implementation FAStrategyInfoViewCell
 
+@synthesize StrategyId;
+
+
 - (void)awakeFromNib {
     // Initialization code
 }

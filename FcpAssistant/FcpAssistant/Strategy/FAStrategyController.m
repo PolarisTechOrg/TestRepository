@@ -39,19 +39,6 @@
     {
         [dataSource addObjectsFromArray:strategyList];
     }
-    
-    
-//    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
-    
-//    for(int i=0; i<10; i++)
-//    {
-//        FAMyCollectItem *detail = [[FAMyCollectItem alloc] initWithStrategyId:i];
-//        detail.strategyName = [NSString stringWithFormat:@"赢家%d号", i];
-//        
-//        [dataSource addObject:detail];
-//    }
-//    
-//    self.dataSource = dataSource;
 }
 
 - (void)initializeData
@@ -86,32 +73,6 @@
         return nil;
     }
 }
-
-/*
- -(NSArray *) LoadDataFromServer
- {
- NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyList?fundAccount=%@&fundAcccountType=%@",WEB_URL,@"100146",@"33"];
- NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
- 
- 
- 
- NSError *error;
- NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
- 
- if(error == nil)
- {
- NSArray *dtoObj =[FAJSONSerialization toArray:[FABuyedStrategyDto class] fromData:replyData];
- 
- return  dtoObj;
- 
- }
- else
- {
- return nil;
- }
- 
- }
- */
 
 
 - (void)didReceiveMemoryWarning
@@ -164,39 +125,39 @@
     {
         FADummieStrategyDetailViewModel  *item = dataSource[indexPath.row];
         
+        cell.StrategyId = item.StrategyId;
+        
+        NSString* profitBackgroundImageName = @"mycollect_profit_red";
+        cell.imgPerformanceBackMap.image = [UIImage imageNamed:profitBackgroundImageName];
+        
+        NSString* profitLineImageName = @"tmp_collect_profit_red";
+        cell.imgPerformanceMap.image = [UIImage imageNamed:profitLineImageName];
+        
+        cell.lblPerformance.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio *100];
+        
         cell.lblStrategyName.text = item.StrategyName;
         
-        /* collection flag */
+        if(item.InWishList)
+        {
+            cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_collect_flag.png"];
+        }
         
         int star = (int)ceil(item.Star);
         NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
         cell.imgStrategyStar.image = [UIImage imageNamed:gradeImageName];
         
+        cell.lblCollectionPeopleNumber.text = [NSString stringWithFormat:@"%d", item.FollowNumber];
+        
+        cell.lblProvider.text = item.ProviderName;
     }
-
-    
-    
-//    if(indexPath.row < 10)
-//    {
-//        cell.lblStrategyName.text = @"策略赢家1号测试";
-//        cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_purchase_flag.png"];
-//        cell.imgStrategyStar.image = [UIImage imageNamed:@"common_star_5.png"];
-//        cell.lblCollectionPeopleNumber.text = @"132";
-//        cell.lblProvider.text = @"常胜将军";
-//        cell.imgPerformanceBackMap.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
-//        cell.lblPerformance.text = @"150.5%";
-//    }
     
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    FABuyedStrategyDto  *item = dataSource[indexPath.row];
-//    
-//    [self enterDetailView:item.CombineStrategyId strategyId:item.StrategyId];
-    
     [self enterDetailView:1];
 }
 
@@ -207,7 +168,7 @@
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+ */
 
 /*
 // Override to support editing the table view.

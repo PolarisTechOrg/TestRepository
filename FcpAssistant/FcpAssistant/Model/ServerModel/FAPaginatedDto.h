@@ -24,4 +24,7 @@
 
 @property(nonatomic, retain) NSArray *Items;
 
+
++(Class)Items_class;
+
 @end
