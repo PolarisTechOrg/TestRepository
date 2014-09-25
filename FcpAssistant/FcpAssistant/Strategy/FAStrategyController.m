@@ -138,7 +138,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 104;
+    return 105;
 }
 
 - (void)enterDetailView:(int) strategyId
@@ -158,18 +158,20 @@
     if(!cell)
     {
         cell = [[FAStrategyInfoViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
-        
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     
     if (indexPath.row < dataSource.count)
     {
         FADummieStrategyDetailViewModel  *item = dataSource[indexPath.row];
+        
         cell.lblStrategyName.text = item.StrategyName;
         
-        // [SH]
+        /* collection flag */
+        
+        int star = (int)ceil(item.Star);
+        NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+        cell.imgStrategyStar.image = [UIImage imageNamed:gradeImageName];
+        
     }
 
     
