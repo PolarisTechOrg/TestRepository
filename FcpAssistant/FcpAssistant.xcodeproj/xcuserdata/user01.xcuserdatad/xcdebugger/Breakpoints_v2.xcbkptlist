@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FcpAssistant/DataManager/FAAccountManager.m"
-            timestampString = "433218979.270317"
+            timestampString = "433307860.735556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "@implementation FAAccountManager"
             landmarkType = "3">
          </BreakpointContent>
