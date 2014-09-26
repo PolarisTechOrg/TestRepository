@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FAStrategySearchController : UITableViewController
+@interface FAStrategySearchController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
+@property (nonatomic, strong) NSArray *listTeams;
+@property (nonatomic, strong) NSMutableArray *listFilterTeams;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *barSearchStrategy;
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSUInteger)scope;
 @end

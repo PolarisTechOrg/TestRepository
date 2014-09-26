@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FcpAssistant/Json/Jastor.m"
-            timestampString = "433303774.373224"
+            filePath = "FcpAssistant/Trade/MyPurchase/FAMyPurchaseDetailController.m"
+            timestampString = "433402430.222247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "+initObject:fromDictionary:"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-LoadDataFromServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

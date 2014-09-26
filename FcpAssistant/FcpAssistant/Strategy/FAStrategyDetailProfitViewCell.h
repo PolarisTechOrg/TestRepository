@@ -10,4 +10,5 @@
 
 @interface FAStrategyDetailProfitViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgStrategyDetailProfit;
 @end

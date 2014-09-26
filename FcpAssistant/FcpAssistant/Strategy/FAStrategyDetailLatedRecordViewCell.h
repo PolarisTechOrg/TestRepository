@@ -10,4 +10,5 @@
 
 @interface FAStrategyDetailLatedRecordViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgLatedWinLost;
 @end

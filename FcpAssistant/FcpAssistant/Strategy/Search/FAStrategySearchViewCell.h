@@ -10,4 +10,6 @@
 
 @interface FAStrategySearchViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyHotSearchContext;
+
 @end

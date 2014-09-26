@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -136,8 +135,16 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgStrategyStar" destination="If2-7i-JNK" id="2XO-jh-StM"/>
+                <outlet property="lblCollectionPeopleNumber" destination="Rwf-Sb-3nL" id="jES-AM-uXQ"/>
+                <outlet property="lblOrderPeropleNumber" destination="jt1-sK-ZBu" id="Ydb-WF-7AW"/>
+                <outlet property="lblProfitOneWeek" destination="4p9-gU-ZUG" id="77D-do-jr5"/>
+                <outlet property="lblRealPerformance" destination="ZNe-nA-a12" id="9di-QB-sww"/>
                 <outlet property="lblStrategyName" destination="sOv-ar-VIX" id="oXl-0l-2zB"/>
                 <outlet property="lblStrategyOnlineDate" destination="nP6-9D-E0J" id="dEY-5U-A1x"/>
+                <outlet property="lblStrategyProvider" destination="nSZ-FN-KXx" id="Ssw-7s-Ffz"/>
+                <outlet property="lblSuggestRightMoney" destination="TdV-e8-KaO" id="02b-pl-Xbv"/>
+                <outlet property="lblTradeVariety" destination="UUy-qZ-it8" id="X9q-Zv-Ly2"/>
+                <outlet property="lblWinRatioTwoWeeks" destination="K2p-z2-nTU" id="aX2-kA-JeG"/>
             </connections>
             <point key="canvasLocation" x="140" y="100.5"/>
         </tableViewCell>

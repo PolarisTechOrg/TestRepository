@@ -32,6 +32,15 @@
 // 实盘累计收益率（实盘绩效）。
 @property(nonatomic,assign) double  CumulativeReturnRatio;
 
+// 周收益
+@property(nonatomic, assign) double WeeklyReturn;
+
+// 胜率
+@property(nonatomic, assign) double WinningProbability;
+
+// 策略标的（品种）名称
+@property(nonatomic, copy) NSString *UnderName;
+
 ///// <summary>
 ///// 周收益。
 ///// </summary>

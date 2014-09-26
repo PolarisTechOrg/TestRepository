@@ -26,6 +26,10 @@
 @synthesize CumulativeReturnRatio;
 // 跟单人数。
 @synthesize FollowNumber;
-
-
+// 周收益
+@synthesize WeeklyReturn;
+// 胜率
+@synthesize WinningProbability;
+// 策略标的（品种）名称
+@synthesize UnderName;
 @end

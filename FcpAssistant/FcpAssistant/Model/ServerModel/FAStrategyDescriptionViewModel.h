@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FAStrategyModel.h"
+
 
 @interface FAStrategyDescriptionViewModel : NSObject
 
@@ -14,6 +16,6 @@
 
 @property(nonatomic, copy) NSString *Description;
 
-
+@property(nonatomic, retain) FAStrategyModel *Strategy;
 
 @end

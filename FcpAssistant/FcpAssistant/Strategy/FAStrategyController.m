@@ -11,6 +11,8 @@
 #import "FAStrategyDetailController.h"
 #import "FAPaginatedDto.h"
 #import "FADummieStrategyDetailViewModel.h"
+#import "FAStrategySearchController.h"
+#import "FAStrategyFilterController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -32,13 +34,35 @@
     [self registerXibFile];
     
     self.navigationItem.title = @"策略";
+    
+    UIImage *searchButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_search_white.png"];
+    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithImage:searchButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doSearch)];
+    
+    UIImage *filterButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_menu_white.png"];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:filterButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doFilter)];
 
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];
+    
     dataSource = [[NSMutableArray alloc] init];
     NSArray *strategyList = [self LoadDataFromServer];
     if(strategyList != nil && strategyList.count > 0)
     {
         [dataSource addObjectsFromArray:strategyList];
     }
+}
+
+- (void)doSearch
+{
+    FAStrategySearchController *controller = [[FAStrategySearchController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)doFilter
+{
+    FAStrategyFilterController *controller = [[FAStrategyFilterController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)initializeData
@@ -158,7 +182,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self enterDetailView:1];
+    FADummieStrategyDetailViewModel *item = dataSource[indexPath.row];
+    [self enterDetailView:item.StrategyId];
 }
 
 /*

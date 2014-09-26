@@ -19,6 +19,9 @@
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgLatedWinLost" destination="Erx-Vh-ont" id="PCb-PK-meL"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

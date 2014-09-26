@@ -10,4 +10,6 @@
 
 @interface FAStrategyDetailDescribViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lblStrategyDetailDescription;
+
 @end

@@ -60,6 +60,7 @@ const int latedRecordSectionIndex = 3;
     if(dataSource == nil)
     {
         dataSource = [[FADummieStrategyDetailDto alloc] init];
+        dataSource = [self LoadDataFromServer];
     }
 }
 
@@ -144,29 +145,50 @@ const int latedRecordSectionIndex = 3;
     return 0;
 }
 
-//-(void)showTopViewCell:(FAStrategyDetailTopViewCell *)cell
-//{
-//    FAStrategyDescriptionViewModel *strategy = dataSource.StrategyDescription;
-//    cell.lbl = ;
-//    
-//    int star = (int)ceil(strategy.Star);
-//    NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
-//    cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
-//    cell.lblPurchaseDate.text = [FAFormater toShortDateStringWithNSDate:strategy.BuyedTime];
-//    cell.lblTodayProfit.text =  [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.TodayProfit]];
-//    if(strategy.Underlyings != nil && [strategy.Underlyings count] >1)
-//    {
-//        cell.lblVarieties.text = @"多合约";
-//    }
-//    else if(strategy.Underlyings != nil && [strategy.Underlyings count] ==1)
-//    {
-//        FAUnderlyingViewModel *underlying =[strategy.Underlyings objectAtIndex:0];
-//        cell.lblVarieties.text = underlying.UnderName;
-//    }
-//    cell.lblStrategyProfit.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.StrategyProfit]];
-//    cell.lblOrderMultiple.text = [NSString stringWithFormat:@"%d",strategy.BuyedQuantity];
-//    cell.lblYestordayProfit.text = [FAFormater toDecimalStringWithDouble:strategy.YesterdayProfit  decimalPlace:2];
-//}
+-(void)showTopViewCell:(FAStrategyDetailTopViewCell *)cell
+{
+    FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
+    cell.lblStrategyName.text = strategy.StrategyName;
+    
+    int star = (int)ceil(strategy.Star);
+    NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+    cell.imgStrategyStar.image = [UIImage imageNamed:gradeImageName];
+    
+    cell.lblStrategyOnlineDate.text = [FAFormater toShortDateStringWithNSDate:strategy.OnlineDay];
+    
+    cell.lblRealPerformance.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.CumulativeNetProfit]];
+    
+    cell.lblProfitOneWeek.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.WeeklyReturn]];
+    
+    cell.lblWinRatioTwoWeeks.text = [FAFormater toDecimalStringWithDouble:strategy.WinningProbability  decimalPlace:2];
+    
+    cell.lblCollectionPeopleNumber.text = [NSString stringWithFormat:@"%d", strategy.CollectionNumber];
+    
+    cell.lblOrderPeropleNumber.text = [NSString stringWithFormat:@"%d", strategy.FollowNumber];
+    
+    cell.lblSuggestRightMoney.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.MarginNeeds]];
+    
+    cell.lblTradeVariety.text = strategy.UnderName;
+    
+    cell.lblStrategyProvider.text = strategy.ProviderName;
+}
+
+- (void)showDescribViewCell:(FAStrategyDetailDescribViewCell *)cell rowIndex:(NSInteger) rowIndex
+{
+    FAStrategyDescriptionViewModel *strategy = dataSource.StrategyDescription;
+    
+    cell.lblStrategyDetailDescription.text = strategy.Description;
+}
+
+- (void)showProfitViewCell:(FAStrategyDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
+{
+    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
+}
+
+- (void)showLatedRecordViewCell:(FAStrategyDetailLatedRecordViewCell *)cell rowIndex:(NSInteger) rowIndex
+{
+    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -180,7 +202,7 @@ const int latedRecordSectionIndex = 3;
                 cell = [[FAStrategyDetailTopViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topCellIdentifier];
                 
             }
-            //[self showTopViewCell:cell];
+            [self showTopViewCell:cell];
             return cell;
         }
         case describSectionIndex:
@@ -190,7 +212,7 @@ const int latedRecordSectionIndex = 3;
             {
                 cell = [[FAStrategyDetailDescribViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:describCellIdentifier];
             }
-//            [self showPositionViewCell:cell rowIndex:indexPath.row];
+            [self showDescribViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
         case profitsSectionIndex:
@@ -201,7 +223,7 @@ const int latedRecordSectionIndex = 3;
             {
                 cell = [[FAStrategyDetailProfitViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:profitCellIdentifier];
             }
-//            [self showProfitViewCell:cell rowIndex:indexPath.row];
+            [self showProfitViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
         case latedRecordSectionIndex:
@@ -212,7 +234,7 @@ const int latedRecordSectionIndex = 3;
             {
                 cell = [[FAStrategyDetailLatedRecordViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:latedRecordCellIdentifier];
             }
-//            [self showSignalViewCell:cell rowIndex:indexPath.row];
+            [self showLatedRecordViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
             
