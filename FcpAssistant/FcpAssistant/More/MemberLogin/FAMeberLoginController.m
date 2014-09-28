@@ -51,6 +51,8 @@
     //账户密码校验
     [[FAAccountManager shareInstance] Login:account withPassword:password clientId:clientId];
     
+   
+    
 }
 
 @end

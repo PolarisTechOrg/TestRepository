@@ -17,6 +17,7 @@
 #import "FAHttpHead.h"
 #import "FAJSONSerialization.h"
 #import "FAEncryptUtility.h"
+#import "FAMember.h"
 
 @implementation FAAccountManager
 
@@ -68,11 +69,22 @@
         self.hasLogin = NO;
     }
         
+        FAMember *member = [[FAMember alloc] init];
+        member.account = account;
+        member.password = password;
+        
+        self.currentMember = member;
     }
     @catch (NSException *exception)
     {
         self.hasLogin = NO;
-        NSLog(@"%@",exception);
+
+        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"Title" message:exception.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alter show];
+
+        
+
         
     }
     @finally
