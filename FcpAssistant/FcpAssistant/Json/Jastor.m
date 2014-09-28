@@ -180,7 +180,7 @@ Class nsArrayClass;
 	for (NSString *key in [JastorRuntimeHelper propertyNames:[obj class]])
     {
 		id value = [obj valueForKey:key];
-        if (value && [value isKindOfClass:[NSObject class]] && [value isKindOfClass:[NSString class]] == NO)
+        if (value && [value isKindOfClass:[NSObject class]] && [value isKindOfClass:[NSString class]] == NO && [value isKindOfClass:[NSNumber class]] == NO)
         {
 			[dic setObject:[Jastor toDictionary:value] forKey:[[Jastor map:obj] valueForKey:key]];
         }
