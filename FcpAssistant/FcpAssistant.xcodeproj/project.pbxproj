@@ -190,6 +190,7 @@
 		840DD89D19CD7CF90023885D /* FAMessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD89B19CD7CF90023885D /* FAMessageDetailViewController.xib */; };
 		840DD8A019CD7D470023885D /* FAMessageDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD89F19CD7D470023885D /* FAMessageDetailHeaderView.m */; };
 		840DD8A219CD7D650023885D /* FAMessageDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD8A119CD7D650023885D /* FAMessageDetailHeaderView.xib */; };
+		84450C2219D7EEC200BF942A /* FAErrorExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 84450C2119D7EEC200BF942A /* FAErrorExtractor.m */; };
 		84490BA219D3BA7F00EA1850 /* FADummieStrategyDetailDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84490BA119D3BA7F00EA1850 /* FADummieStrategyDetailDto.m */; };
 		84490BA519D3BAD000EA1850 /* FAStrategyDescriptionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84490BA419D3BAD000EA1850 /* FAStrategyDescriptionViewModel.m */; };
 		84490BA819D3BB8000EA1850 /* FAStrategyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84490BA719D3BB8000EA1850 /* FAStrategyModel.m */; };
@@ -520,6 +521,8 @@
 		840DD89E19CD7D470023885D /* FAMessageDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailHeaderView.h; path = Message/DetailView/FAMessageDetailHeaderView.h; sourceTree = "<group>"; };
 		840DD89F19CD7D470023885D /* FAMessageDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailHeaderView.m; path = Message/DetailView/FAMessageDetailHeaderView.m; sourceTree = "<group>"; };
 		840DD8A119CD7D650023885D /* FAMessageDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailHeaderView.xib; path = Message/DetailView/FAMessageDetailHeaderView.xib; sourceTree = "<group>"; };
+		84450C2019D7EEC200BF942A /* FAErrorExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAErrorExtractor.h; path = Http/FAErrorExtractor.h; sourceTree = "<group>"; };
+		84450C2119D7EEC200BF942A /* FAErrorExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAErrorExtractor.m; path = Http/FAErrorExtractor.m; sourceTree = "<group>"; };
 		84490BA019D3BA7F00EA1850 /* FADummieStrategyDetailDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FADummieStrategyDetailDto.h; path = Model/ServerModel/FADummieStrategyDetailDto.h; sourceTree = "<group>"; };
 		84490BA119D3BA7F00EA1850 /* FADummieStrategyDetailDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FADummieStrategyDetailDto.m; path = Model/ServerModel/FADummieStrategyDetailDto.m; sourceTree = "<group>"; };
 		84490BA319D3BAD000EA1850 /* FAStrategyDescriptionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyDescriptionViewModel.h; path = Model/ServerModel/FAStrategyDescriptionViewModel.h; sourceTree = "<group>"; };
@@ -866,6 +869,8 @@
 				592A83EC19C9256500DDE1B5 /* FAHttpHead.m */,
 				592A83ED19C9256500DDE1B5 /* FAHttpUtility.h */,
 				592A83EE19C9256500DDE1B5 /* FAHttpUtility.m */,
+				84450C2019D7EEC200BF942A /* FAErrorExtractor.h */,
+				84450C2119D7EEC200BF942A /* FAErrorExtractor.m */,
 			);
 			name = Http;
 			sourceTree = "<group>";
@@ -2006,6 +2011,7 @@
 				592735D919C2950900FF42A1 /* FAModifyPasswordController.m in Sources */,
 				5903747019B80E8200F5B0C3 /* FAAppDelegate.m in Sources */,
 				591B217B19C1687D00064F24 /* FAMeberLoginController.m in Sources */,
+				84450C2219D7EEC200BF942A /* FAErrorExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

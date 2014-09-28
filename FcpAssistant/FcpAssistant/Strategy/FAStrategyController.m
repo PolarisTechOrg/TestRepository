@@ -35,10 +35,10 @@
     
     self.navigationItem.title = @"策略";
     
-    UIImage *searchButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_search_white.png"];
+    UIImage *searchButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_search_white"];
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithImage:searchButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doSearch)];
     
-    UIImage *filterButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_menu_white.png"];
+    UIImage *filterButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_menu_white"];
     UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:filterButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doFilter)];
 
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];

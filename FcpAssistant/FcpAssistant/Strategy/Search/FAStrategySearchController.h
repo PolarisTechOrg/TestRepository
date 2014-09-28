@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSArray *listTeams;
 @property (nonatomic, strong) NSMutableArray *listFilterTeams;
 
-@property (weak, nonatomic) IBOutlet UISearchBar *barSearchStrategy;
+@property (weak, nonatomic) IBOutlet UISearchBar *barStrategySearch;
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSUInteger)scope;
 @end
