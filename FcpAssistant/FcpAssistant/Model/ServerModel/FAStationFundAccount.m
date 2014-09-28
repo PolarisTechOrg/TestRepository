@@ -9,5 +9,8 @@
 #import "FAStationFundAccount.h"
 
 @implementation FAStationFundAccount
-
+// 交易帐号。
+@synthesize FundAccount;
+// 交易帐号类型。
+@synthesize FundAccountType;
 @end

@@ -18,8 +18,11 @@
 #import "FAJSONSerialization.h"
 #import "FAEncryptUtility.h"
 #import "FAMember.h"
+#import "FAStationAccount.h"
 
 @implementation FAAccountManager
+
+@synthesize currentMember;
 
 +(instancetype) shareInstance
 {
@@ -37,62 +40,56 @@
 {
     @try
     {
-    FASaltDto *saltDto = [self getSalt:account];
-    
-    
-           NSString *encryptPwd = [self encryptFcpPassword:password stamp:saltDto.Stamp salt:saltDto.Salt];
-    
-    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/member?stationlogin",WEB_URL];
-    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-    
-    FAStationLoginModelDto *loginDto = [[FAStationLoginModelDto alloc] init];
-    loginDto.Account = account;
-    loginDto.Password = encryptPwd;
-    loginDto.RememberMe = YES;
-    loginDto.Auto = NO;
-    loginDto.Sign = saltDto.Sign;
-    loginDto.MobileClientId = clientId;
-    loginDto.DeviceType = 2;
-    
-    FAHttpHead *httpHeader = [FAHttpHead defaultInstance];
-    httpHeader.Method = @"POST";
-    
-    NSError *error;
-    [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:loginDto error:error];;
+        FASaltDto *saltDto = [self getSalt:account];
+      
+        NSString *encryptPwd = [self encryptFcpPassword:password stamp:saltDto.Stamp salt:saltDto.Salt];
+        
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/member?stationlogin",WEB_URL];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        FAStationLoginModelDto *loginDto = [[FAStationLoginModelDto alloc] init];
+        loginDto.Account = account;
+        loginDto.Password = encryptPwd;
+        loginDto.RememberMe = YES;
+        loginDto.Auto = NO;
+        loginDto.Sign = saltDto.Sign;
+        loginDto.MobileClientId = clientId;
+        loginDto.DeviceType = 2;
+        
+        FAHttpHead *httpHeader = [FAHttpHead defaultInstance];
+        httpHeader.Method = @"POST";
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:loginDto error:error];
+        
+        NSString *replyMessage = [[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding];
+        NSLog(@"Login reply: %@",replyMessage);
 
-    if(error == nil)
-    {
-        self.hasLogin = YES;
-    }
-    else
-    {
-        self.hasLogin = NO;
-    }
-        
-        FAMember *member = [[FAMember alloc] init];
-        member.account = account;
-        member.password = password;
-        
-        self.currentMember = member;
+
+        if(error == nil)
+        {
+            FAStationAccount * stationAccount =[FAJSONSerialization toObject:[FAStationAccount class] fromData:replyData];
+            self.currentMember = stationAccount;
+            self.hasLogin = YES;
+        }
+        else
+        {
+            self.currentMember = nil;
+            self.hasLogin = NO;
+        }
     }
     @catch (NSException *exception)
     {
+        self.currentMember = nil;
         self.hasLogin = NO;
 
         UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"Title" message:exception.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
         [alter show];
-
-        
-
-        
     }
     @finally
     {
         
     }
-
-    
 }
 
 -(FASaltDto *) getSalt:(NSString *) account

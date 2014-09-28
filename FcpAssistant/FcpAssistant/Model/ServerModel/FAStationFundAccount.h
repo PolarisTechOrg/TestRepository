@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface FAStationFundAccount : NSObject
-
+// 交易帐号。
+@property(nonatomic,copy) NSString *FundAccount;
+// 交易帐号类型。
+@property(nonatomic,assign) int FundAccountType;
 @end

@@ -29,6 +29,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+//NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/member",WEB_URL];
+//NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+
+//FAStationLoginModelDto *loginDto = [[FAStationLoginModelDto alloc] init];
+//loginDto.Account = account;
+//loginDto.Password = encryptPwd;
+//loginDto.RememberMe = YES;
+//loginDto.Auto = NO;
+//loginDto.Sign = saltDto.Sign;
+//loginDto.MobileClientId = clientId;
+//loginDto.DeviceType = 2;
+//
+//FAHttpHead *httpHeader = [FAHttpHead defaultInstance];
+//httpHeader.Method = @"POST";
+//
+//NSError *error;
+//NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:loginDto error:error];
+//
+//NSString *replyMessage = [[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding];
+//NSLog(@"Login reply: %@",replyMessage);
+
+
 /*
 #pragma mark - Navigation
 
