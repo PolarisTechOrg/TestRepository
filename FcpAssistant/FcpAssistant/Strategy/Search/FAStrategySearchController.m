@@ -18,10 +18,10 @@
 {
     [super viewDidLoad];
     
-    //设定搜索栏ScopeBar隐藏
-    [self.barSearchStrategy setShowsScopeBar:NO];
-    [self.barSearchStrategy sizeToFit];
-    
+    // 设定搜索栏ScopeBar
+    [self.barStrategySearch setShowsScopeBar:YES];
+//    [self.barSearchStrategy sizeToFit];
+    [self.barStrategySearch becomeFirstResponder];
 //    NSBundle *bundle = [NSBundle mainBundle];
 //    NSString *plistPath = [bundle pathForResource:@"team" ofType:@"plist"];
     //获取属性列表文件中的全部数据
@@ -33,7 +33,6 @@
 
 - (void)viewDidUnload
 {
-    [self setBarSearchStrategy:nil];
     [super viewDidUnload];
 }
 
@@ -118,7 +117,7 @@
 //当文本内容发生改变时候，向表视图数据源发出重新加载消息
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    [self filterContentForSearchText:searchString scope:self.barSearchStrategy.selectedScopeButtonIndex];
+    [self filterContentForSearchText:searchString scope:self.barStrategySearch.selectedScopeButtonIndex];
     //YES情况下表视图可以重新加载
     return YES;
 }
@@ -126,7 +125,7 @@
 // 当Scope Bar选择发送变化时候，向表视图数据源发出重新加载消息
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
-    [self filterContentForSearchText:self.barSearchStrategy.text  scope:searchOption];
+    [self filterContentForSearchText:self.barStrategySearch.text  scope:searchOption];
     // YES情况下表视图可以重新加载
     return YES;
 }
