@@ -177,22 +177,32 @@ Class nsArrayClass;
 //        [dic setObject:obj forKey:idPropertyName];
 //    }
 	
-	for (NSString *key in [JastorRuntimeHelper propertyNames:[obj class]]) {
+	for (NSString *key in [JastorRuntimeHelper propertyNames:[obj class]])
+    {
 		id value = [obj valueForKey:key];
-        if (value && [value isKindOfClass:[NSObject class]] && [value isKindOfClass:[NSString class]] == NO) {
+        if (value && [value isKindOfClass:[NSObject class]] && [value isKindOfClass:[NSString class]] == NO)
+        {
 			[dic setObject:[Jastor toDictionary:value] forKey:[[Jastor map:obj] valueForKey:key]];
-        } else if (value && [value isKindOfClass:[NSArray class]] && ((NSArray*)value).count > 0) {
+        }
+        else if (value && [value isKindOfClass:[NSArray class]] && ((NSArray*)value).count > 0)
+        {
             id internalValue = [value objectAtIndex:0];
-            if (internalValue && [internalValue isKindOfClass:[NSObject class]]) {
+            if (internalValue && [internalValue isKindOfClass:[NSObject class]])
+            {
                 NSMutableArray *internalItems = [NSMutableArray array];
-                for (id item in value) {
+                for (id item in value)
+                {
                     [internalItems addObject:[Jastor toDictionary:item]];
                 }
 				[dic setObject:internalItems forKey:[[Jastor map:obj] valueForKey:key]];
-            } else {
+            }
+            else
+            {
 				[dic setObject:value forKey:[[Jastor map:obj] valueForKey:key]];
             }
-        } else if (value != nil) {
+        }
+        else if (value != nil)
+        {
 			[dic setObject:value forKey:[[Jastor map:obj] valueForKey:key]];
         }
 	}

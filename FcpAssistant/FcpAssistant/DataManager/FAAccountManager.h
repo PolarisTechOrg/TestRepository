@@ -16,5 +16,5 @@
 
 @property(nonatomic,strong) FAMember* currentMember;
 
--(void) Login:(NSString *) account  withPassword:(NSString *) password;
+-(void) Login:(NSString *) account  withPassword:(NSString *) password clientId:(NSString *) clientId;
 @end
