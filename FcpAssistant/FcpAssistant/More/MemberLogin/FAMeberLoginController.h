@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMeberLoginController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *txtAccount;
+@property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 
 @end

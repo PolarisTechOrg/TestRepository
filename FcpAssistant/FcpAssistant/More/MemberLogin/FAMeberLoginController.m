@@ -7,6 +7,7 @@
 //
 
 #import "FAMeberLoginController.h"
+#import "FAAccountManager.h"
 
 @implementation FAMeberLoginController
 
@@ -27,12 +28,29 @@
     UIBarButtonItem* sendBtn = [[UIBarButtonItem alloc] init];
     sendBtn.title = @"发送";
     self.navigationItem.rightBarButtonItem = sendBtn;
+    self.txtAccount.text = @"100411";
+    self.txtPassword.text = @"100411";
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)btnRegister_Click:(id)sender
+{
+    NSLog(@"Register click");
+}
+
+- (IBAction)btnLogin_Click:(id)sender
+{
+    NSLog(@"Login click");
+    NSString *account = self.txtAccount.text;
+    NSString *password = self.txtPassword.text;
+    NSString *clientId = @"ios1234455";
+    //账户密码校验
+    [[FAAccountManager shareInstance] Login:account withPassword:password clientId:clientId];
+    
 }
 
 @end
