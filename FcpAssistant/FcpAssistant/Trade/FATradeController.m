@@ -14,6 +14,7 @@
 #import "FAMyPositionController.h"
 #import "FAMyOrderBookController.h"
 #import "FAMySignalController.h"
+#import "FAAccountManager.h"
 
 @interface FATradeController ()
 
@@ -185,6 +186,13 @@ NSString* itemCellIdentifier;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if([FAAccountManager shareInstance].hasLogin == NO)
+    {
+        
+        return;
+    }
+    
     
     if(indexPath.section ==0 && indexPath.row ==0)
     {

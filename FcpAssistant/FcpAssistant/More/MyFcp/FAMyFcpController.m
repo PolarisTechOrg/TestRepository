@@ -7,6 +7,8 @@
 //
 
 #import "FAMyFcpController.h"
+#import "FAStationAccount.h"
+#import "FAAccountManager.h"
 
 @interface FAMyFcpController ()
 
@@ -14,13 +16,53 @@
 
 @implementation FAMyFcpController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.navigationItem.title = @"我的期顾";
-    // Do any additional setup after loading the view from its nib.
+    
+    [self showAccount];
 }
 
-- (void)didReceiveMemoryWarning {
+//展示账户信息
+-(void) showAccount
+{
+    FAStationAccount *fcpAccount = [FAAccountManager shareInstance].currentMember;
+    FAStationFundAccount *selectFundAccount = [FAAccountManager shareInstance].selectFundAccount;
+    
+    self.lblFcpAccount.text = @"";
+    self.lblRealFundAccount.text = @"";
+    self.lblSimulateFundAccount.text = @"";
+    self.imgRealFundAccountCheck.image = nil;
+    self.imgSimulateFundAccountCheck.image = nil;
+    
+    if(fcpAccount != nil)
+    {
+        self.lblFcpAccount.text = fcpAccount.FcpAccount;
+        if(fcpAccount.RealFundAccount !=nil)
+        {
+            self.lblRealFundAccount.text = fcpAccount.RealFundAccount.FundAccount;
+            self.lblRealFundAccount.tag = fcpAccount.RealFundAccount.FundAccountType;
+            if(selectFundAccount != nil && selectFundAccount.FundAccount == fcpAccount.RealFundAccount.FundAccount && selectFundAccount.FundAccountType == fcpAccount.RealFundAccount.FundAccountType)
+            {
+                self.imgRealFundAccountCheck.image = [UIImage imageNamed:@"check_yes.png"];
+            }
+        }
+        if(fcpAccount.SimulateFundAccount != nil)
+        {
+            self.lblSimulateFundAccount.text = fcpAccount.SimulateFundAccount.FundAccount;
+            self.lblSimulateFundAccount.tag = fcpAccount.SimulateFundAccount.FundAccountType;
+            if(selectFundAccount != nil && selectFundAccount.FundAccount == fcpAccount.SimulateFundAccount.FundAccount && selectFundAccount.FundAccountType == fcpAccount.SimulateFundAccount.FundAccountType)
+            {
+                self.imgSimulateFundAccountCheck.image = [UIImage imageNamed:@"check_yes.png"];
+            }
+        }
+    }
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
