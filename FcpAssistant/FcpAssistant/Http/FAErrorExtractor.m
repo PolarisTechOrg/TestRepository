@@ -10,4 +10,32 @@
 
 @implementation FAErrorExtractor
 
++ (void)fromResponse: (NSURLResponse *) response data:(NSData *)data toError:(NSError **)error;
+{
+    if(response == nil)
+    {
+        return;
+    }
+    
+    long statusCode = 200;
+    NSString *content = nil;
+    NSDictionary *userInfo = nil;
+    
+    if([response isKindOfClass:[NSHTTPURLResponse class]])
+    {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        statusCode = [httpResponse statusCode];
+    }
+    if(data != nil)
+    {
+        content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    
+    if(statusCode < 200 || statusCode > 206)
+    {
+        userInfo = [NSDictionary dictionaryWithObject:content forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:NSCocoaErrorDomain code:statusCode userInfo:userInfo];
+    }
+}
+
 @end

@@ -11,8 +11,8 @@
 
 @interface FAHttpUtility : NSObject
 
-+ (NSData *)sendRequest:(NSURL *)url error:(NSError *)error;
++ (NSData *)sendRequest:(NSURL *)url error:(NSError **)error;
 
-+ (NSData *)sendRequest:(NSURL *)url withHead:(FAHttpHead *)head httpBody:(id)body error:(NSError *)error;
++ (NSData *)sendRequest:(NSURL *)url withHead:(FAHttpHead *)head httpBody:(id)body error:(NSError **)error;
 
 @end

@@ -8,23 +8,24 @@
 
 #import "FAHttpUtility.h"
 #import "FAJSONSerialization.h"
+#import "FAErrorExtractor.h"
 
 @implementation FAHttpUtility
 
 //同步发送Get请求。
-+ (NSData *)sendRequest:(NSURL *)url error:(NSError *)error
++ (NSData *)sendRequest:(NSURL *)url error:(NSError **)error
 {
     FAHttpHead *defalutHeader = [FAHttpHead defaultInstance];
     return [FAHttpUtility sendRequest:url withHead:defalutHeader httpBody:nil error:error];
 }
 
 // 同步发送请求
-+ (NSData *)sendRequest:(NSURL *)url withHead:(FAHttpHead *)head httpBody:(id)body error:(NSError *)error
++ (NSData *)sendRequest:(NSURL *)url withHead:(FAHttpHead *)head httpBody:(id)body error:(NSError **)error
 {
     if(url == nil || head == nil)
     {
         return nil;
-    }    
+    }
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     [urlRequest setTimeoutInterval:head.TimeOut];
@@ -48,9 +49,11 @@
     }
     
     NSData *retData;
-    NSHTTPURLResponse *response;
+    NSURLResponse *response;
     
-    retData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    retData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:error];
+    
+    [FAErrorExtractor fromResponse:response data:retData toError:error];
     
     return retData;
 }
