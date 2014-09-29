@@ -62,7 +62,7 @@
     
     
     NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
     
     if(error == nil)
     {
