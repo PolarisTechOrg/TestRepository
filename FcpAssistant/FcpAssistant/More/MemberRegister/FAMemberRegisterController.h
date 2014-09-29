@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMemberRegisterController : UIViewController
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+@property (weak, nonatomic) IBOutlet UISwitch *switchAgree;
+@property (weak, nonatomic) IBOutlet UITextField *txtAccount;
 
 @end
