@@ -22,7 +22,10 @@
 
 @implementation FAAccountManager
 
+//当前Fcp账号
 @synthesize currentMember;
+//当前交易账号
+@synthesize selectFundAccount;
 
 +(instancetype) shareInstance
 {
@@ -36,10 +39,12 @@
     return instance;
 }
 
+//
 -(void) Login:(NSString*) account withPassword:(NSString*) password clientId:(NSString *) clientId
 {
     @try
     {
+        
         FASaltDto *saltDto = [self getSalt:account];
       
         NSString *encryptPwd = [self encryptFcpPassword:password stamp:saltDto.Stamp salt:saltDto.Salt];
@@ -70,6 +75,18 @@
         {
             FAStationAccount * stationAccount =[FAJSONSerialization toObject:[FAStationAccount class] fromData:replyData];
             self.currentMember = stationAccount;
+            if(stationAccount.RealFundAccount == nil && stationAccount.SimulateFundAccount != nil)
+            {
+                self.selectFundAccount = stationAccount.SimulateFundAccount;
+            }
+            if(stationAccount.RealFundAccount !=nil && stationAccount.SimulateFundAccount == nil)
+            {
+                self.selectFundAccount = stationAccount.RealFundAccount;
+            }
+            if(stationAccount.RealFundAccount != nil && stationAccount.SimulateFundAccount != nil)
+            {
+                self.selectFundAccount = stationAccount.RealFundAccount;
+            }
             self.hasLogin = YES;
         }
         else
@@ -81,17 +98,31 @@
     @catch (NSException *exception)
     {
         self.currentMember = nil;
-        self.hasLogin = NO;
-
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"Title" message:exception.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alter show];
+        self.selectFundAccount = nil;
+        self.hasLogin = false;
+        @throw exception;
     }
     @finally
     {
-        
     }
 }
 
+-(void) changeFundAccount:(NSString *) fundAccount fundAccountType:(int) fundAccountType
+{
+    if(self.currentMember.RealFundAccount != nil &&
+       self.currentMember.RealFundAccount.FundAccount == fundAccount &&
+       self.currentMember.RealFundAccount.FundAccountType == fundAccountType)
+    {
+        self.selectFundAccount = self.currentMember.RealFundAccount;
+    }
+    else if(self.currentMember.SimulateFundAccount != nil &&
+            self.currentMember.SimulateFundAccount.FundAccount == fundAccount &&
+            self.currentMember.SimulateFundAccount.FundAccountType == fundAccountType)
+    {
+        self.selectFundAccount = self.currentMember.SimulateFundAccount;
+    }
+
+}
 -(FASaltDto *) getSalt:(NSString *) account
 {
     NSString *requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Salt/%@",WEB_URL, account];

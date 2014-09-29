@@ -69,7 +69,6 @@ NSMutableArray *dataSource;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     FAMoreViewCell * cell = (FAMoreViewCell *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     if(!cell)
     {
@@ -77,17 +76,27 @@ NSMutableArray *dataSource;
         
     }
     
-   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if(indexPath.section <dataSource.count)
     {
         NSDictionary *moreDictionary = dataSource[indexPath.section];
         cell.logoImage.image = [UIImage imageNamed:[moreDictionary valueForKey:@"image"][indexPath.row]];
         cell.menuTitle.text = [moreDictionary valueForKey:@"title"][indexPath.row];
-        cell.menuSubTitle.text = [moreDictionary valueForKey:@"subTitle"][indexPath.row];
         
-//        NSDictionary * tradeDic = self.dataSource[indexPath.row];
-//        cell.logoImage.image = [UIImage imageNamed:[tradeDic valueForKey:@"image"][0]];
-//        cell.menuLabel.text = [tradeDic valueForKey:@"title"][0];
+
+        cell.menuSubTitle.text = [moreDictionary valueForKey:@"subTitle"][indexPath.row];
+    }
+    
+    if(indexPath.section == 0 && indexPath.row ==0)
+    {
+        if([FAAccountManager shareInstance].hasLogin == YES)
+        {
+            cell.menuSubTitle.text = @"已登陆";
+        }
+        else
+        {
+            cell.menuSubTitle.text = @"未登陆";
+        }
     }
     NSLog(@"cellForRowAtIndexPath");
     
@@ -114,6 +123,7 @@ NSMutableArray *dataSource;
     return NO;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -126,7 +136,13 @@ NSMutableArray *dataSource;
         }
         else
         {
-            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:nil];
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
+            NSLog(@"FINISH LOGIN VIEW");
+            }];
+            
+//            NSLog(@"FINISH LOGIN VIEW");
+ //           [self.view reloadInputViews];
+            [self viewDidAppear:YES];
 
         }
     }
