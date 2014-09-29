@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FAMember.h"
+#import "FAStationAccount.h"
+
 @interface FAAccountManager : NSObject
 
 +(instancetype) shareInstance;
 
 @property(nonatomic,assign) bool hasLogin;
 
-@property(nonatomic,strong) FAMember* currentMember;
+@property(nonatomic,strong) FAStationAccount* currentMember;
 
 -(void) Login:(NSString *) account  withPassword:(NSString *) password clientId:(NSString *) clientId;
 @end

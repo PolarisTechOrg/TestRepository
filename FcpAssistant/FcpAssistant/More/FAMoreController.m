@@ -126,7 +126,8 @@ NSMutableArray *dataSource;
         }
         else
         {
-            [self pushNewViewController:[[FAMeberLoginController alloc] init]];
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:nil];
+
         }
     }
     else if(indexPath.section == 1 && indexPath.row ==0)
