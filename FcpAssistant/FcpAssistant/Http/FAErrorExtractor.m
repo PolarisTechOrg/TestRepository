@@ -34,7 +34,11 @@
     if(statusCode < 200 || statusCode > 206)
     {
         userInfo = [NSDictionary dictionaryWithObject:content forKey:NSLocalizedDescriptionKey];
-        *error = [NSError errorWithDomain:NSCocoaErrorDomain code:statusCode userInfo:userInfo];
+        
+        if(error != nil)
+        {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain code:statusCode userInfo:userInfo];
+        }
     }
 }
 
