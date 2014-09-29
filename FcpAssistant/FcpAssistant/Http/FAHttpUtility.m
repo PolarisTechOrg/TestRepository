@@ -24,26 +24,28 @@
     if(url == nil || head == nil)
     {
         return nil;
-    }
-    
+    }    
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     [urlRequest setTimeoutInterval:head.TimeOut];
     [urlRequest setHTTPMethod:head.Method];
     
-    NSDictionary *bodyDict = [FAJSONSerialization toDictionary:body];
-    NSMutableString *bodyString = [[NSMutableString alloc] init];
-    
-    for(NSString* key in bodyDict.allKeys)
+    if(body != nil)
     {
-        [bodyString appendString:key];
-        [bodyString appendString:@"="];
-        [bodyString appendFormat:@"%@",[bodyDict valueForKey:key]];
-        [bodyString appendString:@"&"];
+        NSDictionary *bodyDict = [FAJSONSerialization toDictionary:body];
+        NSMutableString *bodyString = [[NSMutableString alloc] init];
+    
+        for(NSString* key in bodyDict.allKeys)
+        {
+            [bodyString appendString:key];
+            [bodyString appendString:@"="];
+            [bodyString appendFormat:@"%@",[bodyDict valueForKey:key]];
+            [bodyString appendString:@"&"];
+        }
+        NSUInteger length = [bodyString length];
+        [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
+        [urlRequest setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    NSUInteger length = [bodyString length];
-    [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
-    [urlRequest setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSData *retData;
     NSHTTPURLResponse *response;
@@ -52,16 +54,4 @@
     
     return retData;
 }
-
-//    if(bodyDict != nil && [NSJSONSerialization isValidJSONObject:bodyDict])
-//    {
-//        NSData *postData = [NSJSONSerialization dataWithJSONObject:bodyDict options:NSJSONWritingPrettyPrinted error:&error];
-
-//        NSNumber *length = [NSNumber numberWithLong:[postData length]];
-//        NSString *postLength = [NSString stringWithFormat:@"%d", [length intValue]];
-//
-//        [urlRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Tppe"];
-//        [urlRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//        [urlRequest setHTTPBody:postData];
-//    }
 @end
