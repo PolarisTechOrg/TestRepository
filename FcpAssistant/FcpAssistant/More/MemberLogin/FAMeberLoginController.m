@@ -65,9 +65,24 @@
     NSString *account = self.txtAccount.text;
     NSString *password = self.txtPassword.text;
     NSString *clientId = @"ios1234455";
+    
     //账户密码校验
-    [[FAAccountManager shareInstance] Login:account withPassword:password clientId:clientId];
+    @try
+    {
+        [[FAAccountManager shareInstance] Login:account withPassword:password clientId:clientId];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    @catch (NSException *exception)
+    {
+        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:exception.description delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alter show];
+    }
+    @finally
+    {
+        
+    }
 }
+
 -(BOOL) loginValidate
 {
     if(self.txtAccount.text.length <=0)

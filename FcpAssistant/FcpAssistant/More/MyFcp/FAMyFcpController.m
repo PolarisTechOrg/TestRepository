@@ -25,6 +25,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnModifyPassword_Click:(id)sender
+{
+}
+
+- (IBAction)btnLogout_Click:(id)sender
+{
+}
+
 /*
 #pragma mark - Navigation
 
