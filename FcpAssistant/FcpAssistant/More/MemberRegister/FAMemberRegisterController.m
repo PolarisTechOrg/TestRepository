@@ -11,6 +11,7 @@
 #import "FAFoundation.h"
 #import "FAHttpHead.h"
 #import "FAHttpUtility.h"
+#import "FAUtility.h"
 
 @interface FAMemberRegisterController ()
 
@@ -39,8 +40,7 @@
 {
     if(self.txtAccount.text.length <=0)
     {
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:@"邮件地址不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alter show];
+        [FAUtility showAlterView:@"邮件地址不能为空"];
         return NO;
     }
     
@@ -78,8 +78,7 @@
     }
     @catch (NSException *exception)
     {
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:exception.description delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alter show];
+        [FAUtility showAlterView:exception.description];
     }
     @finally
     {

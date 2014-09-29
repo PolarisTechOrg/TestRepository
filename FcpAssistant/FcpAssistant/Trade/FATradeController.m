@@ -15,6 +15,7 @@
 #import "FAMyOrderBookController.h"
 #import "FAMySignalController.h"
 #import "FAAccountManager.h"
+#import "FAMeberLoginController.h"
 
 @interface FATradeController ()
 
@@ -189,7 +190,8 @@ NSString* itemCellIdentifier;
     
     if([FAAccountManager shareInstance].hasLogin == NO)
     {
-        
+        FAMeberLoginController *loginController = [[FAMeberLoginController alloc] init];
+        [self presentViewController:loginController animated:YES completion:nil];
         return;
     }
     

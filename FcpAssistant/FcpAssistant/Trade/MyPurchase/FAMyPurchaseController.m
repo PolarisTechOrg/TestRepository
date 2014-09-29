@@ -15,7 +15,8 @@
 #import "FAHttpUtility.h"
 #import "FAHttpHead.h"
 #import "FAFormater.h"
-
+#import "FAAccountManager.h"
+#import "FAUtility.h"
 @interface FAMyPurchaseController ()
 
 @end
@@ -56,26 +57,41 @@
 
 -(NSArray *) LoadDataFromServer
 {
-    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyList?fundAccount=%@&fundAcccountType=%@",WEB_URL,@"100146",@"33"];
-    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-
+    FAStationFundAccount *selectFundAccount = [FAAccountManager shareInstance].selectFundAccount;
     
-    
-    NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-    
-    if(error == nil)
+    if(selectFundAccount == nil)
     {
-        NSArray *dtoObj =[FAJSONSerialization toArray:[FABuyedStrategyDto class] fromData:replyData];
-        
-        return  dtoObj;
-        
+        return [[NSArray alloc]init];
     }
-    else
+    
+    @try
     {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyList?fundAccount=%@&fundAccountType=%d",WEB_URL,selectFundAccount.FundAccount,selectFundAccount.FundAccountType];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        if(error == nil)
+        {
+            NSArray *dtoObj =[FAJSONSerialization toArray:[FABuyedStrategyDto class] fromData:replyData];
+            return  dtoObj;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
         return nil;
     }
-    
+    @finally
+    {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning

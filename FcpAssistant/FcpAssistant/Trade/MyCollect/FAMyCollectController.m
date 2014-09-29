@@ -52,7 +52,7 @@
     
     
     NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
     
     if(error == nil)
     {
@@ -63,7 +63,8 @@
     }
     else
     {
-        return nil;
+        NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+        @throw ex;
     }
 
 }

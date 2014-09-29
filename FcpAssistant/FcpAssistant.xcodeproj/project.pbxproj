@@ -47,7 +47,7 @@
 		591B218E19C17FCB00064F24 /* moreItem_moreProduct.png in Resources */ = {isa = PBXBuildFile; fileRef = 591B218719C17FCB00064F24 /* moreItem_moreProduct.png */; };
 		591B218F19C17FCB00064F24 /* moreItem_myFcp.png in Resources */ = {isa = PBXBuildFile; fileRef = 591B218819C17FCB00064F24 /* moreItem_myFcp.png */; };
 		591B219019C17FCB00064F24 /* moreItem_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 591B218919C17FCB00064F24 /* moreItem_share.png */; };
-		591B320A19D799A600AE9F72 /* FAEncryptUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B320919D799A600AE9F72 /* FAEncryptUtility.m */; };
+		591B320A19D799A600AE9F72 /* FAUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B320919D799A600AE9F72 /* FAUtility.m */; };
 		591B320D19D7BA5400AE9F72 /* FAStationFundAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B320C19D7BA5400AE9F72 /* FAStationFundAccount.m */; };
 		591B321019D7D8C200AE9F72 /* FAStationAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B320F19D7D8C200AE9F72 /* FAStationAccount.m */; };
 		591B321319D7F28100AE9F72 /* FAMemberRegistrationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B321219D7F28100AE9F72 /* FAMemberRegistrationModel.m */; };
@@ -321,8 +321,8 @@
 		591B218719C17FCB00064F24 /* moreItem_moreProduct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moreItem_moreProduct.png; path = ImageSource/moreItemImage/moreItem_moreProduct.png; sourceTree = "<group>"; };
 		591B218819C17FCB00064F24 /* moreItem_myFcp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moreItem_myFcp.png; path = ImageSource/moreItemImage/moreItem_myFcp.png; sourceTree = "<group>"; };
 		591B218919C17FCB00064F24 /* moreItem_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moreItem_share.png; path = ImageSource/moreItemImage/moreItem_share.png; sourceTree = "<group>"; };
-		591B320819D799A600AE9F72 /* FAEncryptUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAEncryptUtility.h; path = Macro/FAEncryptUtility.h; sourceTree = "<group>"; };
-		591B320919D799A600AE9F72 /* FAEncryptUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAEncryptUtility.m; path = Macro/FAEncryptUtility.m; sourceTree = "<group>"; };
+		591B320819D799A600AE9F72 /* FAUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAUtility.h; path = Macro/FAUtility.h; sourceTree = "<group>"; };
+		591B320919D799A600AE9F72 /* FAUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAUtility.m; path = Macro/FAUtility.m; sourceTree = "<group>"; };
 		591B320B19D7BA5400AE9F72 /* FAStationFundAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStationFundAccount.h; path = Model/ServerModel/FAStationFundAccount.h; sourceTree = "<group>"; };
 		591B320C19D7BA5400AE9F72 /* FAStationFundAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStationFundAccount.m; path = Model/ServerModel/FAStationFundAccount.m; sourceTree = "<group>"; };
 		591B320E19D7D8C200AE9F72 /* FAStationAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStationAccount.h; path = Model/ServerModel/FAStationAccount.h; sourceTree = "<group>"; };
@@ -798,8 +798,8 @@
 				5921B94919C6DFFF00ACD5C4 /* FAConstants.m */,
 				5982A30C19D151FB009EADD1 /* FAFormater.h */,
 				5982A30D19D151FB009EADD1 /* FAFormater.m */,
-				591B320819D799A600AE9F72 /* FAEncryptUtility.h */,
-				591B320919D799A600AE9F72 /* FAEncryptUtility.m */,
+				591B320819D799A600AE9F72 /* FAUtility.h */,
+				591B320919D799A600AE9F72 /* FAUtility.m */,
 			);
 			name = Macro;
 			sourceTree = "<group>";

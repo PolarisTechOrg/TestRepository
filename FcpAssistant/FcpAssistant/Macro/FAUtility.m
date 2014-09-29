@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 polaris. All rights reserved.
 //
 
-#import "FAEncryptUtility.h"
+#import "FAUtility.h"
 #import <CommonCrypto/CommonDigest.h>
 
-@implementation FAEncryptUtility
+@implementation FAUtility
 
 //SHA加密算法
 + (NSString *)sha1:(NSString *)source
@@ -29,5 +29,18 @@
     }
     
     return output;
+}
+
++(void) showAlterView:(NSString *) errorMessage
+{
+    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alter show];
+}
+
++(void) showAlterViewWithException:(NSException *) exception
+{
+    NSString *errorMessage = [exception.userInfo valueForKey:NSLocalizedDescriptionKey];
+    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alter show];
 }
 @end
