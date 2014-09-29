@@ -16,7 +16,7 @@
 #import "FAHttpUtility.h"
 #import "FAHttpHead.h"
 #import "FAJSONSerialization.h"
-#import "FAEncryptUtility.h"
+#import "FAUtility.h"
 #import "FAMember.h"
 #import "FAStationAccount.h"
 
@@ -85,7 +85,7 @@
             }
             if(stationAccount.RealFundAccount != nil && stationAccount.SimulateFundAccount != nil)
             {
-                self.selectFundAccount = stationAccount.RealFundAccount;
+                self.selectFundAccount = stationAccount.SimulateFundAccount;
             }
             self.hasLogin = YES;
         }
@@ -152,9 +152,9 @@
 //密码加密
 -(NSString *) encryptFcpPassword:(NSString *) password stamp:(NSString *)stamp salt:(NSString *) salt
 {
-    NSString *pwdEncryp = [FAEncryptUtility sha1:password];
-    NSString *saltEncryp = [FAEncryptUtility sha1:[salt stringByAppendingString:pwdEncryp]];
-    NSString *stampEncryp = [FAEncryptUtility sha1:[stamp stringByAppendingString:saltEncryp]];
+    NSString *pwdEncryp = [FAUtility sha1:password];
+    NSString *saltEncryp = [FAUtility sha1:[salt stringByAppendingString:pwdEncryp]];
+    NSString *stampEncryp = [FAUtility sha1:[stamp stringByAppendingString:saltEncryp]];
     
     return [[NSString alloc] initWithFormat:@"%@|%@|%@",stamp,salt,stampEncryp];
 }

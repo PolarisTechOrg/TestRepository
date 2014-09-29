@@ -9,6 +9,7 @@
 #import "FAMeberLoginController.h"
 #import "FAAccountManager.h"
 #import "FAMemberRegisterController.h"
+#import "FAUtility.h"
 
 @implementation FAMeberLoginController
 
@@ -75,8 +76,7 @@
     @catch (NSException *exception)
     {
         NSString *errorMessage = [exception.userInfo valueForKey:NSLocalizedDescriptionKey];
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alter show];
+        [FAUtility showAlterView:errorMessage];
     }
     @finally
     {
@@ -88,15 +88,13 @@
 {
     if(self.txtAccount.text.length <=0)
     {
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:@"账号不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alter show];
+        [FAUtility showAlterView:@"账号不能为空"];
         return NO;
     }
     
     if(self.txtPassword.text.length <=0)
     {
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:@"密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alter show];
+        [FAUtility showAlterView:@"密码不能为空"];
         return NO;
     }
     

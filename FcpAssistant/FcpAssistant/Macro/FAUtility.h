@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FAEncryptUtility : NSObject
+@interface FAUtility : NSObject
 
 //SHA加密算法
 + (NSString *)sha1:(NSString *)source;
+
+//提示对话框
++(void) showAlterView:(NSString *) errorMessage;
+
+//异常提示对话框
++(void) showAlterViewWithException:(NSException *) exception;
 @end
