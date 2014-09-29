@@ -74,7 +74,8 @@
     }
     @catch (NSException *exception)
     {
-        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:exception.description delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        NSString *errorMessage = [exception.userInfo valueForKey:NSLocalizedDescriptionKey];
+        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alter show];
     }
     @finally

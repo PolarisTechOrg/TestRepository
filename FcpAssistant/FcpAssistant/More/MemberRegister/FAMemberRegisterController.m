@@ -68,7 +68,7 @@
         httpHeader.Method = @"POST";
         
         NSError *error;
-        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:registerDto error:error];
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:registerDto error:&error];
         
         NSString *replyMessage = [[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding];
         NSLog(@"Login reply: %@",replyMessage);

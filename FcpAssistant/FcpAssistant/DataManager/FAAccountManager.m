@@ -65,7 +65,7 @@
         httpHeader.Method = @"POST";
         
         NSError *error;
-        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:loginDto error:error];
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:loginDto error:&error];
         
         NSString *replyMessage = [[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding];
         NSLog(@"Login reply: %@",replyMessage);
@@ -93,6 +93,10 @@
         {
             self.currentMember = nil;
             self.hasLogin = NO;
+
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+            
+            @throw ex;
         }
     }
     @catch (NSException *exception)
@@ -130,7 +134,7 @@
     NSURL *requestUrl =[NSURL URLWithString: requestUrlStr];
     
      NSError *error;
-     NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+     NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
      
      if(error == nil)
      {
