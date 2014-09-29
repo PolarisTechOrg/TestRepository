@@ -10,7 +10,10 @@
 
 @interface FAStrategyController : UITableViewController
 {
+    int currentPageIndex;
+    
     NSString *itemCellIdentifier;
+    
     NSMutableArray *dataSource;
 }
 

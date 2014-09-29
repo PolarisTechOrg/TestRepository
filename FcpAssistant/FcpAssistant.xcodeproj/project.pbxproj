@@ -223,6 +223,14 @@
 		84844A6719C96AEF001C2EC4 /* FAMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A6519C96AEF001C2EC4 /* FAMessageViewCell.xib */; };
 		84844A6C19C96B25001C2EC4 /* FAMessageDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A6A19C96B25001C2EC4 /* FAMessageDetailViewCell.m */; };
 		84844A6D19C96B25001C2EC4 /* FAMessageDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A6B19C96B25001C2EC4 /* FAMessageDetailViewCell.xib */; };
+		84956F9319D9845A0001E78C /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84956F8319D9845A0001E78C /* MJRefresh.bundle */; };
+		84956F9419D9845A0001E78C /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F8619D9845A0001E78C /* MJRefreshBaseView.m */; };
+		84956F9519D9845A0001E78C /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F8819D9845A0001E78C /* MJRefreshConst.m */; };
+		84956F9619D9845A0001E78C /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F8A19D9845A0001E78C /* MJRefreshFooterView.m */; };
+		84956F9719D9845A0001E78C /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F8C19D9845A0001E78C /* MJRefreshHeaderView.m */; };
+		84956F9819D9845A0001E78C /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F8E19D9845A0001E78C /* UIScrollView+MJExtension.m */; };
+		84956F9919D9845A0001E78C /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F9019D9845A0001E78C /* UIScrollView+MJRefresh.m */; };
+		84956F9A19D9845A0001E78C /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F9219D9845A0001E78C /* UIView+MJExtension.m */; };
 		849C562D19D55F8E0057C158 /* Strategy_bg_list_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 849C561F19D55F8E0057C158 /* Strategy_bg_list_green.png */; };
 		849C562E19D55F8E0057C158 /* Strategy_bg_list_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 849C562019D55F8E0057C158 /* Strategy_bg_list_red.png */; };
 		849C562F19D55F8E0057C158 /* Strategy_bg_list_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 849C562119D55F8E0057C158 /* Strategy_bg_list_yellow.png */; };
@@ -574,6 +582,22 @@
 		84844A6919C96B25001C2EC4 /* FAMessageDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailViewCell.h; path = Message/FAMessageDetailViewCell.h; sourceTree = "<group>"; };
 		84844A6A19C96B25001C2EC4 /* FAMessageDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailViewCell.m; path = Message/FAMessageDetailViewCell.m; sourceTree = "<group>"; };
 		84844A6B19C96B25001C2EC4 /* FAMessageDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailViewCell.xib; path = Message/FAMessageDetailViewCell.xib; sourceTree = "<group>"; };
+		84956F8319D9845A0001E78C /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		84956F8419D9845A0001E78C /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		84956F8519D9845A0001E78C /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		84956F8619D9845A0001E78C /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		84956F8719D9845A0001E78C /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		84956F8819D9845A0001E78C /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		84956F8919D9845A0001E78C /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		84956F8A19D9845A0001E78C /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		84956F8B19D9845A0001E78C /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		84956F8C19D9845A0001E78C /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		84956F8D19D9845A0001E78C /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		84956F8E19D9845A0001E78C /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		84956F8F19D9845A0001E78C /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		84956F9019D9845A0001E78C /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		84956F9119D9845A0001E78C /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		84956F9219D9845A0001E78C /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		849C561F19D55F8E0057C158 /* Strategy_bg_list_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strategy_bg_list_green.png; sourceTree = "<group>"; };
 		849C562019D55F8E0057C158 /* Strategy_bg_list_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strategy_bg_list_red.png; sourceTree = "<group>"; };
 		849C562119D55F8E0057C158 /* Strategy_bg_list_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strategy_bg_list_yellow.png; sourceTree = "<group>"; };
@@ -1335,6 +1359,7 @@
 		59EC7E9319B80FB000972C0A /* Strategy */ = {
 			isa = PBXGroup;
 			children = (
+				84956F8219D9845A0001E78C /* Refresh */,
 				84844A2819C96675001C2EC4 /* Filter */,
 				84844A2719C96665001C2EC4 /* Search */,
 				84844A2619C9649F001C2EC4 /* HeaderView */,
@@ -1644,6 +1669,30 @@
 			name = HeaderView;
 			sourceTree = "<group>";
 		};
+		84956F8219D9845A0001E78C /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				84956F8319D9845A0001E78C /* MJRefresh.bundle */,
+				84956F8419D9845A0001E78C /* MJRefresh.h */,
+				84956F8519D9845A0001E78C /* MJRefreshBaseView.h */,
+				84956F8619D9845A0001E78C /* MJRefreshBaseView.m */,
+				84956F8719D9845A0001E78C /* MJRefreshConst.h */,
+				84956F8819D9845A0001E78C /* MJRefreshConst.m */,
+				84956F8919D9845A0001E78C /* MJRefreshFooterView.h */,
+				84956F8A19D9845A0001E78C /* MJRefreshFooterView.m */,
+				84956F8B19D9845A0001E78C /* MJRefreshHeaderView.h */,
+				84956F8C19D9845A0001E78C /* MJRefreshHeaderView.m */,
+				84956F8D19D9845A0001E78C /* UIScrollView+MJExtension.h */,
+				84956F8E19D9845A0001E78C /* UIScrollView+MJExtension.m */,
+				84956F8F19D9845A0001E78C /* UIScrollView+MJRefresh.h */,
+				84956F9019D9845A0001E78C /* UIScrollView+MJRefresh.m */,
+				84956F9119D9845A0001E78C /* UIView+MJExtension.h */,
+				84956F9219D9845A0001E78C /* UIView+MJExtension.m */,
+			);
+			name = Refresh;
+			path = Strategy/Refresh;
+			sourceTree = "<group>";
+		};
 		849C561E19D55F8E0057C158 /* Strategy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1803,6 +1852,7 @@
 				593EA6A519BFF94000E9F2BC /* FAMyPurchaseDetailPositionViewCell.xib in Resources */,
 				594FB08419C81C44008EA26F /* mypurchase_profit_yellow.png in Resources */,
 				594FB09719C82637008EA26F /* common_star_2.png in Resources */,
+				84956F9319D9845A0001E78C /* MJRefresh.bundle in Resources */,
 				593EA6F219C04DA700E9F2BC /* FAMyOrderBookItemViewCell.xib in Resources */,
 				59EC7F0F19B83E5600972C0A /* FATradeController.xib in Resources */,
 				849C563319D55F8E0057C158 /* Strategy_icon_single.png in Resources */,
@@ -1939,6 +1989,9 @@
 				593EA6F119C04DA700E9F2BC /* FAMyOrderBookItemViewCell.m in Sources */,
 				59137A3E19BE8C32001F4977 /* FAMyOrderBookController.m in Sources */,
 				840DD89219CD79440023885D /* FAStrategyDetailProfitHeaderView.m in Sources */,
+				84956F9819D9845A0001E78C /* UIScrollView+MJExtension.m in Sources */,
+				84956F9A19D9845A0001E78C /* UIView+MJExtension.m in Sources */,
+				84956F9419D9845A0001E78C /* MJRefreshBaseView.m in Sources */,
 				840DD89519CD79840023885D /* FAStrategyDetailLatedRecordHeaderView.m in Sources */,
 				592A83F919C9257700DDE1B5 /* JastorRuntimeHelper.m in Sources */,
 				598F290519B9AB260078C6C6 /* FAStoreManager.m in Sources */,
@@ -1967,6 +2020,8 @@
 				84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */,
 				593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */,
 				591B321319D7F28100AE9F72 /* FAMemberRegistrationModel.m in Sources */,
+				84956F9519D9845A0001E78C /* MJRefreshConst.m in Sources */,
+				84956F9919D9845A0001E78C /* UIScrollView+MJRefresh.m in Sources */,
 				592735E519C2A37600FF42A1 /* FAForgetPasswordController.m in Sources */,
 				5982A30B19D11FDD009EADD1 /* FAStrategyProfitDto.m in Sources */,
 				594DD2C919CAC7C1009D4A48 /* FAPurchaseProfitView.m in Sources */,
@@ -1978,6 +2033,7 @@
 				592735C119C28F5C00FF42A1 /* FATermOfServiceController.m in Sources */,
 				5938187519D006A800AF8A46 /* FADummieStrategyViewModelDto.m in Sources */,
 				84844A4219C968D8001C2EC4 /* FAStrategyFilterViewCell.m in Sources */,
+				84956F9719D9845A0001E78C /* MJRefreshHeaderView.m in Sources */,
 				591B320A19D799A600AE9F72 /* FAEncryptUtility.m in Sources */,
 				593EA69B19BFF5A300E9F2BC /* FAMyPurchaseDetailOrderHeaderView.m in Sources */,
 				59EC7F0E19B83E5600972C0A /* FATradeController.m in Sources */,
@@ -1999,6 +2055,7 @@
 				592735C719C2916000FF42A1 /* FAMoreProductController.m in Sources */,
 				592A83F819C9257700DDE1B5 /* Jastor.m in Sources */,
 				592735D319C2947000FF42A1 /* FAAbountProductController.m in Sources */,
+				84956F9619D9845A0001E78C /* MJRefreshFooterView.m in Sources */,
 				84844A5319C969F8001C2EC4 /* FAStrategyDetailTopViewCell.m in Sources */,
 				840DD88219CD776E0023885D /* FAStrategyDetailDescribViewCell.m in Sources */,
 				5982A30819D11FAC009EADD1 /* FAStrategyOrderBookDto.m in Sources */,
