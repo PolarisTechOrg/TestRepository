@@ -10,6 +10,8 @@
 
 @interface FAErrorExtractor : NSObject
 
-
++ (void)fromResponse: (NSURLResponse *) response data:(NSData *)data toError:(NSError **)error;
 
 @end
+
+
