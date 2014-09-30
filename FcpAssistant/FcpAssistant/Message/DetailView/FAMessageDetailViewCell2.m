@@ -1,14 +1,14 @@
 //
-//  FAMessageDetailViewCell.m
+//  FAMessageDetailViewCell2.m
 //  FcpAssistant
 //
-//  Created by admin on 9/17/14.
+//  Created by admin on 9/30/14.
 //  Copyright (c) 2014 polaris. All rights reserved.
 //
 
-#import "FAMessageDetailViewCell.h"
+#import "FAMessageDetailViewCell2.h"
 
-@implementation FAMessageDetailViewCell
+@implementation FAMessageDetailViewCell2
 
 - (void)awakeFromNib {
     // Initialization code

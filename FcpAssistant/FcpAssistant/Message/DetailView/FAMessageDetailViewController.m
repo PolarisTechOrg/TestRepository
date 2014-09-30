@@ -7,7 +7,7 @@
 //
 
 #import "FAMessageDetailViewController.h"
-#import "FAMessageDetailViewCell.h"
+#import "FAMessageDetailViewCell2.h"
 
 @interface FAMessageDetailViewController ()
 
@@ -41,7 +41,7 @@ NSString* cellIdentifier;
 
 -(void)registerXibFile
 {
-    UINib *cellNib = [UINib nibWithNibName:@"FAMessageDetailViewCell" bundle:nil];
+    UINib *cellNib = [UINib nibWithNibName:@"FAMessageDetailViewCell2" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
 }
 
@@ -69,11 +69,11 @@ NSString* cellIdentifier;
 {
     tableView.separatorStyle = UITableViewCellEditingStyleNone;
     
-    FAMessageDetailViewCell *cell= (FAMessageDetailViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    FAMessageDetailViewCell2 *cell= (FAMessageDetailViewCell2*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell)
     {
-        cell = [[FAMessageDetailViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         cell.lblTextBody.numberOfLines = 0;
         cell.lblTextBody.adjustsFontSizeToFitWidth = YES;
     }

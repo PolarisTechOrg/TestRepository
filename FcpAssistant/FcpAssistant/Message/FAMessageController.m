@@ -7,7 +7,7 @@
 //
 
 #import "FAMessageController.h"
-#import "FAMessageViewCell.h"
+#import "FAMessageViewCell2.h"
 #import "FAMessageDetailViewController.h"
 #import "FAStoreManager.h"
 
@@ -51,7 +51,7 @@
 
 -(void)registerXibFile
 {
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAMessageViewCell" bundle:nil];
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAMessageViewCell2" bundle:nil];
     
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
@@ -91,11 +91,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FAMessageViewCell * cell = (FAMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    FAMessageViewCell2 * cell = (FAMessageViewCell2 *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if(!cell)
     {
-        cell = [[FAMessageViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
+        cell = [[FAMessageViewCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -104,8 +104,8 @@
     {
         NSDictionary *messageDict = dataSource[indexPath.section];
     
-//        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
-        cell.imgMessageProvider.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
+        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
+        cell.imgMessageType.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
         cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
         cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
         cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];

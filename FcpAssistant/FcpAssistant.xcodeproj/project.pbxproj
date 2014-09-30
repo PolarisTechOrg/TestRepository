@@ -219,10 +219,6 @@
 		84844A5919C96A36001C2EC4 /* FAStrategyInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A5719C96A36001C2EC4 /* FAStrategyInfoViewCell.xib */; };
 		84844A5F19C96A9F001C2EC4 /* FAJingXuanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A5D19C96A9F001C2EC4 /* FAJingXuanViewCell.m */; };
 		84844A6019C96A9F001C2EC4 /* FAJingXuanViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A5E19C96A9F001C2EC4 /* FAJingXuanViewCell.xib */; };
-		84844A6619C96AEF001C2EC4 /* FAMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A6419C96AEF001C2EC4 /* FAMessageViewCell.m */; };
-		84844A6719C96AEF001C2EC4 /* FAMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A6519C96AEF001C2EC4 /* FAMessageViewCell.xib */; };
-		84844A6C19C96B25001C2EC4 /* FAMessageDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A6A19C96B25001C2EC4 /* FAMessageDetailViewCell.m */; };
-		84844A6D19C96B25001C2EC4 /* FAMessageDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A6B19C96B25001C2EC4 /* FAMessageDetailViewCell.xib */; };
 		84956F9319D9845A0001E78C /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84956F8319D9845A0001E78C /* MJRefresh.bundle */; };
 		84956F9419D9845A0001E78C /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F8619D9845A0001E78C /* MJRefreshBaseView.m */; };
 		84956F9519D9845A0001E78C /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 84956F8819D9845A0001E78C /* MJRefreshConst.m */; };
@@ -244,6 +240,10 @@
 		849C564019D575120057C158 /* FAStrategySearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C563F19D575120057C158 /* FAStrategySearchHeaderView.xib */; };
 		849C564219D598BC0057C158 /* FAStrategyFilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C564119D598BC0057C158 /* FAStrategyFilterHeaderView.xib */; };
 		849C564519D598E00057C158 /* FAStrategyFilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */; };
+		84C4CB4319DA74B400C36159 /* FAMessageViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C4CB4119DA74B400C36159 /* FAMessageViewCell2.m */; };
+		84C4CB4419DA74B400C36159 /* FAMessageViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4CB4219DA74B400C36159 /* FAMessageViewCell2.xib */; };
+		84C4CB4819DA7E4E00C36159 /* FAMessageDetailViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C4CB4619DA7E4E00C36159 /* FAMessageDetailViewCell2.m */; };
+		84C4CB4919DA7E4E00C36159 /* FAMessageDetailViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4CB4719DA7E4E00C36159 /* FAMessageDetailViewCell2.xib */; };
 		84F2C74719D10251006EBFC4 /* JingXuan_bg_index_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73A19D10251006EBFC4 /* JingXuan_bg_index_green.png */; };
 		84F2C74819D10251006EBFC4 /* JingXuan_bg_index_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73B19D10251006EBFC4 /* JingXuan_bg_index_red.png */; };
 		84F2C74919D10251006EBFC4 /* JingXuan_bg_index_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73C19D10251006EBFC4 /* JingXuan_bg_index_yellow.png */; };
@@ -576,12 +576,6 @@
 		84844A5C19C96A9F001C2EC4 /* FAJingXuanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAJingXuanViewCell.h; path = JingXuan/FAJingXuanViewCell.h; sourceTree = "<group>"; };
 		84844A5D19C96A9F001C2EC4 /* FAJingXuanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAJingXuanViewCell.m; path = JingXuan/FAJingXuanViewCell.m; sourceTree = "<group>"; };
 		84844A5E19C96A9F001C2EC4 /* FAJingXuanViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAJingXuanViewCell.xib; path = JingXuan/FAJingXuanViewCell.xib; sourceTree = "<group>"; };
-		84844A6319C96AEF001C2EC4 /* FAMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageViewCell.h; path = Message/FAMessageViewCell.h; sourceTree = "<group>"; };
-		84844A6419C96AEF001C2EC4 /* FAMessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageViewCell.m; path = Message/FAMessageViewCell.m; sourceTree = "<group>"; };
-		84844A6519C96AEF001C2EC4 /* FAMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageViewCell.xib; path = Message/FAMessageViewCell.xib; sourceTree = "<group>"; };
-		84844A6919C96B25001C2EC4 /* FAMessageDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailViewCell.h; path = Message/FAMessageDetailViewCell.h; sourceTree = "<group>"; };
-		84844A6A19C96B25001C2EC4 /* FAMessageDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailViewCell.m; path = Message/FAMessageDetailViewCell.m; sourceTree = "<group>"; };
-		84844A6B19C96B25001C2EC4 /* FAMessageDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailViewCell.xib; path = Message/FAMessageDetailViewCell.xib; sourceTree = "<group>"; };
 		84956F8319D9845A0001E78C /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		84956F8419D9845A0001E78C /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		84956F8519D9845A0001E78C /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -613,6 +607,12 @@
 		849C564119D598BC0057C158 /* FAStrategyFilterHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategyFilterHeaderView.xib; path = Strategy/Filter/FAStrategyFilterHeaderView.xib; sourceTree = "<group>"; };
 		849C564319D598E00057C158 /* FAStrategyFilterHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyFilterHeaderView.h; path = Strategy/Filter/FAStrategyFilterHeaderView.h; sourceTree = "<group>"; };
 		849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyFilterHeaderView.m; path = Strategy/Filter/FAStrategyFilterHeaderView.m; sourceTree = "<group>"; };
+		84C4CB4019DA74B400C36159 /* FAMessageViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageViewCell2.h; path = Message/FAMessageViewCell2.h; sourceTree = "<group>"; };
+		84C4CB4119DA74B400C36159 /* FAMessageViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageViewCell2.m; path = Message/FAMessageViewCell2.m; sourceTree = "<group>"; };
+		84C4CB4219DA74B400C36159 /* FAMessageViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageViewCell2.xib; path = Message/FAMessageViewCell2.xib; sourceTree = "<group>"; };
+		84C4CB4519DA7E4E00C36159 /* FAMessageDetailViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailViewCell2.h; path = Message/DetailView/FAMessageDetailViewCell2.h; sourceTree = "<group>"; };
+		84C4CB4619DA7E4E00C36159 /* FAMessageDetailViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailViewCell2.m; path = Message/DetailView/FAMessageDetailViewCell2.m; sourceTree = "<group>"; };
+		84C4CB4719DA7E4E00C36159 /* FAMessageDetailViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailViewCell2.xib; path = Message/DetailView/FAMessageDetailViewCell2.xib; sourceTree = "<group>"; };
 		84F2C73A19D10251006EBFC4 /* JingXuan_bg_index_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JingXuan_bg_index_green.png; sourceTree = "<group>"; };
 		84F2C73B19D10251006EBFC4 /* JingXuan_bg_index_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JingXuan_bg_index_red.png; sourceTree = "<group>"; };
 		84F2C73C19D10251006EBFC4 /* JingXuan_bg_index_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JingXuan_bg_index_yellow.png; sourceTree = "<group>"; };
@@ -1411,9 +1411,9 @@
 				59EC7F0119B82C0600972C0A /* FAMessageController.h */,
 				59EC7F0219B82C0600972C0A /* FAMessageController.m */,
 				59EC7F0319B82C0600972C0A /* FAMessageController.xib */,
-				84844A6319C96AEF001C2EC4 /* FAMessageViewCell.h */,
-				84844A6419C96AEF001C2EC4 /* FAMessageViewCell.m */,
-				84844A6519C96AEF001C2EC4 /* FAMessageViewCell.xib */,
+				84C4CB4019DA74B400C36159 /* FAMessageViewCell2.h */,
+				84C4CB4119DA74B400C36159 /* FAMessageViewCell2.m */,
+				84C4CB4219DA74B400C36159 /* FAMessageViewCell2.xib */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -1652,9 +1652,9 @@
 		84844A6119C96ABC001C2EC4 /* CellView */ = {
 			isa = PBXGroup;
 			children = (
-				84844A6919C96B25001C2EC4 /* FAMessageDetailViewCell.h */,
-				84844A6A19C96B25001C2EC4 /* FAMessageDetailViewCell.m */,
-				84844A6B19C96B25001C2EC4 /* FAMessageDetailViewCell.xib */,
+				84C4CB4519DA7E4E00C36159 /* FAMessageDetailViewCell2.h */,
+				84C4CB4619DA7E4E00C36159 /* FAMessageDetailViewCell2.m */,
+				84C4CB4719DA7E4E00C36159 /* FAMessageDetailViewCell2.xib */,
 			);
 			name = CellView;
 			sourceTree = "<group>";
@@ -1844,6 +1844,7 @@
 				59EC7F1919B8515A00972C0A /* FATradeViewCell.xib in Resources */,
 				840DD88D19CD78B90023885D /* FAStrategyDetailDescribHeaderView.xib in Resources */,
 				840DD89D19CD7CF90023885D /* FAMessageDetailViewController.xib in Resources */,
+				84C4CB4919DA7E4E00C36159 /* FAMessageDetailViewCell2.xib in Resources */,
 				5903746A19B80E8200F5B0C3 /* InfoPlist.strings in Resources */,
 				591EA2DB19BEDCCB00EED52C /* FAMyPurchaseDetailController.xib in Resources */,
 				594DD2C319CAA55A009D4A48 /* aboutProduct_big.png in Resources */,
@@ -1859,6 +1860,7 @@
 				598F290D19B9AED10078C6C6 /* tradeItem_Order@2x.png in Resources */,
 				849C563019D55F8E0057C158 /* Strategy_icon_combination.png in Resources */,
 				59137A4919BE9800001F4977 /* FAMyPurchaseViewCell.xib in Resources */,
+				84C4CB4419DA74B400C36159 /* FAMessageViewCell2.xib in Resources */,
 				846C482919D7A93B00B456A4 /* Strategy_icon_strategy_menu_white.png in Resources */,
 				594FB08319C81C44008EA26F /* mypurchase_profit_red.png in Resources */,
 				592735E019C2A1A100FF42A1 /* FAMemberRegisterController.xib in Resources */,
@@ -1894,7 +1896,6 @@
 				594FB09819C82637008EA26F /* common_star_3.png in Resources */,
 				591B218E19C17FCB00064F24 /* moreItem_moreProduct.png in Resources */,
 				5916F34A19B95FA600BE7D1D /* tabbarBkg@2x.png in Resources */,
-				84844A6719C96AEF001C2EC4 /* FAMessageViewCell.xib in Resources */,
 				592B87C419C7BEC900B6EDF9 /* icon.png in Resources */,
 				84844A4319C968D8001C2EC4 /* FAStrategyFilterViewCell.xib in Resources */,
 				593EA6F719C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib in Resources */,
@@ -1927,7 +1928,6 @@
 				593EA6EB19C0498400E9F2BC /* FAMySignalItemHeaderView.xib in Resources */,
 				598F291019B9AED10078C6C6 /* tradeItem_Signal@2x.png in Resources */,
 				592ABF9919CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib in Resources */,
-				84844A6D19C96B25001C2EC4 /* FAMessageDetailViewCell.xib in Resources */,
 				594FB09619C82637008EA26F /* common_star_1.png in Resources */,
 				59EC7EF519B82B4600972C0A /* FAJingXuanController.xib in Resources */,
 				84F2C74C19D10251006EBFC4 /* JingXuan_icon_index_03.png in Resources */,
@@ -2014,7 +2014,6 @@
 				59137A4819BE9800001F4977 /* FAMyPurchaseViewCell.m in Sources */,
 				592735BB19C28EB900FF42A1 /* FAFeddbackController.m in Sources */,
 				591B218019C16AB800064F24 /* FAMoreViewCell.m in Sources */,
-				84844A6619C96AEF001C2EC4 /* FAMessageViewCell.m in Sources */,
 				593E7DF919D2AD22000997C6 /* FASaltDto.m in Sources */,
 				593EA6F519C04DDF00E9F2BC /* FAMyOrderBookItemHeaderView.m in Sources */,
 				84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */,
@@ -2034,7 +2033,7 @@
 				5938187519D006A800AF8A46 /* FADummieStrategyViewModelDto.m in Sources */,
 				84844A4219C968D8001C2EC4 /* FAStrategyFilterViewCell.m in Sources */,
 				84956F9719D9845A0001E78C /* MJRefreshHeaderView.m in Sources */,
-				591B320A19D799A600AE9F72 /* FAEncryptUtility.m in Sources */,
+				591B320A19D799A600AE9F72 /* FAUtility.m in Sources */,
 				593EA69B19BFF5A300E9F2BC /* FAMyPurchaseDetailOrderHeaderView.m in Sources */,
 				59EC7F0E19B83E5600972C0A /* FATradeController.m in Sources */,
 				592735B519C28DFC00FF42A1 /* FAMyFcpController.m in Sources */,
@@ -2060,18 +2059,19 @@
 				840DD88219CD776E0023885D /* FAStrategyDetailDescribViewCell.m in Sources */,
 				5982A30819D11FAC009EADD1 /* FAStrategyOrderBookDto.m in Sources */,
 				84844A5819C96A36001C2EC4 /* FAStrategyInfoViewCell.m in Sources */,
-				84844A6C19C96B25001C2EC4 /* FAMessageDetailViewCell.m in Sources */,
 				840DD87A19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m in Sources */,
 				5982A30E19D151FB009EADD1 /* FAFormater.m in Sources */,
 				84844A5F19C96A9F001C2EC4 /* FAJingXuanViewCell.m in Sources */,
 				592ABF9819CBBFEB002F0A8E /* FAMyCollectItemViewCell.m in Sources */,
 				593EA6E919C0495300E9F2BC /* FAMySignalItemHeaderView.m in Sources */,
+				84C4CB4819DA7E4E00C36159 /* FAMessageDetailViewCell2.m in Sources */,
 				593EA6A419BFF94000E9F2BC /* FAMyPurchaseDetailPositionViewCell.m in Sources */,
 				593EA6AE19BFF9F100E9F2BC /* FAMyPurchaseDetailOrderViewCell.m in Sources */,
 				84F2C75D19D2E59E006EBFC4 /* FAPaginatedDto.m in Sources */,
 				84490BA219D3BA7F00EA1850 /* FADummieStrategyDetailDto.m in Sources */,
 				598F291919B9D1710078C6C6 /* FAMyPurchaseController.m in Sources */,
 				592735DF19C2A1A100FF42A1 /* FAMemberRegisterController.m in Sources */,
+				84C4CB4319DA74B400C36159 /* FAMessageViewCell2.m in Sources */,
 				592A83F019C9256500DDE1B5 /* FAHttpUtility.m in Sources */,
 				849C563E19D574DA0057C158 /* FAStrategySearchHeaderView.m in Sources */,
 				84F2C75A19D2C98C006EBFC4 /* FADummieStrategyDetail2ViewModel.m in Sources */,
