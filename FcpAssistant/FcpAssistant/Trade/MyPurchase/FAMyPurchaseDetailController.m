@@ -102,7 +102,7 @@ const int profitSectionIndex =4;
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
     NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
     
     if(error == nil)
     {
