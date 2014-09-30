@@ -244,6 +244,7 @@
 		84C4CB4419DA74B400C36159 /* FAMessageViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4CB4219DA74B400C36159 /* FAMessageViewCell2.xib */; };
 		84C4CB4819DA7E4E00C36159 /* FAMessageDetailViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C4CB4619DA7E4E00C36159 /* FAMessageDetailViewCell2.m */; };
 		84C4CB4919DA7E4E00C36159 /* FAMessageDetailViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4CB4719DA7E4E00C36159 /* FAMessageDetailViewCell2.xib */; };
+		84C4CB4C19DA903700C36159 /* FAClientMessageDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C4CB4B19DA903700C36159 /* FAClientMessageDto.m */; };
 		84F2C74719D10251006EBFC4 /* JingXuan_bg_index_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73A19D10251006EBFC4 /* JingXuan_bg_index_green.png */; };
 		84F2C74819D10251006EBFC4 /* JingXuan_bg_index_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73B19D10251006EBFC4 /* JingXuan_bg_index_red.png */; };
 		84F2C74919D10251006EBFC4 /* JingXuan_bg_index_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F2C73C19D10251006EBFC4 /* JingXuan_bg_index_yellow.png */; };
@@ -613,6 +614,8 @@
 		84C4CB4519DA7E4E00C36159 /* FAMessageDetailViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailViewCell2.h; path = Message/DetailView/FAMessageDetailViewCell2.h; sourceTree = "<group>"; };
 		84C4CB4619DA7E4E00C36159 /* FAMessageDetailViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailViewCell2.m; path = Message/DetailView/FAMessageDetailViewCell2.m; sourceTree = "<group>"; };
 		84C4CB4719DA7E4E00C36159 /* FAMessageDetailViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailViewCell2.xib; path = Message/DetailView/FAMessageDetailViewCell2.xib; sourceTree = "<group>"; };
+		84C4CB4A19DA903700C36159 /* FAClientMessageDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAClientMessageDto.h; path = Model/ServerModel/FAClientMessageDto.h; sourceTree = "<group>"; };
+		84C4CB4B19DA903700C36159 /* FAClientMessageDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAClientMessageDto.m; path = Model/ServerModel/FAClientMessageDto.m; sourceTree = "<group>"; };
 		84F2C73A19D10251006EBFC4 /* JingXuan_bg_index_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JingXuan_bg_index_green.png; sourceTree = "<group>"; };
 		84F2C73B19D10251006EBFC4 /* JingXuan_bg_index_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JingXuan_bg_index_red.png; sourceTree = "<group>"; };
 		84F2C73C19D10251006EBFC4 /* JingXuan_bg_index_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JingXuan_bg_index_yellow.png; sourceTree = "<group>"; };
@@ -978,6 +981,8 @@
 				591B320F19D7D8C200AE9F72 /* FAStationAccount.m */,
 				591B321119D7F28100AE9F72 /* FAMemberRegistrationModel.h */,
 				591B321219D7F28100AE9F72 /* FAMemberRegistrationModel.m */,
+				84C4CB4A19DA903700C36159 /* FAClientMessageDto.h */,
+				84C4CB4B19DA903700C36159 /* FAClientMessageDto.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -2009,6 +2014,7 @@
 				59137A5219BEA7AF001F4977 /* FAPurchaseDetail.m in Sources */,
 				593EA6DC19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m in Sources */,
 				593E7DFC19D2AD42000997C6 /* FAStampDto.m in Sources */,
+				84C4CB4C19DA903700C36159 /* FAClientMessageDto.m in Sources */,
 				594FB07619C7FC81008EA26F /* FAAccountManager.m in Sources */,
 				592735CD19C292F000FF42A1 /* FAMoreProductViewCell.m in Sources */,
 				59137A4819BE9800001F4977 /* FAMyPurchaseViewCell.m in Sources */,

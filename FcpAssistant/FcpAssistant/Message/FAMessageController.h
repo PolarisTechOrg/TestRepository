@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMessageController : UITableViewController
+{
+    NSString *itemCellIdentifier;
+    
+    NSMutableArray *dataSource;
+}
 
 @end
