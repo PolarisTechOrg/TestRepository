@@ -13,6 +13,7 @@
 #import "FADummieStrategyDetailViewModel.h"
 #import "FAStrategySearchController.h"
 #import "FAStrategyFilterController.h"
+#import "MJRefresh.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -43,12 +44,41 @@
 
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];
     
+    
+    // 集成刷新控件
+    [self setupRefresh];
+    
+    // Load data
+    currentPageIndex = 1;
+    
     dataSource = [[NSMutableArray alloc] init];
-    NSArray *strategyList = [self LoadDataFromServer];
+    NSArray *strategyList = [self LoadDataFromServer:currentPageIndex];
     if(strategyList != nil && strategyList.count > 0)
     {
         [dataSource addObjectsFromArray:strategyList];
     }
+}
+
+- (void)setupRefresh
+{
+    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+}
+
+- (void)footerRereshing
+{
+    // 添加新数据
+    currentPageIndex++;
+    NSArray *strtegyList = [self LoadDataFromServer:currentPageIndex];
+    if(strtegyList != nil && strtegyList.count > 0)
+    {
+        [dataSource addObjectsFromArray:strtegyList];
+    }
+    
+    // 刷新表格UI
+    [self.tableView reloadData];
+    
+    // (在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.tableView footerEndRefreshing];
 }
 
 - (void)doSearch
@@ -77,9 +107,9 @@
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
--(NSArray *)LoadDataFromServer
+-(NSArray *)LoadDataFromServer:(int)pageIndex
 {
-    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=1", WEB_URL];
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=%@", WEB_URL, [NSNumber numberWithInt:pageIndex]];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     

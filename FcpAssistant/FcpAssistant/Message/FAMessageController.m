@@ -7,19 +7,22 @@
 //
 
 #import "FAMessageController.h"
-#import "FAMessageViewCell.h"
+#import "FAMessageViewCell2.h"
 #import "FAMessageDetailViewController.h"
 #import "FAStoreManager.h"
+#import "FAClientMessageDto.h"
+
+#import "FAFoundation.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
+#import "FAFormater.h"
 
 @interface FAMessageController ()
 
 @end
 
 @implementation FAMessageController
-{
-    NSString* itemCellIdentifier;
-    NSMutableArray *dataSource;
-}
 
 - (id)init
 {
@@ -39,9 +42,13 @@
     [self registerXibFile];
     
     self.navigationItem.title = @"消息";
-//    self.tableView.sectionFooterHeight = 0.5;
     
-    dataSource = [[FAStoreManager shareInstance] getMessageConfigArray];
+    dataSource = [[NSMutableArray alloc] init];
+    NSArray *messageList = [self LoadDataFromServer];
+    if(messageList != nil && messageList.count > 0)
+    {
+        [dataSource addObjectsFromArray:messageList];
+    }
 }
 
 -(void)initializeData
@@ -51,9 +58,30 @@
 
 -(void)registerXibFile
 {
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAMessageViewCell" bundle:nil];
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAMessageViewCell2" bundle:nil];
     
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
+}
+
+-(NSArray *)LoadDataFromServer
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
+        
+        return  dtoObjArray;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,24 +119,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FAMessageViewCell * cell = (FAMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+    FAMessageViewCell2 * cell = (FAMessageViewCell2 *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if(!cell)
     {
-        cell = [[FAMessageViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
+        cell = [[FAMessageViewCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     
-    if(indexPath.section < dataSource.count-1)
+    if(indexPath.row < dataSource.count)
     {
-        NSDictionary *messageDict = dataSource[indexPath.section];
-    
+        FAClientMessageDto *dto = dataSource[indexPath.row];
+        
 //        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
-        cell.imgMessageProvider.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
-        cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
-        cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
-        cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];
+//        cell.imgMessageType.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
+//        cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
+//        cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
+//        cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];
     }
     
     return cell;
