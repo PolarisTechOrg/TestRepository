@@ -94,16 +94,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
     // Return the number of sections.
-//    return dataSource.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
-//    return [dataSource[section] count];
+    return [dataSource count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -125,7 +123,6 @@
         cell = [[FAMessageViewCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    
     
     if(indexPath.row < dataSource.count)
     {
@@ -151,11 +148,11 @@
                 break;
                 
             case StrategyMessage:
-                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_02.png"];
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_01.png"];
                 break;
                 
             case ProviderMessage:
-                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_01.png"];
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_02.png"];
                 break;
                 
             default:
@@ -164,15 +161,12 @@
         cell.lblMessageProvider.text = dto.SenderName;
         cell.lblMessageDetail.text = dto.Context;
         cell.lblMessageArriveTime.text = [self localizateMessageTime:dto.MessageTime];
+        cell.SenderId = dto.SenderId;
+        cell.MessageId = dto.MessageId;
     }
     
     return cell;
 }
-//        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
-//        cell.imgMessageType.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
-//        cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
-//        cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
-//        cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];
 
 - (NSString *)localizateMessageTime:(NSDate *)messageTime
 {

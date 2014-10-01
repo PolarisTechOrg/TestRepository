@@ -19,4 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblMessageArriveTime;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblMessageDetail;
+
+@property (nonatomic, assign) int SenderId;
+
+@property (nonatomic, assign) int MessageId;
+
 @end
