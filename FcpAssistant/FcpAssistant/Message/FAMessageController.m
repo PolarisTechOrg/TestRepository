@@ -116,7 +116,6 @@
     return 61;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FAMessageViewCell2 * cell = (FAMessageViewCell2 *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
@@ -131,17 +130,54 @@
     if(indexPath.row < dataSource.count)
     {
         FAClientMessageDto *dto = dataSource[indexPath.row];
-        
+       
+        if(!dto)
+        {
+            return cell;
+        }
+
+        if(!dto.ReadFlag)
+        {
+            cell.iconMessageReadFlag.image = [UIImage imageNamed:nil];
+        }
+        else
+        {
+            cell.iconMessageReadFlag.image = [UIImage imageNamed:@"Strategy_icon_strategy_collection.png"];
+        }
+        switch (dto.MessageType) {
+                
+            case SystemMessage:
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_03.png"];
+                break;
+                
+            case StrategyMessage:
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_02.png"];
+                break;
+                
+            case ProviderMessage:
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_01.png"];
+                break;
+                
+            default:
+                break;
+        }
+        cell.lblMessageProvider.text = dto.SenderName;
+        cell.lblMessageDetail.text = dto.Context;
+        cell.lblMessageArriveTime.text = [self localizateMessageTime:dto.MessageTime];
+    }
+    
+    return cell;
+}
 //        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
 //        cell.imgMessageType.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
 //        cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
 //        cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
 //        cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];
-    }
-    
-    return cell;
-}
 
+- (NSString *)localizateMessageTime:(NSDate *)messageTime
+{
+    return nil;
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
