@@ -93,7 +93,7 @@ const int latedRecordSectionIndex = 3;
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
     NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:error];
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
     
     if(error == nil)
     {

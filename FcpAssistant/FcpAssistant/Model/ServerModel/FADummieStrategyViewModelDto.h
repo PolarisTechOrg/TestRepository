@@ -66,8 +66,13 @@
 //
 
 // 跟单人数。
+@property(nonatomic,assign) int CollectionNumber;
+
+// 跟单人数。
 @property(nonatomic,assign) int FollowNumber;
 
+//上架日期
+@property(nonatomic,copy) NSDate *OnlineDay;
 ///// <summary>
 ///// 购买限制
 ///// </summary>

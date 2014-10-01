@@ -25,7 +25,11 @@
 // 实盘累计收益率（实盘绩效）。
 @synthesize CumulativeReturnRatio;
 // 跟单人数。
+@synthesize CollectionNumber;
+// 跟单人数。
 @synthesize FollowNumber;
+//上架日期
+@synthesize OnlineDay;
 // 周收益
 @synthesize WeeklyReturn;
 // 胜率
