@@ -131,7 +131,7 @@
     if(indexPath.row < dataSource.count)
     {
         FAClientMessageDto *dto = dataSource[indexPath.row];
-            
+        
 //        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
 //        cell.imgMessageType.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
 //        cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
