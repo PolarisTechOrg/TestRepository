@@ -154,7 +154,10 @@ NSString* itemCellIdentifier;
             
             FADummieStrategyDetailViewModel *jingxuan = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[0];
             cell.lblStrategyName1.text = jingxuan.StrategyName;
-            cell.imgStrategyStar1.image = [UIImage imageNamed:@"common_star_5.png"];
+            int star = (int)ceil(jingxuan.Star);
+            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
+            
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"yyyy-MM-dd"];
             cell.lblUpdateDate1.text = [dateFormat stringFromDate:[NSDate date]];

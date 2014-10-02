@@ -30,7 +30,7 @@
     self = [super init];
     if (self)
     {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+//        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
         
     }
     return self;
@@ -129,7 +129,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 0.1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -193,7 +193,9 @@
 
 - (NSString *)localizateMessageTime:(NSDate *)messageTime
 {
-    return nil;
+    NSString *des = [messageTime description];
+    des = [des substringFromIndex:11];
+    return des;
 }
 
 // Override to support conditional editing of the table view.
