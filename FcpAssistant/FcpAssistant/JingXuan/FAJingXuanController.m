@@ -160,90 +160,115 @@ NSString* itemCellIdentifier;
             
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormat stringFromDate:[NSDate date]];
+            cell.lblUpdateDate1.text = [dateFormat stringFromDate:jingxuan.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = @"5";
-            cell.lblProviderName1.text = @"常胜将军";
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.FollowNumber];
+            cell.lblProviderName1.text = jingxuan.ProviderName;
             cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
-            cell.lblPerformanceNumber1.text = @"150.5%";
+            NSString* profitLineImageName = @"tmp_collect_profit_red";
+            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
+            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio *100];
             
-            cell.lblStrategyName2.text = @"精选赢家2号测试";
-            cell.lblCollectionPeople2.text = @"4";
+            FADummieStrategyDetailViewModel *jingxuan2 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[1];
+            cell.lblStrategyName2.text = jingxuan2.StrategyName;
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.FollowNumber];
             
-            cell.lblStrategyName3.text = @"精选赢家3号测试";
-            cell.lblCollectionPeople3.text = @"3";
+            FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[1];
+            cell.lblStrategyName3.text = jingxuan3.StrategyName;
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.FollowNumber];
         }
             break;
             
         case 1:
         {
-            cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_01"];
-            cell.lblTitle.text = @"趋势精选";
+            cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_02"];
+            cell.lblTitle.text = @"趋势策略";
             
-            cell.lblStrategyName1.text = @"精选赢家1号测试";
-            cell.imgStrategyStar1.image = [UIImage imageNamed:@"common_star_5.png"];
+            FADummieStrategyDetailViewModel *qushi = (FADummieStrategyDetailViewModel *)dataSourceQuShi[0];
+            cell.lblStrategyName1.text = qushi.StrategyName;
+            int star = (int)ceil(qushi.Star);
+            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
             NSDateFormatter *dateFormatQuShi = [[NSDateFormatter alloc] init];
             [dateFormatQuShi setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormatQuShi stringFromDate:[NSDate date]];
+            cell.lblUpdateDate1.text = [dateFormatQuShi stringFromDate:qushi.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = @"5";
-            cell.lblProviderName1.text = @"常胜将军";
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", qushi.FollowNumber];
+            cell.lblProviderName1.text = qushi.ProviderName;
             cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
-            cell.lblPerformanceNumber1.text = @"150.5%";
+            NSString* profitLineImageName = @"tmp_collect_profit_red";
+            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
+            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",qushi.CumulativeReturnRatio *100];
             
-            cell.lblStrategyName2.text = @"精选赢家2号测试";
-            cell.lblCollectionPeople2.text = @"4";
+            FADummieStrategyDetailViewModel *qushi2 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[1];
+            cell.lblStrategyName2.text = qushi2.StrategyName;
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", qushi2.FollowNumber];
             
-            cell.lblStrategyName3.text = @"精选赢家3号测试";
-            cell.lblCollectionPeople3.text = @"3";
+            FADummieStrategyDetailViewModel *qushi3 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[2];
+            cell.lblStrategyName3.text = qushi3.StrategyName;
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", qushi3.FollowNumber];
         }
             break;
             
         case 2:
         {
-            cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_01"];
+            cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_03"];
             cell.lblTitle.text = @"逆势策略";
             
-            cell.lblStrategyName1.text = @"精选赢家1号测试";
-            cell.imgStrategyStar1.image = [UIImage imageNamed:@"common_star_5.png"];
+            FADummieStrategyDetailViewModel *nishi = (FADummieStrategyDetailViewModel *)dataSourceNiShi[0];
+            cell.lblStrategyName1.text = nishi.StrategyName;
+            int star = (int)ceil(nishi.Star);
+            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
             NSDateFormatter *dateFormatNiShi = [[NSDateFormatter alloc] init];
             [dateFormatNiShi setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormatNiShi stringFromDate:[NSDate date]];
+            cell.lblUpdateDate1.text = [dateFormatNiShi stringFromDate:nishi.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = @"5";
-            cell.lblProviderName1.text = @"常胜将军";
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", nishi.FollowNumber];
+            cell.lblProviderName1.text = nishi.ProviderName;
             cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
-            cell.lblPerformanceNumber1.text = @"150.5%";
+            NSString* profitLineImageName = @"tmp_collect_profit_red";
+            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
+            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",nishi.CumulativeReturnRatio *100];
             
-            cell.lblStrategyName2.text = @"精选赢家2号测试";
-            cell.lblCollectionPeople2.text = @"4";
+            FADummieStrategyDetailViewModel *nishi2 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[1];
+            cell.lblStrategyName2.text = nishi2.StrategyName;
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", nishi2.FollowNumber];
             
-            cell.lblStrategyName3.text = @"精选赢家3号测试";
-            cell.lblCollectionPeople3.text = @"3";
+            FADummieStrategyDetailViewModel *nishi3 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[2];
+            cell.lblStrategyName3.text = nishi3.StrategyName;
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", nishi3.FollowNumber];
         }
             break;
             
         case 3:
         {
-            cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_01"];
+            cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_04"];
             cell.lblTitle.text = @"套利策略";
             
-            cell.lblStrategyName1.text = @"精选赢家1号测试";
-            cell.imgStrategyStar1.image = [UIImage imageNamed:@"common_star_5.png"];
+            FADummieStrategyDetailViewModel *taoli = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[0];
+            cell.lblStrategyName1.text = taoli.StrategyName;
+            int star = (int)ceil(taoli.Star);
+            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
             NSDateFormatter *dateFormatTaoLi = [[NSDateFormatter alloc] init];
             [dateFormatTaoLi setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormatTaoLi stringFromDate:[NSDate date]];
+            cell.lblUpdateDate1.text = [dateFormatTaoLi stringFromDate:taoli.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = @"5";
-            cell.lblProviderName1.text = @"常胜将军";
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", taoli.FollowNumber];
+            cell.lblProviderName1.text = taoli.ProviderName;
             cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
-            cell.lblPerformanceNumber1.text = @"150.5%";
+            NSString* profitLineImageName = @"tmp_collect_profit_red";
+            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
+            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",taoli.CumulativeReturnRatio *100];
             
-            cell.lblStrategyName2.text = @"精选赢家2号测试";
-            cell.lblCollectionPeople2.text = @"4";
+            FADummieStrategyDetailViewModel *taoli2 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[1];
+            cell.lblStrategyName2.text = taoli2.StrategyName;
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", taoli2.FollowNumber];
             
-            cell.lblStrategyName3.text = @"精选赢家3号测试";
-            cell.lblCollectionPeople3.text = @"3";
+//            FADummieStrategyDetailViewModel *taoli3 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[2];
+//            cell.lblStrategyName3.text = taoli3.StrategyName;
+//            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", taoli3.FollowNumber];
         }
             break;
             
