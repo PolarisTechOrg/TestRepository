@@ -182,12 +182,12 @@ const int latedRecordSectionIndex = 3;
 
 - (void)showProfitViewCell:(FAStrategyDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
+//    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
 }
 
 - (void)showLatedRecordViewCell:(FAStrategyDetailLatedRecordViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
+//    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

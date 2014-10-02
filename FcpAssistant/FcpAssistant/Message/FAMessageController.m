@@ -11,6 +11,7 @@
 #import "FAMessageDetailViewController.h"
 #import "FAStoreManager.h"
 #import "FAClientMessageDto.h"
+#import "FAMessage.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -44,7 +45,7 @@
     self.navigationItem.title = @"消息";
     
     dataSource = [[NSMutableArray alloc] init];
-    NSArray *messageList = [self LoadDataFromServer];
+    NSArray *messageList = [self LoadMessageDataFromServer];
     if(messageList != nil && messageList.count > 0)
     {
         [dataSource addObjectsFromArray:messageList];
@@ -63,7 +64,7 @@
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
--(NSArray *)LoadDataFromServer
+-(NSArray *)LoadMessageDataFromServer
 {
     NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message", WEB_URL];
     
@@ -76,7 +77,29 @@
     {
         NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
         
-        return  dtoObjArray;
+        NSMutableArray *messageArray = [NSMutableArray arrayWithCapacity:128];
+        for(id dto in dtoObjArray)
+        {
+            if(!dto)
+            {
+                continue;
+            }
+            
+            FAClientMessageDto *dtoMessage = (FAClientMessageDto *)dto;
+            FAMessage *message = [[FAMessage alloc] init];
+            message.ReadFlag = dtoMessage.ReadFlag;
+            message.MessageId = dtoMessage.MessageId;
+            message.MessageType = dtoMessage.MessageType;
+            message.SenderId = dtoMessage.SenderId;
+            message.SenderName = dtoMessage.SenderName;
+            message.MessageTime = dtoMessage.MessageTime;
+            message.Context = dtoMessage.Context;
+            
+            [messageArray addObject:message];
+        }
+        [messageArray sortUsingSelector:@selector(compareDate:)];
+        
+        return  messageArray;
     }
     else
     {

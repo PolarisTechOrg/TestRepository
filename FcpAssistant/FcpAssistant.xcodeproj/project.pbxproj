@@ -205,6 +205,8 @@
 		846C482819D7A93B00B456A4 /* Strategy_icon_strategy_detail_share_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C482419D7A93B00B456A4 /* Strategy_icon_strategy_detail_share_white.png */; };
 		846C482919D7A93B00B456A4 /* Strategy_icon_strategy_menu_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C482519D7A93B00B456A4 /* Strategy_icon_strategy_menu_white.png */; };
 		846C482A19D7A93B00B456A4 /* Strategy_icon_strategy_search_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C482619D7A93B00B456A4 /* Strategy_icon_strategy_search_white.png */; };
+		8473D3B319DCE80D009A2D4D /* FAMessageDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473D3B219DCE80D009A2D4D /* FAMessageDetail.m */; };
+		8473D3B919DCF390009A2D4D /* FAMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473D3B819DCF390009A2D4D /* FAMessage.m */; };
 		84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A3B19C96899001C2EC4 /* FAStrategyFilterController.m */; };
 		84844A3E19C96899001C2EC4 /* FAStrategyFilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A3C19C96899001C2EC4 /* FAStrategyFilterController.xib */; };
 		84844A4219C968D8001C2EC4 /* FAStrategyFilterViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A4019C968D8001C2EC4 /* FAStrategyFilterViewCell.m */; };
@@ -556,6 +558,10 @@
 		846C482419D7A93B00B456A4 /* Strategy_icon_strategy_detail_share_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strategy_icon_strategy_detail_share_white.png; sourceTree = "<group>"; };
 		846C482519D7A93B00B456A4 /* Strategy_icon_strategy_menu_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strategy_icon_strategy_menu_white.png; sourceTree = "<group>"; };
 		846C482619D7A93B00B456A4 /* Strategy_icon_strategy_search_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strategy_icon_strategy_search_white.png; sourceTree = "<group>"; };
+		8473D3B119DCE80D009A2D4D /* FAMessageDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetail.h; path = Model/CustomModel/FAMessageDetail.h; sourceTree = "<group>"; };
+		8473D3B219DCE80D009A2D4D /* FAMessageDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetail.m; path = Model/CustomModel/FAMessageDetail.m; sourceTree = "<group>"; };
+		8473D3B719DCF390009A2D4D /* FAMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessage.h; path = Model/CustomModel/FAMessage.h; sourceTree = "<group>"; };
+		8473D3B819DCF390009A2D4D /* FAMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessage.m; path = Model/CustomModel/FAMessage.m; sourceTree = "<group>"; };
 		84844A3A19C96899001C2EC4 /* FAStrategyFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyFilterController.h; path = Strategy/Filter/FAStrategyFilterController.h; sourceTree = "<group>"; };
 		84844A3B19C96899001C2EC4 /* FAStrategyFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyFilterController.m; path = Strategy/Filter/FAStrategyFilterController.m; sourceTree = "<group>"; };
 		84844A3C19C96899001C2EC4 /* FAStrategyFilterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategyFilterController.xib; path = Strategy/Filter/FAStrategyFilterController.xib; sourceTree = "<group>"; };
@@ -990,6 +996,10 @@
 		593CBC5D19D0F69B00B597A8 /* CustormModel */ = {
 			isa = PBXGroup;
 			children = (
+				8473D3B119DCE80D009A2D4D /* FAMessageDetail.h */,
+				8473D3B219DCE80D009A2D4D /* FAMessageDetail.m */,
+				8473D3B719DCF390009A2D4D /* FAMessage.h */,
+				8473D3B819DCF390009A2D4D /* FAMessage.m */,
 			);
 			name = CustormModel;
 			sourceTree = "<group>";
@@ -2053,6 +2063,7 @@
 				593EA6A919BFF9A300E9F2BC /* FAMyPurchaseDetailSignalViewCell.m in Sources */,
 				591B217619C14F8C00064F24 /* FAMyCollectItem.m in Sources */,
 				59EC7EF419B82B4600972C0A /* FAJingXuanController.m in Sources */,
+				8473D3B319DCE80D009A2D4D /* FAMessageDetail.m in Sources */,
 				5938187819D019D400AF8A46 /* FABuyedStrategyDto.m in Sources */,
 				5921B94A19C6DFFF00ACD5C4 /* FAConstants.m in Sources */,
 				59EC7EFF19B82BBF00972C0A /* FAMoreController.m in Sources */,
@@ -2080,6 +2091,7 @@
 				84C4CB4319DA74B400C36159 /* FAMessageViewCell2.m in Sources */,
 				592A83F019C9256500DDE1B5 /* FAHttpUtility.m in Sources */,
 				849C563E19D574DA0057C158 /* FAStrategySearchHeaderView.m in Sources */,
+				8473D3B919DCF390009A2D4D /* FAMessage.m in Sources */,
 				84F2C75A19D2C98C006EBFC4 /* FADummieStrategyDetail2ViewModel.m in Sources */,
 				5982A30219D11E31009EADD1 /* FAStrategyHoldingPositionDto.m in Sources */,
 				840DD8A019CD7D470023885D /* FAMessageDetailHeaderView.m in Sources */,

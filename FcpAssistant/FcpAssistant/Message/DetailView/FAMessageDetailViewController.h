@@ -12,7 +12,7 @@
 {    
     NSString *itemCellIdentifier;
     
-    NSMutableDictionary *dataSource;
+    NSArray *dataSource;
     
     int totalSecitonIndex;
 }

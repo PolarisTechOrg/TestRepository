@@ -9,6 +9,8 @@
 #import "FAMessageDetailViewController.h"
 #import "FAMessageDetailViewCell2.h"
 #import "FAClientMessageDto.h"
+#import "FAMessageDetail.h"
+#import "FAMessage.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -36,8 +38,8 @@
     
     self.navigationItem.title = @"详情";   
     
-    NSArray *messageList = [self LoadDataFromServer:SendId withType:MessageType];
-    dataSource = [self analyzeDataFromServer:messageList];
+    dataSource = [self LoadDataFromServer:SendId withType:MessageType];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -75,8 +77,9 @@
     if(error == nil)
     {
         NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
+        NSArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
         
-        return  dtoObjArray;
+        return  messageArray;
     }
     else
     {
@@ -84,14 +87,15 @@
     }
 }
 
-- (NSMutableDictionary *)analyzeDataFromServer:(NSArray *)data
+- (NSArray *)analyzeDataFromServer:(NSArray *)data
 {
     if(data == nil || data.count == 0)
     {
         return nil;
     }
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:128];
+//    NSMutableArray *detailArray = [NSMutableArray arrayWithCapacity:128];
+    NSMutableDictionary *detailDict = [NSMutableDictionary dictionaryWithCapacity:128];
     
     for(id item in data)
     {
@@ -99,35 +103,83 @@
         {
             continue;
         }
-        FAClientMessageDto *dto = (FAClientMessageDto *)item;
-        NSString *dateString = [self generateLocalDate:dto.MessageTime];
         
-        if([dict objectForKey:dateString])
+        FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
+        FAMessage *message = [[FAMessage alloc] init];
+        message.ReadFlag = dtoMessage.ReadFlag;
+        message.MessageId = dtoMessage.MessageId;
+        message.MessageType = dtoMessage.MessageType;
+        message.SenderId = dtoMessage.SenderId;
+        message.SenderName = dtoMessage.SenderName;
+        message.MessageTime = dtoMessage.MessageTime;
+        message.Context = dtoMessage.Context;
+        NSString *dateString = [self generateDate:dtoMessage.MessageTime];
+        
+        if([detailDict objectForKey:dateString])
         {
-            NSMutableArray *contentArray = (NSMutableArray *)[dict objectForKey:dateString];
-            [contentArray addObject:dto];
+            FAMessageDetail *detailTemp = (FAMessageDetail *)[detailDict objectForKey:dateString];
+            [detailTemp.DetailList addObject:message];
         }
         else
         {
-            NSMutableArray *newContentArray = [[NSMutableArray alloc] initWithObjects:dto, nil];
-            [dict setObject:newContentArray forKey:dateString];
+            FAMessageDetail *detail = [[FAMessageDetail alloc] init];
+            detail.SenderId = message.SenderId;
+            detail.MessageType = message.MessageType;
+            detail.Date = message.MessageTime;
+            detail.DateString = dateString;
+            detail.DetailList = [[NSMutableArray alloc] init];
+            [detail.DetailList addObject:message];
+            
+            [detailDict setObject:detail forKey:dateString];
         }
     }
     
-    return dict;
+    return [detailDict allValues];
 }
 
-- (NSString *)generateLocalDate:(NSDate *)date
+- (NSString *)generateDate:(NSDate *)date
 {
-    NSMutableString *dateString = [[NSMutableString alloc] init];
+    return [[date description] substringToIndex:10];
+//    NSMutableString *retString = nil;
+    
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    unsigned units = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
+//    NSDateComponents *comps = [calendar components:units fromDate:date];
+//    
+//    NSInteger year = [comps year];
+//    [retString appendFormat:@"%ld", [comps year]];
+//    [retString appendString:@"-"];
+//    [retString appendFormat:@"%ld", [comps month]];
+//    [retString appendString:@"-"];
+//    [retString appendFormat:@"%ld", [comps day]];
+//    
+//    return retString;
+}
+
+- (BOOL)compareDate:(NSDate *)first withAnother:(NSDate *)last
+{
+    bool isEquel = YES;
+    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    NSDateComponents *comps = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:date];
-    [dateString appendFormat:@"%ld年", (long)[comps year]];
-    [dateString appendFormat:@"%ld月", (long)[comps month]];
-    [dateString appendFormat:@"%ld日", (long)[comps day]];
+    NSDateComponents *comps1 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:first];
     
-    return dateString;
+    NSDateComponents *comps2 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:last];
+    
+    if([comps1 year] != [comps2 year])
+    {
+        return NO;
+    }
+    if([comps1 month] != [comps2 month])
+    {
+        return NO;
+    }
+    if([comps1 day] != [comps2 day])
+    {
+        return NO;
+    }
+    
+    return isEquel;
 }
 
 #pragma mark - Table view data source
@@ -141,7 +193,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return 2;
+    FAMessageDetail *detail = (FAMessageDetail *)dataSource[section];
+    return detail.DetailList.count;
 }
 
 
