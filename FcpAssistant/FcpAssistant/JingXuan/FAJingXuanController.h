@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FAJingXuanController : UITableViewController
-
-@property (nonatomic, strong) NSMutableArray *dataSource;
-
+{
+    NSArray *dataSourceJingXuan;
+    NSArray *dataSourceQuShi;
+    NSArray *dataSourceNiShi;
+    NSArray *dataSoruceTaoLi;
+}
 @end
