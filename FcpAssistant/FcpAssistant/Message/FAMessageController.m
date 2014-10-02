@@ -167,7 +167,8 @@
         switch (dto.MessageType) {
                 
             case SystemMessage:
-                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_03.png"];
+//                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_03.png"];
+                cell.imgMessageType.image = [UIImage imageNamed:@"moreItem_about.png"];
                 break;
                 
             case StrategyMessage:
