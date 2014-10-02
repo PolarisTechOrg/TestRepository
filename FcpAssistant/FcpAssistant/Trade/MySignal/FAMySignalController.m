@@ -9,14 +9,22 @@
 #import "FAMySignalController.h"
 #import "FAMySignalItemHeaderView.h"
 #import "FAMySignalItemViewCell.h"
+#import "FAMySignalItemHeaderView.h"
+#import "FAMyStrategySignalDto.h"
+#import "FAAccountManager.h"
+#import "FAFoundation.h"
+#import "FAHttpHead.h"
+#import "FAHttpUtility.h"
+#import "FAJSONSerialization.h"
+#import "FAUtility.h"
+#import "FAStrategySignalDto.h"
+#import "FAFormater.h"
 
 @interface FAMySignalController ()
 
 @end
 
 @implementation FAMySignalController
-
-NSString* itemCellIdentifier;
 
 - (void)viewDidLoad
 {
@@ -26,11 +34,52 @@ NSString* itemCellIdentifier;
     
     self.navigationItem.title = @"信号";
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    dataSource = [[NSMutableArray alloc] init ];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSArray *signalList = [self LoadDataFromServer];
+    if(signalList != nil && [signalList count] >0)
+    {
+        [dataSource addObjectsFromArray:signalList];
+    }
+}
+
+-(NSArray *) LoadDataFromServer
+{
+    FAStationFundAccount *selectFundAccount = [FAAccountManager shareInstance].selectFundAccount;
+    
+    if(selectFundAccount == nil)
+    {
+        return [[NSArray alloc]init];
+    }
+    
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/MyTrade?strategySignal=&fundAccount=%@&fundAccountType=%d",WEB_URL,selectFundAccount.FundAccount,selectFundAccount.FundAccountType];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        if(error == nil)
+        {
+            NSArray *dtoObj =[FAJSONSerialization toArray:[FAMyStrategySignalDto class] fromData:replyData];
+            return  dtoObj;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"MySignalExeption" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return nil;
+    }
+    @finally
+    {
+        
+    }
 }
 
 -(void)initializeData
@@ -52,16 +101,15 @@ NSString* itemCellIdentifier;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
-    // Return the number of sections.
-    return 3;
+    return dataSource.count;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    FAMyStrategySignalDto *dto = dataSource[section];
+    return dto.Detail.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,9 +120,19 @@ NSString* itemCellIdentifier;
     if (!cell)
     {
         cell = [[FAMySignalItemViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
+    
+    if (indexPath.section < dataSource.count)
+    {
+        FAMyStrategySignalDto *mySignal = dataSource[indexPath.section];
+        FAStrategySignalDto *item = mySignal.Detail[indexPath.row];
+        
+        cell.lblSignalTime.text = [FAFormater toShortTimeStringWithNSDate:item.SignalTime];
+        cell.lblSignalSeqNum.text =  [[NSString alloc] initWithFormat:@"%d",item.SignalNumber];
+        cell.lblInstrumentCode.text = item.InstrumentCode;
+        cell.lblPosition.text = [FAFormater toDecimalStringWithInt:item.Position];
+    }
+    
     return cell;
 }
 
@@ -91,12 +149,17 @@ NSString* itemCellIdentifier;
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-   
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMySignalItemHeaderView" owner:self options:nil];
+//    UIView *headerView = (UIView *) [nib objectAtIndex:0];
+//    headerView.frame = CGRectMake(0, 0, 320, 50);
+    FAMySignalItemHeaderView *headView = (FAMySignalItemHeaderView *)[nib objectAtIndex:0];
+    if (section < dataSource.count)
+    {
+        FAMyStrategySignalDto *mySignal = dataSource[section];
+        headView.lblHeaderName.text = mySignal.Description;
+    }
     
-    UIView *headerView = (UIView *) [nib objectAtIndex:0];
-    headerView.frame = CGRectMake(0, 0, 320, 50);
-    return headerView;
+    return headView;
 }
 
 

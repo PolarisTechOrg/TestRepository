@@ -15,6 +15,9 @@
 #import "FAHttpHead.h"
 #import "FAWishlistDto.h"
 #import "FADummieStrategyDetailViewModel.h"
+#import "FAUtility.h"
+#import "FAPurchaseProfitView.h"
+
 
 @interface FAMyCollectController ()
 
@@ -48,23 +51,35 @@
 
 -(FAWishlistDto *) LoadDataFromServer
 {
-    NSURL * requestUrl =[NSURL URLWithString:[WEB_URL stringByAppendingString:@"api/wishlist"]];
-    
-    
-    NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-    
-    if(error == nil)
+    @try
     {
-        FAWishlistDto *dtoObj =[FAJSONSerialization toObject:[FAWishlistDto class] fromData:replyData];
+        NSURL * requestUrl =[NSURL URLWithString:[WEB_URL stringByAppendingString:@"api/wishlist"]];
         
-        return  dtoObj;
         
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        if(error == nil)
+        {
+            FAWishlistDto *dtoObj =[FAJSONSerialization toObject:[FAWishlistDto class] fromData:replyData];
+            
+            return  dtoObj;
+            
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
     }
-    else
+    @catch (NSException *exception)
     {
-        NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
-        @throw ex;
+        [FAUtility showAlterViewWithException:exception];
+        return nil;
+    }
+    @finally
+    {
+        
     }
 
 }
@@ -107,6 +122,11 @@
 //    [self.navigationController pushViewController:detailController animated:YES];
 }
 
+-(NSString*)tableView:(UITableView*)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath*)indexpath
+{
+    return @"取消\r\n收藏";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FAMyCollectItemViewCell *cell = (FAMyCollectItemViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
@@ -114,10 +134,6 @@
     if (!cell)
     {
         cell = [[FAMyCollectItemViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-        
     }
     
     if (indexPath.row < dataSource.count)
@@ -129,9 +145,6 @@
         NSString* profitBackgroundImageName = @"mycollect_profit_red";
         cell.imgProfitBackground.image = [UIImage imageNamed:profitBackgroundImageName];
         
-        NSString* profitLineImageName = @"tmp_collect_profit_red";
-        cell.imgProfitLine.image = [UIImage imageNamed:profitLineImageName];
-        cell.imgProfitLine.image = [self drawPic:cell.imgProfitLine.image];
         cell.lblStrategyName.text = item.StrategyName;
         int star = (int)ceil(item.Star);
         NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
@@ -139,32 +152,23 @@
         cell.imgStragetyGrade.image = [UIImage imageNamed:gradeImageName];
         cell.lblStrategyProfitRate.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio *100];
         cell.lblStrategyProvider.text = item.ProviderName;
-        cell.lblCollectCount.text = [NSString stringWithFormat:@"%d",item.FollowNumber];
+        cell.lblCollectCount.text = [NSString stringWithFormat:@"%d",item.CollectionNumber];
+        
+        if(indexPath.row %2 == 0)
+        {
+        [cell.imgStrategyProfit setBackgroundColor:[UIColor yellowColor]];
+        }
+        else
+        {
+        [cell.imgStrategyProfit setBackgroundColor:[UIColor redColor]];
+        }
+//        FAPurchaseProfitView *profitView = [[FAPurchaseProfitView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
+//        
+//        [cell.imgProfitLine addSubview:profitView];
     }
     
     
     return cell;
-}
-
--(id)drawPic:(UIImage*) image
-{
-     UIGraphicsBeginImageContext(image.size);
-    
-    [image drawAtPoint:CGPointZero];
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context,5);
-        CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
-    
-    CGPoint first = CGPointMake(0,0);
-    CGPoint second = CGPointMake(200, 165);
-    
-    CGContextMoveToPoint(context,first.x
-                         ,first.y);
-    CGContextAddLineToPoint(context, second.x, second.y);
-    CGContextStrokePath(context);
-   
-    UIGraphicsEndImageContext();
-    return image;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -183,19 +187,61 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        FADummieStrategyDetailViewModel* item = dataSource[indexPath.row];
+        if([self cancelCollectStrategy:item.StrategyId] == YES)
+        {
+            [dataSource removeObject:item];
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
 
+-(BOOL) cancelCollectStrategy:(int) strategyId
+{
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/wishlist?strategyId=%d",WEB_URL,strategyId];
+        NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
+        
+        NSError *error;
+        FAHttpHead *httpHead = [FAHttpHead defaultInstance];
+        httpHead.Method = @"DELETE";
+        
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
+        NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
+        if(error == nil)
+        {
+            return YES;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return NO;
+    }
+    @finally
+    {
+        
+    }
+}
 
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    
 }
 */
 

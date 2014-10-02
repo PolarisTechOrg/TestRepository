@@ -18,7 +18,7 @@
                         <rect key="frame" x="10" y="0.0" width="300" height="30"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IF1407" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2J-WE-UMv">
-                        <rect key="frame" x="25" y="4" width="38" height="21"/>
+                        <rect key="frame" x="25" y="5" width="83" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                 <outlet property="lblOrderPosition" destination="g9Y-FV-j2k" id="dS6-Gb-0ZL"/>
                 <outlet property="lblPositionProfit" destination="mjO-tn-pBG" id="SWQ-J3-TDR"/>
             </connections>
-            <point key="canvasLocation" x="140" y="256"/>
+            <point key="canvasLocation" x="140" y="255"/>
         </tableViewCell>
     </objects>
     <resources>

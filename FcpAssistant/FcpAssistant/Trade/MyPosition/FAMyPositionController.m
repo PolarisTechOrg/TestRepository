@@ -9,6 +9,15 @@
 #import "FAMyPositionController.h"
 #import "FAMyPositionStrategyViewCell.h"
 #import "FAMyPositionStrategyHeaderView.h"
+#import "FAAccountManager.h"
+#import "FAFoundation.h"
+#import "FAHttpHead.h"
+#import "FAHttpUtility.h"
+#import "FAJSONSerialization.h"
+#import "FAUtility.h"
+#import "FAMyHoldingPositionDto.h"
+#import "FAStrategyHoldingPositionDto.h"
+#import "FAFormater.h"
 
 @interface FAMyPositionController ()
 
@@ -16,8 +25,8 @@
 
 @implementation FAMyPositionController
 
-int totalSecitonIndex = 0;
-NSString* strategyCellIdentifier;
+//int totalSecitonIndex = 0;
+
 
 - (void)viewDidLoad
 {
@@ -25,11 +34,15 @@ NSString* strategyCellIdentifier;
     [self initializeData];
     [self registerXibFile];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.title = @"持仓";
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.title = @"持仓";
+    dataSource = [[NSMutableArray alloc] init ];
+    
+    NSArray *positionList = [self LoadDataFromServer];
+    if(positionList != nil && [positionList count] >0)
+    {
+        [dataSource addObjectsFromArray:positionList];
+    }
 }
 
 -(void)initializeData
@@ -43,6 +56,45 @@ NSString* strategyCellIdentifier;
     [self.tableView registerNib:strategyCellNib forCellReuseIdentifier:strategyCellIdentifier];
 }
 
+-(NSArray *) LoadDataFromServer
+{
+    FAStationFundAccount *selectFundAccount = [FAAccountManager shareInstance].selectFundAccount;
+    
+    if(selectFundAccount == nil)
+    {
+        return [[NSArray alloc]init];
+    }
+    
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/MyTrade?holdingPosition=&fundAccount=%@&fundAccountType=%d",WEB_URL,selectFundAccount.FundAccount,selectFundAccount.FundAccountType];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        if(error == nil)
+        {
+            NSArray *dtoObj =[FAJSONSerialization toArray:[FAMyHoldingPositionDto class] fromData:replyData];
+            return  dtoObj;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"MyHoldingPositionExeption" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return nil;
+    }
+    @finally
+    {
+        
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -51,16 +103,15 @@ NSString* strategyCellIdentifier;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
-    // Return the number of sections.
-    return 5;
+    return dataSource.count;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    FAMyHoldingPositionDto *dto = dataSource[section];
+    return dto.Detail.count;
 }   	
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,6 +122,17 @@ NSString* strategyCellIdentifier;
      {
          cell = [[FAMyPositionStrategyViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:strategyCellIdentifier];
      }
+    if (indexPath.section < dataSource.count)
+    {
+        FAMyHoldingPositionDto *myHoldingPosition = dataSource[indexPath.section];
+        FAStrategyHoldingPositionDto *item = myHoldingPosition.Detail[indexPath.row];
+        
+        cell.lblInstrumentCode.text = item.InstrumentCode;
+        cell.lblOrderPosition.text = [FAFormater toDecimalStringWithInt:item.OrderPosition];
+        cell.lblPositionProfit.text = [FAFormater toDecimalStringWithDouble:item.HoldingProfit  decimalPlace:2];
+    }
+    
+
      return cell;
 }
 
@@ -89,9 +151,15 @@ NSString* strategyCellIdentifier;
 {
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPositionStrategyHeaderView" owner:self options:nil];
         
-    UIView *headerView = (UIView *) [nib objectAtIndex:0];
-    headerView.frame = CGRectMake(0, 0, 320, 50);
-    return headerView;
+    FAMyPositionStrategyHeaderView *headView = (FAMyPositionStrategyHeaderView *)[nib objectAtIndex:0];
+    if (section < dataSource.count)
+    {
+        FAMyHoldingPositionDto *myHoldingPosition = dataSource[section];
+        headView.lblHeaderName.text = myHoldingPosition.Description;
+    }
+    
+    return headView;
+
 }
 
 /*

@@ -28,7 +28,9 @@
 #import "FAStrategySignalDto.h"
 #import "FAStrategyOrderBookDto.h"
 #import "FAStrategyProfitDto.h"
-
+#import "FAAccountManager.h"
+#import "FAStationFundAccount.h"
+#import "FAUtility.h"
 
 @interface FAMyPurchaseDetailController ()
 
@@ -98,22 +100,41 @@ const int profitSectionIndex =4;
 
 -(FABuyedStrategyDetailDto *) LoadDataFromServer
 {
-    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyDetail?fundAccount=%@&fundAcccountType=%@&combineStrategyId=%d&strategyId=%d",WEB_URL,@"100146",@"33",self.combineStrategyId,self.strategyId];
-    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    FAStationFundAccount *selectFundAccount = [FAAccountManager shareInstance].selectFundAccount;
     
-    NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-    
-    if(error == nil)
+    if(selectFundAccount == nil)
     {
-        FABuyedStrategyDetailDto *dtoObj =[FAJSONSerialization toObject:[FABuyedStrategyDetailDto class] fromData:replyData];
+        return [[FABuyedStrategyDetailDto alloc]init];
+    }
+    
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/BuyedStrategyDetail?fundAccount=%@&fundAccountType=%d&combineStrategyId=%d&strategyId=%d",WEB_URL, selectFundAccount.FundAccount,selectFundAccount.FundAccountType,self.combineStrategyId,self.strategyId];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
         
-        return  dtoObj;
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        if(error == nil)
+        {
+            FABuyedStrategyDetailDto *dtoObj =[FAJSONSerialization toObject:[FABuyedStrategyDetailDto class] fromData:replyData];
+            
+            return  dtoObj;
+            
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
         
     }
-    else
+    @catch (NSException *exception)
     {
-        return nil;
+        [FAUtility showAlterViewWithException:exception];
+        return nil;    }
+    @finally
+    {
     }
     
 }

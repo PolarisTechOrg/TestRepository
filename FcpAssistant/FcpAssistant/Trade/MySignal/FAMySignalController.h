@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMySignalController : UITableViewController
-
+{
+    @private NSString* itemCellIdentifier;
+    @private NSMutableArray *dataSource;
+}
 @end

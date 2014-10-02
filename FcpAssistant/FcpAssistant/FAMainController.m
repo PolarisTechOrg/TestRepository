@@ -53,7 +53,11 @@
     FATradeController * tradeController =[[FATradeController alloc] initWithNibName:@"FATradeController" bundle:nil];
     tradeController.tabBarItem.title= @"交易";
     tradeController.tabBarItem.image = [UIImage imageNamed:@"Trade"];
-  
+
+//    FAStrategyController * tradeController =[[FAStrategyController alloc] init];
+//    tradeController.tabBarItem.title= @"交易";
+//    tradeController.tabBarItem.image = [UIImage imageNamed:@"Trade"];
+    
     UINavigationController * navTradeController = [[UINavigationController alloc] initWithRootViewController:tradeController];
     navTradeController.tabBarItem.title = @"交易";
     navTradeController.tabBarItem.image = [UIImage imageNamed:@"Trade"];
@@ -115,7 +119,7 @@
     
 //    [self.tabBar setSelectedImageTintColor:[UIColor redColor]];
 
-    self.selectedIndex = 2;
+    self.selectedIndex = 1;
 }
 
 - (void)didReceiveMemoryWarning

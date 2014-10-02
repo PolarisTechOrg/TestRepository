@@ -10,4 +10,6 @@
 
 @interface FAPurchaseProfitView : UIView
 
+@property(nonatomic,copy) UIColor *backgroundColor;
+@property(nonatomic,retain) NSMutableArray *dataSource;
 @end

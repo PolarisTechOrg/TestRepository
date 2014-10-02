@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAPurchaseProfitView.h"
 
 @interface FAMyCollectController : UITableViewController
 {

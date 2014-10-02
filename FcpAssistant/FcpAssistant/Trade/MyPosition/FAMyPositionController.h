@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMyPositionController : UITableViewController
-
+{
+    @private NSString *strategyCellIdentifier;
+    @private NSMutableArray *dataSource;
+}
 @end

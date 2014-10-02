@@ -7,10 +7,16 @@
 //
 
 #import "FAMyCollectItemViewCell.h"
+#import "FAStrategyProfitView.h"
 
 @implementation FAMyCollectItemViewCell
 
-- (void)awakeFromNib {
+
+- (void)awakeFromNib
+{
+    FAStrategyProfitView *profitView = [[FAStrategyProfitView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
+    [self.imgProfitLine addSubview:profitView];
+    self.imgStrategyProfit = profitView;
     // Initialization code
 }
 

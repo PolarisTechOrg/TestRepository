@@ -9,15 +9,22 @@
 #import "FAMyOrderBookController.h"
 #import "FAMyOrderBookItemHeaderView.h"
 #import "FAMyOrderBookItemViewCell.h"
+#import "FAAccountManager.h"
+#import "FAFoundation.h"
+#import "FAHttpHead.h"
+#import "FAHttpUtility.h"
+#import "FAJSONSerialization.h"
+#import "FAUtility.h"
+#import "FAStrategyOrderBookDto.h"
+#import "FAMyOrderBookDto.h"
+#import "FAFormater.h"
+#import "FAMyOrderBookItemHeaderView.h"
 
 @interface FAMyOrderBookController ()
 
 @end
 
 @implementation FAMyOrderBookController
-
-
-NSString* itemCellIdentifier;
 
 - (void)viewDidLoad
 {
@@ -26,12 +33,14 @@ NSString* itemCellIdentifier;
     [self registerXibFile];
     self.navigationItem.title = @"委托";
     self.tableView.sectionFooterHeight = 0;
-    // modify test
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    dataSource = [[NSMutableArray alloc] init ];
+    
+    NSArray *orderBookList = [self LoadDataFromServer];
+    if(orderBookList != nil && [orderBookList count] >0)
+    {
+        [dataSource addObjectsFromArray:orderBookList];
+    }
 }
 
 
@@ -46,6 +55,44 @@ NSString* itemCellIdentifier;
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
+-(NSArray *) LoadDataFromServer
+{
+    FAStationFundAccount *selectFundAccount = [FAAccountManager shareInstance].selectFundAccount;
+    
+    if(selectFundAccount == nil)
+    {
+        return [[NSArray alloc]init];
+    }
+    
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/MyTrade?orderBook=&fundAccount=%@&fundAccountType=%d",WEB_URL,selectFundAccount.FundAccount,selectFundAccount.FundAccountType];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        if(error == nil)
+        {
+            NSArray *dtoObj =[FAJSONSerialization toArray:[FAMyOrderBookDto class] fromData:replyData];
+            return  dtoObj;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"MyOrderBookExeption" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return nil;
+    }
+    @finally
+    {
+        
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -54,27 +101,38 @@ NSString* itemCellIdentifier;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
-    // Return the number of sections.
-    return 5;
+    return dataSource.count;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    FAMyOrderBookDto *dto = dataSource[section];
+    return dto.Detail.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+{  
     FAMyOrderBookItemViewCell* cell= (FAMyOrderBookItemViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if (!cell)
     {
         cell = [[FAMyOrderBookItemViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
     }
+    
+    if (indexPath.section < dataSource.count)
+    {
+        FAMyOrderBookDto *myOrderBook = dataSource[indexPath.section];
+        FAStrategyOrderBookDto *item = myOrderBook.Detail[indexPath.row];
+        
+        cell.lblInstrumentCode.text = item.InstrumentCode;
+        cell.lblOrderQtyAndTradeQty.text = [[NSString alloc] initWithFormat:@"%d/%d",item.TradeQty,item.OrderQty];
+        cell.lblTradePrice.text = [FAFormater toDecimalStringWithDouble:item.TradePrice decimalPlace:2];
+        cell.lblOrderStatus.text = @"";
+        cell.lblOrderTime.text = [FAFormater toShortTimeStringWithNSDate:item.OrderTime];
+    }
+    
     return cell;
 }
 
@@ -91,12 +149,16 @@ NSString* itemCellIdentifier;
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyOrderBookItemHeaderView" owner:self options:nil];
     
-    UIView *headerView = (UIView *) [nib objectAtIndex:0];
-    headerView.frame = CGRectMake(0, 0, 320, 50);
-    return headerView;
+    FAMyOrderBookItemHeaderView *headView = (FAMyOrderBookItemHeaderView *)[nib objectAtIndex:0];
+    if (section < dataSource.count)
+    {
+        FAMyOrderBookDto *myOrderBook = dataSource[section];
+        headView.lblHeaderName.text = myOrderBook.Description;
+    }
+    
+    return headView;
 }
 
 /*

@@ -10,7 +10,11 @@
 
 @implementation FAPurchaseProfitView
 
-- (void)drawRect:(CGRect)rect {
+@synthesize backgroundColor;
+@synthesize dataSource;
+
+- (void)drawRect:(CGRect)rect
+{
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -21,11 +25,12 @@
     // Closing the path connects the current point to the start of the current path.
     CGContextClosePath(context);
     // And stroke the path
-    [[UIColor blackColor] setStroke];
+    [self.backgroundColor setStroke];
     //CGContextStrokePath(context);
     [[UIColor redColor] setFill];
     CGContextDrawPath(context, kCGPathFillStroke);
     //kCGPathFillStroke,kCGPathFill,kCGPathStroke
+    
     
     
 }

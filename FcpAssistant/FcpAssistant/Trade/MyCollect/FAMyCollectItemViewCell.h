@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAStrategyProfitView.h"
 
 @interface FAMyCollectItemViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgProfitBackground;
@@ -17,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgStragetyGrade;
 @property (weak, nonatomic) IBOutlet UILabel *lblCollectCount;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyProvider;
+@property (weak, nonatomic) IBOutlet FAStrategyProfitView *imgStrategyProfit;
 
 @end
