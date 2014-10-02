@@ -11,6 +11,7 @@
 #import "FAMessageDetailViewController.h"
 #import "FAStoreManager.h"
 #import "FAClientMessageDto.h"
+#import "FAMessage.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -44,7 +45,7 @@
     self.navigationItem.title = @"消息";
     
     dataSource = [[NSMutableArray alloc] init];
-    NSArray *messageList = [self LoadDataFromServer];
+    NSArray *messageList = [self LoadMessageDataFromServer];
     if(messageList != nil && messageList.count > 0)
     {
         [dataSource addObjectsFromArray:messageList];
@@ -63,7 +64,7 @@
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
--(NSArray *)LoadDataFromServer
+-(NSArray *)LoadMessageDataFromServer
 {
     NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message", WEB_URL];
     
@@ -76,7 +77,29 @@
     {
         NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
         
-        return  dtoObjArray;
+        NSMutableArray *messageArray = [NSMutableArray arrayWithCapacity:128];
+        for(id dto in dtoObjArray)
+        {
+            if(!dto)
+            {
+                continue;
+            }
+            
+            FAClientMessageDto *dtoMessage = (FAClientMessageDto *)dto;
+            FAMessage *message = [[FAMessage alloc] init];
+            message.ReadFlag = dtoMessage.ReadFlag;
+            message.MessageId = dtoMessage.MessageId;
+            message.MessageType = dtoMessage.MessageType;
+            message.SenderId = dtoMessage.SenderId;
+            message.SenderName = dtoMessage.SenderName;
+            message.MessageTime = dtoMessage.MessageTime;
+            message.Context = dtoMessage.Context;
+            
+            [messageArray addObject:message];
+        }
+        [messageArray sortUsingSelector:@selector(compareDate:)];
+        
+        return  messageArray;
     }
     else
     {
@@ -94,16 +117,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
     // Return the number of sections.
-//    return dataSource.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
-//    return [dataSource[section] count];
+    return [dataSource count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -116,7 +137,6 @@
     return 61;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FAMessageViewCell2 * cell = (FAMessageViewCell2 *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
@@ -127,21 +147,54 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    
     if(indexPath.row < dataSource.count)
     {
         FAClientMessageDto *dto = dataSource[indexPath.row];
-        
-//        cell.iconMessageReadFlag.image = [UIImage imageNamed:[messageDict valueForKey:@"readFlag"][indexPath.row]];
-//        cell.imgMessageType.image = [UIImage imageNamed:[messageDict valueForKey:@"image"][indexPath.row]];
-//        cell.lblMessageProvider.text = [messageDict valueForKey:@"provider"][indexPath.row];
-//        cell.lblMessageArriveTime.text = [messageDict valueForKey:@"arriveTime"][indexPath.row];
-//        cell.lblMessageDetail.text = [messageDict valueForKey:@"body"][indexPath.row];
+       
+        if(!dto)
+        {
+            return cell;
+        }
+
+        if(!dto.ReadFlag)
+        {
+            cell.iconMessageReadFlag.image = [UIImage imageNamed:nil];
+        }
+        else
+        {
+            cell.iconMessageReadFlag.image = [UIImage imageNamed:@"Strategy_icon_strategy_collection.png"];
+        }
+        switch (dto.MessageType) {
+                
+            case SystemMessage:
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_03.png"];
+                break;
+                
+            case StrategyMessage:
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_01.png"];
+                break;
+                
+            case ProviderMessage:
+                cell.imgMessageType.image = [UIImage imageNamed:@"Message_icon_message_02.png"];
+                break;
+                
+            default:
+                break;
+        }
+        cell.lblMessageProvider.text = dto.SenderName;
+        cell.lblMessageDetail.text = dto.Context;
+        cell.lblMessageArriveTime.text = [self localizateMessageTime:dto.MessageTime];
+        cell.SenderId = dto.SenderId;
+        cell.MessageId = dto.MessageId;
     }
     
     return cell;
 }
 
+- (NSString *)localizateMessageTime:(NSDate *)messageTime
+{
+    return nil;
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

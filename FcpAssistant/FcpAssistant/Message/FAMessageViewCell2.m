@@ -10,6 +10,9 @@
 
 @implementation FAMessageViewCell2
 
+@synthesize SenderId;
+
+
 - (void)awakeFromNib {
     // Initialization code
 }

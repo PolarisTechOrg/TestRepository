@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FcpAssistant/Trade/MyPurchase/FAMyPurchaseDetailController.m"
-            timestampString = "433402430.222247"
+            filePath = "FcpAssistant/DataManager/FAAccountManager.m"
+            timestampString = "433665583.6757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-LoadDataFromServer"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-Login:withPassword:clientId:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FcpAssistant/DataManager/FAAccountManager.m"
-            timestampString = "433665583.6757"
+            filePath = "FcpAssistant/JingXuan/FAJingXuanController.m"
+            timestampString = "433927323.283267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-Login:withPassword:clientId:"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-loadDataFromServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

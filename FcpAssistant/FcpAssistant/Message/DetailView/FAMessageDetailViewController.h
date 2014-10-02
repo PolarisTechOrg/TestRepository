@@ -9,5 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMessageDetailViewController : UITableViewController
+{    
+    NSString *itemCellIdentifier;
+    
+    NSArray *dataSource;
+    
+    int totalSecitonIndex;
+}
+
+@property(nonatomic, assign) int SendId;
+
+@property(nonatomic, assign) int MessageType;
 
 @end

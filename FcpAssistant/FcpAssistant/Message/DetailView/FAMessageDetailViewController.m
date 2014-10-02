@@ -8,6 +8,16 @@
 
 #import "FAMessageDetailViewController.h"
 #import "FAMessageDetailViewCell2.h"
+#import "FAClientMessageDto.h"
+#import "FAMessageDetail.h"
+#import "FAMessage.h"
+
+#import "FAFoundation.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
+#import "FAFormater.h"
+
 
 @interface FAMessageDetailViewController ()
 
@@ -15,8 +25,10 @@
 
 @implementation FAMessageDetailViewController
 
-int totalSecitonIndex;
-NSString* cellIdentifier;
+@synthesize SendId;
+
+@synthesize MessageType;
+
 
 - (void)viewDidLoad {
     
@@ -24,7 +36,10 @@ NSString* cellIdentifier;
     [self initializeData];
     [self registerXibFile];
     
-    self.navigationItem.title = @"详情";
+    self.navigationItem.title = @"详情";   
+    
+    dataSource = [self LoadDataFromServer:SendId withType:MessageType];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,13 +51,13 @@ NSString* cellIdentifier;
 
 -(void)initializeData
 {
-    cellIdentifier = @"FAMessageDetailCell";
+    itemCellIdentifier = @"FAMessageDetailCell";
 }
 
 -(void)registerXibFile
 {
     UINib *cellNib = [UINib nibWithNibName:@"FAMessageDetailViewCell2" bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,18 +65,136 @@ NSString* cellIdentifier;
     // Dispose of any resources that can be recreated.
 }
 
+-(NSArray *)LoadDataFromServer:(int)sendId withType:(int)messageType
+{
+    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?sendId=%d&messageType=%d", WEB_URL, sendId, messageType];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
+        NSArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
+        
+        return  messageArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (NSArray *)analyzeDataFromServer:(NSArray *)data
+{
+    if(data == nil || data.count == 0)
+    {
+        return nil;
+    }
+    
+//    NSMutableArray *detailArray = [NSMutableArray arrayWithCapacity:128];
+    NSMutableDictionary *detailDict = [NSMutableDictionary dictionaryWithCapacity:128];
+    
+    for(id item in data)
+    {
+        if(!item)
+        {
+            continue;
+        }
+        
+        FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
+        FAMessage *message = [[FAMessage alloc] init];
+        message.ReadFlag = dtoMessage.ReadFlag;
+        message.MessageId = dtoMessage.MessageId;
+        message.MessageType = dtoMessage.MessageType;
+        message.SenderId = dtoMessage.SenderId;
+        message.SenderName = dtoMessage.SenderName;
+        message.MessageTime = dtoMessage.MessageTime;
+        message.Context = dtoMessage.Context;
+        NSString *dateString = [self generateDate:dtoMessage.MessageTime];
+        
+        if([detailDict objectForKey:dateString])
+        {
+            FAMessageDetail *detailTemp = (FAMessageDetail *)[detailDict objectForKey:dateString];
+            [detailTemp.DetailList addObject:message];
+        }
+        else
+        {
+            FAMessageDetail *detail = [[FAMessageDetail alloc] init];
+            detail.SenderId = message.SenderId;
+            detail.MessageType = message.MessageType;
+            detail.Date = message.MessageTime;
+            detail.DateString = dateString;
+            detail.DetailList = [[NSMutableArray alloc] init];
+            [detail.DetailList addObject:message];
+            
+            [detailDict setObject:detail forKey:dateString];
+        }
+    }
+    
+    return [detailDict allValues];
+}
+
+- (NSString *)generateDate:(NSDate *)date
+{
+    return [[date description] substringToIndex:10];
+//    NSMutableString *retString = nil;
+    
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    unsigned units = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
+//    NSDateComponents *comps = [calendar components:units fromDate:date];
+//    
+//    NSInteger year = [comps year];
+//    [retString appendFormat:@"%ld", [comps year]];
+//    [retString appendString:@"-"];
+//    [retString appendFormat:@"%ld", [comps month]];
+//    [retString appendString:@"-"];
+//    [retString appendFormat:@"%ld", [comps day]];
+//    
+//    return retString;
+}
+
+- (BOOL)compareDate:(NSDate *)first withAnother:(NSDate *)last
+{
+    bool isEquel = YES;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *comps1 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:first];
+    
+    NSDateComponents *comps2 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:last];
+    
+    if([comps1 year] != [comps2 year])
+    {
+        return NO;
+    }
+    if([comps1 month] != [comps2 month])
+    {
+        return NO;
+    }
+    if([comps1 day] != [comps2 day])
+    {
+        return NO;
+    }
+    
+    return isEquel;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     // Return the number of sections.
-    return 5;
+    return dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return 4;
+    FAMessageDetail *detail = (FAMessageDetail *)dataSource[section];
+    return detail.DetailList.count;
 }
 
 
@@ -69,13 +202,14 @@ NSString* cellIdentifier;
 {
     tableView.separatorStyle = UITableViewCellEditingStyleNone;
     
-    FAMessageDetailViewCell2 *cell= (FAMessageDetailViewCell2*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    FAMessageDetailViewCell2 *cell= (FAMessageDetailViewCell2*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if (!cell)
     {
-        cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
         cell.lblTextBody.numberOfLines = 0;
         cell.lblTextBody.adjustsFontSizeToFitWidth = YES;
+        
     }
     
     return cell;
