@@ -26,11 +26,6 @@
     if (CURRENT_SYS_VERSION >= 7.0)
     {
        self.window.frame = CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-        
-    }
-    else
-    {
-        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:106.0/255 green:68.0/255 blue:209.0/255 alpha:1.0]];
     }
     
     FAMainController * mainController = [[FAMainController alloc] init];
