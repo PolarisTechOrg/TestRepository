@@ -320,12 +320,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    if(indexPath.section ==0 && indexPath.row ==0)
-//    {
-        FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];
-        subController.hidesBottomBarWhenPushed = YES;
-        [self pushNewViewController:subController];
-//    }
+    FAMessageViewCell2 *cell = (FAMessageViewCell2 *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.iconMessageReadFlag.image = nil;
+    
+    FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];subController.hidesBottomBarWhenPushed = YES;
+    [self pushNewViewController:subController];
     
 }
 
