@@ -164,6 +164,22 @@
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
+- (UIImage *)GetProfitBackMap:(double)profit
+{
+    if (profit > 0)
+    {
+        return [UIImage imageNamed:@"mycollect_profit_red.png"];
+    }
+    else if (profit < 0)
+    {
+        return [UIImage imageNamed:@"mycollect_profit_green.png"];
+    }
+    else
+    {
+        return [UIImage imageNamed:@"mycollect_profit_yellow.png"];
+    }
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -181,8 +197,7 @@
         
         cell.StrategyId = item.StrategyId;
         
-        NSString* profitBackgroundImageName = @"mycollect_profit_red";
-        cell.imgPerformanceBackMap.image = [UIImage imageNamed:profitBackgroundImageName];
+        cell.imgPerformanceBackMap.image = [self GetProfitBackMap:item.CumulativeReturnRatio];
         
         NSString* profitLineImageName = @"tmp_collect_profit_red";
         cell.imgPerformanceMap.image = [UIImage imageNamed:profitLineImageName];

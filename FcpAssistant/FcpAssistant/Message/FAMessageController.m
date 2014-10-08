@@ -148,8 +148,8 @@
     if(!cell)
     {
         cell = [[FAMessageViewCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     if(indexPath.row < dataSource.count)
     {

@@ -23,8 +23,6 @@
 
 @implementation FAJingXuanController
 
-//NSString* itemCellIdentifier;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,6 +32,7 @@
     
     self.navigationItem.title = @"精选";
     
+    self.tableView.sectionFooterHeight = 0.1;
     [self loadDataFromServer];
     
 }
@@ -112,6 +111,18 @@
     return 1;
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 1;
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+//    view.backgroundColor = [UIColor redColor];
+//    return view;
+//}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
@@ -121,12 +132,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 202;
+    return 180;//202;
 }
 
-- (void)enterDetailView
-{
-}
+//- (void)enterDetailView
+//{
+//}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,10 +150,6 @@
     if(!cell)
     {
         cell = [[FAJingXuanViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
-        
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
 
     switch (indexPath.row)
@@ -164,7 +171,7 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.FollowNumber];
             cell.lblProviderName1.text = jingxuan.ProviderName;
-            cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:jingxuan.CumulativeReturnRatio];
             NSString* profitLineImageName = @"tmp_collect_profit_red";
             cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio *100];
@@ -195,7 +202,7 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", qushi.FollowNumber];
             cell.lblProviderName1.text = qushi.ProviderName;
-            cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:qushi.CumulativeReturnRatio];
             NSString* profitLineImageName = @"tmp_collect_profit_red";
             cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",qushi.CumulativeReturnRatio *100];
@@ -226,7 +233,7 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", nishi.FollowNumber];
             cell.lblProviderName1.text = nishi.ProviderName;
-            cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:nishi.CumulativeReturnRatio];
             NSString* profitLineImageName = @"tmp_collect_profit_red";
             cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",nishi.CumulativeReturnRatio *100];
@@ -257,7 +264,7 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", taoli.FollowNumber];
             cell.lblProviderName1.text = taoli.ProviderName;
-            cell.imgPerformanceBackMap1.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:taoli.CumulativeReturnRatio];
             NSString* profitLineImageName = @"tmp_collect_profit_red";
             cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",taoli.CumulativeReturnRatio *100];
@@ -277,6 +284,22 @@
     }
     
     return cell;
+}
+
+- (UIImage *)GetProfitBackMap:(double)profit
+{
+    if (profit > 0)
+    {
+        return [UIImage imageNamed:@"mycollect_profit_red.png"];
+    }
+    else if (profit < 0)
+    {
+        return [UIImage imageNamed:@"mycollect_profit_green.png"];
+    }
+    else
+    {
+        return [UIImage imageNamed:@"mycollect_profit_yellow.png"];
+    }
 }
 
 

@@ -258,7 +258,7 @@ const int latedRecordSectionIndex = 3;
     switch (section)
     {
         case topSectionIndex: return 0.1;
-        case describSectionIndex: return 73;
+        case describSectionIndex: return 38;
         case profitsSectionIndex: return 38;
         case latedRecordSectionIndex:return 38;
         default: return 60;
