@@ -26,11 +26,23 @@
 
 @implementation FAMessageController
 
-//- (id)init
-//{
-//    self = [super init];
-//    return self;
-//}
+- (int)loadUnReadMessageCount
+{NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?unRead", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        return [[FAJSONSerialization toObject:nil fromData:replyData] intValue];
+    }
+    else
+    {
+        return 0;
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -38,7 +50,8 @@
     [self initializeData];
     [self registerXibFile];
     
-    self.navigationItem.title = @"消息";
+    int unReadCount = [self loadUnReadMessageCount];
+    self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
     
     dataSource = [[NSMutableArray alloc] init];
     NSArray *messageList = [self LoadMessageDataFromServer];
