@@ -20,17 +20,4 @@
 
 @synthesize DetailList;
 
-
-- (NSComparisonResult)compareDate:(FAMessageDetail *)element
-{
-    if(Date >= [element Date])
-    {
-        return NSOrderedAscending;
-    }
-    else
-    {
-        return NSOrderedDescending;
-    }
-}
-
 @end

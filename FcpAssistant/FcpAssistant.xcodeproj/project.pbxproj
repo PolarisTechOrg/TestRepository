@@ -197,6 +197,7 @@
 		840DD89D19CD7CF90023885D /* FAMessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD89B19CD7CF90023885D /* FAMessageDetailViewController.xib */; };
 		840DD8A019CD7D470023885D /* FAMessageDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD89F19CD7D470023885D /* FAMessageDetailHeaderView.m */; };
 		840DD8A219CD7D650023885D /* FAMessageDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD8A119CD7D650023885D /* FAMessageDetailHeaderView.xib */; };
+		841D29FB19E4EA7D00BA4AE6 /* message_icon_dot_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 841D29FA19E4EA7D00BA4AE6 /* message_icon_dot_red.png */; };
 		84450C2219D7EEC200BF942A /* FAErrorExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 84450C2119D7EEC200BF942A /* FAErrorExtractor.m */; };
 		84490BA219D3BA7F00EA1850 /* FADummieStrategyDetailDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84490BA119D3BA7F00EA1850 /* FADummieStrategyDetailDto.m */; };
 		84490BA519D3BAD000EA1850 /* FAStrategyDescriptionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84490BA419D3BAD000EA1850 /* FAStrategyDescriptionViewModel.m */; };
@@ -554,6 +555,7 @@
 		840DD89E19CD7D470023885D /* FAMessageDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailHeaderView.h; path = Message/DetailView/FAMessageDetailHeaderView.h; sourceTree = "<group>"; };
 		840DD89F19CD7D470023885D /* FAMessageDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailHeaderView.m; path = Message/DetailView/FAMessageDetailHeaderView.m; sourceTree = "<group>"; };
 		840DD8A119CD7D650023885D /* FAMessageDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailHeaderView.xib; path = Message/DetailView/FAMessageDetailHeaderView.xib; sourceTree = "<group>"; };
+		841D29FA19E4EA7D00BA4AE6 /* message_icon_dot_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_icon_dot_red.png; sourceTree = "<group>"; };
 		84450C2019D7EEC200BF942A /* FAErrorExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAErrorExtractor.h; path = Http/FAErrorExtractor.h; sourceTree = "<group>"; };
 		84450C2119D7EEC200BF942A /* FAErrorExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAErrorExtractor.m; path = Http/FAErrorExtractor.m; sourceTree = "<group>"; };
 		84490BA019D3BA7F00EA1850 /* FADummieStrategyDetailDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FADummieStrategyDetailDto.h; path = Model/ServerModel/FADummieStrategyDetailDto.h; sourceTree = "<group>"; };
@@ -1780,6 +1782,7 @@
 		84F2C74219D10251006EBFC4 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				841D29FA19E4EA7D00BA4AE6 /* message_icon_dot_red.png */,
 				846C481D19D7A79000B456A4 /* message_icon_message_01.png */,
 				846C481E19D7A79000B456A4 /* message_icon_message_02.png */,
 				846C481F19D7A79000B456A4 /* message_icon_message_03.png */,
@@ -1955,6 +1958,7 @@
 				840DD8A219CD7D650023885D /* FAMessageDetailHeaderView.xib in Resources */,
 				849C563819D55F8E0057C158 /* Strategy_icon_strategy_order.png in Resources */,
 				59EC7F0019B82BBF00972C0A /* FAMoreController.xib in Resources */,
+				841D29FB19E4EA7D00BA4AE6 /* message_icon_dot_red.png in Resources */,
 				593EA69319BFF4E700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.xib in Resources */,
 				593EA69119BFE94100E9F2BC /* FAMyPurchaseDetailPositionHeaderView.xib in Resources */,
 				594FB09A19C82637008EA26F /* common_star_5.png in Resources */,
@@ -2254,7 +2258,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2271,7 +2275,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

@@ -23,7 +23,7 @@
 
 @implementation FAJingXuanController
 
-NSString* itemCellIdentifier;
+//NSString* itemCellIdentifier;
 
 - (void)viewDidLoad
 {

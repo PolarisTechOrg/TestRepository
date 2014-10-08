@@ -97,7 +97,11 @@
             
             [messageArray addObject:message];
         }
-        [messageArray sortUsingSelector:@selector(compareDate:)];
+        
+        // sort
+//        [messageArray sortUsingSelector:@selector(compareDate:)];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:YES];
+        [messageArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
         
         return  messageArray;
     }
@@ -162,7 +166,7 @@
         }
         else
         {
-            cell.iconMessageReadFlag.image = [UIImage imageNamed:@"Strategy_icon_strategy_collection.png"];
+            cell.iconMessageReadFlag.image = [UIImage imageNamed:@"message_icon_dot_red.png"];
         }
         switch (dto.MessageType) {
                 

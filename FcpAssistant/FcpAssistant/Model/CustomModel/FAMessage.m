@@ -26,17 +26,4 @@
 
 @synthesize Context;
 
-
-- (NSComparisonResult)compareDate:(FAMessage *)element
-{
-    if(MessageTime >= [element MessageTime])
-    {
-        return NSOrderedAscending;
-    }
-    else
-    {
-        return NSOrderedDescending;
-    }
-}
-
 @end

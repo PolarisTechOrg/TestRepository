@@ -14,5 +14,7 @@
     NSArray *dataSourceQuShi;
     NSArray *dataSourceNiShi;
     NSArray *dataSoruceTaoLi;
+    
+    NSString* itemCellIdentifier;
 }
 @end

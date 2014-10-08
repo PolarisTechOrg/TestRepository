@@ -27,7 +27,4 @@
 
 @property(nonatomic, copy) NSString *Context;
 
-
-- (NSComparisonResult)compareDate:(FAMessage *)element;
-
 @end

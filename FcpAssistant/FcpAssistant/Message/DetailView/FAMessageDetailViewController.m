@@ -39,13 +39,6 @@
     self.navigationItem.title = @"详情";   
     
     dataSource = [self LoadDataFromServer:SendId withType:MessageType];
-
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
@@ -78,6 +71,10 @@
     {
         NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
         NSArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
+        
+        // sort
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:YES];
+        [messageArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
         
         return  messageArray;
     }

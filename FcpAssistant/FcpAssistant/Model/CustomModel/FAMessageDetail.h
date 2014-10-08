@@ -22,7 +22,4 @@
 
 @property(nonatomic, retain) NSMutableArray *DetailList;
 
-
-- (NSComparisonResult)compareDate:(FAMessageDetail *)element;
-
 @end
