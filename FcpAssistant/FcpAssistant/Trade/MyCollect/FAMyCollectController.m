@@ -17,6 +17,8 @@
 #import "FADummieStrategyDetailViewModel.h"
 #import "FAUtility.h"
 #import "FAPurchaseProfitView.h"
+#import "FAChartDto.h"
+#import "FADrawedReturnViewModel.h"
 
 
 @interface FAMyCollectController ()
@@ -45,6 +47,7 @@
         [dataSource addObjectsFromArray:wishList.Items];
     }
   
+    [self loadChartData:wishList.Items];
 
 
 }
@@ -82,6 +85,50 @@
         
     }
 
+}
+
+-(void) loadChartData:(NSArray *) strategies
+{
+    chartDic = [[NSMutableDictionary alloc]initWithCapacity:10];
+    
+    if(strategies == nil || strategies.count <=0)
+    {
+        return;
+    }
+    
+    for (FADummieStrategyViewModelDto *item in strategies)
+    {
+        
+        @try
+        {
+            NSString *requestStr =[NSString stringWithFormat:@"%@api/ChartData?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d",WEB_URL,item.StrategyId,3,6,118];
+            NSURL * requestUrl =[NSURL URLWithString:requestStr];
+            
+            NSError *error;
+            NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+            
+            if(error == nil)
+            {
+                FAChartDto *dtoObj =[FAJSONSerialization toObject:[FAChartDto class] fromData:replyData];
+                [chartDic setValue:dtoObj forKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
+                
+            }
+            else
+            {
+                NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+                @throw ex;
+            }
+        }
+        @catch (NSException *exception)
+        {
+            [FAUtility showAlterViewWithException:exception];
+        }
+        @finally
+        {
+            
+        }
+    }
+    
 }
 
 -(void)initializeData
@@ -154,14 +201,35 @@
         cell.lblStrategyProvider.text = item.ProviderName;
         cell.lblCollectCount.text = [NSString stringWithFormat:@"%d",item.CollectionNumber];
         
-        if(indexPath.row %2 == 0)
+        FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
+        if (chartDto !=nil && chartDto.Items.count >0)
         {
-        [cell.imgStrategyProfit setBackgroundColor:[UIColor yellowColor]];
+            cell.imgStrategyProfit.dataSource = chartDto.Items;
         }
         else
         {
-        [cell.imgStrategyProfit setBackgroundColor:[UIColor redColor]];
+            cell.imgStrategyProfit.dataSource = nil;
         }
+
+        if(indexPath.row %3 == 0)
+        {
+            cell.imgProfitBackground.image = [UIImage imageNamed:@"mycollect_profit_green.png"];
+            cell.imgStrategyProfit.backgroundColor = [UIColor colorWithRed:240.0/255 green:255.0/255 blue:210.0/255 alpha:1.0];
+            cell.imgStrategyProfit.profitLineColor = [UIColor colorWithRed:2.0/255 green:71.0/255 blue:2.0/255 alpha:1.0];
+        }
+        else if(indexPath.row %3 == 1)
+        {
+            cell.imgProfitBackground.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
+            cell.imgStrategyProfit.backgroundColor = [UIColor colorWithRed:255.0/255 green:218.0/255 blue:210.0/255 alpha:1.0];
+            cell.imgStrategyProfit.profitLineColor = [UIColor colorWithRed:204.0/255 green:3.0/255 blue:3.0/255 alpha:1.0];
+        }
+        else
+        {
+            cell.imgProfitBackground.image = [UIImage imageNamed:@"mycollect_profit_yellow.png"];
+            cell.imgStrategyProfit.backgroundColor = [UIColor colorWithRed:255.0/255 green:255.0/255 blue:204.0/255 alpha:1.0];
+            cell.imgStrategyProfit.profitLineColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1.0];
+        }
+        [cell.imgStrategyProfit setNeedsDisplay];
 //        FAPurchaseProfitView *profitView = [[FAPurchaseProfitView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
 //        
 //        [cell.imgProfitLine addSubview:profitView];

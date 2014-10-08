@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMoreController : UITableViewController
-
+{
+    @private NSString *itemCellIdentifier;
+    @private NSMutableArray *dataSource;
+}
 @end

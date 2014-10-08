@@ -10,12 +10,16 @@
 
 @interface FAStrategyProfitView : UIView
 {
-   UIColor *backgroundColor;
+@private double maxValue;
+@private double minValue;
+@private CGFloat xInterval;
+@private CGFloat yPointValue;
 }
 
--(void)setBackgroundColor:(UIColor *) backColor;
--(UIColor *) getBackgroundColor;
+//-(void)setBackgroundColor:(UIColor *) backColor;
+//-(UIColor *) getBackgroundColor;
 
-
-@property(nonatomic,retain) NSMutableArray *dataSource;
+@property(nonatomic,retain) NSArray *dataSource;
+@property(nonatomic,retain) UIColor *backgroundColor;
+@property(nonatomic,retain) UIColor *profitLineColor;
 @end

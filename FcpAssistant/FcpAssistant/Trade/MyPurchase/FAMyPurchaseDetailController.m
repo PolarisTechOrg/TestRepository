@@ -164,7 +164,7 @@ const int profitSectionIndex =4;
         case orderSectionIndex:
             return dataSource.OrderBookList.count;
         case profitSectionIndex:
-            return dataSource.HistoryProfitList.count;
+            return 1;
         default: return 0;
     }
     return 0;
@@ -243,9 +243,13 @@ const int profitSectionIndex =4;
             if (!cell)
             {
                 cell = [[FAMyPurchaseDetailTopViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topCellIdentifier];
-
+                UIView *tempView = [[UIView alloc] init];
+                [cell setBackgroundView:tempView];
+                [cell setBackgroundColor:[UIColor clearColor]];
             }
             [self showTopViewCell:cell];
+            cell.indentationWidth =0.1;
+            cell.indentationLevel =0;
             return cell;
         }
         case positionSectionIndex:

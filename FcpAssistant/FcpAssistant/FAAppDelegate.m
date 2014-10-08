@@ -25,7 +25,7 @@
     
     if (CURRENT_SYS_VERSION >= 7.0)
     {
-       self.window.frame = CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
+       //self.window.frame = CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
     }
     
     FAMainController * mainController = [[FAMainController alloc] init];
