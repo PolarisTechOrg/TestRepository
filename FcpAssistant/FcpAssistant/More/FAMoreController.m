@@ -22,8 +22,7 @@
 
 @implementation FAMoreController
 
-NSString* itemCellIdentifier;
-NSMutableArray *dataSource;
+
 
 - (void)viewDidLoad
 {

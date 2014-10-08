@@ -15,6 +15,8 @@
     @private NSString* itemCellIdentifier;
     
     @private NSMutableArray *dataSource;
+    
+    @private NSDictionary *chartDic;
 }
 
 @end

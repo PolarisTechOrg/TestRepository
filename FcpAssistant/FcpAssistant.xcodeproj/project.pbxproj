@@ -181,6 +181,12 @@
 		59EC7F0F19B83E5600972C0A /* FATradeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59EC7F0D19B83E5600972C0A /* FATradeController.xib */; };
 		59EC7F1819B8515A00972C0A /* FATradeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC7F1619B8515A00972C0A /* FATradeViewCell.m */; };
 		59EC7F1919B8515A00972C0A /* FATradeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59EC7F1719B8515A00972C0A /* FATradeViewCell.xib */; };
+		59FB1C1819E50EE6006A648C /* FAChartDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FB1C1719E50EE6006A648C /* FAChartDto.m */; };
+		59FB1C1B19E50FC1006A648C /* FADrawedReturnViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FB1C1A19E50FC1006A648C /* FADrawedReturnViewModel.m */; };
+		59FB1C2119E535AB006A648C /* btn_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1C1D19E535AB006A648C /* btn_detail.png */; };
+		59FB1C2219E535AB006A648C /* btn_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1C1E19E535AB006A648C /* btn_login.png */; };
+		59FB1C2319E535AB006A648C /* btn_logoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1C1F19E535AB006A648C /* btn_logoff.png */; };
+		59FB1C2419E535AB006A648C /* btn_registration.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1C2019E535AB006A648C /* btn_registration.png */; };
 		840DD87A19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD87819CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m */; };
 		840DD87B19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD87919CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.xib */; };
 		840DD88219CD776E0023885D /* FAStrategyDetailDescribViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD88019CD776E0023885D /* FAStrategyDetailDescribViewCell.m */; };
@@ -530,6 +536,14 @@
 		59EC7F1519B8515A00972C0A /* FATradeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FATradeViewCell.h; path = Trade/FATradeViewCell.h; sourceTree = "<group>"; };
 		59EC7F1619B8515A00972C0A /* FATradeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FATradeViewCell.m; path = Trade/FATradeViewCell.m; sourceTree = "<group>"; };
 		59EC7F1719B8515A00972C0A /* FATradeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FATradeViewCell.xib; path = Trade/FATradeViewCell.xib; sourceTree = "<group>"; };
+		59FB1C1619E50EE6006A648C /* FAChartDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAChartDto.h; path = Model/ServerModel/FAChartDto.h; sourceTree = "<group>"; };
+		59FB1C1719E50EE6006A648C /* FAChartDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAChartDto.m; path = Model/ServerModel/FAChartDto.m; sourceTree = "<group>"; };
+		59FB1C1919E50FC1006A648C /* FADrawedReturnViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FADrawedReturnViewModel.h; path = Model/ServerModel/FADrawedReturnViewModel.h; sourceTree = "<group>"; };
+		59FB1C1A19E50FC1006A648C /* FADrawedReturnViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FADrawedReturnViewModel.m; path = Model/ServerModel/FADrawedReturnViewModel.m; sourceTree = "<group>"; };
+		59FB1C1D19E535AB006A648C /* btn_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_detail.png; path = ImageSource/btnBackImage/btn_detail.png; sourceTree = "<group>"; };
+		59FB1C1E19E535AB006A648C /* btn_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_login.png; path = ImageSource/btnBackImage/btn_login.png; sourceTree = "<group>"; };
+		59FB1C1F19E535AB006A648C /* btn_logoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_logoff.png; path = ImageSource/btnBackImage/btn_logoff.png; sourceTree = "<group>"; };
+		59FB1C2019E535AB006A648C /* btn_registration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_registration.png; path = ImageSource/btnBackImage/btn_registration.png; sourceTree = "<group>"; };
 		840DD87719CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyDetailLatedRecordViewCell.h; path = Strategy/FAStrategyDetailLatedRecordViewCell.h; sourceTree = "<group>"; };
 		840DD87819CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyDetailLatedRecordViewCell.m; path = Strategy/FAStrategyDetailLatedRecordViewCell.m; sourceTree = "<group>"; };
 		840DD87919CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategyDetailLatedRecordViewCell.xib; path = Strategy/FAStrategyDetailLatedRecordViewCell.xib; sourceTree = "<group>"; };
@@ -1010,6 +1024,10 @@
 				59D53D1B19DBF6680070C644 /* FAMyOrderBookDto.m */,
 				59D53D1D19DBFD190070C644 /* FAMyStrategySignalDto.h */,
 				59D53D1E19DBFD190070C644 /* FAMyStrategySignalDto.m */,
+				59FB1C1619E50EE6006A648C /* FAChartDto.h */,
+				59FB1C1719E50EE6006A648C /* FAChartDto.m */,
+				59FB1C1919E50FC1006A648C /* FADrawedReturnViewModel.h */,
+				59FB1C1A19E50FC1006A648C /* FADrawedReturnViewModel.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -1481,6 +1499,7 @@
 		59EC7F1A19B8593600972C0A /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				59FB1C1C19E53591006A648C /* btnBackImage */,
 				849C561E19D55F8E0057C158 /* Strategy */,
 				84F2C73919D10251006EBFC4 /* JingXuan */,
 				84F2C74219D10251006EBFC4 /* Message */,
@@ -1500,6 +1519,17 @@
 				5916F33519B95A4800BE7D1D /* tabBarImage */,
 			);
 			name = ImageSource;
+			sourceTree = "<group>";
+		};
+		59FB1C1C19E53591006A648C /* btnBackImage */ = {
+			isa = PBXGroup;
+			children = (
+				59FB1C1D19E535AB006A648C /* btn_detail.png */,
+				59FB1C1E19E535AB006A648C /* btn_login.png */,
+				59FB1C1F19E535AB006A648C /* btn_logoff.png */,
+				59FB1C2019E535AB006A648C /* btn_registration.png */,
+			);
+			name = btnBackImage;
 			sourceTree = "<group>";
 		};
 		840DD87419CD75E50023885D /* DescribCellView */ = {
@@ -1872,6 +1902,7 @@
 				849C563419D55F8E0057C158 /* Strategy_icon_strategy_collection.png in Resources */,
 				592A83FC19C97AEB00DDE1B5 /* tmp_purchase_profit.png in Resources */,
 				594FB08A19C81D2E008EA26F /* common_holding_no.png in Resources */,
+				59FB1C2419E535AB006A648C /* btn_registration.png in Resources */,
 				591B218A19C17FCB00064F24 /* moreItem_about.png in Resources */,
 				593EA69819BFF58100E9F2BC /* FAMyPurchaseDetailOrderHeaderView.xib in Resources */,
 				591B219019C17FCB00064F24 /* moreItem_share.png in Resources */,
@@ -1895,6 +1926,7 @@
 				593EA6F219C04DA700E9F2BC /* FAMyOrderBookItemViewCell.xib in Resources */,
 				59EC7F0F19B83E5600972C0A /* FATradeController.xib in Resources */,
 				849C563319D55F8E0057C158 /* Strategy_icon_single.png in Resources */,
+				59FB1C2219E535AB006A648C /* btn_login.png in Resources */,
 				598F290D19B9AED10078C6C6 /* tradeItem_Order@2x.png in Resources */,
 				849C563019D55F8E0057C158 /* Strategy_icon_combination.png in Resources */,
 				59137A4919BE9800001F4977 /* FAMyPurchaseViewCell.xib in Resources */,
@@ -1939,6 +1971,7 @@
 				593EA6F719C04DF600E9F2BC /* FAMyOrderBookItemHeaderView.xib in Resources */,
 				84F2C74B19D10251006EBFC4 /* JingXuan_icon_index_02.png in Resources */,
 				592735CE19C292F000FF42A1 /* FAMoreProductViewCell.xib in Resources */,
+				59FB1C2319E535AB006A648C /* btn_logoff.png in Resources */,
 				592735B619C28DFC00FF42A1 /* FAMyFcpController.xib in Resources */,
 				849C562E19D55F8E0057C158 /* Strategy_bg_list_red.png in Resources */,
 				59137A4419BE8C57001F4977 /* FAMySignalController.xib in Resources */,
@@ -1949,6 +1982,7 @@
 				598F291A19B9D1710078C6C6 /* FAMyPurchaseController.xib in Resources */,
 				84844A6019C96A9F001C2EC4 /* FAJingXuanViewCell.xib in Resources */,
 				84844A4819C96952001C2EC4 /* FAStrategySearchController.xib in Resources */,
+				59FB1C2119E535AB006A648C /* btn_detail.png in Resources */,
 				598F290F19B9AED10078C6C6 /* tradeItem_Position@2x.png in Resources */,
 				849C563119D55F8E0057C158 /* Strategy_icon_holding_no.png in Resources */,
 				591EA2E019BEDE4F00EED52C /* FAMyPurchaseDetailTopViewCell.xib in Resources */,
@@ -2024,6 +2058,7 @@
 				5982A2FF19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m in Sources */,
 				593EA6A019BFF8AD00E9F2BC /* FAMyPurchaseDetailProfitHeaderView.m in Sources */,
 				594FB07919C7FCA7008EA26F /* FAMember.m in Sources */,
+				59FB1C1819E50EE6006A648C /* FAChartDto.m in Sources */,
 				840DD88719CD77920023885D /* FAStrategyDetailProfitViewCell.m in Sources */,
 				593EA6F119C04DA700E9F2BC /* FAMyOrderBookItemViewCell.m in Sources */,
 				59137A3E19BE8C32001F4977 /* FAMyOrderBookController.m in Sources */,
@@ -2048,6 +2083,7 @@
 				59137A5219BEA7AF001F4977 /* FAPurchaseDetail.m in Sources */,
 				593EA6DC19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m in Sources */,
 				593E7DFC19D2AD42000997C6 /* FAStampDto.m in Sources */,
+				59FB1C1B19E50FC1006A648C /* FADrawedReturnViewModel.m in Sources */,
 				84C4CB4C19DA903700C36159 /* FAClientMessageDto.m in Sources */,
 				594FB07619C7FC81008EA26F /* FAAccountManager.m in Sources */,
 				592735CD19C292F000FF42A1 /* FAMoreProductViewCell.m in Sources */,
@@ -2254,7 +2290,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2271,7 +2307,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
