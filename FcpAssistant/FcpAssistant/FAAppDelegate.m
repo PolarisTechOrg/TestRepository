@@ -13,6 +13,7 @@
 #import "FATradeController.h"
 #import "FAMessageController.h"
 #import "FAMoreController.h"
+#import "FAFoundation.h"
 
 @implementation FAAppDelegate
 
@@ -21,7 +22,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-
+    
+    if (CURRENT_SYS_VERSION >= 7.0)
+    {
+       self.window.frame = CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
+    }
     
     FAMainController * mainController = [[FAMainController alloc] init];
     self.window.rootViewController = mainController;

@@ -51,5 +51,6 @@
     </objects>
     <resources>
         <image name="Message_icon_message_01.png" width="65" height="65"/>
+        <image name="message_icon_message_01.png" width="66" height="66"/>
     </resources>
 </document>
