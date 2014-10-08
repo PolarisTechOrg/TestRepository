@@ -18,6 +18,7 @@
 #import "FAHttpUtility.h"
 #import "FAHttpHead.h"
 #import "FAFormater.h"
+#import "FAUtility.h"
 
 @interface FAMessageController ()
 
@@ -25,16 +26,11 @@
 
 @implementation FAMessageController
 
-- (id)init
-{
-    self = [super init];
-    if (self)
-    {
-//        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-        
-    }
-    return self;
-}
+//- (id)init
+//{
+//    self = [super init];
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
@@ -141,6 +137,11 @@
     return 61;
 }
 
+-(NSString*)tableView:(UITableView*)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath*)indexpath
+{
+    return @"删除";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FAMessageViewCell2 * cell = (FAMessageViewCell2 *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
@@ -202,13 +203,6 @@
     return des;
 }
 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
-}
-
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
@@ -217,18 +211,65 @@
     return UIInterfaceOrientationPortrait;
 }
 
-/*
+-(BOOL) deleteMessageItem:(int) messageId
+{
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?delete=&messageId=%d",WEB_URL, messageId];
+        NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
+        
+        NSError *error;
+        FAHttpHead *httpHead = [FAHttpHead defaultInstance];
+        httpHead.Method = @"DELETE";
+        
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
+        NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
+        if(error == nil)
+        {
+            return YES;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"DeleteException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return NO;
+    }
+    @finally
+    {
+        
+    }
+}
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        FAMessage* item = dataSource[indexPath.row];
+        if([self deleteMessageItem:item.MessageId] == YES)
+        {
+            [dataSource removeObject:item];
+            // Delete the row from the data source
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
 /*
 // Override to support rearranging the table view.
