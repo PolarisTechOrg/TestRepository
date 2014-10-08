@@ -59,6 +59,22 @@
     }
 }
 
+#pragma mark - thread
+- (void)setupThread:(NSArray *)userInfo
+{
+    [NSThread detachNewThreadSelector:@selector(threadFunc:) toTarget:self withObject:userInfo];
+}
+
+- (void)threadFunc:(id)userInfo
+{
+    [self performSelectorOnMainThread:@selector(endThread) withObject:nil waitUntilDone:NO];
+}
+
+- (void)endThread
+{
+    
+}
+
 - (void)setupRefresh
 {
     [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];

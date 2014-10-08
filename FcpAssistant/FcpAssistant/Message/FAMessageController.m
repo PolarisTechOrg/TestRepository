@@ -300,6 +300,40 @@
 }
 */
 
+- (BOOL)readMessage:(int)messageId
+{
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?read=&messageId=%d",WEB_URL, messageId];
+        NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
+        
+        NSError *error;
+        FAHttpHead *httpHead = [FAHttpHead defaultInstance];
+        httpHead.Method = @"GET";
+        
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
+        NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
+        if(error == nil)
+        {
+            return YES;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"GETException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return NO;
+    }
+    @finally
+    {
+        
+    }
+}
+
 
 #pragma mark - Table view delegate
 
@@ -319,6 +353,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    FAMessage* item = dataSource[indexPath.row];
+    if([self readMessage:item.MessageId])
+    {
+        item.ReadFlag = YES;
+    }
     
     FAMessageViewCell2 *cell = (FAMessageViewCell2 *)[tableView cellForRowAtIndexPath:indexPath];
     cell.iconMessageReadFlag.image = nil;
