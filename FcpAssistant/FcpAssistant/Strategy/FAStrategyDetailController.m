@@ -154,6 +154,8 @@ const int latedRecordSectionIndex = 3;
     NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
     cell.imgStrategyStar.image = [UIImage imageNamed:gradeImageName];
     
+    
+    
     cell.lblStrategyOnlineDate.text = [FAFormater toShortDateStringWithNSDate:strategy.OnlineDay];
     
     cell.lblRealPerformance.text = [[FAFormater decimalFormater] stringForObjectValue:[NSNumber numberWithDouble:strategy.CumulativeNetProfit]];
@@ -267,7 +269,7 @@ const int latedRecordSectionIndex = 3;
 {
     switch (indexPath.section)
     {
-        case topSectionIndex: return 146;
+        case topSectionIndex: return 180;
         case describSectionIndex:return 30;
         case profitsSectionIndex:return 170;
         case latedRecordSectionIndex:return 170;
