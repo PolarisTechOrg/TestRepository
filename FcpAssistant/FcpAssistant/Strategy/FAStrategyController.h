@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAQueue.h"
 
 @interface FAStrategyController : UITableViewController
 {
@@ -15,8 +16,8 @@
     NSString *itemCellIdentifier;
     
     NSMutableArray *dataSource;
-    
-    NSOperationQueue *threadQueue;
+        
+    FAQueue *dataQueue;
 }
 
 @end

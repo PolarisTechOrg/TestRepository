@@ -18,18 +18,26 @@
     {
         array = [[NSMutableArray alloc] init];
         count = 0;
+        
+        liteLock = [[NSLock alloc] init];
     }
     return self;
 }
 
 - (void)enqueue:(id)newObj
 {
+    [liteLock lock];
+    
     [array addObject:newObj];
     count = array.count;
+    
+    [liteLock unlock];
 }
 
 - (id)dequeue
 {
+    [liteLock lock];
+    
     id obj = nil;
     if(array.count == 0)
     {
@@ -40,13 +48,34 @@
     [array removeObjectAtIndex:0];
     count = array.count;
     
+    [liteLock unlock];
+    
     return obj;
 }
 
 - (void)clear
 {
+    [liteLock lock];
+    
     [array removeAllObjects];
     count = 0;
+    
+    [liteLock unlock];
+}
+
+- (id)peek:(int)index
+{
+    [liteLock lock];
+    
+    if(array.count == 0 || index < 0)
+    {
+        return nil;
+    }
+    id retObj =[array objectAtIndex:index];
+    
+    [liteLock unlock];
+    
+    return retObj;
 }
 
 @end

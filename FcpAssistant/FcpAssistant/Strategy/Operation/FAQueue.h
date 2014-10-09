@@ -11,6 +11,7 @@
 @interface FAQueue : NSObject
 {
     NSMutableArray *array;
+    NSLock *liteLock;
 }
 
 - (void)enqueue:(id)newObj;

@@ -14,8 +14,8 @@
 #import "FAStrategySearchController.h"
 #import "FAStrategyFilterController.h"
 #import "MJRefresh.h"
-#import "FAFillingProfileOperation.h"
 
+#import "FAQueue.h"
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
 #import "FAHttpUtility.h"
@@ -28,6 +28,7 @@
 
 @implementation FAStrategyController
 
+#pragma mark - custom function
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,27 +50,44 @@
     currentPageIndex = 1;
     
     dataSource = [[NSMutableArray alloc] init];
-    NSArray *strategyList = [self LoadDataFromServer:currentPageIndex];
+    NSArray *strategyList = [self loadDataFromServer:currentPageIndex];
     if(strategyList != nil && strategyList.count > 0)
     {
         [dataSource addObjectsFromArray:strategyList];
     }
     
     // setup thread control
-    threadQueue = [[NSOperationQueue alloc] init];
+    dataQueue = [[FAQueue alloc] init];
+    [self setupThread:strategyList];
     
     // setup refresh control
     [self setupRefresh];
 }
 
-
-- (void)setupThread:(NSArray *)userInfo intoQueue:(NSOperationQueue *)queue
+// fill chart
+- (void)loadChartData
 {
-    FAFillingProfileOperation *operation = [[FAFillingProfileOperation alloc] initWithStrategyIdArray:userInfo];
-    [queue addOperation:operation];
+    NSMutableDictionary *dataDict = [NSMutableDictionary dictionaryWithCapacity:36];
+    
+    while (dataQueue.count > 0) {
+        //load
+    }
+    
+    [self performSelectorOnMainThread:@selector(fillStrategyProfit:) withObject:dataDict waitUntilDone:NO];
 }
 
+- (void)fillStrategyProfit:(NSDictionary *)dict
+{
+}
 
+- (void)setupThread:(NSArray *)userInfo
+{
+    // enqueue
+    
+    [self performSelectorInBackground:@selector(loadChartData) withObject:nil];
+}
+
+// refresh
 - (void)setupRefresh
 {
     [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
@@ -80,7 +98,7 @@
     // 添加新数据
     currentPageIndex++;
     
-    NSArray *strtegyList = [self LoadDataFromServer:currentPageIndex];
+    NSArray *strtegyList = [self loadDataFromServer:currentPageIndex];
     if(strtegyList != nil && strtegyList.count > 0)
     {
         [dataSource addObjectsFromArray:strtegyList];
@@ -93,6 +111,7 @@
     [self.tableView footerEndRefreshing];
 }
 
+// initial view
 - (void)doSearch
 {
     FAStrategySearchController *controller = [[FAStrategySearchController alloc] init];
@@ -119,7 +138,8 @@
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
--(NSArray *)LoadDataFromServer:(int)pageIndex
+// load data
+- (NSArray *)loadDataFromServer:(int)pageIndex
 {
     NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=%@", WEB_URL, [NSNumber numberWithInt:pageIndex]];
     
@@ -140,14 +160,33 @@
     }
 }
 
+- (NSArray *)loadChartDataFromServer:(int)strategyId splitDot:(int)split lineBorder:(int)border wholeWidth:(int)width
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/chartdata?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d", WEB_URL, strategyId, split, border, width];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        FAPaginatedDto *dtoObj =[FAJSONSerialization toObject:[FAPaginatedDto class] fromData:replyData];
+        
+        return  dtoObj.Items;
+    }
+    else
+    {
+        return nil;
+    }
+}
 
+#pragma mark - Table view data source
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

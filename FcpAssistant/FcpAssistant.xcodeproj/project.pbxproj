@@ -254,7 +254,6 @@
 		849C564019D575120057C158 /* FAStrategySearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C563F19D575120057C158 /* FAStrategySearchHeaderView.xib */; };
 		849C564219D598BC0057C158 /* FAStrategyFilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C564119D598BC0057C158 /* FAStrategyFilterHeaderView.xib */; };
 		849C564519D598E00057C158 /* FAStrategyFilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */; };
-		849D176F19E6179C00606066 /* FAFillingProfileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D176E19E6179C00606066 /* FAFillingProfileOperation.m */; };
 		849D177219E6376E00606066 /* FAQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D177119E6376D00606066 /* FAQueue.m */; };
 		84C4CB4319DA74B400C36159 /* FAMessageViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C4CB4119DA74B400C36159 /* FAMessageViewCell2.m */; };
 		84C4CB4419DA74B400C36159 /* FAMessageViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C4CB4219DA74B400C36159 /* FAMessageViewCell2.xib */; };
@@ -646,8 +645,6 @@
 		849C564119D598BC0057C158 /* FAStrategyFilterHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategyFilterHeaderView.xib; path = Strategy/Filter/FAStrategyFilterHeaderView.xib; sourceTree = "<group>"; };
 		849C564319D598E00057C158 /* FAStrategyFilterHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyFilterHeaderView.h; path = Strategy/Filter/FAStrategyFilterHeaderView.h; sourceTree = "<group>"; };
 		849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyFilterHeaderView.m; path = Strategy/Filter/FAStrategyFilterHeaderView.m; sourceTree = "<group>"; };
-		849D176D19E6179C00606066 /* FAFillingProfileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAFillingProfileOperation.h; path = Strategy/Operation/FAFillingProfileOperation.h; sourceTree = "<group>"; };
-		849D176E19E6179C00606066 /* FAFillingProfileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAFillingProfileOperation.m; path = Strategy/Operation/FAFillingProfileOperation.m; sourceTree = "<group>"; };
 		849D177019E6376D00606066 /* FAQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAQueue.h; path = Strategy/Operation/FAQueue.h; sourceTree = "<group>"; };
 		849D177119E6376D00606066 /* FAQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAQueue.m; path = Strategy/Operation/FAQueue.m; sourceTree = "<group>"; };
 		84C4CB4019DA74B400C36159 /* FAMessageViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageViewCell2.h; path = Message/FAMessageViewCell2.h; sourceTree = "<group>"; };
@@ -1804,8 +1801,6 @@
 		849D176C19E6163D00606066 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
-				849D176D19E6179C00606066 /* FAFillingProfileOperation.h */,
-				849D176E19E6179C00606066 /* FAFillingProfileOperation.m */,
 				849D177019E6376D00606066 /* FAQueue.h */,
 				849D177119E6376D00606066 /* FAQueue.m */,
 			);
@@ -2189,7 +2184,6 @@
 				592C1EF519DD27E100D984B9 /* FAStrategyProfitView.m in Sources */,
 				593EA69619BFF50700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.m in Sources */,
 				592735D919C2950900FF42A1 /* FAModifyPasswordController.m in Sources */,
-				849D176F19E6179C00606066 /* FAFillingProfileOperation.m in Sources */,
 				5903747019B80E8200F5B0C3 /* FAAppDelegate.m in Sources */,
 				591B217B19C1687D00064F24 /* FAMeberLoginController.m in Sources */,
 				84450C2219D7EEC200BF942A /* FAErrorExtractor.m in Sources */,

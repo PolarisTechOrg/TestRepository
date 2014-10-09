@@ -7,6 +7,7 @@
 //
 
 #import "FAFillingProfileOperation.h"
+#import "FAStrategyController.h"
 
 @implementation FAFillingProfileOperation
 
@@ -25,6 +26,10 @@
     {
         return;
     }
+    
+    NSDictionary *dataDict = [self loadStrategyChartData:strategyIdArray];
+    
+    [self fillingProfile:dataDict];
 }
 
 - (NSDictionary *)loadStrategyChartData:(NSArray *)idArray
@@ -34,7 +39,7 @@
 
 - (void)fillingProfile:(NSDictionary *)dataDict
 {
-    [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(fillStrategyProfit) withObject:nil waitUntilDone:NO];
 }
 
 @end
