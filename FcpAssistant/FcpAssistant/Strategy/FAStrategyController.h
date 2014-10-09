@@ -15,6 +15,8 @@
     NSString *itemCellIdentifier;
     
     NSMutableArray *dataSource;
+    
+    NSOperationQueue *threadQueue;
 }
 
 @end

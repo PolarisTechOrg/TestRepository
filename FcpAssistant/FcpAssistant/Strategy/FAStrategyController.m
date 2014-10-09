@@ -14,6 +14,7 @@
 #import "FAStrategySearchController.h"
 #import "FAStrategyFilterController.h"
 #import "MJRefresh.h"
+#import "FAFillingProfileOperation.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -44,10 +45,6 @@
 
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];
     
-    
-    // 集成刷新控件
-    [self setupRefresh];
-    
     // Load data
     currentPageIndex = 1;
     
@@ -57,23 +54,21 @@
     {
         [dataSource addObjectsFromArray:strategyList];
     }
-}
-
-#pragma mark - thread
-- (void)setupThread:(NSArray *)userInfo
-{
-    [NSThread detachNewThreadSelector:@selector(threadFunc:) toTarget:self withObject:userInfo];
-}
-
-- (void)threadFunc:(id)userInfo
-{
-    [self performSelectorOnMainThread:@selector(endThread) withObject:nil waitUntilDone:NO];
-}
-
-- (void)endThread
-{
     
+    // setup thread control
+    threadQueue = [[NSOperationQueue alloc] init];
+    
+    // setup refresh control
+    [self setupRefresh];
 }
+
+
+- (void)setupThread:(NSArray *)userInfo intoQueue:(NSOperationQueue *)queue
+{
+    FAFillingProfileOperation *operation = [[FAFillingProfileOperation alloc] initWithStrategyIdArray:userInfo];
+    [queue addOperation:operation];
+}
+
 
 - (void)setupRefresh
 {
@@ -84,6 +79,7 @@
 {
     // 添加新数据
     currentPageIndex++;
+    
     NSArray *strtegyList = [self LoadDataFromServer:currentPageIndex];
     if(strtegyList != nil && strtegyList.count > 0)
     {
