@@ -14,6 +14,8 @@
 #import "FAStrategySearchController.h"
 #import "FAStrategyFilterController.h"
 #import "MJRefresh.h"
+#import "FAChartDto.h"
+#import "FADrawedReturnViewModel.h"
 
 #import "FAQueue.h"
 #import "FAFoundation.h"
@@ -57,8 +59,8 @@
     }
     
     // setup thread control
-    dataQueue = [[FAQueue alloc] init];
-    [self setupThread:strategyList];
+//    dataQueue = [[FAQueue alloc] init];
+//    [self setupThread:strategyList];
     
     // setup refresh control
     [self setupRefresh];
@@ -69,8 +71,16 @@
 {
     NSMutableDictionary *dataDict = [NSMutableDictionary dictionaryWithCapacity:36];
     
-    while (dataQueue.count > 0) {
-        //load
+    while (dataQueue.count > 0)
+    {
+        int strategyId = [[dataQueue dequeue] intValue];
+        NSArray *dataArray = [self loadChartDataFromServer:strategyId splitDot:3 lineBorder:6 wholeWidth:60];
+
+        if (dataArray.count == 0) {
+            continue;
+        }
+        
+        [dataDict setObject:dataArray forKey:[NSNumber numberWithInt:strategyId]];
     }
     
     [self performSelectorOnMainThread:@selector(fillStrategyProfit:) withObject:dataDict waitUntilDone:NO];
@@ -171,7 +181,7 @@
     
     if(error == nil)
     {
-        FAPaginatedDto *dtoObj =[FAJSONSerialization toObject:[FAPaginatedDto class] fromData:replyData];
+        FAChartDto *dtoObj =[FAJSONSerialization toObject:[FAChartDto class] fromData:replyData];
         
         return  dtoObj.Items;
     }

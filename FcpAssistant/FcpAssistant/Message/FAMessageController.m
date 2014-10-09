@@ -12,6 +12,7 @@
 #import "FAStoreManager.h"
 #import "FAClientMessageDto.h"
 #import "FAMessage.h"
+#import "FAMainController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -25,6 +26,17 @@
 @end
 
 @implementation FAMessageController
+
+@synthesize unReadCount;
+
+- (id)init
+{
+    if ([super init])
+    {
+        unReadCount = [self loadUnReadMessageCount];
+    }
+    return self;
+}
 
 - (int)loadUnReadMessageCount
 {NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?unRead", WEB_URL];
@@ -50,7 +62,6 @@
     [self initializeData];
     [self registerXibFile];
     
-    int unReadCount = [self loadUnReadMessageCount];
     self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
     
     dataSource = [[NSMutableArray alloc] init];
@@ -174,7 +185,7 @@
             return cell;
         }
 
-        if(!dto.ReadFlag)
+        if(dto.ReadFlag)
         {
             cell.iconMessageReadFlag.image = [UIImage imageNamed:nil];
         }
@@ -273,6 +284,12 @@
         FAMessage* item = dataSource[indexPath.row];
         if([self deleteMessageItem:item.MessageId] == YES)
         {
+            if (!item.ReadFlag)
+            {
+                unReadCount--;
+                [self refreshUnReadCount];
+            }
+            
             [dataSource removeObject:item];
             // Delete the row from the data source
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -359,6 +376,9 @@
     if([self readMessage:item.MessageId])
     {
         item.ReadFlag = YES;
+        
+        unReadCount--;
+        [self refreshUnReadCount];
     }
     
     FAMessageViewCell2 *cell = (FAMessageViewCell2 *)[tableView cellForRowAtIndexPath:indexPath];
@@ -371,6 +391,13 @@
 
 - (void)pushNewViewController:(UIViewController *)newViewController {
     [self.navigationController pushViewController:newViewController animated:YES];
+}
+
+- (void)refreshUnReadCount
+{
+    self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
+    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
+    
 }
 
 @end

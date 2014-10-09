@@ -69,7 +69,7 @@
     FAMessageController * messageController =[[FAMessageController alloc] init];
     messageController.tabBarItem.title = @"消息";
     messageController.tabBarItem.image = [UIImage imageNamed:@"Message"];
-    messageController.tabBarItem.badgeValue = @"5";
+    messageController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", messageController.unReadCount];
     
     UINavigationController * navMessageController = [[UINavigationController alloc] initWithRootViewController:messageController];
     navMessageController.tabBarItem.title = @"消息";

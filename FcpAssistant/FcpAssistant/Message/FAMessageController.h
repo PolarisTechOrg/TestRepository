@@ -15,4 +15,6 @@
     NSMutableArray *dataSource;
 }
 
+@property(nonatomic, assign) int unReadCount;
+
 @end
