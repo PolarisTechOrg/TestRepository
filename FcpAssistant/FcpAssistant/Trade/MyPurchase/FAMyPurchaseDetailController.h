@@ -12,9 +12,13 @@
 @interface FAMyPurchaseDetailController : UITableViewController
 {
     NSString *topCellIdentifier;
+    NSString *positionHeaderCellIdentifier;
     NSString *positionCellIdentifier;
+    NSString *signalHeaderCellIdentifier;
     NSString *signalCellIdentifier;
+    NSString *orderHeaderCellIdentifier;
     NSString *orderCellIdentifier;
+    NSString *profitHeaderCellIdentifier;
     NSString *profitCellIdentifier;
     
     FABuyedStrategyDetailDto *dataSource;

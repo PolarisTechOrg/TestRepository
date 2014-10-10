@@ -19,6 +19,7 @@
 #import "FAPurchaseProfitView.h"
 #import "FAChartDto.h"
 #import "FADrawedReturnViewModel.h"
+#import "FAStrategyDetailController.h"
 
 
 @interface FAMyCollectController ()
@@ -163,10 +164,12 @@
     return 104;
 }
 
-- (void)enterDetailView
+- (void)enterDetailView:(int) strategyId
 {
-//    FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
-//    [self.navigationController pushViewController:detailController animated:YES];
+    FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
+    detailController.strategyId = strategyId;
+    
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 -(NSString*)tableView:(UITableView*)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath*)indexpath
@@ -242,7 +245,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self enterDetailView];
+    FADummieStrategyDetailViewModel *item = dataSource[indexPath.row];
+    [self enterDetailView:item.StrategyId];
 }
 
 // Override to support conditional editing of the table view.

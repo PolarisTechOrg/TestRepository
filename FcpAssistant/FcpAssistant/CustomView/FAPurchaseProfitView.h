@@ -9,7 +9,26 @@
 #import <UIKit/UIKit.h>
 
 @interface FAPurchaseProfitView : UIView
+{
+@private CGFloat frameWidth;
+@private CGFloat frameHeight;
+@private CGFloat viewWidth;
+@private CGFloat viewHeight;
 
-@property(nonatomic,copy) UIColor *backgroundColor;
-@property(nonatomic,retain) NSMutableArray *dataSource;
+@private CGFloat leftMargin;
+@private CGFloat rightMargin;
+@private CGFloat topMargin;
+@private CGFloat bottomMargin;
+
+@private double maxValue;
+@private double minValue;
+//每点X轴间距
+@private CGFloat xIntervalPoint;
+//Y轴每点值
+@private CGFloat yValuePerPoint;
+//损益线颜色
+@private UIColor *profitLineColor;
+}
+
+@property(nonatomic,retain) NSArray *dataSource;
 @end

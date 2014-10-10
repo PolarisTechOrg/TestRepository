@@ -7,12 +7,16 @@
 //
 
 #import "FAMyPurchaseDetailProfitViewCell.h"
-
+#import "FAPurchaseProfitView.h"
 @implementation FAMyPurchaseDetailProfitViewCell
+
+@synthesize imgPurchaseProfit;
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    FAPurchaseProfitView *profitView = [[FAPurchaseProfitView alloc] initWithFrame:CGRectMake(0, 0, 320, 168)];
+    [self.imgProfit addSubview:profitView];
+    self.imgPurchaseProfit = profitView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
