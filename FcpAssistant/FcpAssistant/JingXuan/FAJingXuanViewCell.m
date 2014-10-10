@@ -7,6 +7,8 @@
 //
 
 #import "FAJingXuanViewCell.h"
+#import "FAJingXuanController.h"
+#import "FAStrategyDetailController.h"
 
 @implementation FAJingXuanViewCell
 
@@ -20,4 +22,17 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)strategyNamePressed:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    NSString *txt = btn.titleLabel.text;
+    
+    UITableView *superView = (UITableView *)self.superview;
+    FAJingXuanController *superController = (FAJingXuanController *)superView.dataSource;
+    
+    FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
+    controller.strategyId = 377;
+    controller.hidesBottomBarWhenPushed = YES;
+    [superController.navigationController pushViewController:controller animated:YES];
+}
 @end

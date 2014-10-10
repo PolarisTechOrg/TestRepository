@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 
+@property (retain, nonatomic) IBOutlet UIButton *btnStrategyName;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName1;
 @property (weak, nonatomic) IBOutlet UIImageView *imgStrategyStar1;
 @property (weak, nonatomic) IBOutlet UILabel *lblUpdateDate1;

@@ -17,4 +17,5 @@
     
     NSString* itemCellIdentifier;
 }
+
 @end

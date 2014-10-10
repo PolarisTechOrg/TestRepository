@@ -160,7 +160,8 @@
             cell.lblTitle.text = @"策略精选";
             
             FADummieStrategyDetailViewModel *jingxuan = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[0];
-            cell.lblStrategyName1.text = jingxuan.StrategyName;
+            cell.btnStrategyName.titleLabel.text = jingxuan.StrategyName;
+//            cell.lblStrategyName1.text = jingxuan.StrategyName;
             int star = (int)ceil(jingxuan.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -192,7 +193,8 @@
             cell.lblTitle.text = @"趋势策略";
             
             FADummieStrategyDetailViewModel *qushi = (FADummieStrategyDetailViewModel *)dataSourceQuShi[0];
-            cell.lblStrategyName1.text = qushi.StrategyName;
+            cell.btnStrategyName.titleLabel.text = qushi.StrategyName;
+//            cell.lblStrategyName1.text = qushi.StrategyName;
             int star = (int)ceil(qushi.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -223,7 +225,8 @@
             cell.lblTitle.text = @"逆势策略";
             
             FADummieStrategyDetailViewModel *nishi = (FADummieStrategyDetailViewModel *)dataSourceNiShi[0];
-            cell.lblStrategyName1.text = nishi.StrategyName;
+            cell.btnStrategyName.titleLabel.text = nishi.StrategyName;
+//            cell.lblStrategyName1.text = nishi.StrategyName;
             int star = (int)ceil(nishi.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -254,7 +257,8 @@
             cell.lblTitle.text = @"套利策略";
             
             FADummieStrategyDetailViewModel *taoli = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[0];
-            cell.lblStrategyName1.text = taoli.StrategyName;
+            cell.btnStrategyName.titleLabel.text = taoli.StrategyName;
+//            cell.lblStrategyName1.text = taoli.StrategyName;
             int star = (int)ceil(taoli.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -357,5 +361,6 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 */
+
 
 @end

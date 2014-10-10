@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -64,12 +64,6 @@
                         <rect key="frame" x="278" y="88" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="精选赢家一号测试" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-Lh-JnH">
-                        <rect key="frame" x="135" y="62" width="128" height="18"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mycollect_profit_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Qd-e6-82A">
@@ -144,9 +138,21 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RR-BW-1rY">
+                        <rect key="frame" x="134" y="55" width="122" height="30"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <state key="normal" title="精选赢家二号测试">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="strategyNamePressed:" destination="KGk-i7-Jjw" eventType="touchDown" id="lbv-dg-Eyl"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnStrategyName" destination="0RR-BW-1rY" id="9EC-Ac-gAJ"/>
                 <outlet property="imgPerformanceBackMap1" destination="9Qd-e6-82A" id="O4L-qJ-6XP"/>
                 <outlet property="imgPerformanceMap1" destination="Wqa-q6-fMs" id="vdn-Se-5VW"/>
                 <outlet property="imgStrategyStar1" destination="zcU-WS-ifK" id="xr1-aK-e77"/>
@@ -156,14 +162,13 @@
                 <outlet property="lblCollectionPeople3" destination="0NH-Px-h8r" id="Hly-qg-SrS"/>
                 <outlet property="lblPerformanceNumber1" destination="N8E-1X-E1R" id="1cg-Xd-zaI"/>
                 <outlet property="lblProviderName1" destination="6kv-D2-T9M" id="Eqw-XC-n27"/>
-                <outlet property="lblStrategyName1" destination="EkC-Lh-JnH" id="fBd-W2-lfg"/>
                 <outlet property="lblStrategyName2" destination="ZXt-br-BJb" id="Gkt-RN-DSz"/>
                 <outlet property="lblStrategyName3" destination="1tn-4A-EiM" id="G83-Mx-nCl"/>
                 <outlet property="lblStrategyStatus1" destination="GA7-35-8up" id="K0W-25-Gag"/>
                 <outlet property="lblTitle" destination="Z4d-py-J6N" id="XbP-X0-zTZ"/>
                 <outlet property="lblUpdateDate1" destination="Zc4-ck-yYp" id="Pyn-hJ-U7H"/>
             </connections>
-            <point key="canvasLocation" x="142" y="141"/>
+            <point key="canvasLocation" x="142" y="136"/>
         </tableViewCell>
     </objects>
     <resources>
