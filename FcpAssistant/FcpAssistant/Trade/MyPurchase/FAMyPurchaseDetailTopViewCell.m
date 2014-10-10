@@ -7,8 +7,12 @@
 //
 
 #import "FAMyPurchaseDetailTopViewCell.h"
+#import "FAStrategyDetailController.h"
 
 @implementation FAMyPurchaseDetailTopViewCell
+
+@synthesize rootNavController;
+@synthesize strategyId;
 
 - (void)awakeFromNib
 {
@@ -22,4 +26,12 @@
     // Configure the view for the selected state
 }
 
+
+- (IBAction)btnDetailClick:(id)sender
+{
+    FAStrategyDetailController *detailController = [[FAStrategyDetailController alloc] init];
+    detailController.strategyId = strategyId;
+    
+    [self.rootNavController pushViewController:detailController animated:YES];
+}
 @end

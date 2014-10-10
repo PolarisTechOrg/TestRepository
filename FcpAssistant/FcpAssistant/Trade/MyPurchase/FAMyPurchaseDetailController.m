@@ -9,15 +9,15 @@
 #import "FAMyPurchaseDetailController.h"
 
 #import "FAMyPurchaseDetailTopViewCell.h"
+#import "FAMyPurchaseDetailPositionHeaderViewCell.h"
 #import "FAMyPurchaseDetailPositionViewCell.h"
+#import "FAMyPurchaseDetailSignalHeaderViewCell.h"
 #import "FAMyPurchaseDetailSignalViewCell.h"
+#import "FAMyPurchaseDetailOrderHeaderViewCell.h"
 #import "FAMyPurchaseDetailOrderViewCell.h"
+#import "FAMyPurchaseDetailProfitHeaderViewCell.h"
 #import "FAMyPurchaseDetailProfitViewCell.h"
 
-#import "FAMyPurchaseDetailPositionHeaderView.h"
-#import "FAMyPurchaseDetailSignalHeaderView.h"
-#import "FAMyPurchaseDetailOrderHeaderView.h"
-#import "FAMyPurchaseDetailProfitHeaderView.h"
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
 #import "FAHttpUtility.h"
@@ -44,10 +44,14 @@
 @synthesize strategyId;
 
 const int topSecitonIndex =0;
-const int positionSectionIndex =1;
-const int signalSectionIndex =2;
-const int orderSectionIndex =3;
-const int profitSectionIndex =4;
+const int positionHeaderSectionIndex =1;
+const int positionSectionIndex =2;
+const int signalHeaderSectionIndex =3;
+const int signalSectionIndex =4;
+const int orderHeaderSectionIndex =5;
+const int orderSectionIndex =6;
+const int profitHeaderSectionIndex =7;
+const int profitSectionIndex =8;
 
 - (void)viewDidLoad
 {
@@ -74,9 +78,13 @@ const int profitSectionIndex =4;
 -(void)initializeData
 {
     topCellIdentifier = @"purchaseDetailTopCell";
+    positionHeaderCellIdentifier = @"purchaseDetailPositionHeaderCell";
     positionCellIdentifier = @"purchaseDetailPositionCell";
+    signalHeaderCellIdentifier = @"purchaseDetailSignalHeaderCell";
     signalCellIdentifier = @"purchaseDetailSignalCell";
+    orderHeaderCellIdentifier = @"purchaseDetailOrderHeaderCell";
     orderCellIdentifier = @"purchaseDetailOrderCell";
+    profitHeaderCellIdentifier = @"purchaseDetailProfitHeaderCell";
     profitCellIdentifier = @"purchaseDetailProfitCell";
 }
 
@@ -84,16 +92,28 @@ const int profitSectionIndex =4;
 {
     UINib *topCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailTopViewCell" bundle:nil];
     [self.tableView registerNib:topCellNib forCellReuseIdentifier:topCellIdentifier];
-    
+
+    UINib *positionHeaderCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailPositionHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:positionHeaderCellNib forCellReuseIdentifier:positionHeaderCellIdentifier];
+
     UINib *positionCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailPositionViewCell" bundle:nil];
     [self.tableView registerNib:positionCellNib forCellReuseIdentifier:positionCellIdentifier];
-    
+
+    UINib *signalHeaderCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailSignalHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:signalHeaderCellNib forCellReuseIdentifier:signalHeaderCellIdentifier];
+
     UINib *signalCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailSignalViewCell" bundle:nil];
     [self.tableView registerNib:signalCellNib forCellReuseIdentifier:signalCellIdentifier];
-    
+
+    UINib *orderHeaderCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailOrderHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:orderHeaderCellNib forCellReuseIdentifier:orderHeaderCellIdentifier];
+
     UINib *orderCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailOrderViewCell" bundle:nil];
     [self.tableView registerNib:orderCellNib forCellReuseIdentifier:orderCellIdentifier];
-    
+
+    UINib *profitHeaderCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailProfitHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:profitHeaderCellNib forCellReuseIdentifier:profitHeaderCellIdentifier];
+
     UINib *profitCellNib = [UINib nibWithNibName:@"FAMyPurchaseDetailProfitViewCell" bundle:nil];
     [self.tableView registerNib:profitCellNib forCellReuseIdentifier:profitCellIdentifier];
 }
@@ -124,7 +144,7 @@ const int profitSectionIndex =4;
         }
         else
         {
-            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
             @throw ex;
         }
         
@@ -148,32 +168,31 @@ const int profitSectionIndex =4;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 9;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section)
     {
-        case topSecitonIndex :
-            return 1;
-        case positionSectionIndex:
-            return dataSource.HoldingPositionList.count;
-        case signalSectionIndex:
-            return dataSource.SignalList.count;
-        case orderSectionIndex:
-            return dataSource.OrderBookList.count;
-        case profitSectionIndex:
-            return 1;
+        case topSecitonIndex: return 1;
+        case positionHeaderSectionIndex: return 1;
+        case positionSectionIndex: return dataSource.HoldingPositionList.count;
+        case signalHeaderSectionIndex: return 1;
+        case signalSectionIndex: return dataSource.SignalList.count;
+        case orderHeaderSectionIndex: return 1;
+        case orderSectionIndex: return dataSource.OrderBookList.count;
+        case profitHeaderSectionIndex: return 1;
+        case profitSectionIndex: return 1;
         default: return 0;
     }
-    return 0;
 }
 
 
 -(void)showTopViewCell:(FAMyPurchaseDetailTopViewCell *)cell
 {
     FABuyedStrategyDto *strategy = dataSource.Strategy;
+    cell.strategyId = strategy.StrategyId;
     cell.lblStrategyName.text = strategy.StrategyName;
     
     int star = (int)ceil(strategy.Star);
@@ -230,7 +249,8 @@ const int profitSectionIndex =4;
 
 -(void)showProfitViewCell:(FAMyPurchaseDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-//    cell.imageView
+    cell.imgPurchaseProfit.dataSource = dataSource.HistoryProfitList;
+    [cell.imgPurchaseProfit setNeedsDisplay];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -243,13 +263,18 @@ const int profitSectionIndex =4;
             if (!cell)
             {
                 cell = [[FAMyPurchaseDetailTopViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topCellIdentifier];
-                UIView *tempView = [[UIView alloc] init];
-                [cell setBackgroundView:tempView];
-                [cell setBackgroundColor:[UIColor clearColor]];
+                cell.rootNavController = self.navigationController;
             }
             [self showTopViewCell:cell];
-            cell.indentationWidth =0.1;
-            cell.indentationLevel =0;
+            return cell;
+        }
+        case positionHeaderSectionIndex:
+        {
+            FAMyPurchaseDetailPositionHeaderViewCell * cell= (FAMyPurchaseDetailPositionHeaderViewCell*)[tableView dequeueReusableCellWithIdentifier:positionHeaderCellIdentifier];
+            if (!cell)
+            {
+                cell = [[FAMyPurchaseDetailPositionHeaderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:positionHeaderCellIdentifier];
+            }
             return cell;
         }
         case positionSectionIndex:
@@ -260,6 +285,15 @@ const int profitSectionIndex =4;
                 cell = [[FAMyPurchaseDetailPositionViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:positionCellIdentifier];
             }
             [self showPositionViewCell:cell rowIndex:indexPath.row];
+            return cell;
+        }
+        case signalHeaderSectionIndex:
+        {
+            FAMyPurchaseDetailSignalHeaderViewCell * cell= (FAMyPurchaseDetailSignalHeaderViewCell*)[tableView dequeueReusableCellWithIdentifier:signalHeaderCellIdentifier];
+            if (!cell)
+            {
+                cell = [[FAMyPurchaseDetailSignalHeaderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:signalHeaderCellIdentifier];
+            }
             return cell;
         }
         case signalSectionIndex:
@@ -273,6 +307,15 @@ const int profitSectionIndex =4;
             [self showSignalViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
+        case orderHeaderSectionIndex:
+        {
+            FAMyPurchaseDetailOrderHeaderViewCell * cell= (FAMyPurchaseDetailOrderHeaderViewCell*)[tableView dequeueReusableCellWithIdentifier:orderHeaderCellIdentifier];
+            if (!cell)
+            {
+                cell = [[FAMyPurchaseDetailOrderHeaderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:orderHeaderCellIdentifier];
+            }
+            return cell;
+        }
         case orderSectionIndex:
         {
             FAMyPurchaseDetailOrderViewCell * cell= (FAMyPurchaseDetailOrderViewCell*)[tableView dequeueReusableCellWithIdentifier:orderCellIdentifier];
@@ -284,6 +327,16 @@ const int profitSectionIndex =4;
             [self showOrderViewCell:cell rowIndex:indexPath.row];
             return cell;
         }
+        case profitHeaderSectionIndex:
+        {
+            FAMyPurchaseDetailProfitHeaderViewCell * cell= (FAMyPurchaseDetailProfitHeaderViewCell*)[tableView dequeueReusableCellWithIdentifier:profitHeaderCellIdentifier];
+            if (!cell)
+            {
+                cell = [[FAMyPurchaseDetailProfitHeaderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:profitHeaderCellIdentifier];
+            }
+            return cell;
+        }
+
         case profitSectionIndex:
         {
             FAMyPurchaseDetailProfitViewCell * cell= (FAMyPurchaseDetailProfitViewCell*)[tableView dequeueReusableCellWithIdentifier:profitCellIdentifier];
@@ -312,6 +365,7 @@ const int profitSectionIndex =4;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    return 0.1;
     switch (section)
     {
         case topSecitonIndex: return 0.1;
@@ -328,62 +382,66 @@ const int profitSectionIndex =4;
     switch (indexPath.section)
     {
         case topSecitonIndex: return 146;
+        case positionHeaderSectionIndex:return 73;
         case positionSectionIndex:return 30;
+        case signalHeaderSectionIndex:return 73;
         case signalSectionIndex:return 30;
+        case orderHeaderSectionIndex:return 73;
         case orderSectionIndex:return 30;
+        case profitHeaderSectionIndex:return 38;
         case profitSectionIndex:return 170;
         default:return 0;
     }
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    
-    switch (section)
-    {
-        case topSecitonIndex:
-        {
-           return [super tableView:tableView viewForHeaderInSection:section];
-        }
-        case positionSectionIndex:
-        {
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailPositionHeaderView" owner:self options:nil];
-            
-            UIView *headerView = (UIView *) [nib objectAtIndex:0];
-            headerView.frame = CGRectMake(0, 0, 320, 50);
-            return headerView;
-        }
-        case signalSectionIndex:
-        {
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailSignalHeaderView" owner:self options:nil];
-            
-            UIView *headerView = (UIView *) [nib objectAtIndex:0];
-            headerView.frame = CGRectMake(0, 0, 320, 50);
-            return headerView;
-        }
-        case orderSectionIndex:
-        {
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailOrderHeaderView" owner:self options:nil];
-            
-            UIView *headerView = (UIView *) [nib objectAtIndex:0];
-            headerView.frame = CGRectMake(0, 0, 320, 50);
-            return headerView;
-        }
-        case profitSectionIndex:
-        {
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailProfitHeaderView" owner:self options:nil];
-            
-            UIView *headerView = (UIView *) [nib objectAtIndex:0];
-            headerView.frame = CGRectMake(0, 0, 320, 50);
-            return headerView;
-            break;
-        }
-        default:
-            return [super tableView:tableView viewForHeaderInSection:section];
-            break;
-    }
-    
-}
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    
+//    switch (section)
+//    {
+//        case topSecitonIndex:
+//        {
+//           return [super tableView:tableView viewForHeaderInSection:section];
+//        }
+//        case positionSectionIndex:
+//        {
+//            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailPositionHeaderView" owner:self options:nil];
+//            
+//            UIView *headerView = (UIView *) [nib objectAtIndex:0];
+//            headerView.frame = CGRectMake(0, 0, 320, 50);
+//            return headerView;
+//        }
+//        case signalSectionIndex:
+//        {
+//            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailSignalHeaderView" owner:self options:nil];
+//            
+//            UIView *headerView = (UIView *) [nib objectAtIndex:0];
+//            headerView.frame = CGRectMake(0, 0, 320, 50);
+//            return headerView;
+//        }
+//        case orderSectionIndex:
+//        {
+//            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailOrderHeaderView" owner:self options:nil];
+//            
+//            UIView *headerView = (UIView *) [nib objectAtIndex:0];
+//            headerView.frame = CGRectMake(0, 0, 320, 50);
+//            return headerView;
+//        }
+//        case profitSectionIndex:
+//        {
+//            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMyPurchaseDetailProfitHeaderView" owner:self options:nil];
+//            
+//            UIView *headerView = (UIView *) [nib objectAtIndex:0];
+//            headerView.frame = CGRectMake(0, 0, 320, 50);
+//            return headerView;
+//            break;
+//        }
+//        default:
+//            return [super tableView:tableView viewForHeaderInSection:section];
+//            break;
+//    }
+//    
+//}
 
 
 

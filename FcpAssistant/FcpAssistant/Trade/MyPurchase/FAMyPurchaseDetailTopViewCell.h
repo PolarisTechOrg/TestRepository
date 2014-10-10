@@ -28,4 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyProfit;
 @property (weak, nonatomic) IBOutlet UILabel *lblOrderMultiple;
 @property (weak, nonatomic) IBOutlet UILabel *lblYestordayProfit;
+
+@property (weak,nonatomic) UINavigationController *rootNavController;
+
+@property(nonatomic,assign) int strategyId;
 @end
