@@ -132,7 +132,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 190;//202;
+    return 192;
 }
 
 //- (void)enterDetailView
