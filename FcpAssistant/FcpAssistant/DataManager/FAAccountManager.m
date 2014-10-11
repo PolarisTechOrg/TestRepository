@@ -47,6 +47,7 @@
         
         FASaltDto *saltDto = [self getSalt:account];
       
+        NSLog(@"Stamp:%@Salt:%@:Sign:%@",saltDto.Stamp,saltDto.Sign,saltDto.Salt);
         NSString *encryptPwd = [self encryptFcpPassword:password stamp:saltDto.Stamp salt:saltDto.Salt];
         
         NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/member?stationlogin",WEB_URL];
@@ -138,6 +139,7 @@
      
      if(error == nil)
      {
+
          FASaltDto *dtoObj =[FAJSONSerialization toObject:[FASaltDto class] fromData: replyData];
          return  dtoObj;
      }
