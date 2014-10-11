@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAStrategyProfitView.h"
 
 @interface FAStrategyInfoViewCell : UITableViewCell
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPerformance;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceMap;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceBackMap;
+@property (weak, nonatomic) IBOutlet FAStrategyProfitView *imgStrategyProfit;
 
 @property (nonatomic, assign) int StrategyId;
 

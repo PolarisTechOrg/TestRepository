@@ -13,8 +13,11 @@
 @synthesize StrategyId;
 
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void)awakeFromNib
+{    
+    FAStrategyProfitView *profitView = [[FAStrategyProfitView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
+    [self.imgPerformanceMap addSubview:profitView];
+    self.imgStrategyProfit = profitView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

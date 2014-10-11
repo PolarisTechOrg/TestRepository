@@ -18,6 +18,8 @@
     NSMutableArray *dataSource;
         
     FAQueue *dataQueue;
+        
+    NSDictionary *chartDic;
 }
 
 @end

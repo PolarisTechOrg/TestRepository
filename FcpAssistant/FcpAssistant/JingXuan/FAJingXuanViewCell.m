@@ -26,7 +26,6 @@
     FAStrategyProfitView *profitView = [[FAStrategyProfitView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
     [self.imgPerformanceMap1 addSubview:profitView];
     self.imgStrategyProfit = profitView;
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
