@@ -110,6 +110,7 @@
         message.SenderName = dtoMessage.SenderName;
         message.MessageTime = dtoMessage.MessageTime;
         message.Context = dtoMessage.Context;
+        
         NSString *dateString = [self generateDate:dtoMessage.MessageTime];
         
         if([detailDict objectForKey:dateString])
@@ -136,21 +137,22 @@
 
 - (NSString *)generateDate:(NSDate *)date
 {
-    return [[date description] substringToIndex:10];
-//    NSMutableString *retString = nil;
+    //    NSMutableString *retString = nil;
+    //
+//        NSCalendar *calendar = [NSCalendar currentCalendar];
+//        unsigned units = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
+//        NSDateComponents *comps = [calendar components:units fromDate:date];
+//    //
+//        NSInteger year = [comps year];
+    //    [retString appendFormat:@"%ld", [comps year]];
+    //    [retString appendString:@"-"];
+    //    [retString appendFormat:@"%ld", [comps month]];
+    //    [retString appendString:@"-"];
+    //    [retString appendFormat:@"%ld", [comps day]];
+    //    
+    //    return retString;
     
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    unsigned units = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
-//    NSDateComponents *comps = [calendar components:units fromDate:date];
-//    
-//    NSInteger year = [comps year];
-//    [retString appendFormat:@"%ld", [comps year]];
-//    [retString appendString:@"-"];
-//    [retString appendFormat:@"%ld", [comps month]];
-//    [retString appendString:@"-"];
-//    [retString appendFormat:@"%ld", [comps day]];
-//    
-//    return retString;
+    return [[date description] substringToIndex:10];
 }
 
 - (BOOL)compareDate:(NSDate *)first withAnother:(NSDate *)last
