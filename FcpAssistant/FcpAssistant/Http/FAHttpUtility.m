@@ -12,6 +12,15 @@
 
 @implementation FAHttpUtility
 
+// url encode
++ (NSString *)urlEncoding:(id)source
+{
+    NSString *sourceString = [NSString stringWithFormat:@"%@", source];
+    NSString *encodeSourceString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)sourceString, NULL, CFSTR("!*'();:@&=+$,/?%#[]") , kCFStringEncodingUTF8));
+    
+    return encodeSourceString;
+}
+
 //同步发送Get请求。
 + (NSData *)sendRequest:(NSURL *)url error:(NSError **)error
 {
@@ -40,16 +49,13 @@
         {
             [bodyString appendString:key];
             [bodyString appendString:@"="];
-            [bodyString appendFormat:@"%@",[bodyDict valueForKey:key]];
+            [bodyString appendFormat:@"%@", [self urlEncoding:[bodyDict valueForKey:key]]];
             [bodyString appendString:@"&"];
         }
         NSUInteger length = [bodyString length];
         [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
         
-        // urlencode
-        NSString *encodeBodyString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)bodyString, NULL, CFSTR("!*'();:@&=+$,/?%#[]") , kCFStringEncodingUTF8));
-        
-        [urlRequest setHTTPBody:[encodeBodyString dataUsingEncoding:NSUTF8StringEncoding]];
+        [urlRequest setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
     NSData *retData;
