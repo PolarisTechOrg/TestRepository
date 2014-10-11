@@ -22,6 +22,7 @@
 
 @private double maxValue;
 @private double minValue;
+@private NSInteger totalPointCount;
 //每点X轴间距
 @private CGFloat xIntervalPoint;
 //Y轴每点值

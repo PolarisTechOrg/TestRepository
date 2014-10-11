@@ -10,7 +10,7 @@
 
 @interface FAStrategyProfitDto : NSObject
 // 结算日期。
-@property(nonatomic,assign) NSDate *SettlementDate;
+@property(nonatomic,retain) NSDate *SettlementDate;
 // 结算损益。
 @property(nonatomic,assign) double Profit;
 @end
