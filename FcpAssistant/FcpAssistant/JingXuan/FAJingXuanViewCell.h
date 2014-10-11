@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "FAStrategyProfitView.h"
 
 @interface FAJingXuanViewCell : UITableViewCell
 
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPerformanceNumber1;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceMap1;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceBackMap1;
+@property (weak, nonatomic) IBOutlet FAStrategyProfitView *imgStrategyProfit;
 
 @property (assign, nonatomic) int strategyId2;
 @property (weak, nonatomic) IBOutlet UIButton *btnStrategyName2;

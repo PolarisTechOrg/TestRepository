@@ -16,6 +16,9 @@
     NSArray *dataSoruceTaoLi;
     
     NSString* itemCellIdentifier;
+    
+    NSDictionary *chartDic;
+    NSMutableArray *chartIdArray;
 }
 
 @end
