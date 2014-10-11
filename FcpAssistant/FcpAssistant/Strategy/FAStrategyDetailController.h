@@ -16,6 +16,10 @@
     NSString *profitCellIdentifier;
     NSString *latedRecordCellIdentifier;
     
+    NSString *describHeaderCellIdentifier;
+    NSString *profitHeaderCellIdentifier;
+    NSString *latedRecordHeaderCellIdentifier;
+    
     FADummieStrategyDetailDto *dataSource;
 }
 
