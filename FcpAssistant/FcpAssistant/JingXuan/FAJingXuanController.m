@@ -228,7 +228,7 @@
             
             FADummieStrategyDetailViewModel *jingxuan = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[0];
             cell.strategyId1 = jingxuan.StrategyId;
-            cell.btnStrategyName1.titleLabel.text = jingxuan.StrategyName;
+            [cell.btnStrategyName1 setTitle:jingxuan.StrategyName forState:UIControlStateNormal];
             int star = (int)ceil(jingxuan.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -258,12 +258,12 @@
             
             FADummieStrategyDetailViewModel *jingxuan2 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[1];
             cell.strategyId2 = jingxuan2.StrategyId;
-            cell.btnStrategyName2.titleLabel.text = jingxuan2.StrategyName;
+            [cell.btnStrategyName2 setTitle:jingxuan2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.FollowNumber];
             
             FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[2];
             cell.strategyId3 = jingxuan3.StrategyId;
-            cell.btnStrategyName3.titleLabel.text = jingxuan3.StrategyName;
+            [cell.btnStrategyName2 setTitle:jingxuan3.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.FollowNumber];
         }
             break;
@@ -275,7 +275,7 @@
             
             FADummieStrategyDetailViewModel *qushi = (FADummieStrategyDetailViewModel *)dataSourceQuShi[0];
             cell.strategyId1 = qushi.StrategyId;
-            cell.btnStrategyName1.titleLabel.text = qushi.StrategyName;
+            [cell.btnStrategyName1 setTitle:qushi.StrategyName forState:UIControlStateNormal];
             int star = (int)ceil(qushi.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -304,12 +304,12 @@
             
             FADummieStrategyDetailViewModel *qushi2 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[1];
             cell.strategyId2 = qushi2.StrategyId;
-            cell.btnStrategyName2.titleLabel.text = qushi2.StrategyName;
+            [cell.btnStrategyName2 setTitle:qushi2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", qushi2.FollowNumber];
             
             FADummieStrategyDetailViewModel *qushi3 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[2];
             cell.strategyId3 = qushi3.StrategyId;
-            cell.btnStrategyName3.titleLabel.text = qushi3.StrategyName;
+            [cell.btnStrategyName3 setTitle:qushi3.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", qushi3.FollowNumber];
         }
             break;
@@ -321,7 +321,7 @@
             
             FADummieStrategyDetailViewModel *nishi = (FADummieStrategyDetailViewModel *)dataSourceNiShi[0];
             cell.strategyId1 = nishi.StrategyId;
-            cell.btnStrategyName1.titleLabel.text = nishi.StrategyName;
+            [cell.btnStrategyName1 setTitle:nishi.StrategyName forState:UIControlStateNormal];;
             int star = (int)ceil(nishi.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -350,12 +350,12 @@
             
             FADummieStrategyDetailViewModel *nishi2 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[1];
             cell.strategyId2 = nishi2.StrategyId;
-            cell.btnStrategyName2.titleLabel.text = nishi2.StrategyName;
+            [cell.btnStrategyName2 setTitle:nishi2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", nishi2.FollowNumber];
             
             FADummieStrategyDetailViewModel *nishi3 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[2];
             cell.strategyId3 = nishi3.StrategyId;
-            cell.btnStrategyName3.titleLabel.text = nishi3.StrategyName;
+            [cell.btnStrategyName3 setTitle:nishi3.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", nishi3.FollowNumber];
         }
             break;
@@ -367,7 +367,7 @@
             
             FADummieStrategyDetailViewModel *taoli = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[0];
             cell.strategyId1 = taoli.StrategyId;
-            cell.btnStrategyName1.titleLabel.text = taoli.StrategyName;
+            [cell.btnStrategyName1 setTitle:taoli.StrategyName forState:UIControlStateNormal];
             int star = (int)ceil(taoli.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
             cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -396,7 +396,7 @@
             
             FADummieStrategyDetailViewModel *taoli2 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[1];
             cell.strategyId2 = taoli2.StrategyId;
-            cell.btnStrategyName2.titleLabel.text = taoli2.StrategyName;
+            [cell.btnStrategyName2 setTitle:taoli2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", taoli2.FollowNumber];
             
 //            FADummieStrategyDetailViewModel *taoli3 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[2];

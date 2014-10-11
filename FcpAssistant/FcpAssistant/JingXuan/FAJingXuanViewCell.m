@@ -51,4 +51,6 @@
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
+//- (IBAction)strategyName2Pressed:(id)sender {
+//}
 @end
