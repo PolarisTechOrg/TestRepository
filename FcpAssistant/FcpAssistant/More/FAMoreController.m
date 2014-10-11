@@ -175,6 +175,11 @@
 {
     [self.navigationController pushViewController:newViewController animated:YES];
 }
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

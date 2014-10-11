@@ -263,8 +263,9 @@ const int profitSectionIndex =8;
             if (!cell)
             {
                 cell = [[FAMyPurchaseDetailTopViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topCellIdentifier];
-                cell.rootNavController = self.navigationController;
+
             }
+            cell.rootNavController = self.navigationController;
             [self showTopViewCell:cell];
             return cell;
         }

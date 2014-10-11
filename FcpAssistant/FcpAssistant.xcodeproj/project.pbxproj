@@ -93,6 +93,7 @@
 		592ABF9919CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9719CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib */; };
 		592ABF9C19CC067E002F0A8E /* tmp_collect_profit_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9A19CC067E002F0A8E /* tmp_collect_profit_green.png */; };
 		592ABF9D19CC067E002F0A8E /* tmp_collect_profit_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9B19CC067E002F0A8E /* tmp_collect_profit_red.png */; };
+		592AE1DB19E8FAE40080CC46 /* FAWinLossView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE1DA19E8FAE40080CC46 /* FAWinLossView.m */; };
 		592B87C419C7BEC900B6EDF9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C219C7BEC900B6EDF9 /* icon.png */; };
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		592C1EF519DD27E100D984B9 /* FAStrategyProfitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592C1EF419DD27E100D984B9 /* FAStrategyProfitView.m */; };
@@ -420,6 +421,8 @@
 		592ABF9719CBBFEB002F0A8E /* FAMyCollectItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyCollectItemViewCell.xib; path = Trade/MyCollect/FAMyCollectItemViewCell.xib; sourceTree = "<group>"; };
 		592ABF9A19CC067E002F0A8E /* tmp_collect_profit_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_collect_profit_green.png; path = ImageSource/temp/tmp_collect_profit_green.png; sourceTree = "<group>"; };
 		592ABF9B19CC067E002F0A8E /* tmp_collect_profit_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_collect_profit_red.png; path = ImageSource/temp/tmp_collect_profit_red.png; sourceTree = "<group>"; };
+		592AE1D919E8FAE40080CC46 /* FAWinLossView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAWinLossView.h; path = CustomView/FAWinLossView.h; sourceTree = "<group>"; };
+		592AE1DA19E8FAE40080CC46 /* FAWinLossView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAWinLossView.m; path = CustomView/FAWinLossView.m; sourceTree = "<group>"; };
 		592B87C219C7BEC900B6EDF9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ImageSource/icon.png; sourceTree = "<group>"; };
 		592B87C319C7BEC900B6EDF9 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "ImageSource/icon@2x.png"; sourceTree = "<group>"; };
 		592C1EF319DD27E100D984B9 /* FAStrategyProfitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyProfitView.h; path = CustomView/FAStrategyProfitView.h; sourceTree = "<group>"; };
@@ -1358,6 +1361,8 @@
 				594DD2C819CAC7C1009D4A48 /* FAPurchaseProfitView.m */,
 				592C1EF319DD27E100D984B9 /* FAStrategyProfitView.h */,
 				592C1EF419DD27E100D984B9 /* FAStrategyProfitView.m */,
+				592AE1D919E8FAE40080CC46 /* FAWinLossView.h */,
+				592AE1DA19E8FAE40080CC46 /* FAWinLossView.m */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -2203,6 +2208,7 @@
 				593E7DF619D28878000997C6 /* FAStationLoginModelDto.m in Sources */,
 				592735C119C28F5C00FF42A1 /* FATermOfServiceController.m in Sources */,
 				5938187519D006A800AF8A46 /* FADummieStrategyViewModelDto.m in Sources */,
+				592AE1DB19E8FAE40080CC46 /* FAWinLossView.m in Sources */,
 				84844A4219C968D8001C2EC4 /* FAStrategyFilterViewCell.m in Sources */,
 				84956F9719D9845A0001E78C /* MJRefreshHeaderView.m in Sources */,
 				591B320A19D799A600AE9F72 /* FAUtility.m in Sources */,
