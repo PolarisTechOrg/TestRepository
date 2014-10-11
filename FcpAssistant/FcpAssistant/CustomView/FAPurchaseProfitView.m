@@ -206,12 +206,10 @@
     for (int i=0;i<4;i++)
     {
         NSInteger index = i*(totalPointCount-1)/4;
-        NSLog(@"YIndex:%ld",index);
         if(index < dataSource.count)
         {
             FAStrategyProfitDto *item = dataSource[index];
             NSString *xValueStr =  [FAFormater toShortDateStringWithNSDate:item.SettlementDate];
-//            xValueStr = @"2014-09-01";
             CGRect rect = CGRectMake(leftMargin +yInterval *i -20,frameHeight - bottomMargin+5,40,10);
             CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
             [xValueStr drawInRect:rect withFont:font lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
