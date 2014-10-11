@@ -132,7 +132,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;//202;
+    return 192;
 }
 
 //- (void)enterDetailView
@@ -151,6 +151,8 @@
     {
         cell = [[FAJingXuanViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
     }
+    
+    cell.navigationController = self.navigationController;  // refer navigation
 
     switch (indexPath.row)
     {
@@ -160,7 +162,8 @@
             cell.lblTitle.text = @"策略精选";
             
             FADummieStrategyDetailViewModel *jingxuan = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[0];
-            cell.btnStrategyName.titleLabel.text = jingxuan.StrategyName;
+            cell.strategyId1 = jingxuan.StrategyId;
+            cell.btnStrategyName1.titleLabel.text = jingxuan.StrategyName;
 //            cell.lblStrategyName1.text = jingxuan.StrategyName;
             int star = (int)ceil(jingxuan.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
@@ -178,11 +181,15 @@
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio *100];
             
             FADummieStrategyDetailViewModel *jingxuan2 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[1];
-            cell.lblStrategyName2.text = jingxuan2.StrategyName;
+            cell.strategyId2 = jingxuan2.StrategyId;
+            cell.btnStrategyName2.titleLabel.text = jingxuan2.StrategyName;
+//            cell.lblStrategyName2.text = jingxuan2.StrategyName;
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.FollowNumber];
             
-            FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[1];
-            cell.lblStrategyName3.text = jingxuan3.StrategyName;
+            FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[2];
+            cell.strategyId3 = jingxuan3.StrategyId;
+            cell.btnStrategyName3.titleLabel.text = jingxuan3.StrategyName;
+//            cell.lblStrategyName3.text = jingxuan3.StrategyName;
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.FollowNumber];
         }
             break;
@@ -193,7 +200,8 @@
             cell.lblTitle.text = @"趋势策略";
             
             FADummieStrategyDetailViewModel *qushi = (FADummieStrategyDetailViewModel *)dataSourceQuShi[0];
-            cell.btnStrategyName.titleLabel.text = qushi.StrategyName;
+            cell.strategyId1 = qushi.StrategyId;
+            cell.btnStrategyName1.titleLabel.text = qushi.StrategyName;
 //            cell.lblStrategyName1.text = qushi.StrategyName;
             int star = (int)ceil(qushi.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
@@ -210,11 +218,15 @@
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",qushi.CumulativeReturnRatio *100];
             
             FADummieStrategyDetailViewModel *qushi2 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[1];
-            cell.lblStrategyName2.text = qushi2.StrategyName;
+            cell.strategyId2 = qushi2.StrategyId;
+            cell.btnStrategyName2.titleLabel.text = qushi2.StrategyName;
+//            cell.lblStrategyName2.text = qushi2.StrategyName;
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", qushi2.FollowNumber];
             
             FADummieStrategyDetailViewModel *qushi3 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[2];
-            cell.lblStrategyName3.text = qushi3.StrategyName;
+            cell.strategyId3 = qushi3.StrategyId;
+            cell.btnStrategyName3.titleLabel.text = qushi3.StrategyName;
+//            cell.lblStrategyName3.text = qushi3.StrategyName;
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", qushi3.FollowNumber];
         }
             break;
@@ -225,7 +237,8 @@
             cell.lblTitle.text = @"逆势策略";
             
             FADummieStrategyDetailViewModel *nishi = (FADummieStrategyDetailViewModel *)dataSourceNiShi[0];
-            cell.btnStrategyName.titleLabel.text = nishi.StrategyName;
+            cell.strategyId1 = nishi.StrategyId;
+            cell.btnStrategyName1.titleLabel.text = nishi.StrategyName;
 //            cell.lblStrategyName1.text = nishi.StrategyName;
             int star = (int)ceil(nishi.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
@@ -242,11 +255,15 @@
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",nishi.CumulativeReturnRatio *100];
             
             FADummieStrategyDetailViewModel *nishi2 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[1];
-            cell.lblStrategyName2.text = nishi2.StrategyName;
+            cell.strategyId2 = nishi2.StrategyId;
+            cell.btnStrategyName2.titleLabel.text = nishi2.StrategyName;
+//            cell.lblStrategyName2.text = nishi2.StrategyName;
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", nishi2.FollowNumber];
             
             FADummieStrategyDetailViewModel *nishi3 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[2];
-            cell.lblStrategyName3.text = nishi3.StrategyName;
+            cell.strategyId3 = nishi3.StrategyId;
+            cell.btnStrategyName3.titleLabel.text = nishi3.StrategyName;
+//            cell.lblStrategyName3.text = nishi3.StrategyName;
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", nishi3.FollowNumber];
         }
             break;
@@ -257,7 +274,8 @@
             cell.lblTitle.text = @"套利策略";
             
             FADummieStrategyDetailViewModel *taoli = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[0];
-            cell.btnStrategyName.titleLabel.text = taoli.StrategyName;
+            cell.strategyId1 = taoli.StrategyId;
+            cell.btnStrategyName1.titleLabel.text = taoli.StrategyName;
 //            cell.lblStrategyName1.text = taoli.StrategyName;
             int star = (int)ceil(taoli.Star);
             NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
@@ -274,7 +292,9 @@
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",taoli.CumulativeReturnRatio *100];
             
             FADummieStrategyDetailViewModel *taoli2 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[1];
-            cell.lblStrategyName2.text = taoli2.StrategyName;
+            cell.strategyId2 = taoli2.StrategyId;
+            cell.btnStrategyName2.titleLabel.text = taoli2.StrategyName;
+//            cell.lblStrategyName2.text = taoli2.StrategyName;
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", taoli2.FollowNumber];
             
 //            FADummieStrategyDetailViewModel *taoli3 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[2];
@@ -286,6 +306,8 @@
         default:
             break;
     }
+    
+    [cell initialNameIdDictionary]; // NameIdDictionary
     
     return cell;
 }

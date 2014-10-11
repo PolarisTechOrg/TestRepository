@@ -196,6 +196,7 @@
 		59FB1C2219E535AB006A648C /* btn_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1C1E19E535AB006A648C /* btn_login.png */; };
 		59FB1C2319E535AB006A648C /* btn_logoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1C1F19E535AB006A648C /* btn_logoff.png */; };
 		59FB1C2419E535AB006A648C /* btn_registration.png in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1C2019E535AB006A648C /* btn_registration.png */; };
+		8403C56419E8F8690058B19F /* FADateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403C56319E8F8690058B19F /* FADateConverter.m */; };
 		840DD87A19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD87819CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m */; };
 		840DD87B19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD87919CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.xib */; };
 		840DD88219CD776E0023885D /* FAStrategyDetailDescribViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD88019CD776E0023885D /* FAStrategyDetailDescribViewCell.m */; };
@@ -569,6 +570,8 @@
 		59FB1C1E19E535AB006A648C /* btn_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_login.png; path = ImageSource/btnBackImage/btn_login.png; sourceTree = "<group>"; };
 		59FB1C1F19E535AB006A648C /* btn_logoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_logoff.png; path = ImageSource/btnBackImage/btn_logoff.png; sourceTree = "<group>"; };
 		59FB1C2019E535AB006A648C /* btn_registration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_registration.png; path = ImageSource/btnBackImage/btn_registration.png; sourceTree = "<group>"; };
+		8403C56219E8F8690058B19F /* FADateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FADateConverter.h; path = Json/FADateConverter.h; sourceTree = "<group>"; };
+		8403C56319E8F8690058B19F /* FADateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FADateConverter.m; path = Json/FADateConverter.m; sourceTree = "<group>"; };
 		840DD87719CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyDetailLatedRecordViewCell.h; path = Strategy/FAStrategyDetailLatedRecordViewCell.h; sourceTree = "<group>"; };
 		840DD87819CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyDetailLatedRecordViewCell.m; path = Strategy/FAStrategyDetailLatedRecordViewCell.m; sourceTree = "<group>"; };
 		840DD87919CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategyDetailLatedRecordViewCell.xib; path = Strategy/FAStrategyDetailLatedRecordViewCell.xib; sourceTree = "<group>"; };
@@ -1022,6 +1025,8 @@
 				592A83F419C9257700DDE1B5 /* Jastor.m */,
 				592A83F519C9257700DDE1B5 /* JastorRuntimeHelper.h */,
 				592A83F619C9257700DDE1B5 /* JastorRuntimeHelper.m */,
+				8403C56219E8F8690058B19F /* FADateConverter.h */,
+				8403C56319E8F8690058B19F /* FADateConverter.m */,
 			);
 			name = Json;
 			sourceTree = "<group>";
@@ -2186,6 +2191,7 @@
 				591B218019C16AB800064F24 /* FAMoreViewCell.m in Sources */,
 				593E7DF919D2AD22000997C6 /* FASaltDto.m in Sources */,
 				593EA6F519C04DDF00E9F2BC /* FAMyOrderBookItemHeaderView.m in Sources */,
+				8403C56419E8F8690058B19F /* FADateConverter.m in Sources */,
 				84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */,
 				593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */,
 				591B321319D7F28100AE9F72 /* FAMemberRegistrationModel.m in Sources */,

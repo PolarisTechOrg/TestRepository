@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 @interface FAJingXuanViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (copy, nonatomic) NSDictionary *nameIdDict;
+@property (retain, nonatomic) UINavigationController *navigationController;
 
-
-@property (retain, nonatomic) IBOutlet UIButton *btnStrategyName;
+@property (assign, nonatomic) int strategyId1;
+@property (retain, nonatomic) IBOutlet UIButton *btnStrategyName1;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName1;
 @property (weak, nonatomic) IBOutlet UIImageView *imgStrategyStar1;
 @property (weak, nonatomic) IBOutlet UILabel *lblUpdateDate1;
@@ -25,13 +28,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceMap1;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPerformanceBackMap1;
 
-
+@property (assign, nonatomic) int strategyId2;
+@property (weak, nonatomic) IBOutlet UIButton *btnStrategyName2;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName2;
 @property (weak, nonatomic) IBOutlet UILabel *lblCollectionPeople2;
 
-
-
+@property (assign, nonatomic) int strategyId3;
+@property (weak, nonatomic) IBOutlet UIButton *btnStrategyName3;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName3;
 @property (weak, nonatomic) IBOutlet UILabel *lblCollectionPeople3;
 
+
+- (void)initialNameIdDictionary;
 @end

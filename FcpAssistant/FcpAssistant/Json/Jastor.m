@@ -1,5 +1,6 @@
 #import "Jastor.h"
 #import "JastorRuntimeHelper.h"
+#import "FADateConverter.h"
 
 @implementation Jastor
 
@@ -26,6 +27,19 @@ Class nsArrayClass;
             
             if ([JastorRuntimeHelper isPropertyReadOnly:[obj class] propertyName:key]) {
                 continue;
+            }
+            
+            // handle date
+            if ([value isKindOfClass:[NSString class]] && [JastorRuntimeHelper propertyClassForPropertyName:key ofClass:[obj class]])
+            {
+                NSString *dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
+                NSString *dateString = value;
+                if(dateString.length > 19)
+                {
+                    dateString = [dateString substringWithRange:NSMakeRange(0, 19)];
+                    NSDate *date = [FADateConverter asDate:dateString dateFormat:dateFormat];
+                    value = date;
+                }
             }
             
             // handle dictionary
