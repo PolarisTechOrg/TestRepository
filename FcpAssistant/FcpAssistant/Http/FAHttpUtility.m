@@ -45,7 +45,11 @@
         }
         NSUInteger length = [bodyString length];
         [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
-        [urlRequest setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // urlencode
+        NSString *encodeBodyString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)bodyString, NULL, CFSTR("!*'();:@&=+$,/?%#[]") , kCFStringEncodingUTF8));
+        
+        [urlRequest setHTTPBody:[encodeBodyString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
     NSData *retData;
