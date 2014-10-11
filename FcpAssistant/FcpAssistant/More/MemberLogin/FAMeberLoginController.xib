@@ -47,6 +47,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            <connections>
+                                <action selector="txtFieldDidEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="PTc-3U-wcu"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7s9-ZJ-iuP">
                             <rect key="frame" x="224" y="319" width="87" height="30"/>
@@ -107,11 +110,16 @@
                             </items>
                         </navigationBar>
                     </subviews>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="gDg-EB-Xt2" appends="YES" id="Gjd-Cz-Emd"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedTopBarMetrics"/>
         </view>
+        <tapGestureRecognizer id="gDg-EB-Xt2"/>
     </objects>
     <resources>
         <image name="bg_line_80.png" width="1" height="80"/>

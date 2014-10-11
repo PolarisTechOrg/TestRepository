@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"我的期顾";
-    
+    self.myScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,800);
     [self showAccount];
 }
 
@@ -73,6 +73,20 @@
 
 - (IBAction)btnLogout_Click:(id)sender
 {
+    @try
+    {
+    
+    [[FAAccountManager shareInstance] logout];
+     
+    }
+    @catch (NSException *exception)
+    {
+     
+    }
+    @finally
+    {
+     
+    }
 }
 
 /*
