@@ -21,6 +21,10 @@
     }
     return self;
 }
+- (IBAction)txtFieldDidEndOnExit:(id)sender
+{
+    [sender resignFirstResponder];
+}
 
 - (void)viewDidLoad
 {

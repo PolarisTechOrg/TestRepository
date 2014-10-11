@@ -47,6 +47,7 @@
         
         FASaltDto *saltDto = [self getSalt:account];
       
+        NSLog(@"Stamp:%@Salt:%@:Sign:%@",saltDto.Stamp,saltDto.Sign,saltDto.Salt);
         NSString *encryptPwd = [self encryptFcpPassword:password stamp:saltDto.Stamp salt:saltDto.Salt];
         
         NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/member?stationlogin",WEB_URL];
@@ -111,6 +112,36 @@
     }
 }
 
+-(void)logout
+{
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/member?logout",WEB_URL];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        NSString *replyMessage = [[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding];
+        NSLog(@"Login reply: %@",replyMessage);
+    }
+    @catch (NSException *exception)
+    {
+        @throw exception;
+    }
+    @finally
+    {
+        self.currentMember = nil;
+        self.selectFundAccount = nil;
+        self.hasLogin = NO;
+    }
+}
+
+-(void) modifyPasswor:(NSString *) oldpassword newPassword:(NSString *) newPassword confirmPassword:(NSString *)confirmPassword
+{
+    
+}
+
 -(void) changeFundAccount:(NSString *) fundAccount fundAccountType:(int) fundAccountType
 {
     if(self.currentMember.RealFundAccount != nil &&
@@ -138,6 +169,7 @@
      
      if(error == nil)
      {
+
          FASaltDto *dtoObj =[FAJSONSerialization toObject:[FASaltDto class] fromData: replyData];
          return  dtoObj;
      }

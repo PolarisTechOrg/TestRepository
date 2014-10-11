@@ -94,6 +94,7 @@
 		592ABF9C19CC067E002F0A8E /* tmp_collect_profit_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9A19CC067E002F0A8E /* tmp_collect_profit_green.png */; };
 		592ABF9D19CC067E002F0A8E /* tmp_collect_profit_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 592ABF9B19CC067E002F0A8E /* tmp_collect_profit_red.png */; };
 		592AE1DB19E8FAE40080CC46 /* FAWinLossView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE1DA19E8FAE40080CC46 /* FAWinLossView.m */; };
+		592AE1DE19E92E490080CC46 /* FAModifyPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 592AE1DD19E92E490080CC46 /* FAModifyPasswordModel.m */; };
 		592B87C419C7BEC900B6EDF9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C219C7BEC900B6EDF9 /* icon.png */; };
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		592C1EF519DD27E100D984B9 /* FAStrategyProfitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592C1EF419DD27E100D984B9 /* FAStrategyProfitView.m */; };
@@ -423,6 +424,8 @@
 		592ABF9B19CC067E002F0A8E /* tmp_collect_profit_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_collect_profit_red.png; path = ImageSource/temp/tmp_collect_profit_red.png; sourceTree = "<group>"; };
 		592AE1D919E8FAE40080CC46 /* FAWinLossView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAWinLossView.h; path = CustomView/FAWinLossView.h; sourceTree = "<group>"; };
 		592AE1DA19E8FAE40080CC46 /* FAWinLossView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAWinLossView.m; path = CustomView/FAWinLossView.m; sourceTree = "<group>"; };
+		592AE1DC19E92E490080CC46 /* FAModifyPasswordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAModifyPasswordModel.h; path = Model/ServerModel/FAModifyPasswordModel.h; sourceTree = "<group>"; };
+		592AE1DD19E92E490080CC46 /* FAModifyPasswordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAModifyPasswordModel.m; path = Model/ServerModel/FAModifyPasswordModel.m; sourceTree = "<group>"; };
 		592B87C219C7BEC900B6EDF9 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ImageSource/icon.png; sourceTree = "<group>"; };
 		592B87C319C7BEC900B6EDF9 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "ImageSource/icon@2x.png"; sourceTree = "<group>"; };
 		592C1EF319DD27E100D984B9 /* FAStrategyProfitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyProfitView.h; path = CustomView/FAStrategyProfitView.h; sourceTree = "<group>"; };
@@ -1101,6 +1104,8 @@
 				59FB1C1719E50EE6006A648C /* FAChartDto.m */,
 				59FB1C1919E50FC1006A648C /* FADrawedReturnViewModel.h */,
 				59FB1C1A19E50FC1006A648C /* FADrawedReturnViewModel.m */,
+				592AE1DC19E92E490080CC46 /* FAModifyPasswordModel.h */,
+				592AE1DD19E92E490080CC46 /* FAModifyPasswordModel.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -2149,6 +2154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				593EA6B319BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.m in Sources */,
+				592AE1DE19E92E490080CC46 /* FAModifyPasswordModel.m in Sources */,
 				591EA2DA19BEDCCB00EED52C /* FAMyPurchaseDetailController.m in Sources */,
 				5982A2FF19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m in Sources */,
 				593EA6A019BFF8AD00E9F2BC /* FAMyPurchaseDetailProfitHeaderView.m in Sources */,
@@ -2392,7 +2398,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2409,7 +2415,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

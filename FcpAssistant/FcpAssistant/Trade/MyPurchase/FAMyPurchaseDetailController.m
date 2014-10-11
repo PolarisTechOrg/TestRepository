@@ -144,7 +144,7 @@ const int profitSectionIndex =8;
         }
         else
         {
-            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
             @throw ex;
         }
         

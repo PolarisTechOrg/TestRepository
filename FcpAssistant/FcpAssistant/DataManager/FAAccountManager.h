@@ -23,6 +23,12 @@
 //用户登陆
 -(void) Login:(NSString *) account  withPassword:(NSString *) password clientId:(NSString *) clientId;
 
-//变更选中
+//交易账户选中变更
 -(void) changeFundAccount:(NSString *) fundAccount fundAccountType:(int) fundAccountType;
+
+//修改密码
+-(void) modifyPasswor:(NSString *) oldpassword newPassword:(NSString *) newPassword confirmPassword:(NSString *)confirmPassword;
+
+//用户登出
+-(void)logout;
 @end
