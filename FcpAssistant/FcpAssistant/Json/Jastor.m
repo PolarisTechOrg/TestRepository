@@ -30,16 +30,16 @@ Class nsArrayClass;
             }
             
             // handle date
-            if ([value isKindOfClass:[NSString class]] && [JastorRuntimeHelper propertyClassForPropertyName:key ofClass:[obj class]])
+            if ([value isKindOfClass:[NSString class]] && ([JastorRuntimeHelper propertyClassForPropertyName:key ofClass:[obj class]] == [NSDate class]))
             {
                 NSString *dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
                 NSString *dateString = value;
                 if(dateString.length > 19)
                 {
                     dateString = [dateString substringWithRange:NSMakeRange(0, 19)];
-                    NSDate *date = [FADateConverter asDate:dateString dateFormat:dateFormat];
-                    value = date;
                 }
+                NSDate *date = [FADateConverter asDate:dateString dateFormat:dateFormat];
+                value = date;
             }
             
             // handle dictionary
