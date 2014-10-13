@@ -18,10 +18,13 @@
 
 @synthesize strategyId1;
 @synthesize profitChartDto1;
+@synthesize winLossesChart1;
 @synthesize strategyId2;
 @synthesize profitChartDto2;
+@synthesize winLossesChart2;
 @synthesize strategyId3;
 @synthesize profitChartDto3;
+@synthesize winLossesChart3;
 
 
 - (void)awakeFromNib
@@ -52,9 +55,39 @@
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
     controller.profitCharDto = profitChartDto1;
+    controller.latedWinlosses = winLossesChart1;
+    
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
-//- (IBAction)strategyName2Pressed:(id)sender {
-//}
+
+- (IBAction)strategyName2Pressed:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    NSString *txt = btn.titleLabel.text;
+    
+    FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
+    int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
+    controller.strategyId = strategyId;
+    controller.profitCharDto = profitChartDto2;
+    controller.latedWinlosses = winLossesChart2;
+    
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (IBAction)strategyName3Pressed:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    NSString *txt = btn.titleLabel.text;
+    
+    FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
+    int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
+    controller.strategyId = strategyId;
+    controller.profitCharDto = profitChartDto3;
+    controller.latedWinlosses = winLossesChart3;
+    
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+}
 @end

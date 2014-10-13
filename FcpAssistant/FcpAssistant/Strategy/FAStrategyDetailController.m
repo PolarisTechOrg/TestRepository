@@ -25,6 +25,7 @@
 #import "FAStrategyPerformanceViewModel.h"
 #import "FAStrategyModel.h"
 #import "FAWinLossView.h"
+#import "FAWinLossViewModel.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -220,9 +221,64 @@ const int latedRecordSectionIndex = 6;
     [cell.imgStrategyDetailProfitView setNeedsDisplay];
 }
 
+- (NSArray *)sortWinLosses:(NSArray *)winLosses
+{
+    if(winLosses == nil || winLosses.count == 0)
+    {
+        return nil;
+    }
+    
+    ProfitType preProfit = Unknown; // 确保数组能够初始化
+    ProfitType curProfit = Unknown;
+    unsigned long length = winLosses.count;
+    NSMutableArray *sortedArray = [NSMutableArray arrayWithCapacity:64];
+    NSMutableArray *sortedNestArray;
+    
+    for (unsigned long i = 0; i < length; i++)
+    {
+        FAWinLossViewModel *item = (FAWinLossViewModel *)winLosses[i];
+        if (item == nil)
+        {
+            continue;
+        }
+        
+        if (item.Profit > 0)
+        {
+            curProfit = Profit;
+        }
+        else if (item.Profit < 0)
+        {
+            curProfit = Loss;
+        }
+        else
+        {
+            curProfit = Balance;
+        }
+        
+        if(curProfit == preProfit && sortedNestArray.count < 8)
+        {
+            [sortedNestArray addObject:item];
+        }
+        else
+        {
+            sortedNestArray = [NSMutableArray arrayWithCapacity:32];
+            [sortedNestArray addObject:item];
+            [sortedArray addObject:sortedNestArray];
+        }
+        preProfit = curProfit;
+    }
+    
+    if (sortedArray.count > 8) {
+        NSRange range = NSMakeRange(sortedArray.count - 8, 8);
+        sortedArray = [NSMutableArray arrayWithArray:[sortedArray subarrayWithRange:range]];
+    }
+    
+    return sortedArray;
+}
+
 - (void)showLatedRecordViewCell:(FAStrategyDetailLatedRecordViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-    cell.imgWinLoss.dataSource = latedWinlosses;
+    cell.imgWinLoss.dataSource = [self sortWinLosses:latedWinlosses];
     [cell.imgWinLoss setNeedsDisplay];
 }
 

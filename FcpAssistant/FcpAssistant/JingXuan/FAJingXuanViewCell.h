@@ -20,6 +20,7 @@
 
 @property (assign, nonatomic) int strategyId1;
 @property (retain, nonatomic) FAChartDto *profitChartDto1;
+@property (retain, nonatomic) NSArray *winLossesChart1;
 @property (retain, nonatomic) IBOutlet UIButton *btnStrategyName1;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName1;
 @property (weak, nonatomic) IBOutlet UIImageView *imgStrategyStar1;
@@ -34,12 +35,14 @@
 
 @property (assign, nonatomic) int strategyId2;
 @property (retain, nonatomic) FAChartDto *profitChartDto2;
+@property (retain, nonatomic) NSArray *winLossesChart2;
 @property (weak, nonatomic) IBOutlet UIButton *btnStrategyName2;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName2;
 @property (weak, nonatomic) IBOutlet UILabel *lblCollectionPeople2;
 
 @property (assign, nonatomic) int strategyId3;
 @property (retain, nonatomic) FAChartDto *profitChartDto3;
+@property (retain, nonatomic) NSArray *winLossesChart3;
 @property (weak, nonatomic) IBOutlet UIButton *btnStrategyName3;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrategyName3;
 @property (weak, nonatomic) IBOutlet UILabel *lblCollectionPeople3;
