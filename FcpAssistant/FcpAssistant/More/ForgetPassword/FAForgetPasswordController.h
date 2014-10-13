@@ -10,4 +10,6 @@
 
 @interface FAForgetPasswordController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+
 @end

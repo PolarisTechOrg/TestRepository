@@ -7,6 +7,7 @@
 //
 
 #import "FAForgetPasswordController.h"
+#import "FAUtility.h"
 
 @interface FAForgetPasswordController ()
 
@@ -14,25 +15,49 @@
 
 @implementation FAForgetPasswordController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.navigationItem.title = @"忘记密码";
     
-    UIBarButtonItem* finishBtn = [[UIBarButtonItem alloc] init];
-    finishBtn.title = @"完成";
-    self.navigationItem.rightBarButtonItem = finishBtn;
+    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelView:)];
+    self.navItem.leftBarButtonItem = cancelBtn;
     
-    // Do any additional setup after loading the view from its nib.
+    UIBarButtonItem* finishBtn = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(finishForgetPaswor:)];
+    self.navItem.rightBarButtonItem = finishBtn;
+    
+    self.navItem.title = @"忘记密码";
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)txtFieldDidEndOnExit:(id)sender
 {
     [sender resignFirstResponder];
+}
+
+-(void)cancelView:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)finishForgetPaswor:(id)sender
+{
+    @try
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+    }
+    @finally
+    {
+    
+    }
 }
 
 /*
