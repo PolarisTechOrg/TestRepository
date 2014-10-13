@@ -174,7 +174,7 @@
 {
     UIColor *borderColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1.0];
     CGContextSetStrokeColorWithColor(context,borderColor.CGColor);
-    CGFloat lengths[] = {6,0};
+    CGFloat lengths[] = {1,0.1};
     CGContextSetLineDash(context, 0, lengths, 2);
     CGContextSetLineWidth(context, 1.0);
     
@@ -233,8 +233,10 @@
 //绘制收益线
 -(void) drawProfitLine:(CGContextRef) context
 {
-    CGContextSetLineWidth(context, 1.0);
-    
+    CGContextSetLineWidth(context, 1);
+    CGFloat lengths[] = {1,0.1};
+    CGContextSetLineDash(context, 0, lengths, 2);
+
     CGFloat xStart = [self getXPosition:0];
     CGFloat yStart =[self getYPosition: ((FADrawedReturnViewModel *)dataSource[0]).Data];
     CGContextMoveToPoint (context,xStart,yStart);

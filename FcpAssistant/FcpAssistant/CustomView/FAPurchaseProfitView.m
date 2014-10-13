@@ -161,8 +161,9 @@
 {
     UIColor *borderColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1.0];
     CGContextSetStrokeColorWithColor(context,borderColor.CGColor);
-    CGFloat lengths[] = {6,0};
-    CGContextSetLineDash(context, 0, lengths, 2);
+    CGFloat lengths[] = {1,0.1};
+//    CGContextSetLineDash(context, 0, lengths, 2);
+//    CGContextSetLineCap(context, )
     CGContextSetLineWidth(context, 1.0);
     
     UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:8.0];
@@ -220,8 +221,11 @@
 //绘制收益线
 -(void) drawProfitLine:(CGContextRef) context
 {
-    CGContextSetLineWidth(context, 1.0);
-    
+    CGContextSetLineWidth(context, 1);
+    CGContextSetStrokeColorWithColor(context, profitLineColor.CGColor);
+    CGFloat lengths[] = {1,0.1};
+    CGContextSetLineDash(context, 0, lengths, 2);
+    //    CGContextSetLineCap(context, )
     CGFloat xStart = [self getXPosition:0];
     CGFloat yStart =[self getYPosition: ((FAStrategyProfitDto *)dataSource[0]).Profit];
     CGContextMoveToPoint (context,xStart,yStart);
@@ -233,7 +237,6 @@
         
         CGContextAddLineToPoint (context,xPos,yPos);
     }
-    [profitLineColor setStroke];
     CGContextStrokePath(context);
 }
 @end
