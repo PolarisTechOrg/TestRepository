@@ -13,7 +13,7 @@
 
 - (void)awakeFromNib
 {
-    FAWinLossView *winLossView = [[FAWinLossView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
+    FAWinLossView *winLossView = [[FAWinLossView alloc] initWithFrame:CGRectMake(0, 0, 294, 140)];
     [self.imgLatedWinLost addSubview:winLossView];
     self.imgWinLoss = winLossView;
     // Initialization code
