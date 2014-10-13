@@ -7,9 +7,9 @@
 //
 
 #import "FAMySignalController.h"
-#import "FAMySignalItemHeaderView.h"
+#import "FAMySignalItemHeaderViewCell.h"
 #import "FAMySignalItemViewCell.h"
-#import "FAMySignalItemHeaderView.h"
+
 #import "FAMyStrategySignalDto.h"
 #import "FAAccountManager.h"
 #import "FAFoundation.h"
@@ -67,7 +67,7 @@
         }
         else
         {
-            NSException *ex = [[NSException alloc] initWithName:@"MySignalExeption" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            NSException *ex = [[NSException alloc] initWithName:@"MySignalExeption" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
             @throw ex;
         }
     }
@@ -84,11 +84,15 @@
 
 -(void)initializeData
 {
+    itemHeaderIdentifier = @"mySignalHeaderCell";
     itemCellIdentifier = @"mySignalItemCell";
 }
 
 -(void)registerXibFile
 {
+    UINib *itemHeaderCellNib = [UINib nibWithNibName:@"FAMySignalItemHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:itemHeaderCellNib forCellReuseIdentifier:itemHeaderIdentifier];
+
     UINib *itemCellNib = [UINib nibWithNibName:@"FAMySignalItemViewCell" bundle:nil];
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
@@ -101,20 +105,42 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return dataSource.count;
+    return dataSource.count *2;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    FAMyStrategySignalDto *dto = dataSource[section];
-    return dto.Detail.count;
+    NSInteger index = section %2;
+    if(index ==0)
+    {
+        return 1;
+    }
+    else
+    {
+        FAMyStrategySignalDto *dto = dataSource[section/2];
+        return dto.Detail.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if(indexPath.section %2 ==0)
+    {
+        FAMySignalItemHeaderViewCell *cell= (FAMySignalItemHeaderViewCell*)[tableView dequeueReusableCellWithIdentifier:itemHeaderIdentifier];
+        
+        if (!cell)
+        {
+            cell = [[FAMySignalItemHeaderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemHeaderIdentifier];
+        }
+        
+        FAMyStrategySignalDto *mySignal = dataSource[indexPath.section/2];
+        cell.lblHeaderName.text = mySignal.Description;
+        return cell;
+    }
+    else
+    {
     FAMySignalItemViewCell* cell= (FAMySignalItemViewCell*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
     
     if (!cell)
@@ -122,9 +148,9 @@
         cell = [[FAMySignalItemViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
     }
     
-    if (indexPath.section < dataSource.count)
+    if (indexPath.section/2 < dataSource.count)
     {
-        FAMyStrategySignalDto *mySignal = dataSource[indexPath.section];
+        FAMyStrategySignalDto *mySignal = dataSource[indexPath.section/2];
         FAStrategySignalDto *item = mySignal.Detail[indexPath.row];
         
         cell.lblSignalTime.text = [FAFormater toShortTimeStringWithNSDate:item.SignalTime];
@@ -134,33 +160,41 @@
     }
     
     return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 73;
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
-}
-
-
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMySignalItemHeaderView" owner:self options:nil];
-//    UIView *headerView = (UIView *) [nib objectAtIndex:0];
-//    headerView.frame = CGRectMake(0, 0, 320, 50);
-    FAMySignalItemHeaderView *headView = (FAMySignalItemHeaderView *)[nib objectAtIndex:0];
-    if (section < dataSource.count)
+    if(indexPath.section %2 ==0)
     {
-        FAMyStrategySignalDto *mySignal = dataSource[section];
-        headView.lblHeaderName.text = mySignal.Description;
+        return 73;
     }
-    
-    return headView;
+    else
+    {
+        return 30;
+    }
 }
+
+
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMySignalItemHeaderView" owner:self options:nil];
+////    UIView *headerView = (UIView *) [nib objectAtIndex:0];
+////    headerView.frame = CGRectMake(0, 0, 320, 50);
+//    FAMySignalItemHeaderView *headView = (FAMySignalItemHeaderView *)[nib objectAtIndex:0];
+//    if (section < dataSource.count)
+//    {
+//        FAMyStrategySignalDto *mySignal = dataSource[section];
+//        headView.lblHeaderName.text = mySignal.Description;
+//    }
+//    
+//    return headView;
+//}
 
 
 /*

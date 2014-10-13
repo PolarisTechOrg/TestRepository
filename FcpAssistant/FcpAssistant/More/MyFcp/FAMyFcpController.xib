@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -123,10 +122,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="glE-8i-Sfe">
-                            <rect key="frame" x="30" y="274" width="273" height="30"/>
+                            <rect key="frame" x="18" y="274" width="285" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                            <state key="normal" title="修改密码">
+                            <state key="normal" backgroundImage="btn_modify_password.png">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -146,6 +145,7 @@
     <resources>
         <image name="bg_line_80.png" width="1" height="80"/>
         <image name="btn_logoff.png" width="570" height="90"/>
+        <image name="btn_modify_password.png" width="570" height="60"/>
         <image name="check_yes.png" width="28" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

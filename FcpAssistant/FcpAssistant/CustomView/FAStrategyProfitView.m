@@ -148,8 +148,8 @@
         CGFloat xPos = [self getXPosition:i];
         CGFloat yPos = [self getYPosition:item.Data];
         
-        CGContextAddCurveToPoint(context, xPos-10, yPos-10, xPos+10, yPos+10, xPos, yPos);
-        //        CGContextAddLineToPoint (context,xPos,yPos);
+//        CGContextAddCurveToPoint(context, xPos-10, yPos-10, xPos+10, yPos+10, xPos, yPos);
+        CGContextAddLineToPoint (context,xPos,yPos);
     }
     CGContextAddLineToPoint (context, self.bounds.size.width, self.bounds.size.height);
     

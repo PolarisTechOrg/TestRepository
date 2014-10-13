@@ -9,6 +9,7 @@
 #import "FAMeberLoginController.h"
 #import "FAAccountManager.h"
 #import "FAMemberRegisterController.h"
+#import "FAForgetPasswordController.h"
 #import "FAUtility.h"
 
 @implementation FAMeberLoginController
@@ -16,11 +17,13 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
 }
+
 - (IBAction)txtFieldDidEndOnExit:(id)sender
 {
     [sender resignFirstResponder];
@@ -79,13 +82,17 @@
     }
     @catch (NSException *exception)
     {
-        NSString *errorMessage = [exception.userInfo valueForKey:NSLocalizedDescriptionKey];
-        [FAUtility showAlterView:errorMessage];
+        [FAUtility showAlterViewWithException:exception];
     }
     @finally
     {
         
     }
+}
+- (IBAction)btnForgetPasswordClick:(id)sender
+{
+    FAForgetPasswordController *forgetPwdController = [[FAForgetPasswordController alloc] init];
+    [self presentViewController:forgetPwdController animated:YES completion:nil];
 }
 
 -(BOOL) loginValidate
