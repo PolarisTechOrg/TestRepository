@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FADummieStrategyDetailDto.h"
+#import "FAChartDto.h"
 
 @interface FAStrategyDetailController : UITableViewController
 {
@@ -25,5 +26,6 @@
 
 //策略ID
 @property(nonatomic,assign) int strategyId;
+@property(nonatomic, retain) FAChartDto *profitCharDto1;
 
 @end

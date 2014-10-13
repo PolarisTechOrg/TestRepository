@@ -17,8 +17,11 @@
 @synthesize navigationController;
 
 @synthesize strategyId1;
+@synthesize profitChartDto1;
 @synthesize strategyId2;
+@synthesize profitChartDto2;
 @synthesize strategyId3;
+@synthesize profitChartDto3;
 
 
 - (void)awakeFromNib
@@ -46,7 +49,9 @@
     NSString *txt = btn.titleLabel.text;
     
     FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
-    controller.strategyId = [[self.nameIdDict objectForKey:txt] intValue];
+    int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
+    controller.strategyId = strategyId;
+    controller.profitCharDto1 = profitChartDto1;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }

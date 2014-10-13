@@ -40,6 +40,7 @@
 @implementation FAStrategyDetailController
 
 @synthesize strategyId;
+@synthesize profitCharDto1;
 
 const int topSectionIndex = 0;
 const int describHeaderSectionIndex = 1;
@@ -201,20 +202,21 @@ const int latedRecordSectionIndex = 6;
 {
     FAStrategyDescriptionViewModel *strategy = dataSource.StrategyDescription;
     
-    if(strategy.Description == nil || strategy.Description.length == 0)
+    if(strategy.Description == nil || strategy.Description.length == 0 || [strategy.Description isEqualToString:@"NA"])
     {
-        cell.lblStrategyDetailDescription.text = @"暂无";
+        cell.lblStrategyDetailDescription.text = [cell.lblStrategyDetailDescription.text stringByAppendingString:@"暂无\n "];
+        cell.lblStrategyDetailDescription.textAlignment = UITextAlignmentCenter;
     }
     else
     {
-        cell.lblStrategyDetailDescription.text = strategy.Description;
+        cell.lblStrategyDetailDescription.text = [cell.lblStrategyDetailDescription.text stringByAppendingString:[NSString stringWithFormat:@"%@\n ", strategy.Description]];
     }
 }
 
 - (void)showProfitViewCell:(FAStrategyDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-//    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
-}
+    cell.imgStrategyDetailProfitView.dataSource = profitCharDto1.Items;
+    [cell.imgStrategyDetailProfitView setNeedsDisplay];}
 
 - (void)showLatedRecordViewCell:(FAStrategyDetailLatedRecordViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
@@ -305,22 +307,22 @@ const int latedRecordSectionIndex = 6;
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFotterInSection:(NSInteger)section
-{
-    return 0;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFotterInSection:(NSInteger)section
+//{
+//    return 0;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 0.1;
-    switch (section)
-    {
-        case topSectionIndex: return 0.1;
-        case describSectionIndex: return 38;
-        case profitsSectionIndex: return 38;
-        case latedRecordSectionIndex:return 38;
-        default: return 60;
-    }
+//    switch (section)
+//    {
+//        case topSectionIndex: return 0.1;
+//        case describSectionIndex: return 38;
+//        case profitsSectionIndex: return 38;
+//        case latedRecordSectionIndex:return 38;
+//        default: return 60;
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -329,7 +331,7 @@ const int latedRecordSectionIndex = 6;
     {
         case topSectionIndex: return 180;
         case describHeaderSectionIndex:return 38;
-        case describSectionIndex:return 120;
+        case describSectionIndex:return 90;
         case profitsHeaderSectionIndex:return 38;
         case profitsSectionIndex:return 170;
         case latedRecordHeaderSectionIndex:return 38;

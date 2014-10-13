@@ -143,7 +143,7 @@
 // load data
 - (NSArray *)loadDataFromServer:(int)pageIndex
 {
-    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=%@", WEB_URL, [NSNumber numberWithInt:pageIndex]];
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=5&pageIndex=%@", WEB_URL, [NSNumber numberWithInt:pageIndex]];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
@@ -277,6 +277,7 @@
 {
     FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
     detailController.strategyId = strategyId;
+    detailController.profitCharDto1 = [chartDic valueForKey:[NSString stringWithFormat:@"%d", strategyId]];
     
     [self.navigationController pushViewController:detailController animated:YES];
 }
