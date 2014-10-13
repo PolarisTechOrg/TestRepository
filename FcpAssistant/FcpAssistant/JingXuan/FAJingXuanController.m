@@ -259,11 +259,13 @@
             
             FADummieStrategyDetailViewModel *jingxuan2 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[1];
             cell.strategyId2 = jingxuan2.StrategyId;
+            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan2.StrategyId]];
             [cell.btnStrategyName2 setTitle:jingxuan2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.FollowNumber];
             
             FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[2];
             cell.strategyId3 = jingxuan3.StrategyId;
+            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan3.StrategyId]];
             [cell.btnStrategyName2 setTitle:jingxuan3.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.FollowNumber];
         }
@@ -295,6 +297,7 @@
             FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi.StrategyId]];
             if (chartDto !=nil && chartDto.Items.count >0)
             {
+                cell.profitChartDto1 = chartDto;
                 cell.imgStrategyProfit.dataSource = chartDto.Items;
             }
             else
@@ -305,11 +308,13 @@
             
             FADummieStrategyDetailViewModel *qushi2 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[1];
             cell.strategyId2 = qushi2.StrategyId;
+            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi2.StrategyId]];
             [cell.btnStrategyName2 setTitle:qushi2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", qushi2.FollowNumber];
             
             FADummieStrategyDetailViewModel *qushi3 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[2];
             cell.strategyId3 = qushi3.StrategyId;
+            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi3.StrategyId]];
             [cell.btnStrategyName3 setTitle:qushi3.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", qushi3.FollowNumber];
         }
@@ -341,6 +346,7 @@
             FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi.StrategyId]];
             if (chartDto !=nil && chartDto.Items.count >0)
             {
+                cell.profitChartDto1 = chartDto;
                 cell.imgStrategyProfit.dataSource = chartDto.Items;
             }
             else
@@ -351,11 +357,13 @@
             
             FADummieStrategyDetailViewModel *nishi2 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[1];
             cell.strategyId2 = nishi2.StrategyId;
+            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi2.StrategyId]];
             [cell.btnStrategyName2 setTitle:nishi2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", nishi2.FollowNumber];
             
             FADummieStrategyDetailViewModel *nishi3 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[2];
             cell.strategyId3 = nishi3.StrategyId;
+            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi3.StrategyId]];
             [cell.btnStrategyName3 setTitle:nishi3.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", nishi3.FollowNumber];
         }
@@ -387,6 +395,7 @@
             FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli.StrategyId]];
             if (chartDto !=nil && chartDto.Items.count >0)
             {
+                cell.profitChartDto1 = chartDto;
                 cell.imgStrategyProfit.dataSource = chartDto.Items;
             }
             else
@@ -397,12 +406,15 @@
             
             FADummieStrategyDetailViewModel *taoli2 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[1];
             cell.strategyId2 = taoli2.StrategyId;
+            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli2.StrategyId]];
             [cell.btnStrategyName2 setTitle:taoli2.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", taoli2.FollowNumber];
             
-//            FADummieStrategyDetailViewModel *taoli3 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[2];
-//            cell.lblStrategyName3.text = taoli3.StrategyName;
-//            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", taoli3.FollowNumber];
+            FADummieStrategyDetailViewModel *taoli3 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[2];
+            cell.strategyId3 = taoli3.StrategyId;
+            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli3.StrategyId]];
+            [cell.btnStrategyName3 setTitle:taoli3.StrategyName forState:UIControlStateNormal];
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", taoli3.FollowNumber];
         }
             break;
             
