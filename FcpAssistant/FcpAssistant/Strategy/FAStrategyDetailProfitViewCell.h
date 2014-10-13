@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAPurchaseProfitView.h"
 
 @interface FAStrategyDetailProfitViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgStrategyDetailProfit;
+@property (weak, nonatomic) IBOutlet FAPurchaseProfitView *imgStrategyDetailProfitView;
+
 @end

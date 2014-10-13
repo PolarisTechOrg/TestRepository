@@ -9,6 +9,7 @@
 #import "FAJingXuanViewCell.h"
 #import "FAJingXuanController.h"
 #import "FAStrategyDetailController.h"
+#import "FAStrategyProfitView.h"
 
 @implementation FAJingXuanViewCell
 
@@ -20,8 +21,11 @@
 @synthesize strategyId3;
 
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void)awakeFromNib
+{
+    FAStrategyProfitView *profitView = [[FAStrategyProfitView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
+    [self.imgPerformanceMap1 addSubview:profitView];
+    self.imgStrategyProfit = profitView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -41,10 +45,11 @@
     UIButton *btn = (UIButton *)sender;
     NSString *txt = btn.titleLabel.text;
     
-    
     FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
     controller.strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
+//- (IBAction)strategyName2Pressed:(id)sender {
+//}
 @end
