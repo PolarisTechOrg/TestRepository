@@ -9,6 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "FAQueue.h"
 
+typedef enum ProfitType
+{
+    Unknown = 0,
+    
+    Profit = 1,
+    
+    Loss = 2,
+    
+    Balance = 3,
+    
+}ProfitType;
+
 @interface FAStrategyController : UITableViewController
 {
     int currentPageIndex;
