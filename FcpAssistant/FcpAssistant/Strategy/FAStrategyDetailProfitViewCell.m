@@ -7,15 +7,18 @@
 //
 
 #import "FAStrategyDetailProfitViewCell.h"
-#import "FAPurchaseProfitView.h"
+#import "FAStrategyDetailProfitView.h"
 
 @implementation FAStrategyDetailProfitViewCell
 
 @synthesize imgStrategyDetailProfitView;
 
+@synthesize imgStrategyDetailProfit;
+
+
 - (void)awakeFromNib {
     
-    FAPurchaseProfitView *profitView = [[FAPurchaseProfitView alloc] initWithFrame:CGRectMake(0, 0, 320, 168)];
+    FAStrategyDetailProfitView *profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, 310, 168)];
     [self.imgStrategyDetailProfit addSubview:profitView];
     self.imgStrategyDetailProfitView = profitView;
 }
