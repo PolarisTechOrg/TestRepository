@@ -26,6 +26,6 @@
 
 //策略ID
 @property(nonatomic,assign) int strategyId;
-@property(nonatomic, retain) FAChartDto *profitCharDto;
+@property(nonatomic, retain) FAChartDto *profitCharDto1;
 
 @end

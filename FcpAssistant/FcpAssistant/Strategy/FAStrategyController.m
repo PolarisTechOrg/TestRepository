@@ -277,7 +277,7 @@
 {
     FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
     detailController.strategyId = strategyId;
-    detailController.profitCharDto = [chartDic valueForKey:[NSString stringWithFormat:@"%d", strategyId]];
+    detailController.profitCharDto1 = [chartDic valueForKey:[NSString stringWithFormat:@"%d", strategyId]];
     
     [self.navigationController pushViewController:detailController animated:YES];
 }

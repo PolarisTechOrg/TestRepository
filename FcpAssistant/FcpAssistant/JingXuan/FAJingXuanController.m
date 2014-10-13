@@ -248,6 +248,7 @@
             FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan.StrategyId]];
             if (chartDto !=nil && chartDto.Items.count >0)
             {
+                cell.profitChartDto1 = chartDto;
                 cell.imgStrategyProfit.dataSource = chartDto.Items;
             }
             else
