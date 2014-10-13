@@ -10,6 +10,18 @@
 #import "FADummieStrategyDetailDto.h"
 #import "FAChartDto.h"
 
+typedef enum ProfitType
+{
+    Unknown = 0,
+    
+    Profit = 1,
+    
+    Loss = 2,
+    
+    Balance = 3,
+    
+}ProfitType;
+
 @interface FAStrategyDetailController : UITableViewController
 {
     NSString *topCellIdentifier;

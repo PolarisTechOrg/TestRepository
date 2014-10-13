@@ -17,6 +17,7 @@
 #import "FAChartDto.h"
 #import "FADrawedReturnViewModel.h"
 #import "FADummieStrategyDetailViewModel.h"
+#import "FAWinLossViewModel.h"
 
 #import "FAQueue.h"
 #import "FAFoundation.h"
