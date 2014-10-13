@@ -95,7 +95,7 @@
             self.currentMember = nil;
             self.hasLogin = NO;
 
-            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
             
             @throw ex;
         }

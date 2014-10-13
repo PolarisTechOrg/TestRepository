@@ -7,7 +7,7 @@
 //
 
 #import "FADummieStrategyDetailViewModel.h"
-
+#import "FAWinLossViewModel.h"
 @implementation FADummieStrategyDetailViewModel
 
 // 提供者标识。
@@ -27,6 +27,15 @@
 
 // 星级评价（0 ~ 5，可以有半星），空表示没有评价过。
 @synthesize Star;
+
+// 胜负记录，含平仓时间。
+@synthesize WinLosses;
+
+//胜负记录集合类型
++(Class) WinLosses_class
+{
+    return [FAWinLossViewModel class];
+}
 
 -(NSString *) description
 {

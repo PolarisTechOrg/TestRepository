@@ -37,6 +37,14 @@
 		5916F34B19B95FA600BE7D1D /* Message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5916F34619B95FA600BE7D1D /* Message@2x.png */; };
 		5916F34D19B9617900BE7D1D /* More@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5916F34C19B9617900BE7D1D /* More@2x.png */; };
 		5918BF3119EB5D1900A1193B /* FAStrategyDetailProfitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5918BF3019EB5D1900A1193B /* FAStrategyDetailProfitView.m */; };
+		5918BFE319EB5EC600A1193B /* btn_modify_password.png in Resources */ = {isa = PBXBuildFile; fileRef = 5918BFE219EB5EC600A1193B /* btn_modify_password.png */; };
+		5918BFF819EB637500A1193B /* FAMySignalItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5918BFF119EB637500A1193B /* FAMySignalItemViewCell.m */; };
+		5918BFF919EB637500A1193B /* FAMySignalItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5918BFF219EB637500A1193B /* FAMySignalItemViewCell.xib */; };
+		5918BFFD19EB644B00A1193B /* FAMySignalItemHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5918BFFB19EB644B00A1193B /* FAMySignalItemHeaderViewCell.m */; };
+		5918BFFE19EB644B00A1193B /* FAMySignalItemHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5918BFFC19EB644B00A1193B /* FAMySignalItemHeaderViewCell.xib */; };
+		5918C00019EB772600A1193B /* btn_forget_password.png in Resources */ = {isa = PBXBuildFile; fileRef = 5918BFFF19EB772600A1193B /* btn_forget_password.png */; };
+		5918C00219EB809A00A1193B /* btn_change_num.png in Resources */ = {isa = PBXBuildFile; fileRef = 5918C00119EB809A00A1193B /* btn_change_num.png */; };
+		5918C00519EB968B00A1193B /* FAWinLossViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5918C00419EB968B00A1193B /* FAWinLossViewModel.m */; };
 		591B217619C14F8C00064F24 /* FAMyCollectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B217519C14F8C00064F24 /* FAMyCollectItem.m */; };
 		591B217B19C1687D00064F24 /* FAMeberLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B217919C1687D00064F24 /* FAMeberLoginController.m */; };
 		591B218019C16AB800064F24 /* FAMoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B217E19C16AB800064F24 /* FAMoreViewCell.m */; };
@@ -125,8 +133,6 @@
 		593EA6CE19C0386C00E9F2BC /* FAMyPositionStrategyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6CD19C0386C00E9F2BC /* FAMyPositionStrategyHeaderView.xib */; };
 		593EA6DC19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6DA19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m */; };
 		593EA6DD19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6DB19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib */; };
-		593EA6E519C0491900E9F2BC /* FAMySignalItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6E319C0491900E9F2BC /* FAMySignalItemViewCell.m */; };
-		593EA6E619C0491900E9F2BC /* FAMySignalItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6E419C0491900E9F2BC /* FAMySignalItemViewCell.xib */; };
 		593EA6E919C0495300E9F2BC /* FAMySignalItemHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6E819C0495300E9F2BC /* FAMySignalItemHeaderView.m */; };
 		593EA6EB19C0498400E9F2BC /* FAMySignalItemHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593EA6EA19C0498400E9F2BC /* FAMySignalItemHeaderView.xib */; };
 		593EA6F119C04DA700E9F2BC /* FAMyOrderBookItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593EA6EF19C04DA700E9F2BC /* FAMyOrderBookItemViewCell.m */; };
@@ -343,6 +349,17 @@
 		5916F34C19B9617900BE7D1D /* More@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "More@2x.png"; path = "ImageSource/tabBarImage/More@2x.png"; sourceTree = "<group>"; };
 		5918BF2F19EB5D1900A1193B /* FAStrategyDetailProfitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyDetailProfitView.h; path = CustomView/FAStrategyDetailProfitView.h; sourceTree = "<group>"; };
 		5918BF3019EB5D1900A1193B /* FAStrategyDetailProfitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyDetailProfitView.m; path = CustomView/FAStrategyDetailProfitView.m; sourceTree = "<group>"; };
+		5918BFE219EB5EC600A1193B /* btn_modify_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_modify_password.png; path = ImageSource/btnBackImage/btn_modify_password.png; sourceTree = "<group>"; };
+		5918BFF019EB637500A1193B /* FAMySignalItemViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAMySignalItemViewCell.h; sourceTree = "<group>"; };
+		5918BFF119EB637500A1193B /* FAMySignalItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAMySignalItemViewCell.m; sourceTree = "<group>"; };
+		5918BFF219EB637500A1193B /* FAMySignalItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAMySignalItemViewCell.xib; sourceTree = "<group>"; };
+		5918BFFA19EB644B00A1193B /* FAMySignalItemHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAMySignalItemHeaderViewCell.h; sourceTree = "<group>"; };
+		5918BFFB19EB644B00A1193B /* FAMySignalItemHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAMySignalItemHeaderViewCell.m; sourceTree = "<group>"; };
+		5918BFFC19EB644B00A1193B /* FAMySignalItemHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAMySignalItemHeaderViewCell.xib; sourceTree = "<group>"; };
+		5918BFFF19EB772600A1193B /* btn_forget_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_forget_password.png; path = ImageSource/btnBackImage/btn_forget_password.png; sourceTree = "<group>"; };
+		5918C00119EB809A00A1193B /* btn_change_num.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_change_num.png; path = ImageSource/btnBackImage/btn_change_num.png; sourceTree = "<group>"; };
+		5918C00319EB968B00A1193B /* FAWinLossViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAWinLossViewModel.h; path = Model/ServerModel/FAWinLossViewModel.h; sourceTree = "<group>"; };
+		5918C00419EB968B00A1193B /* FAWinLossViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAWinLossViewModel.m; path = Model/ServerModel/FAWinLossViewModel.m; sourceTree = "<group>"; };
 		591B217419C14F8C00064F24 /* FAMyCollectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyCollectItem.h; path = Model/FAMyCollectItem.h; sourceTree = "<group>"; };
 		591B217519C14F8C00064F24 /* FAMyCollectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyCollectItem.m; path = Model/FAMyCollectItem.m; sourceTree = "<group>"; };
 		591B217819C1687D00064F24 /* FAMeberLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMeberLoginController.h; path = More/MemberLogin/FAMeberLoginController.h; sourceTree = "<group>"; };
@@ -481,9 +498,6 @@
 		593EA6D919C038EE00E9F2BC /* FAMyPositionStrategyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPositionStrategyViewCell.h; path = Trade/MyPosition/FAMyPositionStrategyViewCell.h; sourceTree = "<group>"; };
 		593EA6DA19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPositionStrategyViewCell.m; path = Trade/MyPosition/FAMyPositionStrategyViewCell.m; sourceTree = "<group>"; };
 		593EA6DB19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPositionStrategyViewCell.xib; path = Trade/MyPosition/FAMyPositionStrategyViewCell.xib; sourceTree = "<group>"; };
-		593EA6E219C0491900E9F2BC /* FAMySignalItemViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMySignalItemViewCell.h; path = Trade/MySignal/FAMySignalItemViewCell.h; sourceTree = "<group>"; };
-		593EA6E319C0491900E9F2BC /* FAMySignalItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMySignalItemViewCell.m; path = Trade/MySignal/FAMySignalItemViewCell.m; sourceTree = "<group>"; };
-		593EA6E419C0491900E9F2BC /* FAMySignalItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMySignalItemViewCell.xib; path = Trade/MySignal/FAMySignalItemViewCell.xib; sourceTree = "<group>"; };
 		593EA6E719C0495300E9F2BC /* FAMySignalItemHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMySignalItemHeaderView.h; path = Trade/MySignal/FAMySignalItemHeaderView.h; sourceTree = "<group>"; };
 		593EA6E819C0495300E9F2BC /* FAMySignalItemHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMySignalItemHeaderView.m; path = Trade/MySignal/FAMySignalItemHeaderView.m; sourceTree = "<group>"; };
 		593EA6EA19C0498400E9F2BC /* FAMySignalItemHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMySignalItemHeaderView.xib; path = Trade/MySignal/FAMySignalItemHeaderView.xib; sourceTree = "<group>"; };
@@ -855,6 +869,20 @@
 			name = tabBarImage;
 			sourceTree = "<group>";
 		};
+		5918BFE719EB637500A1193B /* MySignal */ = {
+			isa = PBXGroup;
+			children = (
+				5918BFF019EB637500A1193B /* FAMySignalItemViewCell.h */,
+				5918BFF119EB637500A1193B /* FAMySignalItemViewCell.m */,
+				5918BFF219EB637500A1193B /* FAMySignalItemViewCell.xib */,
+				5918BFFA19EB644B00A1193B /* FAMySignalItemHeaderViewCell.h */,
+				5918BFFB19EB644B00A1193B /* FAMySignalItemHeaderViewCell.m */,
+				5918BFFC19EB644B00A1193B /* FAMySignalItemHeaderViewCell.xib */,
+			);
+			name = MySignal;
+			path = Trade/MySignal;
+			sourceTree = "<group>";
+		};
 		591B217719C1682400064F24 /* MemberLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1124,6 +1152,8 @@
 				59FB1C1A19E50FC1006A648C /* FADrawedReturnViewModel.m */,
 				592AE1DC19E92E490080CC46 /* FAModifyPasswordModel.h */,
 				592AE1DD19E92E490080CC46 /* FAModifyPasswordModel.m */,
+				5918C00319EB968B00A1193B /* FAWinLossViewModel.h */,
+				5918C00419EB968B00A1193B /* FAWinLossViewModel.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -1306,9 +1336,7 @@
 		593EA6E119C048D000E9F2BC /* CellView */ = {
 			isa = PBXGroup;
 			children = (
-				593EA6E219C0491900E9F2BC /* FAMySignalItemViewCell.h */,
-				593EA6E319C0491900E9F2BC /* FAMySignalItemViewCell.m */,
-				593EA6E419C0491900E9F2BC /* FAMySignalItemViewCell.xib */,
+				5918BFE719EB637500A1193B /* MySignal */,
 			);
 			name = CellView;
 			sourceTree = "<group>";
@@ -1629,6 +1657,9 @@
 		59FB1C1C19E53591006A648C /* btnBackImage */ = {
 			isa = PBXGroup;
 			children = (
+				5918C00119EB809A00A1193B /* btn_change_num.png */,
+				5918BFFF19EB772600A1193B /* btn_forget_password.png */,
+				5918BFE219EB5EC600A1193B /* btn_modify_password.png */,
 				59FB1C1D19E535AB006A648C /* btn_detail.png */,
 				59FB1C1E19E535AB006A648C /* btn_login.png */,
 				59FB1C1F19E535AB006A648C /* btn_logoff.png */,
@@ -2080,6 +2111,7 @@
 				849C563019D55F8E0057C158 /* Strategy_icon_combination.png in Resources */,
 				59137A4919BE9800001F4977 /* FAMyPurchaseViewCell.xib in Resources */,
 				84C4CB4419DA74B400C36159 /* FAMessageViewCell2.xib in Resources */,
+				5918C00219EB809A00A1193B /* btn_change_num.png in Resources */,
 				846C482919D7A93B00B456A4 /* Strategy_icon_strategy_menu_white.png in Resources */,
 				594FB08319C81C44008EA26F /* mypurchase_profit_red.png in Resources */,
 				592735E019C2A1A100FF42A1 /* FAMemberRegisterController.xib in Resources */,
@@ -2087,6 +2119,7 @@
 				598F290E19B9AED10078C6C6 /* tradeItem_OrderBook@2x.png in Resources */,
 				592ABF9C19CC067E002F0A8E /* tmp_collect_profit_green.png in Resources */,
 				593EA69D19BFF64400E9F2BC /* FAMyPurchaseDetailProfitHeaderView.xib in Resources */,
+				5918BFFE19EB644B00A1193B /* FAMySignalItemHeaderViewCell.xib in Resources */,
 				84F2C74919D10251006EBFC4 /* JingXuan_bg_index_yellow.png in Resources */,
 				594FB07019C7D621008EA26F /* bg_line_80.png in Resources */,
 				846C482819D7A93B00B456A4 /* Strategy_icon_strategy_detail_share_white.png in Resources */,
@@ -2100,7 +2133,6 @@
 				59EC7EE519B8122100972C0A /* FAStrategyController.xib in Resources */,
 				594FB09919C82637008EA26F /* common_star_4.png in Resources */,
 				594FB09519C82637008EA26F /* common_star_0.png in Resources */,
-				593EA6E619C0491900E9F2BC /* FAMySignalItemViewCell.xib in Resources */,
 				84844A5919C96A36001C2EC4 /* FAStrategyInfoViewCell.xib in Resources */,
 				593EA6AA19BFF9A300E9F2BC /* FAMyPurchaseDetailSignalViewCell.xib in Resources */,
 				593EA6DD19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib in Resources */,
@@ -2115,6 +2147,7 @@
 				5916F34919B95FA600BE7D1D /* Trade@2x.png in Resources */,
 				594FB09819C82637008EA26F /* common_star_3.png in Resources */,
 				591B218E19C17FCB00064F24 /* moreItem_moreProduct.png in Resources */,
+				5918BFF919EB637500A1193B /* FAMySignalItemViewCell.xib in Resources */,
 				5916F34A19B95FA600BE7D1D /* tabbarBkg@2x.png in Resources */,
 				592B87C419C7BEC900B6EDF9 /* icon.png in Resources */,
 				84844A4319C968D8001C2EC4 /* FAStrategyFilterViewCell.xib in Resources */,
@@ -2183,12 +2216,14 @@
 				840DD88F19CD790A0023885D /* FAStrategyDetailProfitHeaderView.xib in Resources */,
 				8403C57119E95D200058B19F /* FAProfitHeaderViewCell.xib in Resources */,
 				594FB07D19C8155C008EA26F /* check_yes.png in Resources */,
+				5918C00019EB772600A1193B /* btn_forget_password.png in Resources */,
 				594FB0A419C82BDA008EA26F /* common_purchase_flag.png in Resources */,
 				846C482219D7A79000B456A4 /* message_icon_message_03.png in Resources */,
 				591B218B19C17FCB00064F24 /* moreItem_checkUpdate.png in Resources */,
 				594FB08B19C81D2E008EA26F /* common_holding_yes.png in Resources */,
 				849C562F19D55F8E0057C158 /* Strategy_bg_list_yellow.png in Resources */,
 				594FB0A319C82BDA008EA26F /* common_collect_flag.png in Resources */,
+				5918BFE319EB5EC600A1193B /* btn_modify_password.png in Resources */,
 				594FB0A019C82819008EA26F /* mycollect_profit_yellow.png in Resources */,
 				592735D419C2947000FF42A1 /* FAAbountProductController.xib in Resources */,
 			);
@@ -2209,6 +2244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5918BFFD19EB644B00A1193B /* FAMySignalItemHeaderViewCell.m in Sources */,
 				593EA6B319BFFA1E00E9F2BC /* FAMyPurchaseDetailProfitViewCell.m in Sources */,
 				592AE1DE19E92E490080CC46 /* FAModifyPasswordModel.m in Sources */,
 				591EA2DA19BEDCCB00EED52C /* FAMyPurchaseDetailController.m in Sources */,
@@ -2237,7 +2273,6 @@
 				840DD88B19CD78900023885D /* FAStrategyDetailDescribHeaderView.m in Sources */,
 				591B320D19D7BA5400AE9F72 /* FAStationFundAccount.m in Sources */,
 				84844A4C19C96971001C2EC4 /* FAStrategySearchViewCell.m in Sources */,
-				593EA6E519C0491900E9F2BC /* FAMySignalItemViewCell.m in Sources */,
 				84490BA819D3BB8000EA1850 /* FAStrategyModel.m in Sources */,
 				591EA2EA19BEED8400EED52C /* FAMyPurchaseDetailPositionHeaderView.m in Sources */,
 				59137A5219BEA7AF001F4977 /* FAPurchaseDetail.m in Sources */,
@@ -2258,6 +2293,7 @@
 				84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */,
 				593EA6CC19C0385900E9F2BC /* FAMyPositionStrategyHeaderView.m in Sources */,
 				591B321319D7F28100AE9F72 /* FAMemberRegistrationModel.m in Sources */,
+				5918C00519EB968B00A1193B /* FAWinLossViewModel.m in Sources */,
 				84956F9519D9845A0001E78C /* MJRefreshConst.m in Sources */,
 				84956F9919D9845A0001E78C /* UIScrollView+MJRefresh.m in Sources */,
 				592735E519C2A37600FF42A1 /* FAForgetPasswordController.m in Sources */,
@@ -2282,6 +2318,7 @@
 				59EC7F1819B8515A00972C0A /* FATradeViewCell.m in Sources */,
 				591BB2C919E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.m in Sources */,
 				59D53D1F19DBFD190070C644 /* FAMyStrategySignalDto.m in Sources */,
+				5918BFF819EB637500A1193B /* FAMySignalItemViewCell.m in Sources */,
 				59EC7EE919B8129200972C0A /* FAMainController.m in Sources */,
 				84490BAB19D3F92000EA1850 /* FAStrategyPerformanceViewModel.m in Sources */,
 				591EA2DF19BEDE4F00EED52C /* FAMyPurchaseDetailTopViewCell.m in Sources */,

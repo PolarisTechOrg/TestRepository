@@ -9,6 +9,7 @@
 #import "FAMyFcpController.h"
 #import "FAStationAccount.h"
 #import "FAAccountManager.h"
+#import "FAModifyPasswordController.h"
 
 @interface FAMyFcpController ()
 
@@ -69,24 +70,27 @@
 
 - (IBAction)btnModifyPassword_Click:(id)sender
 {
+    FAModifyPasswordController *newViewController =[[FAModifyPasswordController alloc] init];
+    [self.navigationController pushViewController:newViewController animated:YES];
 }
 
 - (IBAction)btnLogout_Click:(id)sender
 {
     @try
     {
-    
-    [[FAAccountManager shareInstance] logout];
-     
+        [[FAAccountManager shareInstance] logout];
     }
     @catch (NSException *exception)
     {
-     
+        
     }
     @finally
     {
-     
+        
     }
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

@@ -10,7 +10,8 @@
 
 @interface FAMySignalController : UITableViewController
 {
-    @private NSString* itemCellIdentifier;
+    @private NSString *itemHeaderIdentifier;
+    @private NSString *itemCellIdentifier;
     @private NSMutableArray *dataSource;
 }
 @end

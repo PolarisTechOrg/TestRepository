@@ -19,18 +19,6 @@
     @try
     {
         CGContextRef context = UIGraphicsGetCurrentContext();
-        [self drawbackGround:context];
-
-
-//        CGContextSetRGBFillColor(context, 1, 0, 0, 1);
-//        CGRect rect = CGRectMake(10.0, 10.0, 80.0,50.0);
-//        UIFont *font =[UIFont boldSystemFontOfSize:15.0];
-//        CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
-//
-//        [@"万恶佛额啊沙发上的麻烦" drawInRect:rect withFont:font];
-        
-
-//        [yValueStr drawInRect:rect withFont:font lineBreakMode:NSLineBreakByTruncatingHead alignment:NSTextAlignmentRight];
         
         [self calculatePara];
         [self drawbackGround:context];
@@ -210,7 +198,7 @@
         {
             FAStrategyProfitDto *item = dataSource[index];
             NSString *xValueStr =  [FAFormater toShortDateStringWithNSDate:item.SettlementDate];
-            CGRect rect = CGRectMake(leftMargin +yInterval *i -20,frameHeight - bottomMargin+5,40,10);
+            CGRect rect = CGRectMake(leftMargin +yInterval *i -22,frameHeight - bottomMargin+5,44,10);
             CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
             [xValueStr drawInRect:rect withFont:font lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
         }

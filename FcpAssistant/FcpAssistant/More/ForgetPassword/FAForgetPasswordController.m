@@ -30,6 +30,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)txtFieldDidEndOnExit:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
 /*
 #pragma mark - Navigation
 

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FAWinLossView.h"
 @interface FAStrategyDetailLatedRecordViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgLatedWinLost;
+@property(weak,nonatomic) FAWinLossView *imgWinLoss;
 @end

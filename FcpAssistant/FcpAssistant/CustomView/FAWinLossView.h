@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FAWinLossView : UIView
-
+@property(nonatomic,retain) NSArray *dataSource;
 @end
