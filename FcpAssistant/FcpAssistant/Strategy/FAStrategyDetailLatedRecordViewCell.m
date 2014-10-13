@@ -7,14 +7,20 @@
 //
 
 #import "FAStrategyDetailLatedRecordViewCell.h"
+#import "FAWinLossView.h"
 
 @implementation FAStrategyDetailLatedRecordViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
+    FAWinLossView *winLossView = [[FAWinLossView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
+    [self.imgLatedWinLost addSubview:winLossView];
+    self.imgWinLoss = winLossView;
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state

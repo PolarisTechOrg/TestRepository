@@ -24,6 +24,7 @@
 #import "FAStrategyDescriptionViewModel.h"
 #import "FAStrategyPerformanceViewModel.h"
 #import "FAStrategyModel.h"
+#import "FAWinLossView.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -217,6 +218,7 @@ const int latedRecordSectionIndex = 6;
 
 - (void)showLatedRecordViewCell:(FAStrategyDetailLatedRecordViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
+
 //    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
 }
 

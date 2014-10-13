@@ -99,15 +99,16 @@
 //[Obsolete("WinLoss属性以后将不再支持，请使用。。。")]
 //public virtual List<decimal> WinLoss { get; set; }
 //
-///// <summary>
-///// 胜负记录，含平仓时间。
-///// </summary>
-//[DataMember]
-//public virtual List<WinLossViewModel> WinLosses{ get; set; }
+
+// 胜负记录，含平仓时间。
+@property(nonatomic,assign) NSArray *WinLosses;
 //
 ///// <summary>
 ///// 策略的“温馨提示和样本外事件”列表。
 ///// </summary>
 //[DataMember]
 //public List<StrategyEventViewModel> Events { get; set; }
+
+//胜负记录集合类型
++(Class) WinLosses_class;
 @end
