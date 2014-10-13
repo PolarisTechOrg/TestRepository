@@ -8,6 +8,8 @@
 
 #import "FAWinLossView.h"
 #import "FAUtility.h"
+#import "FAWinLossViewModel.h"
+
 @implementation FAWinLossView
 
 - (void)drawRect:(CGRect)rect
@@ -16,15 +18,17 @@
     {
         CGContextRef context = UIGraphicsGetCurrentContext();
         
-//        [self calculatePara];
+        [self calculatePara];
         [self drawbackGround:context];
-//        [self drawBorder:context];
+        [self drawBorder:context];
 //        [self drawSpiterLine:context];
 //        [self drawTickMark:context];
 //        if(self.dataSource !=nil && self.dataSource.count >0)
 //        {
 //            [self drawProfitLine:context];
 //        }
+        
+        [self drawWinLoss:context];
         
     }
     @catch (NSException *exception)
@@ -36,16 +40,78 @@
     }
 }
 
+-(void)calculatePara
+{
+    leftMargin = 15.0;
+    topMargin = 10.0;
+    itemXInterval = 35.0;
+    itemYInterval = 25.0;
+    itemRadius = 10.0;
+    winItemColor = [UIColor colorWithRed:255.0/255 green:3.0/255 blue:3.0/255 alpha:1.0].CGColor;
+    drawItemColor =[UIColor colorWithRed:153.0/255 green:153.0/255 blue:153.0/255 alpha:1.0].CGColor;
+    lossItemColor = [UIColor colorWithRed:153.0/255 green:255.0/255 blue:3.0/255 alpha:1.0].CGColor;
+    
+}
+
 //填充背景
 -(void)drawbackGround:(CGContextRef) context
 {
-    CGContextSetStrokeColorWithColor(context,[UIColor redColor].CGColor);
-    CGContextMoveToPoint (context,  0, 0);
-    CGContextAddLineToPoint (context, self.bounds.size.width, 0);
-    CGContextAddLineToPoint (context, self.bounds.size.width,self.bounds.size.height);
-    CGContextAddLineToPoint (context, 0, self.bounds.size.height);
     [[UIColor whiteColor] setFill];
-    CGContextDrawPath(context, kCGPathFillStroke);
+    CGContextFillRect(context, CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height));
+}
+
+//绘制边框
+-(void)drawBorder:(CGContextRef) context
+{
+    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+    
+    CGContextStrokeRect(context, CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height));
+}
+
+-(void) drawWinLoss:(CGContextRef) context
+{
+    if(self.dataSource == nil || self.dataSource.count <=0)
+    {
+        return;
+    }
+    
+    for (int i=0;i<8;i++)
+    {
+        if(i>=self.dataSource.count)
+        {
+            break;
+        }
+        
+        NSArray *subArray = self.dataSource[i];
+        if(subArray ==nil || subArray.count <=0)
+        {
+            break;
+        }
+        
+        for (int j=0; j<5;j++)
+        {
+            if(j< subArray.count)
+            {
+                FAWinLossViewModel *entity = subArray[j];
+                if(entity.Profit >0)
+                {
+                    CGContextSetFillColorWithColor(context, winItemColor);
+                }
+                else if(entity.Profit <0)
+                {
+                    CGContextSetFillColorWithColor(context, lossItemColor);
+                }
+                else
+                {
+                    CGContextSetFillColorWithColor(context, drawItemColor);
+                }
+                CGFloat xPos = leftMargin + i*itemXInterval + itemRadius;
+                CGFloat yPos = topMargin + j* itemYInterval +itemRadius;
+                CGContextAddArc(context, xPos, yPos, itemRadius, 0,2*PI, 0);
+                CGContextDrawPath(context, kCGPathEOFill);
+            }
+        }
+    }
 }
 
 @end
