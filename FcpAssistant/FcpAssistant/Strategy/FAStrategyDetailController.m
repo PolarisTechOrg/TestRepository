@@ -40,7 +40,8 @@
 @implementation FAStrategyDetailController
 
 @synthesize strategyId;
-@synthesize profitCharDto1;
+@synthesize profitCharDto;
+@synthesize latedWinlosses;
 
 const int topSectionIndex = 0;
 const int describHeaderSectionIndex = 1;
@@ -215,13 +216,14 @@ const int latedRecordSectionIndex = 6;
 
 - (void)showProfitViewCell:(FAStrategyDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-    cell.imgStrategyDetailProfitView.dataSource = profitCharDto1.Items;
-    [cell.imgStrategyDetailProfitView setNeedsDisplay];}
+    cell.imgStrategyDetailProfitView.dataSource = profitCharDto.Items;
+    [cell.imgStrategyDetailProfitView setNeedsDisplay];
+}
 
 - (void)showLatedRecordViewCell:(FAStrategyDetailLatedRecordViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-
-//    FAStrategyPerformanceViewModel *performance = dataSource.StrategyPerformance;
+    cell.imgWinLoss.dataSource = latedWinlosses;
+    [cell.imgWinLoss setNeedsDisplay];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

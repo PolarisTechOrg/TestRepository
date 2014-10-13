@@ -51,7 +51,7 @@
     FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
-    controller.profitCharDto1 = profitChartDto1;
+    controller.profitCharDto = profitChartDto1;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }

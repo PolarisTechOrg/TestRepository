@@ -101,7 +101,7 @@
 //
 
 // 胜负记录，含平仓时间。
-@property(nonatomic,assign) NSArray *WinLosses;
+@property(nonatomic, retain) NSArray *WinLosses;
 //
 ///// <summary>
 ///// 策略的“温馨提示和样本外事件”列表。
