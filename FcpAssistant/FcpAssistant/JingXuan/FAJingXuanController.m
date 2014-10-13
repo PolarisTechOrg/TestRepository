@@ -109,7 +109,7 @@
         dataSourceJingXuan = [FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
         if(dataSourceJingXuan.count > 0)
         {
-            [chartIdArray addObject:dataSourceJingXuan[0]];
+            [chartIdArray addObjectsFromArray:dataSourceJingXuan];
         }
     }
     replyData = nil;
@@ -125,7 +125,7 @@
         dataSourceQuShi = [FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
         if(dataSourceQuShi.count > 0)
         {
-            [chartIdArray addObject:dataSourceQuShi[0]];
+            [chartIdArray addObjectsFromArray:dataSourceQuShi];
         }
     }
     replyData = nil;
@@ -141,7 +141,7 @@
         dataSourceNiShi = [FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
         if(dataSourceNiShi.count > 0)
         {
-            [chartIdArray addObject:dataSourceNiShi[0]];
+            [chartIdArray addObjectsFromArray:dataSourceNiShi];
         }
     }
     replyData = nil;
@@ -157,7 +157,7 @@
         dataSoruceTaoLi = [FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
         if(dataSoruceTaoLi.count > 0)
         {
-            [chartIdArray addObject:dataSoruceTaoLi[0]];
+            [chartIdArray addObjectsFromArray:dataSoruceTaoLi];
         }
     }
 }
@@ -269,7 +269,7 @@
             FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[2];
             cell.strategyId3 = jingxuan3.StrategyId;
             cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan3.StrategyId]];
-            [cell.btnStrategyName2 setTitle:jingxuan3.StrategyName forState:UIControlStateNormal];
+            [cell.btnStrategyName3 setTitle:jingxuan3.StrategyName forState:UIControlStateNormal];
             cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.FollowNumber];
             cell.winLossesChart3 = jingxuan3.WinLosses;
         }
