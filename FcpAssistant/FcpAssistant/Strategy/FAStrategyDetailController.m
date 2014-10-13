@@ -210,7 +210,7 @@ const int latedRecordSectionIndex = 6;
     }
     else
     {
-        cell.lblStrategyDetailDescription.text = [cell.lblStrategyDetailDescription.text stringByAppendingString:[NSString stringWithFormat:@"%@\n ", strategy.Description]];
+        cell.lblStrategyDetailDescription.text = [cell.lblStrategyDetailDescription.text stringByAppendingString:[NSString stringWithFormat:@"        %@\n ", strategy.Description]];
     }
 }
 
