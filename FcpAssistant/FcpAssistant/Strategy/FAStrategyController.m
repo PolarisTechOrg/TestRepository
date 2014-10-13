@@ -275,11 +275,6 @@
 
 - (void)enterDetailView:(int) strategyId
 {
-    FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
-    detailController.strategyId = strategyId;
-    detailController.profitCharDto1 = [chartDic valueForKey:[NSString stringWithFormat:@"%d", strategyId]];
-    
-    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 - (UIImage *)GetProfitBackMap:(double)profit
@@ -379,7 +374,13 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     FADummieStrategyDetailViewModel *item = dataSource[indexPath.row];
-    [self enterDetailView:item.StrategyId];
+    
+    FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
+    detailController.strategyId = item.StrategyId;
+    detailController.profitCharDto = [chartDic valueForKey:[NSString stringWithFormat:@"%d", item.StrategyId]];
+    detailController.latedWinlosses = item.WinLosses;
+    
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 // Override to support conditional editing of the table view.
