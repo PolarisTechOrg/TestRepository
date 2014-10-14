@@ -7,6 +7,7 @@
 //
 
 #import "FAModifyPasswordController.h"
+#import "FAUtility.h"
 
 @interface FAModifyPasswordController ()
 
@@ -18,8 +19,10 @@
     [super viewDidLoad];
     self.navigationItem.title = @"修改密码";
     
-    UIBarButtonItem* finishBtn = [[UIBarButtonItem alloc] init];
-    finishBtn.title = @"完成";
+    UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelView:)];
+    self.navigationItem.leftBarButtonItem = cancelBtn;
+    
+    UIBarButtonItem* finishBtn = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(finishForgetPaswor:)];
     self.navigationItem.rightBarButtonItem = finishBtn;
 
     // Do any additional setup after loading the view from its nib.
@@ -28,6 +31,32 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)txtFieldDidEndOnExit:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
+-(void)cancelView:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)finishForgetPaswor:(id)sender
+{
+    @try
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+    }
+    @finally
+    {
+        
+    }
 }
 
 /*
