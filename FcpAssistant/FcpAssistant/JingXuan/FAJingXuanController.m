@@ -204,6 +204,48 @@
 //{
 //}
 
+- (void)settingCell:(FAJingXuanViewCell *)cell fromData:(NSArray *)data
+{
+    FADummieStrategyDetailViewModel *jingxuan = (FADummieStrategyDetailViewModel *)data[0];
+    cell.strategyId1 = jingxuan.StrategyId;
+    [cell.btnStrategyName1 setTitle:jingxuan.StrategyName forState:UIControlStateNormal];
+    int star = (int)ceil(jingxuan.Star);
+    NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+    cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    cell.lblUpdateDate1.text = [dateFormat stringFromDate:jingxuan.OnlineDay];
+    cell.lblStrategyStatus1.text = @"上架";
+    cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.CollectionNumber];
+    cell.lblProviderName1.text = jingxuan.ProviderName;
+    cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio *100];
+    
+    [self setProfitBackMap:jingxuan.CumulativeReturnRatio inCell:cell];
+    FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan.StrategyId]];
+    if (chartDto !=nil && chartDto.Items.count >0)
+    {
+        cell.profitChartDto1 = chartDto;
+        cell.imgStrategyProfit.dataSource = chartDto.Items;
+    }
+    else
+    {
+        cell.imgStrategyProfit.dataSource = nil;
+    }
+    [cell.imgStrategyProfit setNeedsDisplay];
+    
+    FADummieStrategyDetailViewModel *jingxuan2 = (FADummieStrategyDetailViewModel *)data[1];
+    cell.strategyId2 = jingxuan2.StrategyId;
+    cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan2.StrategyId]];
+    [cell.btnStrategyName2 setTitle:jingxuan2.StrategyName forState:UIControlStateNormal];
+    cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.CollectionNumber];
+    
+    FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)data[2];
+    cell.strategyId3 = jingxuan3.StrategyId;
+    cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan3.StrategyId]];
+    [cell.btnStrategyName3 setTitle:jingxuan3.StrategyName forState:UIControlStateNormal];
+    cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.CollectionNumber];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -226,49 +268,7 @@
             cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_01"];
             cell.lblTitle.text = @"策略精选";
             
-            FADummieStrategyDetailViewModel *jingxuan = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[0];
-            cell.strategyId1 = jingxuan.StrategyId;
-            [cell.btnStrategyName1 setTitle:jingxuan.StrategyName forState:UIControlStateNormal];
-            int star = (int)ceil(jingxuan.Star);
-            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
-            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
-            
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormat stringFromDate:jingxuan.OnlineDay];
-            cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.CollectionNumber];
-            cell.lblProviderName1.text = jingxuan.ProviderName;
-            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio *100];
-            
-            [self setProfitBackMap:jingxuan.CumulativeReturnRatio inCell:cell];
-            FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan.StrategyId]];
-            if (chartDto !=nil && chartDto.Items.count >0)
-            {
-                cell.profitChartDto1 = chartDto;
-                cell.imgStrategyProfit.dataSource = chartDto.Items;
-            }
-            else
-            {
-                cell.imgStrategyProfit.dataSource = nil;
-            }
-            [cell.imgStrategyProfit setNeedsDisplay];
-            
-//            cell.winLossesChart1 = jingxuan.WinLosses;
-            
-            FADummieStrategyDetailViewModel *jingxuan2 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[1];
-            cell.strategyId2 = jingxuan2.StrategyId;
-            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan2.StrategyId]];
-            [cell.btnStrategyName2 setTitle:jingxuan2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.CollectionNumber];
-//            cell.winLossesChart2 = jingxuan2.WinLosses;
-            
-            FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[2];
-            cell.strategyId3 = jingxuan3.StrategyId;
-            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan3.StrategyId]];
-            [cell.btnStrategyName3 setTitle:jingxuan3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.CollectionNumber];
-//            cell.winLossesChart3 = jingxuan3.WinLosses;
+            [self settingCell:cell fromData:dataSourceJingXuan];
         }
             break;
             
@@ -276,45 +276,8 @@
         {
             cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_02"];
             cell.lblTitle.text = @"趋势策略";
-            
-            FADummieStrategyDetailViewModel *qushi = (FADummieStrategyDetailViewModel *)dataSourceQuShi[0];
-            cell.strategyId1 = qushi.StrategyId;
-            [cell.btnStrategyName1 setTitle:qushi.StrategyName forState:UIControlStateNormal];
-            int star = (int)ceil(qushi.Star);
-            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
-            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
-            NSDateFormatter *dateFormatQuShi = [[NSDateFormatter alloc] init];
-            [dateFormatQuShi setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormatQuShi stringFromDate:qushi.OnlineDay];
-            cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", qushi.CollectionNumber];
-            cell.lblProviderName1.text = qushi.ProviderName;
-            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",qushi.CumulativeReturnRatio *100];
-            
-            [self setProfitBackMap:qushi.CumulativeReturnRatio inCell:cell];
-            FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi.StrategyId]];
-            if (chartDto !=nil && chartDto.Items.count >0)
-            {
-                cell.profitChartDto1 = chartDto;
-                cell.imgStrategyProfit.dataSource = chartDto.Items;
-            }
-            else
-            {
-                cell.imgStrategyProfit.dataSource = nil;
-            }
-            [cell.imgStrategyProfit setNeedsDisplay];
-            
-            FADummieStrategyDetailViewModel *qushi2 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[1];
-            cell.strategyId2 = qushi2.StrategyId;
-            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi2.StrategyId]];
-            [cell.btnStrategyName2 setTitle:qushi2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", qushi2.CollectionNumber];
-            
-            FADummieStrategyDetailViewModel *qushi3 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[2];
-            cell.strategyId3 = qushi3.StrategyId;
-            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi3.StrategyId]];
-            [cell.btnStrategyName3 setTitle:qushi3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", qushi3.CollectionNumber];
+
+            [self settingCell:cell fromData:dataSourceQuShi];
         }
             break;
             
@@ -323,48 +286,7 @@
             cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_03"];
             cell.lblTitle.text = @"逆势策略";
             
-            FADummieStrategyDetailViewModel *nishi = (FADummieStrategyDetailViewModel *)dataSourceNiShi[0];
-            cell.strategyId1 = nishi.StrategyId;
-            [cell.btnStrategyName1 setTitle:nishi.StrategyName forState:UIControlStateNormal];;
-            int star = (int)ceil(nishi.Star);
-            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
-            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
-            NSDateFormatter *dateFormatNiShi = [[NSDateFormatter alloc] init];
-            [dateFormatNiShi setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormatNiShi stringFromDate:nishi.OnlineDay];
-            cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", nishi.CollectionNumber];
-            cell.lblProviderName1.text = nishi.ProviderName;
-            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",nishi.CumulativeReturnRatio *100];
-            
-            [self setProfitBackMap:nishi.CumulativeReturnRatio inCell:cell];
-            FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi.StrategyId]];
-            if (chartDto !=nil && chartDto.Items.count >0)
-            {
-                cell.profitChartDto1 = chartDto;
-                cell.imgStrategyProfit.dataSource = chartDto.Items;
-            }
-            else
-            {
-                cell.imgStrategyProfit.dataSource = nil;
-            }
-            [cell.imgStrategyProfit setNeedsDisplay];
-            
-//            cell.winLossesChart1 = nishi.WinLosses;
-            
-            FADummieStrategyDetailViewModel *nishi2 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[1];
-            cell.strategyId2 = nishi2.StrategyId;
-            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi2.StrategyId]];
-            [cell.btnStrategyName2 setTitle:nishi2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", nishi2.CollectionNumber];
-//            cell.winLossesChart2 = nishi2.WinLosses;
-            
-            FADummieStrategyDetailViewModel *nishi3 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[2];
-            cell.strategyId3 = nishi3.StrategyId;
-            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi3.StrategyId]];
-            [cell.btnStrategyName3 setTitle:nishi3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", nishi3.CollectionNumber];
-//            cell.winLossesChart3 = nishi3.WinLosses;
+            [self settingCell:cell fromData:dataSourceNiShi];
         }
             break;
             
@@ -373,48 +295,7 @@
             cell.imgTitle.image = [UIImage imageNamed:@"JingXuan_icon_index_04"];
             cell.lblTitle.text = @"套利策略";
             
-            FADummieStrategyDetailViewModel *taoli = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[0];
-            cell.strategyId1 = taoli.StrategyId;
-            [cell.btnStrategyName1 setTitle:taoli.StrategyName forState:UIControlStateNormal];
-            int star = (int)ceil(taoli.Star);
-            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
-            cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
-            NSDateFormatter *dateFormatTaoLi = [[NSDateFormatter alloc] init];
-            [dateFormatTaoLi setDateFormat:@"yyyy-MM-dd"];
-            cell.lblUpdateDate1.text = [dateFormatTaoLi stringFromDate:taoli.OnlineDay];
-            cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", taoli.CollectionNumber];
-            cell.lblProviderName1.text = taoli.ProviderName;
-            cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",taoli.CumulativeReturnRatio *100];
-            
-            [self setProfitBackMap:taoli.CumulativeReturnRatio inCell:cell];
-            FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli.StrategyId]];
-            if (chartDto !=nil && chartDto.Items.count >0)
-            {
-                cell.profitChartDto1 = chartDto;
-                cell.imgStrategyProfit.dataSource = chartDto.Items;
-            }
-            else
-            {
-                cell.imgStrategyProfit.dataSource = nil;
-            }
-            [cell.imgStrategyProfit setNeedsDisplay];
-            
-//            cell.winLossesChart1 = taoli.WinLosses;
-            
-            FADummieStrategyDetailViewModel *taoli2 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[1];
-            cell.strategyId2 = taoli2.StrategyId;
-            cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli2.StrategyId]];
-            [cell.btnStrategyName2 setTitle:taoli2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", taoli2.CollectionNumber];
-//            cell.winLossesChart2 = taoli2.WinLosses;
-            
-            FADummieStrategyDetailViewModel *taoli3 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[2];
-            cell.strategyId3 = taoli3.StrategyId;
-            cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli3.StrategyId]];
-            [cell.btnStrategyName3 setTitle:taoli3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", taoli3.CollectionNumber];
-//            cell.winLossesChart3 = taoli3.WinLosses;
+            [self settingCell:cell fromData:dataSoruceTaoLi];
         }
             break;
             
