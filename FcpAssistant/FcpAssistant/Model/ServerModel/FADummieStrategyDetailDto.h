@@ -10,6 +10,7 @@
 #import "FADummieStrategyDetail2ViewModel.h"
 #import "FAStrategyDescriptionViewModel.h"
 #import "FAStrategyPerformanceViewModel.h"
+#import "FAWinLossViewModel.h"
 
 @interface FADummieStrategyDetailDto : NSObject
 
@@ -18,5 +19,10 @@
 @property(nonatomic, retain) FAStrategyDescriptionViewModel *StrategyDescription;
 
 @property(nonatomic, retain) FAStrategyPerformanceViewModel *StrategyPerformance;
+
+@property(nonatomic, retain) NSArray *WinLosses;
+
+
++(Class)WinLosses_class;
 
 @end

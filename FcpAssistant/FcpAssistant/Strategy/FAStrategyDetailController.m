@@ -42,7 +42,7 @@
 
 @synthesize strategyId;
 @synthesize profitCharDto;
-@synthesize latedWinlosses;
+//@synthesize latedWinlosses;
 
 const int topSectionIndex = 0;
 const int describHeaderSectionIndex = 1;
@@ -278,7 +278,7 @@ const int latedRecordSectionIndex = 6;
 
 - (void)showLatedRecordViewCell:(FAStrategyDetailLatedRecordViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-    cell.imgWinLoss.dataSource = [self sortWinLosses:latedWinlosses];
+    cell.imgWinLoss.dataSource = [self sortWinLosses:dataSource.WinLosses];
     [cell.imgWinLoss setNeedsDisplay];
 }
 
