@@ -218,7 +218,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     cell.lblUpdateDate1.text = [dateFormat stringFromDate:jingxuan.OnlineDay];
-    cell.lblStrategyStatus1.text = @"上架";
+    cell.lblStrategyStatus1.text = (jingxuan.OnlineDay == nil) ? nil : @"上架";
     cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.CollectionNumber];
     cell.lblProviderName1.text = jingxuan.ProviderName;
     cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio];
