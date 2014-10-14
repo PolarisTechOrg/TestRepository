@@ -237,7 +237,7 @@
             [dateFormat setDateFormat:@"yyyy-MM-dd"];
             cell.lblUpdateDate1.text = [dateFormat stringFromDate:jingxuan.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.FollowNumber];
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.CollectionNumber];
             cell.lblProviderName1.text = jingxuan.ProviderName;
 //            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:jingxuan.CumulativeReturnRatio];
 //            NSString* profitLineImageName = @"tmp_collect_profit_red";
@@ -263,14 +263,14 @@
             cell.strategyId2 = jingxuan2.StrategyId;
             cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan2.StrategyId]];
             [cell.btnStrategyName2 setTitle:jingxuan2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.FollowNumber];
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", jingxuan2.CollectionNumber];
             cell.winLossesChart2 = jingxuan2.WinLosses;
             
             FADummieStrategyDetailViewModel *jingxuan3 = (FADummieStrategyDetailViewModel *)dataSourceJingXuan[2];
             cell.strategyId3 = jingxuan3.StrategyId;
             cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan3.StrategyId]];
             [cell.btnStrategyName3 setTitle:jingxuan3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.FollowNumber];
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", jingxuan3.CollectionNumber];
             cell.winLossesChart3 = jingxuan3.WinLosses;
         }
             break;
@@ -290,7 +290,7 @@
             [dateFormatQuShi setDateFormat:@"yyyy-MM-dd"];
             cell.lblUpdateDate1.text = [dateFormatQuShi stringFromDate:qushi.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", qushi.FollowNumber];
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", qushi.CollectionNumber];
             cell.lblProviderName1.text = qushi.ProviderName;
 //            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:qushi.CumulativeReturnRatio];
 //            NSString* profitLineImageName = @"tmp_collect_profit_red";
@@ -314,13 +314,13 @@
             cell.strategyId2 = qushi2.StrategyId;
             cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi2.StrategyId]];
             [cell.btnStrategyName2 setTitle:qushi2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", qushi2.FollowNumber];
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", qushi2.CollectionNumber];
             
             FADummieStrategyDetailViewModel *qushi3 = (FADummieStrategyDetailViewModel *)dataSourceQuShi[2];
             cell.strategyId3 = qushi3.StrategyId;
             cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",qushi3.StrategyId]];
             [cell.btnStrategyName3 setTitle:qushi3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", qushi3.FollowNumber];
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", qushi3.CollectionNumber];
         }
             break;
             
@@ -339,7 +339,7 @@
             [dateFormatNiShi setDateFormat:@"yyyy-MM-dd"];
             cell.lblUpdateDate1.text = [dateFormatNiShi stringFromDate:nishi.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", nishi.FollowNumber];
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", nishi.CollectionNumber];
             cell.lblProviderName1.text = nishi.ProviderName;
 //            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:nishi.CumulativeReturnRatio];
 //            NSString* profitLineImageName = @"tmp_collect_profit_red";
@@ -365,14 +365,14 @@
             cell.strategyId2 = nishi2.StrategyId;
             cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi2.StrategyId]];
             [cell.btnStrategyName2 setTitle:nishi2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", nishi2.FollowNumber];
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", nishi2.CollectionNumber];
             cell.winLossesChart2 = nishi2.WinLosses;
             
             FADummieStrategyDetailViewModel *nishi3 = (FADummieStrategyDetailViewModel *)dataSourceNiShi[2];
             cell.strategyId3 = nishi3.StrategyId;
             cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",nishi3.StrategyId]];
             [cell.btnStrategyName3 setTitle:nishi3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", nishi3.FollowNumber];
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", nishi3.CollectionNumber];
             cell.winLossesChart3 = nishi3.WinLosses;
         }
             break;
@@ -392,7 +392,7 @@
             [dateFormatTaoLi setDateFormat:@"yyyy-MM-dd"];
             cell.lblUpdateDate1.text = [dateFormatTaoLi stringFromDate:taoli.OnlineDay];
             cell.lblStrategyStatus1.text = @"上架";
-            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", taoli.FollowNumber];
+            cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", taoli.CollectionNumber];
             cell.lblProviderName1.text = taoli.ProviderName;
 //            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:taoli.CumulativeReturnRatio];
 //            NSString* profitLineImageName = @"tmp_collect_profit_red";
@@ -418,14 +418,14 @@
             cell.strategyId2 = taoli2.StrategyId;
             cell.profitChartDto2 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli2.StrategyId]];
             [cell.btnStrategyName2 setTitle:taoli2.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", taoli2.FollowNumber];
+            cell.lblCollectionPeople2.text = [[NSString alloc] initWithFormat:@"%d", taoli2.CollectionNumber];
             cell.winLossesChart2 = taoli2.WinLosses;
             
             FADummieStrategyDetailViewModel *taoli3 = (FADummieStrategyDetailViewModel *)dataSoruceTaoLi[2];
             cell.strategyId3 = taoli3.StrategyId;
             cell.profitChartDto3 = [chartDic objectForKey:[NSString stringWithFormat:@"%d",taoli3.StrategyId]];
             [cell.btnStrategyName3 setTitle:taoli3.StrategyName forState:UIControlStateNormal];
-            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", taoli3.FollowNumber];
+            cell.lblCollectionPeople3.text = [[NSString alloc] initWithFormat:@"%d", taoli3.CollectionNumber];
             cell.winLossesChart3 = taoli3.WinLosses;
         }
             break;
