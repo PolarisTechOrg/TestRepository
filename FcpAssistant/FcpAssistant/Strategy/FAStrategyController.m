@@ -61,7 +61,6 @@
         [dataSource addObjectsFromArray:strategyList];
     }
     
-//    [self initialChartIdArray:dataSource];
     [self loadChartData:dataSource];
     
     [self setupRefresh];
@@ -333,11 +332,7 @@
         
         cell.StrategyId = item.StrategyId;
         
-//        cell.imgPerformanceBackMap.image = [self GetProfitBackMap:item.CumulativeReturnRatio];
         [self setProfitBackMap:item.CumulativeReturnRatio inCell:cell];
-        
-//        NSString* profitLineImageName = @"tmp_collect_profit_red";
-//        cell.imgPerformanceMap.image = [UIImage imageNamed:profitLineImageName];
         FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
         if (chartDto !=nil && chartDto.Items.count >0)
         {
@@ -379,7 +374,7 @@
     FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
     detailController.strategyId = item.StrategyId;
     detailController.profitCharDto = [chartDic valueForKey:[NSString stringWithFormat:@"%d", item.StrategyId]];
-    detailController.latedWinlosses = item.WinLosses;
+//    detailController.latedWinlosses = item.WinLosses;
     
     [self.navigationController pushViewController:detailController animated:YES];
 }

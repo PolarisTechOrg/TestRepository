@@ -39,6 +39,6 @@ typedef enum ProfitType
 //策略ID
 @property(nonatomic,assign) int strategyId;
 @property(nonatomic, retain) FAChartDto *profitCharDto;
-@property(nonatomic, retain) NSArray *latedWinlosses;
+//@property(nonatomic, retain) NSArray *latedWinlosses;
 
 @end

@@ -55,7 +55,7 @@
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
     controller.profitCharDto = profitChartDto1;
-    controller.latedWinlosses = winLossesChart1;
+//    controller.latedWinlosses = winLossesChart1;
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
@@ -70,7 +70,7 @@
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
     controller.profitCharDto = profitChartDto2;
-    controller.latedWinlosses = winLossesChart2;
+//    controller.latedWinlosses = winLossesChart2;
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
@@ -85,7 +85,7 @@
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
     controller.profitCharDto = profitChartDto3;
-    controller.latedWinlosses = winLossesChart3;
+//    controller.latedWinlosses = winLossesChart3;
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
