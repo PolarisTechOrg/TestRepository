@@ -18,6 +18,8 @@
 #import "FADrawedReturnViewModel.h"
 #import "FADummieStrategyDetailViewModel.h"
 #import "FAWinLossViewModel.h"
+#import "FAAccountManager.h"
+#import "FAStationFundAccount.h"
 
 #import "FAQueue.h"
 #import "FAFoundation.h"
@@ -52,6 +54,7 @@
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];
     
     // Load data
+    hasLoadStrategyIdList = NO;
     currentPageIndex = 1;
     
     dataSource = [[NSMutableArray alloc] init];
@@ -61,8 +64,19 @@
         [dataSource addObjectsFromArray:strategyList];
     }
     
-    [self loadChartData:dataSource];
+    chartDict = [self loadChartData:dataSource];
     
+    FAStationFundAccount *account = nil;
+    if([FAAccountManager shareInstance].hasLogin)
+    {
+        account = [[FAAccountManager shareInstance] selectFundAccount];
+        perchaseIdDict = [self loadPerchaseIdList:account];
+        collectionIdDict = [self loadCollectionIdList];
+        
+        hasLoadStrategyIdList = YES;
+    }
+    
+    // Setup refresh
     [self setupRefresh];
 }
 
@@ -103,7 +117,7 @@
     if(strtegyList != nil && strtegyList.count > 0)
     {
         [dataSource addObjectsFromArray:strtegyList];
-        [self loadChartData:dataSource];
+        chartDict = [self loadChartData:dataSource];
     }
     
     // 刷新表格UI
@@ -162,34 +176,84 @@
     }
 }
 
-//- (NSMutableArray *)initialChartIdArray:(NSArray *)strategyArray
-//{
-//    if(strategyArray == nil || strategyArray.count == 0)
-//    {
-//        return nil;
-//    }
-//    
-//    chartIdArray = [NSMutableArray arrayWithCapacity:64];
-//    
-//    for (FADummieStrategyDetailViewModel *item in strategyArray)
-//    {
-//        if (item == nil)
-//        {
-//            continue;
-//        }
-//        [chartIdArray addObject:[NSNumber numberWithInt:item.StrategyId]];
-//    }
-//    
-//    return chartIdArray;
-//}
-
--(void) loadChartData:(NSArray *) strategies
+- (NSDictionary *)loadPerchaseIdList:(FAStationFundAccount *)account
 {
-    chartDic = [[NSMutableDictionary alloc]initWithCapacity:10];
+    if(account == nil)
+    {
+        return nil;
+    }
+    
+    NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithCapacity:128];
+    
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/BuyedStrategyList?fundAccount=%@&fundAccountType=%d&ids=", WEB_URL, account.FundAccount, account.FundAccountType];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoArray =[FAJSONSerialization toArray:nil fromData:replyData];
+        
+        if (dtoArray == nil || dtoArray.count == 0)
+        {
+            return nil;
+        }
+        
+        for (int i = 0; i < dtoArray.count; i++)
+        {
+            [tempDict setObject:dtoArray[i] forKey:dtoArray[i]];
+        }
+        
+        return tempDict;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (NSDictionary *)loadCollectionIdList
+{
+    NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithCapacity:128];
+    
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/wishlist?ids=", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoArray =[FAJSONSerialization toArray:nil fromData:replyData];
+        
+        if (dtoArray == nil || dtoArray.count == 0)
+        {
+            return nil;
+        }
+        
+        for (int i = 0; i < dtoArray.count; i++)
+        {
+            [tempDict setObject:dtoArray[i] forKey:dtoArray[i]];
+        }
+        
+        return tempDict;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (NSMutableDictionary *)loadChartData:(NSArray *) strategies
+{
+    NSMutableDictionary *chartDataDict = [[NSMutableDictionary alloc] initWithCapacity:10];
     
     if(strategies == nil || strategies.count <=0)
     {
-        return;
+        return nil;
     }
     
     for (FADummieStrategyDetailViewModel *item in strategies)
@@ -206,7 +270,7 @@
             if(error == nil)
             {
                 FAChartDto *dtoObj =[FAJSONSerialization toObject:[FAChartDto class] fromData:replyData];
-                [chartDic setValue:dtoObj forKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
+                [chartDataDict setValue:dtoObj forKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
                 
             }
             else
@@ -221,31 +285,11 @@
         }
         @finally
         {
-            
         }
-    }    
+    }
+    
+    return chartDataDict;
 }
-
-//- (NSArray *)loadChartDataFromServer:(int)strategyId splitDot:(int)split lineBorder:(int)border wholeWidth:(int)width
-//{
-//    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/chartdata?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d", WEB_URL, strategyId, split, border, width];
-//    
-//    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-//    
-//    NSError *error;
-//    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-//    
-//    if(error == nil)
-//    {
-//        FAChartDto *dtoObj =[FAJSONSerialization toObject:[FAChartDto class] fromData:replyData];
-//        
-//        return  dtoObj.Items;
-//    }
-//    else
-//    {
-//        return nil;
-//    }
-//}
 
 #pragma mark - Table view data source
 - (void)didReceiveMemoryWarning
@@ -273,9 +317,6 @@
     return 105;
 }
 
-- (void)enterDetailView:(int) strategyId
-{
-}
 
 - (UIImage *)GetProfitBackMap:(double)profit
 {
@@ -315,6 +356,32 @@
     }
 }
 
+- (void)setStrategyMark:(FAStrategyInfoViewCell *)cell withStrategyId:(int)strategyId
+{
+    if(![[FAAccountManager shareInstance] hasLogin])
+    {
+        cell.imgStrategyMarked.image = nil;
+        return;
+    }
+    if(!hasLoadStrategyIdList)
+    {
+        FAStationFundAccount *account = [[FAAccountManager shareInstance] selectFundAccount];
+        perchaseIdDict = [self loadPerchaseIdList:account];
+        collectionIdDict = [self loadCollectionIdList];
+        hasLoadStrategyIdList = YES;
+    }
+    
+    cell.imgStrategyMarked.image = nil;
+    if([perchaseIdDict objectForKey:[NSNumber numberWithInt:strategyId]] != nil)
+    {
+        cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_purchase_flag.png"];
+        return;
+    }
+    if ([collectionIdDict objectForKey:[NSNumber numberWithInt:strategyId]] != nil)
+    {
+        cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_collect_flag.png"];
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -333,7 +400,7 @@
         cell.StrategyId = item.StrategyId;
         
         [self setProfitBackMap:item.CumulativeReturnRatio inCell:cell];
-        FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
+        FAChartDto *chartDto = [chartDict objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
         if (chartDto !=nil && chartDto.Items.count >0)
         {
             cell.imgStrategyProfit.dataSource = chartDto.Items;
@@ -344,14 +411,11 @@
         }
         [cell.imgStrategyProfit setNeedsDisplay];
         
-        cell.lblPerformance.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio *100];
+        cell.lblPerformance.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio];
         
         cell.lblStrategyName.text = item.StrategyName;
         
-        if(item.InWishList)
-        {
-            cell.imgStrategyMarked.image = [UIImage imageNamed:@"common_collect_flag.png"];
-        }
+        [self setStrategyMark:cell withStrategyId:item.StrategyId];
         
         int star = (int)ceil(item.Star);
         NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
@@ -373,8 +437,7 @@
     
     FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
     detailController.strategyId = item.StrategyId;
-    detailController.profitCharDto = [chartDic valueForKey:[NSString stringWithFormat:@"%d", item.StrategyId]];
-//    detailController.latedWinlosses = item.WinLosses;
+    detailController.profitCharDto = [chartDict valueForKey:[NSString stringWithFormat:@"%d", item.StrategyId]];
     
     [self.navigationController pushViewController:detailController animated:YES];
 }

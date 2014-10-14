@@ -19,7 +19,13 @@
         
     FAQueue *dataQueue;
         
-    NSDictionary *chartDic;
+    NSDictionary *chartDict;
+    
+    NSDictionary *perchaseIdDict;
+    
+    NSDictionary *collectionIdDict;
+    
+    BOOL hasLoadStrategyIdList;
 }
 
 @end
