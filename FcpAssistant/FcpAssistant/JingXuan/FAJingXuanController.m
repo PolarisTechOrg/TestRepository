@@ -239,9 +239,6 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.CollectionNumber];
             cell.lblProviderName1.text = jingxuan.ProviderName;
-//            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:jingxuan.CumulativeReturnRatio];
-//            NSString* profitLineImageName = @"tmp_collect_profit_red";
-//            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio *100];
             
             [self setProfitBackMap:jingxuan.CumulativeReturnRatio inCell:cell];
@@ -292,9 +289,6 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", qushi.CollectionNumber];
             cell.lblProviderName1.text = qushi.ProviderName;
-//            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:qushi.CumulativeReturnRatio];
-//            NSString* profitLineImageName = @"tmp_collect_profit_red";
-//            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",qushi.CumulativeReturnRatio *100];
             
             [self setProfitBackMap:qushi.CumulativeReturnRatio inCell:cell];
@@ -341,9 +335,6 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", nishi.CollectionNumber];
             cell.lblProviderName1.text = nishi.ProviderName;
-//            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:nishi.CumulativeReturnRatio];
-//            NSString* profitLineImageName = @"tmp_collect_profit_red";
-//            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",nishi.CumulativeReturnRatio *100];
             
             [self setProfitBackMap:nishi.CumulativeReturnRatio inCell:cell];
@@ -394,9 +385,6 @@
             cell.lblStrategyStatus1.text = @"上架";
             cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", taoli.CollectionNumber];
             cell.lblProviderName1.text = taoli.ProviderName;
-//            cell.imgPerformanceBackMap1.image = [self GetProfitBackMap:taoli.CumulativeReturnRatio];
-//            NSString* profitLineImageName = @"tmp_collect_profit_red";
-//            cell.imgPerformanceMap1.image = [UIImage imageNamed:profitLineImageName];
             cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",taoli.CumulativeReturnRatio *100];
             
             [self setProfitBackMap:taoli.CumulativeReturnRatio inCell:cell];
