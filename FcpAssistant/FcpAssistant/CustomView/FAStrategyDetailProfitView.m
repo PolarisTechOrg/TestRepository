@@ -211,7 +211,7 @@
         {
             FADrawedReturnViewModel *item = dataSource[index];
             NSString *xValueStr =  [FAFormater toShortDateStringWithNSDate:item.DataDay];
-            CGRect rect = CGRectMake(leftMargin +yInterval *i -20,frameHeight - bottomMargin+5,40,10);
+            CGRect rect = CGRectMake(leftMargin +yInterval *i -22,frameHeight - bottomMargin+5,44,10);
             CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
             [xValueStr drawInRect:rect withFont:font lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
         }
