@@ -28,87 +28,27 @@
 
 // 星级评价（0 ~ 5，可以有半星），空表示没有评价过。
 @property(nonatomic,assign) int Star;
-//
-///// <summary>
-///// 评价次数（人次）。
-///// </summary>
-//[DataMember]
+// 评价次数（人次）。
 //public virtual int? AssessCount { get; set; }
-//
-///// <summary>
-///// 评价人数。
-///// </summary>
-//[DataMember]
+// 评价人数。
 //public virtual int? AssessPersons { get; set; }
-//
-///// <summary>
-///// 持仓状况，0 => 当冲 1 => 留仓
-///// </summary>
-//[DataMember(EmitDefaultValue = true)]
+// 持仓状况，0 => 当冲 1 => 留仓
 //public virtual short? IsOpen
-//{
-//    get;
-//    set;
-//}
-///// <summary>
-///// 策略形态（价格形态），1 => 趋势, 2 => 逆势（盘整）,3 => 套利
-///// </summary>
-///// <remarks>
-///// 该数字来源于Strategy.Type.
-///// </remarks>
-//[DataMember(EmitDefaultValue = true)]
+// 策略形态（价格形态），1 => 趋势, 2 => 逆势（盘整）,3 => 套利
 //public virtual short? PricePatterns
-//{
-//    get;
-//    set;
-//}
-///// <summary>
-///// 策略方向（交易方向），1 => 仅多 2 => 仅空 3 => 双向
-///// </summary>
-//[DataMember(EmitDefaultValue = true)]
+// 策略方向（交易方向），1 => 仅多 2 => 仅空 3 => 双向
 //public virtual short? TradingDirection
-//{
-//    get;
-//    set;
-//}
-///// <summary>
-///// 交易频率，1 => 密集 2 => 稀疏
-///// </summary>
-//[DataMember(EmitDefaultValue = true)]
+// 交易频率，1 => 密集 2 => 稀疏
 //public virtual short? TransactionFrequency
-//{
-//    get;
-//    set;
-//}
-//
-///// <summary>
-///// 起初资产。
-///// </summary>
-//[DataMember(EmitDefaultValue = true)]
+// 起初资产。
 //public virtual int? InitialAssets
-//{
-//    get;
-//    set;
-//}
-//
-//
-///// <summary>
-///// 胜负记录。
-///// </summary>
-//[DataMember]
-//[Obsolete("WinLoss属性以后将不再支持，请使用。。。")]
+// 胜负记录。
 //public virtual List<decimal> WinLoss { get; set; }
-//
-
 // 胜负记录，含平仓时间。
-@property(nonatomic, retain) NSArray *WinLosses;
-//
-///// <summary>
-///// 策略的“温馨提示和样本外事件”列表。
-///// </summary>
-//[DataMember]
+//@property(nonatomic, retain) NSArray *WinLosses;
+// 策略的“温馨提示和样本外事件”列表。
 //public List<StrategyEventViewModel> Events { get; set; }
 
 //胜负记录集合类型
-+(Class) WinLosses_class;
+//+(Class) WinLosses_class;
 @end

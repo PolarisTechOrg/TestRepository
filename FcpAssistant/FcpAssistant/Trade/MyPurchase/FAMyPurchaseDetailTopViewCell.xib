@@ -50,27 +50,27 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="交易品种" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jb-Rh-XyV">
-                        <rect key="frame" x="136" y="80" width="28" height="10"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                        <rect key="frame" x="126" y="80" width="38" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="昨日盈亏" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cb-uB-nsD">
-                        <rect key="frame" x="233" y="119" width="28" height="10"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                        <rect key="frame" x="224" y="116" width="38" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="跟单倍数" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXr-Hq-FvB">
-                        <rect key="frame" x="136" y="119" width="28" height="10"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                        <rect key="frame" x="126" y="116" width="38" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="策略盈亏" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esM-pt-9xa">
-                        <rect key="frame" x="233" y="80" width="28" height="10"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                        <rect key="frame" x="223" y="80" width="38" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="沪深300" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjZ-KI-wNv">
-                        <rect key="frame" x="170" y="77" width="60" height="14"/>
+                        <rect key="frame" x="170" y="78" width="60" height="14"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -85,7 +85,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3930.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1U-w8-9BB">
-                        <rect key="frame" x="266" y="78" width="44" height="14"/>
+                        <rect key="frame" x="266" y="80" width="44" height="14"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                         <nil key="highlightedColor"/>
                     </label>
