@@ -200,7 +200,7 @@
         NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
         NSLog(@"gradeImageName:%@",gradeImageName);
         cell.imgStragetyGrade.image = [UIImage imageNamed:gradeImageName];
-        cell.lblStrategyProfitRate.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio *100];
+        cell.lblStrategyProfitRate.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio];
         cell.lblStrategyProvider.text = item.ProviderName;
         cell.lblCollectCount.text = [NSString stringWithFormat:@"%d",item.CollectionNumber];
         
@@ -214,13 +214,13 @@
             cell.imgStrategyProfit.dataSource = nil;
         }
 
-        if(indexPath.row %3 == 0)
+        if(item.CumulativeNetProfit <0)
         {
             cell.imgProfitBackground.image = [UIImage imageNamed:@"mycollect_profit_green.png"];
             cell.imgStrategyProfit.backgroundColor = [UIColor colorWithRed:240.0/255 green:255.0/255 blue:210.0/255 alpha:1.0];
             cell.imgStrategyProfit.profitLineColor = [UIColor colorWithRed:2.0/255 green:71.0/255 blue:2.0/255 alpha:1.0];
         }
-        else if(indexPath.row %3 == 1)
+        else if(item.CumulativeNetProfit >0)
         {
             cell.imgProfitBackground.image = [UIImage imageNamed:@"mycollect_profit_red.png"];
             cell.imgStrategyProfit.backgroundColor = [UIColor colorWithRed:255.0/255 green:218.0/255 blue:210.0/255 alpha:1.0];
