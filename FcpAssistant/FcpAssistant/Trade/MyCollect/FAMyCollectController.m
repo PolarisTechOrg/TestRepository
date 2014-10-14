@@ -20,7 +20,8 @@
 #import "FAChartDto.h"
 #import "FADrawedReturnViewModel.h"
 #import "FAStrategyDetailController.h"
-
+#import "FAAccountManager.h"
+#import "FAStationAccount.h"
 
 @interface FAMyCollectController ()
 
@@ -48,6 +49,7 @@
         [dataSource addObjectsFromArray:wishList.Items];
     }
   
+    [self loadPurchaseData];
     [self loadChartData:wishList.Items];
 
 
@@ -72,7 +74,7 @@
         }
         else
         {
-            NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
             @throw ex;
         }
     }
@@ -86,6 +88,45 @@
         
     }
 
+}
+
+-(void) loadPurchaseData
+{
+    purchaseDic = [[NSMutableDictionary alloc]initWithCapacity:10];
+    
+        
+        @try
+        {
+            FAStationFundAccount *fundAccount = [FAAccountManager shareInstance].selectFundAccount;
+            NSString *requestStr =[NSString stringWithFormat:@"%@api/BuyedStrategyList?fundAccount=%@&fundAccountType=%d&ids=",WEB_URL,fundAccount.FundAccount,fundAccount.FundAccountType];
+            NSURL * requestUrl =[NSURL URLWithString:requestStr];
+            
+            NSError *error;
+            NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+            
+            if(error == nil)
+            {
+                NSArray *dtoObj =[FAJSONSerialization toArray:nil fromData:replyData] ;
+                for (int i=0;i<dtoObj.count;i++)
+               {
+                   [purchaseDic setValue:dtoObj[i] forKey:dtoObj[i]];
+               }
+            }
+            else
+            {
+                NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+                @throw ex;
+            }
+        }
+        @catch (NSException *exception)
+        {
+            [FAUtility showAlterViewWithException:exception];
+        }
+        @finally
+        {
+            
+        }
+    
 }
 
 -(void) loadChartData:(NSArray *) strategies

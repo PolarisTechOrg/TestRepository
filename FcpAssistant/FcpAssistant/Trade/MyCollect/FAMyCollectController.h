@@ -11,12 +11,14 @@
 
 @interface FAMyCollectController : UITableViewController
 {
-    //TableViewCell标识符
-    @private NSString* itemCellIdentifier;
-    
-    @private NSMutableArray *dataSource;
-    
-    @private NSDictionary *chartDic;
+//TableViewCell标识符
+@private NSString* itemCellIdentifier;
+//策略信息
+@private NSMutableArray *dataSource;
+//策略损益数据
+@private NSDictionary *chartDic;
+//订购策略
+@private NSDictionary *purchaseDic;
 }
 
 @end
