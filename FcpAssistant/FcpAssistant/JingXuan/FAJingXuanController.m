@@ -209,6 +209,8 @@
     FADummieStrategyDetailViewModel *jingxuan = (FADummieStrategyDetailViewModel *)data[0];
     cell.strategyId1 = jingxuan.StrategyId;
     [cell.btnStrategyName1 setTitle:jingxuan.StrategyName forState:UIControlStateNormal];
+    [cell.btnStrategyName1 setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    
     int star = (int)ceil(jingxuan.Star);
     NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
     cell.imgStrategyStar1.image = [UIImage imageNamed:gradeImageName];
@@ -219,7 +221,7 @@
     cell.lblStrategyStatus1.text = @"上架";
     cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.CollectionNumber];
     cell.lblProviderName1.text = jingxuan.ProviderName;
-    cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio *100];
+    cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio];
     
     [self setProfitBackMap:jingxuan.CumulativeReturnRatio inCell:cell];
     FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",jingxuan.StrategyId]];
