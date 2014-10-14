@@ -113,11 +113,11 @@
     // 添加新数据
     currentPageIndex++;
     
-    NSArray *strtegyList = [self loadDataFromServer:currentPageIndex];
-    if(strtegyList != nil && strtegyList.count > 0)
+    NSArray *strategyList = [self loadDataFromServer:currentPageIndex];
+    if(strategyList != nil && strategyList.count > 0)
     {
-        [dataSource addObjectsFromArray:strtegyList];
-        chartDict = [self loadChartData:dataSource];
+        [dataSource addObjectsFromArray:strategyList];
+        [chartDict setValuesForKeysWithDictionary:[self loadChartData:strategyList]];
     }
     
     // 刷新表格UI
@@ -395,35 +395,46 @@
     
     if (indexPath.row < dataSource.count)
     {
-        FADummieStrategyDetailViewModel  *item = dataSource[indexPath.row];
-        
-        cell.StrategyId = item.StrategyId;
-        
-        [self setProfitBackMap:item.CumulativeReturnRatio inCell:cell];
-        FAChartDto *chartDto = [chartDict objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
-        if (chartDto !=nil && chartDto.Items.count >0)
+        @try
         {
-            cell.imgStrategyProfit.dataSource = chartDto.Items;
+            FADummieStrategyDetailViewModel  *item = dataSource[indexPath.row];
+            
+            cell.StrategyId = item.StrategyId;
+            
+            [self setProfitBackMap:item.CumulativeReturnRatio inCell:cell];
+            FAChartDto *chartDto = [chartDict objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
+            if (chartDto !=nil && chartDto.Items.count >0)
+            {
+                cell.imgStrategyProfit.dataSource = chartDto.Items;
+            }
+            else
+            {
+                cell.imgStrategyProfit.dataSource = nil;
+            }
+            [cell.imgStrategyProfit setNeedsDisplay];
+            
+            cell.lblPerformance.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio];
+            
+            cell.lblStrategyName.text = item.StrategyName;
+            
+            [self setStrategyMark:cell withStrategyId:item.StrategyId];
+            
+            int star = (int)ceil(item.Star);
+            NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
+            cell.imgStrategyStar.image = [UIImage imageNamed:gradeImageName];
+            
+            cell.lblCollectionPeopleNumber.text = [NSString stringWithFormat:@"%d", item.FollowNumber];
+            
+            cell.lblProvider.text = item.ProviderName;
         }
-        else
+        @catch (NSException *exception)
         {
-            cell.imgStrategyProfit.dataSource = nil;
+            [FAUtility showAlterViewWithException:exception];
         }
-        [cell.imgStrategyProfit setNeedsDisplay];
-        
-        cell.lblPerformance.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio];
-        
-        cell.lblStrategyName.text = item.StrategyName;
-        
-        [self setStrategyMark:cell withStrategyId:item.StrategyId];
-        
-        int star = (int)ceil(item.Star);
-        NSString *gradeImageName =[NSString stringWithFormat: @"common_star_%d.png",star];
-        cell.imgStrategyStar.image = [UIImage imageNamed:gradeImageName];
-        
-        cell.lblCollectionPeopleNumber.text = [NSString stringWithFormat:@"%d", item.FollowNumber];
-        
-        cell.lblProvider.text = item.ProviderName;
+        @finally
+        {
+            
+        }
     }
     
     return cell;
