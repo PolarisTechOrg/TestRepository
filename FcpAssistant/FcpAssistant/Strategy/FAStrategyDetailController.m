@@ -59,9 +59,13 @@ const int latedRecordSectionIndex = 6;
     
     self.navigationItem.title = @"策略详情";
     
-    UIBarButtonItem* shareBtn = [[UIBarButtonItem alloc] init];
-    shareBtn.title = @"分享";
-    self.navigationItem.rightBarButtonItem = shareBtn;
+    UIImage *shareButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_share_white"];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doShare)];
+    
+    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
+    UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithImage:collectionButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doCollection)];
+    
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:shareButton, collectionButton, nil];
     
     dataSource = [self LoadDataFromServer];
     if(dataSource == nil)
@@ -105,6 +109,20 @@ const int latedRecordSectionIndex = 6;
     [self.tableView registerNib:latedRecordHeaderCellNib forCellReuseIdentifier:latedRecordHeaderCellIdentifier];
     UINib *latedRecordCellNib = [UINib nibWithNibName:@"FAStrategyDetailLatedRecordViewCell" bundle:nil];
     [self.tableView registerNib:latedRecordCellNib forCellReuseIdentifier:latedRecordCellIdentifier];
+}
+
+- (void)doCollection
+{
+//    FAStrategySearchController *controller = [[FAStrategySearchController alloc] init];
+//    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)doShare
+{
+//    FAStrategyFilterController *controller = [[FAStrategyFilterController alloc] init];
+//    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(FADummieStrategyDetailDto *) LoadDataFromServer
