@@ -34,6 +34,7 @@ typedef enum ProfitType
     NSString *latedRecordHeaderCellIdentifier;
     
     FADummieStrategyDetailDto *dataSource;
+    int descriptionLabelHeight;
 }
 
 //策略ID
