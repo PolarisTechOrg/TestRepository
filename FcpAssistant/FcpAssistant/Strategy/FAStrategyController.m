@@ -261,7 +261,7 @@
         
         @try
         {
-            NSString *requestStr =[NSString stringWithFormat:@"%@api/ChartData?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d",WEB_URL,item.StrategyId,3,6,118];
+            NSString *requestStr =[NSString stringWithFormat:@"%@api/ChartData?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d",WEB_URL,item.StrategyId,60,1,118];
             NSURL * requestUrl =[NSURL URLWithString:requestStr];
             
             NSError *error;
