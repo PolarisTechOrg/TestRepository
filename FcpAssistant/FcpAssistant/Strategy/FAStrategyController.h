@@ -19,7 +19,7 @@
         
     FAQueue *dataQueue;
         
-    NSDictionary *chartDict;
+    NSMutableDictionary *chartDict;
     
     NSDictionary *perchaseIdDict;
     
