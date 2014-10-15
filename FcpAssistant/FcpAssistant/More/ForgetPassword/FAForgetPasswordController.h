@@ -11,5 +11,8 @@
 @interface FAForgetPasswordController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+@property (weak, nonatomic) IBOutlet UIImageView *imgCheckCode;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtUserName;
+@property (weak, nonatomic) IBOutlet UITextField *txtCheckCode;
 @end

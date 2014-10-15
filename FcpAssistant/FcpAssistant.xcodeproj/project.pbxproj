@@ -30,6 +30,7 @@
 		59137A4819BE9800001F4977 /* FAMyPurchaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59137A4619BE9800001F4977 /* FAMyPurchaseViewCell.m */; };
 		59137A4919BE9800001F4977 /* FAMyPurchaseViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59137A4719BE9800001F4977 /* FAMyPurchaseViewCell.xib */; };
 		59137A5219BEA7AF001F4977 /* FAPurchaseDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 59137A5119BEA7AF001F4977 /* FAPurchaseDetail.m */; };
+		59147A2A19EE884E009E2128 /* FAForgotPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59147A2919EE884E009E2128 /* FAForgotPasswordModel.m */; };
 		5916F34719B95FA600BE7D1D /* JingXuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5916F34219B95FA600BE7D1D /* JingXuan@2x.png */; };
 		5916F34819B95FA600BE7D1D /* Strategy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5916F34319B95FA600BE7D1D /* Strategy@2x.png */; };
 		5916F34919B95FA600BE7D1D /* Trade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5916F34419B95FA600BE7D1D /* Trade@2x.png */; };
@@ -341,6 +342,8 @@
 		59137A4719BE9800001F4977 /* FAMyPurchaseViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseViewCell.xib; path = Trade/MyPurchase/FAMyPurchaseViewCell.xib; sourceTree = "<group>"; };
 		59137A5019BEA7AF001F4977 /* FAPurchaseDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAPurchaseDetail.h; path = Model/FAPurchaseDetail.h; sourceTree = "<group>"; };
 		59137A5119BEA7AF001F4977 /* FAPurchaseDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAPurchaseDetail.m; path = Model/FAPurchaseDetail.m; sourceTree = "<group>"; };
+		59147A2819EE884E009E2128 /* FAForgotPasswordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAForgotPasswordModel.h; path = Model/ServerModel/FAForgotPasswordModel.h; sourceTree = "<group>"; };
+		59147A2919EE884E009E2128 /* FAForgotPasswordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAForgotPasswordModel.m; path = Model/ServerModel/FAForgotPasswordModel.m; sourceTree = "<group>"; };
 		5916F34219B95FA600BE7D1D /* JingXuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "JingXuan@2x.png"; path = "ImageSource/tabBarImage/JingXuan@2x.png"; sourceTree = "<group>"; };
 		5916F34319B95FA600BE7D1D /* Strategy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Strategy@2x.png"; path = "ImageSource/tabBarImage/Strategy@2x.png"; sourceTree = "<group>"; };
 		5916F34419B95FA600BE7D1D /* Trade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Trade@2x.png"; path = "ImageSource/tabBarImage/Trade@2x.png"; sourceTree = "<group>"; };
@@ -1154,6 +1157,8 @@
 				592AE1DD19E92E490080CC46 /* FAModifyPasswordModel.m */,
 				5918C00319EB968B00A1193B /* FAWinLossViewModel.h */,
 				5918C00419EB968B00A1193B /* FAWinLossViewModel.m */,
+				59147A2819EE884E009E2128 /* FAForgotPasswordModel.h */,
+				59147A2919EE884E009E2128 /* FAForgotPasswordModel.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -2256,6 +2261,7 @@
 				591BB2B719E76EC6000AF684 /* FAMyPurchaseDetailPositionHeaderViewCell.m in Sources */,
 				593EA6F119C04DA700E9F2BC /* FAMyOrderBookItemViewCell.m in Sources */,
 				59137A3E19BE8C32001F4977 /* FAMyOrderBookController.m in Sources */,
+				59147A2A19EE884E009E2128 /* FAForgotPasswordModel.m in Sources */,
 				840DD89219CD79440023885D /* FAStrategyDetailProfitHeaderView.m in Sources */,
 				84956F9819D9845A0001E78C /* UIScrollView+MJExtension.m in Sources */,
 				84956F9A19D9845A0001E78C /* UIView+MJExtension.m in Sources */,
