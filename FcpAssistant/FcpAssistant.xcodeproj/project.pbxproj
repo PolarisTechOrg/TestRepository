@@ -1776,10 +1776,10 @@
 				8403C56719E95C7D0058B19F /* LatedRecordHeaderCellView */,
 				8403C56619E95C660058B19F /* ProfitHeaderCellView */,
 				8403C56519E95C4F0058B19F /* DescripHeaderCellView */,
+				840DD87419CD75E50023885D /* DescribCellView */,
 				84844A4F19C969BA001C2EC4 /* StrategyCellView */,
 				840DD87619CD76080023885D /* LatedRecordCellView */,
 				840DD87519CD75F70023885D /* ProfitCellView */,
-				840DD87419CD75E50023885D /* DescribCellView */,
 				84844A2519C9647F001C2EC4 /* TopCellView */,
 			);
 			name = CellView;

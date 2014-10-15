@@ -479,7 +479,7 @@ const int latedRecordSectionIndex = 6;
     {
         case topSectionIndex: return 196;
         case describHeaderSectionIndex:return 40;
-        case describSectionIndex:return descriptionLabelSize.height+30;
+        case describSectionIndex:return descriptionLabelSize.height;
         case profitsHeaderSectionIndex:return 40;
         case profitsSectionIndex:return 170;
         case latedRecordHeaderSectionIndex:return 40;
