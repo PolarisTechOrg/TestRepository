@@ -22,7 +22,7 @@ typedef enum ProfitType
     
 }ProfitType;
 
-@interface FAStrategyDetailController : UITableViewController
+@interface FAStrategyDetailController : UITableViewController<UIAlertViewDelegate>
 {
     NSString *topCellIdentifier;
     NSString *describCellIdentifier;

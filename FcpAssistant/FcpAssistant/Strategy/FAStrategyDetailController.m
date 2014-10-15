@@ -32,6 +32,7 @@
 #import "FAHttpUtility.h"
 #import "FAHttpHead.h"
 #import "FAFormater.h"
+#import "FAUtility.h"
 
 
 @interface FAStrategyDetailController ()
@@ -113,16 +114,60 @@ const int latedRecordSectionIndex = 6;
 
 - (void)doCollection
 {
-//    FAStrategySearchController *controller = [[FAStrategySearchController alloc] init];
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
+    FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
+    NSString *strategyName = strategy.StrategyName;
+    
+    NSString *title = @"添加收藏";
+    NSString *context = [NSString stringWithFormat:@"是否收藏%@", strategyName];
+    NSString *cancelTitle = @"取消";
+    NSString *ensureTitle = @"确定";
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:context delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
+    alert.alertViewStyle = UIAlertViewStyleDefault;
+    
+    [alert show];
 }
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        int i = 0;
+    }
+    else
+    {
+        return;
+    }
+}
+
 
 - (void)doShare
 {
 //    FAStrategyFilterController *controller = [[FAStrategyFilterController alloc] init];
 //    controller.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)postAddStrategyToWishList
+{
+    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/wishlist",WEB_URL];
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    FAHttpHead *head = [FAHttpHead defaultInstance];
+    head.Method = @"POST";
+    NSNumber *body = [NSNumber numberWithInt:strategyId];
+    
+    [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
+    
+    if(error == nil)
+    {
+        return;
+    }
+    else
+    {
+        [FAUtility showAlterView:@"收藏策略失败"];
+    }
 }
 
 -(FADummieStrategyDetailDto *) LoadDataFromServer
@@ -415,47 +460,6 @@ const int latedRecordSectionIndex = 6;
         default:return 0;
     }
 }
-
-//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    
-//    switch (section)
-//    {
-//        case topSectionIndex:
-//        {
-//            return [super tableView:tableView viewForHeaderInSection:section];
-//        }
-//        case describSectionIndex:
-//        {
-//            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAStrategyDetailDescribHeaderView" owner:self options:nil];
-//            
-//            UIView *headerView = (UIView *) [nib objectAtIndex:0];
-//            headerView.frame = CGRectMake(0, 0, 320, 50);
-//            return headerView;
-//        }
-//        case profitsSectionIndex:
-//        {
-//            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAStrategyDetailProfitHeaderView" owner:self options:nil];
-//            
-//            UIView *headerView = (UIView *) [nib objectAtIndex:0];
-//            headerView.frame = CGRectMake(0, 0, 320, 50);
-//            return headerView;
-//            break;
-//        }
-//        case latedRecordSectionIndex:
-//        {
-//            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAStrategyDetailLatedRecordHeaderView" owner:self options:nil];
-//            
-//            UIView *headerView = (UIView *) [nib objectAtIndex:0];
-//            headerView.frame = CGRectMake(0, 0, 320, 50);
-//            return headerView;
-//        }
-//        default:
-//            return [super tableView:tableView viewForHeaderInSection:section];
-//            break;
-//    }    
-//}
-
 
 /*
 // Override to support conditional editing of the table view.
