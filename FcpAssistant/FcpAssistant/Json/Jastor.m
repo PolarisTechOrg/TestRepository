@@ -184,7 +184,8 @@ Class nsArrayClass;
 	return self;
 }
 
-+ (NSMutableDictionary *)toDictionary:(id)obj {
++ (NSMutableDictionary *)toDictionary:(id)obj
+{
 	NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     
 //    if (obj) {

@@ -223,7 +223,10 @@
 - (NSString *)localizateMessageTime:(NSDate *)messageTime
 {
     NSString *des = [messageTime description];
-    des = [des substringFromIndex:11];
+    
+    NSRange range = NSMakeRange(11, 8);
+    des = [des substringWithRange:range];
+    
     return des;
 }
 

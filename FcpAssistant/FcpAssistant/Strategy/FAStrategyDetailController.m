@@ -132,14 +132,13 @@ const int latedRecordSectionIndex = 6;
 {
     if (buttonIndex == 0)
     {
-        int i = 0;
+        [self postAddStrategyToWishList];
     }
     else
     {
         return;
     }
 }
-
 
 - (void)doShare
 {
@@ -158,15 +157,25 @@ const int latedRecordSectionIndex = 6;
     head.Method = @"POST";
     NSNumber *body = [NSNumber numberWithInt:strategyId];
     
-    [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
-    
-    if(error == nil)
+    @try
     {
-        return;
+        [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
+        
+        if(error == nil)
+        {
+            return;
+        }
+        else
+        {
+            [FAUtility showAlterView:[error localizedDescription]];
+        }
     }
-    else
+    @catch (NSException *exception)
     {
-        [FAUtility showAlterView:@"收藏策略失败"];
+        [FAUtility showAlterViewWithException:exception];
+    }
+    @finally
+    {
     }
 }
 

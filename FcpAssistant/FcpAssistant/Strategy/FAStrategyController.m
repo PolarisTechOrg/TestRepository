@@ -446,10 +446,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     FADummieStrategyDetailViewModel *item = dataSource[indexPath.row];
     
-    FAStrategyDetailController * detailController = [[FAStrategyDetailController alloc] init];
+    FAStrategyDetailController *detailController = [[FAStrategyDetailController alloc] init];
     detailController.strategyId = item.StrategyId;
     detailController.profitCharDto = [chartDict valueForKey:[NSString stringWithFormat:@"%d", item.StrategyId]];
     
+    detailController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailController animated:YES];
 }
 

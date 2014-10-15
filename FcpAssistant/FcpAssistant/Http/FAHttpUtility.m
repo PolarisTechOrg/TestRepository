@@ -42,20 +42,33 @@
     
     if(body != nil)
     {
-        NSDictionary *bodyDict = [FAJSONSerialization toDictionary:body];
         NSMutableString *bodyString = [[NSMutableString alloc] init];
-    
-        for(NSString* key in bodyDict.allKeys)
-        {
-            [bodyString appendString:key];
-            [bodyString appendString:@"="];
-            [bodyString appendFormat:@"%@", [self urlEncoding:[bodyDict valueForKey:key]]];
-            [bodyString appendString:@"&"];
-        }
-        NSUInteger length = [bodyString length];
-        [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
         
-        [urlRequest setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+        if ([body isKindOfClass:[NSNumber class]] || [body isKindOfClass:[NSString class]])
+        {
+            NSString *bodyString = [NSString stringWithFormat:@"%@", body];
+            NSData *postData = [bodyString dataUsingEncoding:NSASCIIStringEncoding];
+            [urlRequest setHTTPBody:postData];
+        }
+        else
+        {
+            NSDictionary *bodyDict = [FAJSONSerialization toDictionary:body];
+            
+            for(NSString* key in bodyDict.allKeys)
+            {
+                [bodyString appendString:key];
+                [bodyString appendString:@"="];
+                [bodyString appendFormat:@"%@", [self urlEncoding:[bodyDict valueForKey:key]]];
+                [bodyString appendString:@"&"];
+            }
+            NSUInteger length = [bodyString length];
+            if(length > 0)
+            {
+                [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
+            }
+            
+            [urlRequest setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+        }
     }
     
     NSData *retData;
