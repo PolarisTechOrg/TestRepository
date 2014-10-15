@@ -277,10 +277,11 @@ const int latedRecordSectionIndex = 6;
 - (CGSize)getDescriptionHeight:(NSString *)content
 {
     UIFont *font = [UIFont systemFontOfSize:12];
-    CGSize size = CGSizeMake(320, 1000);
-    CGSize lableSize = [content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize size = CGSizeMake(320, 100);
     
-    return lableSize;
+    CGSize labelSize = [content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeCharacterWrap];
+    
+    return labelSize;
 }
 
 - (void)showDescribViewCell:(FAStrategyDetailDescribViewCell *)cell rowIndex:(NSInteger) rowIndex
@@ -289,22 +290,19 @@ const int latedRecordSectionIndex = 6;
     NSString *content = strategy.Description;
     
     UILabel *label = cell.lblStrategyDetailDescription;
-    [label setFrame:CGRectMake(0, 0, 0, 0)];
-    
      
-    if(strategy.Description == nil || strategy.Description.length == 0 || [strategy.Description isEqualToString:@"NA"])
+    if(content == nil || strategy.Description.length == 0 || [content isEqualToString:@"NA"])
     {
-        label.text = @"暂无\n ";
-        label.textAlignment = UITextAlignmentCenter;
+        label.text = @"        暂无\n ";
     }
     else
     {
         label.text = [NSString stringWithFormat:@"        %@\n ", strategy.Description];
     }
     
-//    CGSize labelSize = [self getDescriptionHeight:label.text];
-//    [label setFrame:CGRectMake(0, 0, labelSize.width, labelSize.height)];
-    [label setFrame:CGRectMake(0, 0, descriptionLabelSize.width, descriptionLabelSize.height)];
+    label.numberOfLines = 0;
+    
+    label.frame = CGRectMake(0, 0, descriptionLabelSize.width, descriptionLabelSize.height);
 }
 
 - (void)showProfitViewCell:(FAStrategyDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
