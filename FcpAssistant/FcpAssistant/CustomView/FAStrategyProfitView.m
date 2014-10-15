@@ -48,7 +48,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     [self drawbackGround:context];
-    if(dataSource !=nil && dataSource.count >0)
+    if(dataSource !=nil && dataSource.count >1)
     {
         [self drawWhiteFillRange:context];
         [self drawProfitCavLine:context];
