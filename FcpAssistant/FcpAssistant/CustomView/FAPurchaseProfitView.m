@@ -25,7 +25,7 @@
         [self drawBorder:context];
         [self drawSpiterLine:context];
         [self drawTickMark:context];
-        if(self.dataSource !=nil && self.dataSource.count >0)
+        if(self.dataSource !=nil && self.dataSource.count >1)
         {
             [self drawProfitLine:context];
         }
@@ -162,8 +162,8 @@
     UIColor *borderColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1.0];
     CGContextSetStrokeColorWithColor(context,borderColor.CGColor);
     CGFloat lengths[] = {1,0.1};
-//    CGContextSetLineDash(context, 0, lengths, 2);
-//    CGContextSetLineCap(context, )
+    CGContextSetLineDash(context, 0, lengths, 2);
+
     CGContextSetLineWidth(context, 1.0);
     
     UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:8.0];

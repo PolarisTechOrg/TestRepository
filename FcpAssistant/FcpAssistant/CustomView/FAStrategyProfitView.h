@@ -7,13 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#define PI 3.14159265358979323846
 
 @interface FAStrategyProfitView : UIView
 {
+@private CGFloat frameWidth;
+@private CGFloat frameHeight;
+@private CGFloat viewWidth;
+@private CGFloat viewHeight;
+    
+@private CGFloat leftMargin;
+@private CGFloat rightMargin;
+@private CGFloat topMargin;
+@private CGFloat bottomMargin;
+    
 @private double maxValue;
 @private double minValue;
 @private CGFloat xInterval;
 @private CGFloat yPointValue;
+    CAShapeLayer *shapeView;
+        CAShapeLayer *fillView;
 }
 
 //-(void)setBackgroundColor:(UIColor *) backColor;
