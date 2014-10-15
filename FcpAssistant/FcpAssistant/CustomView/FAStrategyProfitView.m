@@ -22,6 +22,7 @@
         shapeView = [[CAShapeLayer alloc] init];
         [self.layer addSublayer:shapeView];
     }
+   
     return self;
 }
 
@@ -45,6 +46,23 @@
             [self drawCurvedLineBetweenPoints:context];
 //            [self drawProfitLine:context];
 //            [self drawProfitCavLine:context];
+        }
+        else
+        {
+//            fillView.path = [fillPath CGPath];
+            
+            fillView.strokeColor = [UIColor whiteColor].CGColor;
+            fillView.fillColor = [UIColor whiteColor].CGColor;
+            fillView.lineWidth = 0.1;
+            [fillView setLineCap:kCALineCapRound];
+            
+//            shapeView.path = [path CGPath];
+            
+            shapeView.strokeColor = [UIColor whiteColor].CGColor;
+            shapeView.fillColor = [UIColor clearColor].CGColor;
+            shapeView.lineWidth = 2;
+            [shapeView setLineCap:kCALineCapRound];
+            
         }
     }
     @catch (NSException *exception)
@@ -198,18 +216,18 @@
 - (void)drawCurvedLineBetweenPoints:(CGContextRef) context
 {
     NSArray *points =[self createPoints];
-    float granularity = 100;
+    float granularity = 200;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
-    
     UIBezierPath *fillPath = [UIBezierPath bezierPath];
+    
     [path moveToPoint:[self pointAtIndex:0 ofArray:points]];
     
     [fillPath moveToPoint:CGPointMake(leftMargin, frameHeight)];
     
     [fillPath addLineToPoint:[self pointAtIndex:0 ofArray:points]];
     for (int index = 1; index < points.count - 2 ; index++)
-    {    
+    {
         CGPoint point0 = [self pointAtIndex:index - 1 ofArray:points];
         CGPoint point1 = [self pointAtIndex:index ofArray:points];
         CGPoint point2 = [self pointAtIndex:index + 1 ofArray:points];
@@ -225,14 +243,17 @@
             pi.x = 0.5 * (2*point1.x+(point2.x-point0.x)*t + (2*point0.x-5*point1.x+4*point2.x-point3.x)*tt + (3*point1.x-point0.x-3*point2.x+point3.x)*ttt);
             pi.y = 0.5 * (2*point1.y+(point2.y-point0.y)*t + (2*point0.y-5*point1.y+4*point2.y-point3.y)*tt + (3*point1.y-point0.y-3*point2.y+point3.y)*ttt);
             
-            if (pi.y > self.bounds.size.height) {
+            if (pi.y > self.bounds.size.height)
+            {
                 pi.y = self.bounds.size.height;
             }
-            else if (pi.y < 0){
+            else if (pi.y < 0)
+            {
                 pi.y = 0;
             }
             
-            if (pi.x > point0.x) {
+            if (pi.x > point0.x)
+            {
                 [path addLineToPoint:pi];
                 [fillPath addLineToPoint:pi];
             }

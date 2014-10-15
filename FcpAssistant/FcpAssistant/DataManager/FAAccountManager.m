@@ -19,6 +19,7 @@
 #import "FAUtility.h"
 #import "FAMember.h"
 #import "FAStationAccount.h"
+#import "FAModifyPasswordModel.h"
 
 @implementation FAAccountManager
 
@@ -95,7 +96,7 @@
             self.currentMember = nil;
             self.hasLogin = NO;
 
-            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
             
             @throw ex;
         }
@@ -139,7 +140,54 @@
 
 -(void) modifyPasswor:(NSString *) oldpassword newPassword:(NSString *) newPassword confirmPassword:(NSString *)confirmPassword
 {
+    if(self.hasLogin == NO)
+    {
+        return;
+    }
     
+    @try
+    {
+        FASaltDto *saltDto = [self getSalt:self.currentMember.FcpAccount];
+        
+        NSString *oldEncryptPwd = [self encryptFcpPassword:oldpassword salt:saltDto.Salt];
+        NSString *newEncryptPwd = [self encryptFcpPassword:newPassword salt:saltDto.Salt];
+        NSString *confirmEncryptPwd = [self encryptFcpPassword:confirmPassword salt:saltDto.Salt];
+        
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/member?modifypwd",WEB_URL];
+        NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        FAModifyPasswordModel *modifyPwdModel = [[FAModifyPasswordModel alloc]init];
+        modifyPwdModel.Salt = saltDto.Salt;
+        modifyPwdModel.Stamp = saltDto.Stamp;
+        modifyPwdModel.Sign = saltDto.Sign;
+        modifyPwdModel.Password = oldEncryptPwd;
+        modifyPwdModel.NewPassword = newEncryptPwd;
+        modifyPwdModel.ConfirmPassword = confirmEncryptPwd;
+        
+        FAHttpHead *httpHeader = [FAHttpHead defaultInstance];
+        httpHeader.Method = @"POST";
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:modifyPwdModel error:&error];
+        
+        NSString *replyMessage = [[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding];
+        NSLog(@"Login reply: %@",replyMessage);
+        
+        
+        if(error != nil)
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"LoginException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        @throw exception;
+    }
+    @finally
+    {
+    }
 }
 
 -(void) changeFundAccount:(NSString *) fundAccount fundAccountType:(int) fundAccountType
@@ -188,5 +236,14 @@
     NSString *stampEncryp = [FAUtility sha1:[stamp stringByAppendingString:saltEncryp]];
     
     return [[NSString alloc] initWithFormat:@"%@|%@|%@",stamp,salt,stampEncryp];
+}
+
+//密码加密
+-(NSString *) encryptFcpPassword:(NSString *) password salt:(NSString *) salt
+{
+    NSString *pwdEncryp = [FAUtility sha1:password];
+    NSString *saltEncryp = [FAUtility sha1:[salt stringByAppendingString:pwdEncryp]];
+    
+    return saltEncryp;
 }
 @end

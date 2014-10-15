@@ -283,8 +283,11 @@
         else
         {
             cell.imgProfitBackground.image = [UIImage imageNamed:@"mycollect_profit_yellow.png"];
-            cell.imgStrategyProfit.backgroundColor = [UIColor colorWithRed:255.0/255 green:255.0/255 blue:204.0/255 alpha:1.0];
-            cell.imgStrategyProfit.profitLineColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1.0];
+            cell.imgStrategyProfit.backgroundColor = [UIColor blueColor];
+            cell.imgStrategyProfit.profitLineColor = [UIColor blackColor];
+
+//            cell.imgStrategyProfit.backgroundColor = [UIColor colorWithRed:255.0/255 green:255.0/255 blue:204.0/255 alpha:1.0];
+//            cell.imgStrategyProfit.profitLineColor = [UIColor colorWithRed:107.0/255 green:107.0/255 blue:107.0/255 alpha:1.0];
         }
         [cell.imgStrategyProfit setNeedsDisplay];
 //        FAPurchaseProfitView *profitView = [[FAPurchaseProfitView alloc] initWithFrame:CGRectMake(0, 0, 118, 48)];
