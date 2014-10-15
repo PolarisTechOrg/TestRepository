@@ -74,7 +74,7 @@
         }
         else
         {
-            NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+            NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
             @throw ex;
         }
     }
@@ -109,12 +109,14 @@
                 NSArray *dtoObj =[FAJSONSerialization toArray:nil fromData:replyData] ;
                 for (int i=0;i<dtoObj.count;i++)
                {
-                   [purchaseDic setValue:dtoObj[i] forKey:dtoObj[i]];
+                   NSString *strategyId = [NSString stringWithFormat:@"%@",dtoObj[i]];
+
+                   [purchaseDic setValue:strategyId forKey:strategyId];
                }
             }
             else
             {
-                NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%d",error.code] userInfo:error.userInfo];
+                NSException *ex = [[NSException alloc] initWithName:@"MyCollectException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
                 @throw ex;
             }
         }
@@ -143,7 +145,7 @@
         
         @try
         {
-            NSString *requestStr =[NSString stringWithFormat:@"%@api/ChartData?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d",WEB_URL,item.StrategyId,3,6,118];
+            NSString *requestStr =[NSString stringWithFormat:@"%@api/ChartData?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d",WEB_URL,item.StrategyId,30,1,118];
             NSURL * requestUrl =[NSURL URLWithString:requestStr];
             
             NSError *error;
@@ -253,6 +255,17 @@
         else
         {
             cell.imgStrategyProfit.dataSource = nil;
+        }
+        
+        
+        NSString *purchaseFlag =[purchaseDic objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
+        if(purchaseFlag != nil)
+        {
+            cell.imgPurchaseFlag.image = [UIImage imageNamed:@"common_purchase_flag"];
+        }
+        else
+        {
+            cell.imgPurchaseFlag.image = nil;
         }
 
         if(item.CumulativeNetProfit <0)
