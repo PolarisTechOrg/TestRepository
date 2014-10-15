@@ -75,6 +75,8 @@ const int latedRecordSectionIndex = 6;
         dataSource = [self LoadDataFromServer];
     }
     
+    descriptionLabelSize = [self getDescriptionHeight:dataSource.StrategyDescription.Description];
+    
     self.tableView.sectionFooterHeight = 1;
     self.tableView.sectionHeaderHeight = 1;
 }
@@ -274,7 +276,7 @@ const int latedRecordSectionIndex = 6;
 
 - (CGSize)getDescriptionHeight:(NSString *)content
 {
-    UIFont *font = [UIFont fontWithName:@"System" size:12];
+    UIFont *font = [UIFont systemFontOfSize:12];
     CGSize size = CGSizeMake(320, 1000);
     CGSize lableSize = [content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeCharacterWrap];
     
@@ -300,8 +302,9 @@ const int latedRecordSectionIndex = 6;
         label.text = [NSString stringWithFormat:@"        %@\n ", strategy.Description];
     }
     
-    CGSize labelSize = [self getDescriptionHeight:label.text];
-    [label setFrame:CGRectMake(0, 0, labelSize.width, labelSize.height)];
+//    CGSize labelSize = [self getDescriptionHeight:label.text];
+//    [label setFrame:CGRectMake(0, 0, labelSize.width, labelSize.height)];
+    [label setFrame:CGRectMake(0, 0, descriptionLabelSize.width, descriptionLabelSize.height)];
 }
 
 - (void)showProfitViewCell:(FAStrategyDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
@@ -476,12 +479,12 @@ const int latedRecordSectionIndex = 6;
 {
     switch (indexPath.section)
     {
-        case topSectionIndex: return 180;
-        case describHeaderSectionIndex:return 28;
-        case describSectionIndex:return 90;
-        case profitsHeaderSectionIndex:return 28;
+        case topSectionIndex: return 196;
+        case describHeaderSectionIndex:return 40;
+        case describSectionIndex:return descriptionLabelSize.height+30;
+        case profitsHeaderSectionIndex:return 40;
         case profitsSectionIndex:return 170;
-        case latedRecordHeaderSectionIndex:return 48;
+        case latedRecordHeaderSectionIndex:return 40;
         case latedRecordSectionIndex:return 170;
         default:return 0;
     }
