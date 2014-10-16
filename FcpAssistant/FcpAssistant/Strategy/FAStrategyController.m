@@ -20,6 +20,7 @@
 #import "FAWinLossViewModel.h"
 #import "FAAccountManager.h"
 #import "FAStationFundAccount.h"
+#import "FAWishlistDto.h"
 
 #import "FAQueue.h"
 #import "FAFoundation.h"
@@ -54,7 +55,7 @@
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];
     
     // Load data
-    hasLoadStrategyIdList = NO;
+//    hasLoadStrategyIdList = NO;
     currentPageIndex = 1;
     
     dataSource = [[NSMutableArray alloc] init];
@@ -217,6 +218,7 @@
 - (NSDictionary *)loadCollectionIdList
 {
     NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithCapacity:128];
+    NSArray *dtoArray;
     
     NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/wishlist?ids=", WEB_URL];
     
@@ -227,7 +229,8 @@
     
     if(error == nil)
     {
-        NSArray *dtoArray =[FAJSONSerialization toArray:nil fromData:replyData];
+        FAWishlistDto *dto =[FAJSONSerialization toObject:[FAWishlistDto class] fromData:replyData];
+        dtoArray = dto.Items;
         
         if (dtoArray == nil || dtoArray.count == 0)
         {
@@ -363,13 +366,13 @@
         cell.imgStrategyMarked.image = nil;
         return;
     }
-    if(!hasLoadStrategyIdList)
-    {
+//    if(!hasLoadStrategyIdList)
+//    {
         FAStationFundAccount *account = [[FAAccountManager shareInstance] selectFundAccount];
         perchaseIdDict = [self loadPerchaseIdList:account];
         collectionIdDict = [self loadCollectionIdList];
-        hasLoadStrategyIdList = YES;
-    }
+//        hasLoadStrategyIdList = YES;
+//    }
     
     cell.imgStrategyMarked.image = nil;
     if([perchaseIdDict objectForKey:[NSNumber numberWithInt:strategyId]] != nil)
@@ -452,6 +455,11 @@
     
     detailController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailController animated:YES];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 // Override to support conditional editing of the table view.
