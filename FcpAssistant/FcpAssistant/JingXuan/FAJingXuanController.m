@@ -219,7 +219,7 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     cell.lblUpdateDate1.text = [dateFormat stringFromDate:jingxuan.OnlineDay];
     cell.lblStrategyStatus1.text = (jingxuan.OnlineDay == nil) ? nil : @"上架";
-    cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.CollectionNumber];
+    cell.lblCollectionPeople1.text = [[NSString alloc] initWithFormat:@"%d", jingxuan.FollowNumber];
     cell.lblProviderName1.text = jingxuan.ProviderName;
     cell.lblPerformanceNumber1.text = [NSString stringWithFormat:@"%.1f%%",jingxuan.CumulativeReturnRatio];
     
