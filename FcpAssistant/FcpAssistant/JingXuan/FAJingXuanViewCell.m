@@ -54,7 +54,7 @@
     FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
-    controller.profitCharDto = profitChartDto1;
+//    controller.profitCharDto = profitChartDto1;
 //    controller.latedWinlosses = winLossesChart1;
     
     controller.hidesBottomBarWhenPushed = YES;
@@ -69,7 +69,7 @@
     FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
-    controller.profitCharDto = profitChartDto2;
+//    controller.profitCharDto = profitChartDto2;
 //    controller.latedWinlosses = winLossesChart2;
     
     controller.hidesBottomBarWhenPushed = YES;
@@ -84,7 +84,7 @@
     FAStrategyDetailController *controller = [[FAStrategyDetailController alloc] init];
     int strategyId = [[self.nameIdDict objectForKey:txt] intValue];
     controller.strategyId = strategyId;
-    controller.profitCharDto = profitChartDto3;
+//    controller.profitCharDto = profitChartDto3;
 //    controller.latedWinlosses = winLossesChart3;
     
     controller.hidesBottomBarWhenPushed = YES;

@@ -26,6 +26,7 @@
 #import "FAStrategyModel.h"
 #import "FAWinLossView.h"
 #import "FAWinLossViewModel.h"
+#import "FAMeberLoginController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -33,6 +34,7 @@
 #import "FAHttpHead.h"
 #import "FAFormater.h"
 #import "FAUtility.h"
+#import "FAAccountManager.h"
 
 
 @interface FAStrategyDetailController ()
@@ -42,8 +44,6 @@
 @implementation FAStrategyDetailController
 
 @synthesize strategyId;
-@synthesize profitCharDto;
-//@synthesize latedWinlosses;
 
 const int topSectionIndex = 0;
 const int describHeaderSectionIndex = 1;
@@ -68,17 +68,21 @@ const int latedRecordSectionIndex = 6;
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:shareButton, collectionButton, nil];
     
-    dataSource = [self LoadDataFromServer];
+    [self LoadDataFromServer];
     if(dataSource == nil)
     {
         dataSource = [[FADummieStrategyDetailDto alloc] init];
-        dataSource = [self LoadDataFromServer];
+        [self LoadDataFromServer];
     }
+    [self loadChartData];
     
     descriptionLabelSize = [self getDescriptionHeight:dataSource.StrategyDescription.Description];
     
     self.tableView.sectionFooterHeight = 1;
     self.tableView.sectionHeaderHeight = 1;
+    
+    collectionModel = [[FAStrategyCollectionModel alloc] init];
+    collectionModel.StrategyId = strategyId;
 }
 
 -(void)initializeData
@@ -114,8 +118,31 @@ const int latedRecordSectionIndex = 6;
     [self.tableView registerNib:latedRecordCellNib forCellReuseIdentifier:latedRecordCellIdentifier];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
+
 - (void)doCollection
 {
+    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+    
+    if (!hasLogin)
+    {
+        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+        
+        if (!hasLogin)
+        {
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
+            NSLog(@"FINISH LOGIN VIEW");
+            }];
+            
+        [self viewDidAppear:YES];
+        }
+        
+        return;
+    }
+    
     FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
     NSString *strategyName = strategy.StrategyName;
     
@@ -144,9 +171,6 @@ const int latedRecordSectionIndex = 6;
 
 - (void)doShare
 {
-//    FAStrategyFilterController *controller = [[FAStrategyFilterController alloc] init];
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)postAddStrategyToWishList
@@ -157,11 +181,10 @@ const int latedRecordSectionIndex = 6;
     NSError *error;
     FAHttpHead *head = [FAHttpHead defaultInstance];
     head.Method = @"POST";
-    NSNumber *body = [NSNumber numberWithInt:strategyId];
     
     @try
     {
-        [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
+        [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:collectionModel error:&error];
         
         if(error == nil)
         {
@@ -181,9 +204,10 @@ const int latedRecordSectionIndex = 6;
     }
 }
 
--(FADummieStrategyDetailDto *) LoadDataFromServer
+-(void) LoadDataFromServer
 {
-    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/strategy?strategyId=%d",WEB_URL,self.strategyId];
+    NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/strategy?strategyId=%d",WEB_URL, strategyId];
+    
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
     NSError *error;
@@ -191,16 +215,38 @@ const int latedRecordSectionIndex = 6;
     
     if(error == nil)
     {
-        FADummieStrategyDetailDto *dtoObj =[FAJSONSerialization toObject:[FADummieStrategyDetailDto class] fromData:replyData];
-        
-        return  dtoObj;
-        
-    }
-    else
-    {
-        return nil;
+        dataSource =[FAJSONSerialization toObject:[FADummieStrategyDetailDto class] fromData:replyData];
     }
     
+}
+
+- (void)loadChartData
+{
+    @try
+    {
+        NSString *requestStr =[NSString stringWithFormat:@"%@api/ChartData?strategyId=%d&splitDot=%d&lineBorder=%d&width=%d", WEB_URL, strategyId, 60, 1, 118];
+        NSURL * requestUrl =[NSURL URLWithString:requestStr];
+        
+        NSError *error;
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        
+        if(error == nil)
+        {
+            profitChartDto =[FAJSONSerialization toObject:[FAChartDto class] fromData:replyData];
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"StrategyDetailException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+    }
+    @finally
+    {
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -301,13 +347,12 @@ const int latedRecordSectionIndex = 6;
     }
     
     label.numberOfLines = 0;
-    
     label.frame = CGRectMake(0, 0, descriptionLabelSize.width, descriptionLabelSize.height);
 }
 
 - (void)showProfitViewCell:(FAStrategyDetailProfitViewCell *)cell rowIndex:(NSInteger) rowIndex
 {
-    cell.imgStrategyDetailProfitView.dataSource = profitCharDto.Items;
+    cell.imgStrategyDetailProfitView.dataSource = profitChartDto.Items;
     [cell.imgStrategyDetailProfitView setNeedsDisplay];
 }
 
