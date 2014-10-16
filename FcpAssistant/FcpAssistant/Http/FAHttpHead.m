@@ -12,6 +12,7 @@
 
 @synthesize TimeOut;
 @synthesize Method;
+@synthesize headeDic;
 
 +(instancetype) defaultInstance
 {
@@ -22,7 +23,7 @@
 {
     self.TimeOut = 30.0f;
     self.Method = @"GET";
-    
+    self.headeDic = nil;
     return self;
 }
 @end

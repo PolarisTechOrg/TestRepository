@@ -8,6 +8,7 @@
 
 #import "FAModifyPasswordController.h"
 #import "FAUtility.h"
+#import "FAAccountManager.h"
 
 @interface FAModifyPasswordController ()
 
@@ -15,22 +16,21 @@
 
 @implementation FAModifyPasswordController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.navigationItem.title = @"修改密码";
     
     UIBarButtonItem* cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelView:)];
     self.navigationItem.leftBarButtonItem = cancelBtn;
     
-    UIBarButtonItem* finishBtn = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(finishForgetPaswor:)];
+    UIBarButtonItem* finishBtn = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(finishModifyPassword:)];
     self.navigationItem.rightBarButtonItem = finishBtn;
-
-    // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)txtFieldDidEndOnExit:(id)sender
@@ -43,10 +43,43 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)finishForgetPaswor:(id)sender
+-(BOOL)modifyPasswordValidate
 {
+    if(self.txtOldPassword.text.length <=0)
+    {
+        [FAUtility showAlterView:@"密码不能为空"];
+        return NO;
+    }
+    
+    if(self.txtNewPassword.text.length <=0)
+    {
+        [FAUtility showAlterView:@"新密码不能为空"];
+        return NO;
+    }
+    if(self.txtConfirmPassword.text.length <=0)
+    {
+        [FAUtility showAlterView:@"确认密码不能为空"];
+        return NO;
+    }
+    if([self.txtConfirmPassword.text compare:self.txtNewPassword.text] != NSOrderedSame)
+    {
+        [FAUtility showAlterView:@"确认密码不一致"];
+        return NO;
+    }
+    
+    return YES;
+}
+
+-(void)finishModifyPassword:(id)sender
+{
+    if([self modifyPasswordValidate] == NO)
+    {
+        return;
+    }
+    
     @try
     {
+        [[FAAccountManager shareInstance] modifyPasswor:self.txtOldPassword.text newPassword:self.txtNewPassword.text confirmPassword:self.txtConfirmPassword.text];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     @catch (NSException *exception)
@@ -57,6 +90,10 @@
     {
         
     }
+}
+- (IBAction)backgroundTouchDown:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 /*

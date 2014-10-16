@@ -10,6 +10,7 @@
 #import "FAStationAccount.h"
 #import "FAAccountManager.h"
 #import "FAModifyPasswordController.h"
+#import "FAUtility.h"
 
 @interface FAMyFcpController ()
 
@@ -32,8 +33,8 @@
     FAStationFundAccount *selectFundAccount = [FAAccountManager shareInstance].selectFundAccount;
     
     self.lblFcpAccount.text = @"";
-    self.lblRealFundAccount.text = @"";
-    self.lblSimulateFundAccount.text = @"";
+    [self.btnRealFundAccount setTitle:@"" forState:UIControlStateNormal];
+    [self.btnSimulateFundAccount setTitle:@"" forState:UIControlStateNormal];
     self.imgRealFundAccountCheck.image = nil;
     self.imgSimulateFundAccountCheck.image = nil;
     
@@ -42,8 +43,9 @@
         self.lblFcpAccount.text = fcpAccount.FcpAccount;
         if(fcpAccount.RealFundAccount !=nil)
         {
-            self.lblRealFundAccount.text = fcpAccount.RealFundAccount.FundAccount;
-            self.lblRealFundAccount.tag = fcpAccount.RealFundAccount.FundAccountType;
+            [self.btnRealFundAccount setTitle:fcpAccount.RealFundAccount.FundAccount forState:UIControlStateNormal];
+            self.btnRealFundAccount.tag = fcpAccount.RealFundAccount.FundAccountType;
+            
             if(selectFundAccount != nil && selectFundAccount.FundAccount == fcpAccount.RealFundAccount.FundAccount && selectFundAccount.FundAccountType == fcpAccount.RealFundAccount.FundAccountType)
             {
                 self.imgRealFundAccountCheck.image = [UIImage imageNamed:@"check_yes.png"];
@@ -51,8 +53,8 @@
         }
         if(fcpAccount.SimulateFundAccount != nil)
         {
-            self.lblSimulateFundAccount.text = fcpAccount.SimulateFundAccount.FundAccount;
-            self.lblSimulateFundAccount.tag = fcpAccount.SimulateFundAccount.FundAccountType;
+            [self.btnSimulateFundAccount setTitle:fcpAccount.SimulateFundAccount.FundAccount forState:UIControlStateNormal];
+            self.btnSimulateFundAccount.tag = fcpAccount.SimulateFundAccount.FundAccountType;
             if(selectFundAccount != nil && selectFundAccount.FundAccount == fcpAccount.SimulateFundAccount.FundAccount && selectFundAccount.FundAccountType == fcpAccount.SimulateFundAccount.FundAccountType)
             {
                 self.imgSimulateFundAccountCheck.image = [UIImage imageNamed:@"check_yes.png"];
@@ -82,25 +84,37 @@
     }
     @catch (NSException *exception)
     {
-        
+        [FAUtility showAlterViewWithException:exception];
     }
     @finally
     {
         
     }
     [self.navigationController popViewControllerAnimated:YES];
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)btnRealFundAccountTouchDown:(id)sender
+{
+    if (self.btnRealFundAccount.currentTitle.length >0)
+    {
+        NSString *fundAccount = self.btnRealFundAccount.currentTitle;
+        NSInteger fundAccountType = self.btnRealFundAccount.tag;
+        [[FAAccountManager shareInstance] changeFundAccount:fundAccount fundAccountType:(int)fundAccountType];
+        self.imgRealFundAccountCheck.image = [UIImage imageNamed:@"check_yes.png"];
+        self.imgSimulateFundAccountCheck.image = nil;
+    }
 }
-*/
+
+- (IBAction)btnSimulateFundAccountTouchDown:(id)sender
+{
+    if (self.btnSimulateFundAccount.currentTitle.length >0)
+    {
+        NSString *fundAccount = self.btnSimulateFundAccount.currentTitle;
+        NSInteger fundAccountType = self.btnSimulateFundAccount.tag;
+        [[FAAccountManager shareInstance] changeFundAccount:fundAccount fundAccountType:(int)fundAccountType];
+        self.imgSimulateFundAccountCheck.image = [UIImage imageNamed:@"check_yes.png"];
+        self.imgRealFundAccountCheck.image = nil;
+    }
+}
 
 @end

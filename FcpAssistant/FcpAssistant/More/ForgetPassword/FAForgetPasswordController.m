@@ -13,6 +13,7 @@
 #import "FAForgotPasswordModel.h"
 #import "FAFoundation.h"
 
+
 @interface FAForgetPasswordController ()
 
 @end
@@ -74,14 +75,52 @@
 
 - (void)changCheckCode
 {
+    NSString *checkCode;
     @try
     {
-        NSString *requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/checkcode?temp=12343&newcode=der4&checknumber=abcd",WEB_URL];
+        NSString *requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/checkcode?temp=12343&newcode=der4",WEB_URL];
         NSURL *requestUrl =[NSURL URLWithString: requestUrlStr];
         
         NSError *error;
         
-        NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+        NSURLResponse *response;
+        NSData *replyData = [FAHttpUtility sendRequestForReponse:requestUrl withHead:[FAHttpHead defaultInstance] httpBody:nil error:&error replyResponse:&response];
+        
+        if(error == nil)
+        {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            NSDictionary *headerDic =[httpResponse allHeaderFields];
+            headerCode = [headerDic objectForKey:CHECK_CODE_TAG];
+            headerSign = [headerDic objectForKey:CHECK_CODE_SIGN];
+            headerStamp =[headerDic objectForKey:CHECK_CODE_STAMP];
+            
+            checkCode = [[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding];
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"ForgetPasswordException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+    }
+    
+    @try
+    {
+        NSString *requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/checkcode?temp=12343&newcode=der4&checknumber=%@",WEB_URL,headerCode];
+        NSURL *requestUrl =[NSURL URLWithString: requestUrlStr];
+        
+        NSError *error;
+        FAHttpHead *httpHeader = [FAHttpHead defaultInstance];
+        NSMutableDictionary *headerDic = [[NSMutableDictionary alloc]init];
+        [headerDic setObject:headerCode forKey:CHECK_CODE_TAG];
+        [headerDic setObject:headerSign forKey:CHECK_CODE_SIGN];
+        [headerDic setObject:headerStamp forKey:CHECK_CODE_STAMP];
+        httpHeader.headeDic = headerDic;
+        
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:nil error:&error];
         
         if(error == nil)
         {
@@ -102,6 +141,10 @@
         
     }
 }
+- (IBAction)backgoundTouchDown:(id)sender
+{
+    [self.view endEditing:YES];
+}
 
 -(void)finishForgetPaswor:(id)sender
 {
@@ -118,6 +161,11 @@
         NSError *error;
         FAHttpHead *header = [FAHttpHead defaultInstance];
         header.Method = @"POST";
+        NSMutableDictionary *headerDic = [[NSMutableDictionary alloc]init];
+        [headerDic setObject:headerCode forKey:CHECK_CODE_TAG];
+        [headerDic setObject:headerSign forKey:CHECK_CODE_SIGN];
+        [headerDic setObject:headerStamp forKey:CHECK_CODE_STAMP];
+        header.headeDic = headerDic;
         
         FAForgotPasswordModel *parameter = [[FAForgotPasswordModel alloc]init];
         parameter.UserName = self.txtUserName.text;

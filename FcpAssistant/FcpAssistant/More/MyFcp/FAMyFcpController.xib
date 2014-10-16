@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FAMyFcpController">
             <connections>
+                <outlet property="btnRealFundAccount" destination="cOG-Pa-H3N" id="8AR-l8-WcA"/>
+                <outlet property="btnSimulateFundAccount" destination="5Zm-qZ-rcs" id="dg2-fR-Hbt"/>
                 <outlet property="imgRealFundAccountCheck" destination="QbD-0d-1uX" id="AiW-tq-LIQ"/>
                 <outlet property="imgSimulateFundAccountCheck" destination="VKA-kC-KuE" id="2P9-G8-BeY"/>
                 <outlet property="lblFcpAccount" destination="vX9-0A-OU6" id="bic-kB-1on"/>
-                <outlet property="lblRealFundAccount" destination="jB7-43-aVq" id="cu6-L0-kbZ"/>
-                <outlet property="lblSimulateFundAccount" destination="A3A-Uj-fHK" id="H6O-h9-QTv"/>
                 <outlet property="myScrollView" destination="XUQ-Mb-250" id="2kE-2w-YPv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -70,20 +70,6 @@
                             <rect key="frame" x="264" y="212" width="14" height="13"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100146" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jB7-43-aVq">
-                            <rect key="frame" x="171" y="169" width="56" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A3A-Uj-fHK">
-                            <rect key="frame" x="171" y="208" width="70" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仿真交易账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fiS-zu-Cxs">
                             <rect key="frame" x="60" y="208" width="110" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,6 +117,30 @@
                             </state>
                             <connections>
                                 <action selector="btnModifyPassword_Click:" destination="-1" eventType="touchDown" id="f5L-B3-pqw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cOG-Pa-H3N">
+                            <rect key="frame" x="136" y="164" width="105" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="100416">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnRealFundAccountTouchDown:" destination="-1" eventType="touchDown" id="5iG-RA-hRo"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Zm-qZ-rcs">
+                            <rect key="frame" x="136" y="204" width="105" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="100416">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnSimulateFundAccountTouchDown:" destination="-1" eventType="touchDown" id="aSF-PL-Jf3"/>
                             </connections>
                         </button>
                     </subviews>

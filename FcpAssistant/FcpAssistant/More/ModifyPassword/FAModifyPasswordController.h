@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FAModifyPasswordController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *txtOldPassword;
+@property (weak, nonatomic) IBOutlet UITextField *txtConfirmPassword;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtNewPassword;
 @end

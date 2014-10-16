@@ -10,10 +10,10 @@
 
 @interface FAMyFcpController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblFcpAccount;
-@property (weak, nonatomic) IBOutlet UILabel *lblRealFundAccount;
-@property (weak, nonatomic) IBOutlet UILabel *lblSimulateFundAccount;
 @property (weak, nonatomic) IBOutlet UIImageView *imgRealFundAccountCheck;
 @property (weak, nonatomic) IBOutlet UIImageView *imgSimulateFundAccountCheck;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *btnRealFundAccount;
+@property (weak, nonatomic) IBOutlet UIButton *btnSimulateFundAccount;
 
 @end

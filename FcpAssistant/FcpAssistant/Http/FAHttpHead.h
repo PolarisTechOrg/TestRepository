@@ -9,16 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface FAHttpHead : NSObject
-{
-    @public
-    NSTimeInterval TimeOut;
-    NSString *Method;
-}
-
-
-
 @property NSTimeInterval TimeOut;
 @property NSString *Method;
+@property NSDictionary *headeDic;
 
 +(instancetype) defaultInstance;
 
