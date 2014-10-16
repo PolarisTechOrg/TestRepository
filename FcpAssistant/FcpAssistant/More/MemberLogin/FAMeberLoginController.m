@@ -62,6 +62,10 @@
 //[self dismissViewControllerAnimated:YES completion:nil];
 
 }
+- (IBAction)backgroundTouchDown:(id)sender
+{
+    [self.view endEditing:YES];
+}
 
 - (IBAction)btnLogin_Click:(id)sender
 {

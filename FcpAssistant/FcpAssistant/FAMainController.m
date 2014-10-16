@@ -119,7 +119,7 @@
     
 //    [self.tabBar setSelectedImageTintColor:[UIColor redColor]];
 
-    self.selectedIndex = 1;
+    self.selectedIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning

@@ -40,7 +40,8 @@
 
 -(void)cancelView:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(BOOL)modifyPasswordValidate
@@ -80,7 +81,7 @@
     @try
     {
         [[FAAccountManager shareInstance] modifyPasswor:self.txtOldPassword.text newPassword:self.txtNewPassword.text confirmPassword:self.txtConfirmPassword.text];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     @catch (NSException *exception)
     {

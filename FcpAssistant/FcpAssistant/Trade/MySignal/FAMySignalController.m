@@ -105,7 +105,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return dataSource.count *2;
+    return 4;
+//    return dataSource.count *2;
 }
 
 #pragma mark - Table view data source

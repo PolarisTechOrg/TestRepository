@@ -10,5 +10,6 @@
 
 @interface FAAbountProductController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblProductDescription;
+@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 
 @end

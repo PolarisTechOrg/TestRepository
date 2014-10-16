@@ -131,6 +131,7 @@
         cell.lblTradePrice.text = [FAFormater toDecimalStringWithDouble:item.TradePrice decimalPlace:2];
         cell.lblOrderStatus.text = @"";
         cell.lblOrderTime.text = [FAFormater toShortTimeStringWithNSDate:item.OrderTime];
+        cell.indentationWidth =0;
     }
     
     return cell;
@@ -146,6 +147,21 @@
     return 30;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self.	tableView)
+    {
+        CGFloat sectionHeaderHeight = 73; //sectionHeaderHeight
+        if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0)
+        {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        }
+        else if (scrollView.contentOffset.y>=sectionHeaderHeight)
+        {
+            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+        }
+    }
+}
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

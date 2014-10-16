@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -45,7 +46,7 @@
                             <rect key="frame" x="69" y="100" width="244" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
                             <connections>
                                 <action selector="txtFieldDidEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="PTc-3U-wcu"/>
                             </connections>
@@ -54,11 +55,11 @@
                             <rect key="frame" x="1" y="169" width="320" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="输入英文字母+数字，不小于6位" minimumFontSize="17" id="Ylz-DM-Rri">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="输入英文字母+数字，不小于6位" minimumFontSize="17" clearButtonMode="whileEditing" id="Ylz-DM-Rri">
                             <rect key="frame" x="69" y="171" width="224" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                             <connections>
                                 <action selector="txtFieldDidEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="tra-ag-X20"/>
                             </connections>
@@ -121,7 +122,11 @@
             <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedTopBarMetrics"/>
         </view>
-        <tapGestureRecognizer id="gDg-EB-Xt2"/>
+        <tapGestureRecognizer id="gDg-EB-Xt2">
+            <connections>
+                <action selector="backgroundTouchDown:" destination="-1" id="Jai-Wx-Za5"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="bg_line_80.png" width="1" height="80"/>
