@@ -245,7 +245,7 @@
         cell.imgStragetyGrade.image = [UIImage imageNamed:gradeImageName];
         cell.lblStrategyProfitRate.text = [NSString stringWithFormat:@"%.1f%%",item.CumulativeReturnRatio];
         cell.lblStrategyProvider.text = item.ProviderName;
-        cell.lblCollectCount.text = [NSString stringWithFormat:@"%d",item.CollectionNumber];
+        cell.lblFollowNum.text = [NSString stringWithFormat:@"%d",item.FollowNumber];
         
         FAChartDto *chartDto = [chartDic objectForKey:[NSString stringWithFormat:@"%d",item.StrategyId]];
         if (chartDto !=nil && chartDto.Items.count >0)

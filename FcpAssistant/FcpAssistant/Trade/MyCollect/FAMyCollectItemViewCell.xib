@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -52,7 +52,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="收藏人数" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM3-tB-2rl">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="订购人数" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM3-tB-2rl">
                         <rect key="frame" x="169" y="47" width="45" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,7 +89,7 @@
                 <outlet property="imgProfitLine" destination="ewC-mG-bZG" id="t1t-nx-KWf"/>
                 <outlet property="imgPurchaseFlag" destination="TYg-mQ-qOR" id="p5w-PZ-pRu"/>
                 <outlet property="imgStragetyGrade" destination="X2U-nd-0M5" id="waP-3u-gns"/>
-                <outlet property="lblCollectCount" destination="ZMt-8w-S78" id="LAd-yW-3Cc"/>
+                <outlet property="lblFollowNum" destination="ZMt-8w-S78" id="EA1-An-fYD"/>
                 <outlet property="lblStrategyName" destination="JWa-Pv-ood" id="sRv-ds-Zew"/>
                 <outlet property="lblStrategyProfitRate" destination="smL-1R-49b" id="q3v-bz-osf"/>
                 <outlet property="lblStrategyProvider" destination="da2-QJ-eCj" id="p9N-qY-CTW"/>

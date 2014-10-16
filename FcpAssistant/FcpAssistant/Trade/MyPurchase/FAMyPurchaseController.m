@@ -168,10 +168,17 @@
         cell.imgStrategyGrade.image = [UIImage imageNamed:gradeImageName];
         
         //持仓标记图片，未完成
+        if(item.HasPosition)
+        {
+            cell.imgHoldingFlag.image = [UIImage imageNamed:@"common_holding_yes.png"];
+        }
+        else
+        {
+            cell.imgHoldingFlag.image = [UIImage imageNamed:@"common_holding_no.png"];
+        }
         cell.lblPurchaseDate.text =[FAFormater toShortDateStringWithNSDate:item.BuyedTime];
         cell.lblMultipleCount.text =[NSString stringWithFormat:@"%d",item.BuyedQuantity];
-        cell.lblTodaySignalCount.text = [NSString stringWithFormat:@"%d",10];
-
+        cell.lblTodaySignalCount.text = [FAFormater toDecimalStringWithInt:item.TodaySignalCount];
     }
     
     

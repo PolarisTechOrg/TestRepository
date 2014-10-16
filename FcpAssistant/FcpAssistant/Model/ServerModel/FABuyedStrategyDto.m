@@ -35,6 +35,10 @@
 @synthesize TodayProfit;
 /// 昨日盈亏。
 @synthesize YesterdayProfit;
+//是否有持仓
+@synthesize HasPosition;
+//今日信号条数
+@synthesize TodaySignalCount;
 
 //策略品种数据集合类型
 +(Class) Underlyings_class

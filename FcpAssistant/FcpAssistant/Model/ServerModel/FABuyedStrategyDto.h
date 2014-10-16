@@ -26,15 +26,18 @@
 @property(nonatomic,retain) NSDate *BuyedTime;
 /// 星级。
 @property(nonatomic,assign) double Star;
-/// 跟单倍数。
+// 跟单倍数。
 @property(nonatomic,assign) int BuyedQuantity;
-/// 策略盈亏。
+// 策略盈亏。
 @property(nonatomic,assign) double StrategyProfit;
-/// 今日盈亏。
+// 今日盈亏。
 @property(nonatomic,assign) double TodayProfit;
-/// 昨日盈亏。
+// 昨日盈亏。
 @property(nonatomic,assign) double YesterdayProfit;
-
+//是否有持仓
+@property(nonatomic,assign) BOOL HasPosition;
+//今日信号条数
+@property(nonatomic,assign) int TodaySignalCount;
 //策略品种数据集合类型
 +(Class) Underlyings_class;
 @end
