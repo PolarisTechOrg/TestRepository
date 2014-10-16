@@ -448,7 +448,7 @@
     
     FAStrategyDetailController *detailController = [[FAStrategyDetailController alloc] init];
     detailController.strategyId = item.StrategyId;
-    detailController.profitCharDto = [chartDict valueForKey:[NSString stringWithFormat:@"%d", item.StrategyId]];
+//    detailController.profitCharDto = [chartDict valueForKey:[NSString stringWithFormat:@"%d", item.StrategyId]];
     
     detailController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailController animated:YES];

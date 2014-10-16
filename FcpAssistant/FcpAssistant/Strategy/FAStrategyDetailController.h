@@ -34,6 +34,7 @@ typedef enum ProfitType
     NSString *profitHeaderCellIdentifier;
     NSString *latedRecordHeaderCellIdentifier;
     
+    FAChartDto *profitChartDto;
     FADummieStrategyDetailDto *dataSource;
     FAStrategyCollectionModel *collectionModel;
     
@@ -41,6 +42,5 @@ typedef enum ProfitType
 }
 
 @property(nonatomic, assign) int strategyId;
-@property(nonatomic, retain) FAChartDto *profitCharDto;
 
 @end
