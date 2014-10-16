@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FADummieStrategyDetailDto.h"
 #import "FAChartDto.h"
+#import "FAStrategyCollectionModel.h"
 
 typedef enum ProfitType
 {
@@ -34,12 +35,12 @@ typedef enum ProfitType
     NSString *latedRecordHeaderCellIdentifier;
     
     FADummieStrategyDetailDto *dataSource;
+    FAStrategyCollectionModel *collectionModel;
+    
     CGSize descriptionLabelSize;
 }
 
-//策略ID
-@property(nonatomic,assign) int strategyId;
+@property(nonatomic, assign) int strategyId;
 @property(nonatomic, retain) FAChartDto *profitCharDto;
-//@property(nonatomic, retain) NSArray *latedWinlosses;
 
 @end
