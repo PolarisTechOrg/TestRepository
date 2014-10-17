@@ -27,6 +27,8 @@
 #import "FAWinLossView.h"
 #import "FAWinLossViewModel.h"
 #import "FAMeberLoginController.h"
+#import "FALargeProfitController.h"
+#import "FALargeWinLossController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -58,6 +60,7 @@ const int latedRecordSectionIndex = 6;
     [self initializeData];
     [self registerXibFile];
     
+    // navigation
     self.navigationItem.title = @"策略详情";
     
     UIImage *shareButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_share_white"];
@@ -68,6 +71,12 @@ const int latedRecordSectionIndex = 6;
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:shareButton, collectionButton, nil];
     
+    // double click
+    doubleClickGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doDoubleClick:)];
+    doubleClickGR.numberOfTouchesRequired = 1;
+    doubleClickGR.numberOfTapsRequired = 2;
+    
+    // data
     [self LoadDataFromServer];
     if(dataSource == nil)
     {
@@ -83,6 +92,26 @@ const int latedRecordSectionIndex = 6;
     
     collectionModel = [[FAStrategyCollectionModel alloc] init];
     collectionModel.StrategyId = strategyId;
+}
+
+- (void) doDoubleClick:(id)sender
+{
+    UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
+    UIView *view = recongnizer.view.subviews[0];
+    
+    if([view isKindOfClass:[FAStrategyDetailProfitView class]])
+    {
+        FALargeProfitController *largeProfitController = [[FALargeProfitController alloc] init];
+        largeProfitController.profitChartDto = profitChartDto;
+    
+        [self presentViewController:largeProfitController animated:YES completion:nil];
+    }
+    else if ([view isKindOfClass:[FAWinLossView class]])
+    {
+        FALargeWinLossController *largeWinLossController = [[FALargeWinLossController alloc] init];
+        
+        [self presentViewController:largeWinLossController animated:YES completion:nil];
+    }
 }
 
 -(void)initializeData
@@ -416,6 +445,7 @@ const int latedRecordSectionIndex = 6;
     [cell.imgWinLoss setNeedsDisplay];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     switch (indexPath.section)
@@ -467,7 +497,12 @@ const int latedRecordSectionIndex = 6;
             {
                 cell = [[FAStrategyDetailProfitViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:profitCellIdentifier];
             }
+            
             [self showProfitViewCell:cell rowIndex:indexPath.row];
+            
+            cell.imgStrategyDetailProfit.userInteractionEnabled = YES;
+            [cell.imgStrategyDetailProfit addGestureRecognizer:doubleClickGR];
+            
             return cell;
         }
         case latedRecordHeaderSectionIndex:

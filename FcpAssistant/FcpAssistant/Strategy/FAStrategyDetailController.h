@@ -39,6 +39,7 @@ typedef enum ProfitType
     FAStrategyCollectionModel *collectionModel;
     
     CGSize descriptionLabelSize;
+    UITapGestureRecognizer *doubleClickGR;
 }
 
 @property(nonatomic, assign) int strategyId;
