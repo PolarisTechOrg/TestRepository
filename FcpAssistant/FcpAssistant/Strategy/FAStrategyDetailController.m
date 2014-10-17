@@ -147,11 +147,12 @@ const int latedRecordSectionIndex = 6;
     NSString *strategyName = strategy.StrategyName;
     
     NSString *title = @"添加收藏";
-    NSString *context = [NSString stringWithFormat:@"是否收藏%@", strategyName];
+    NSString *content = [NSString stringWithFormat:@"是否收藏%@", strategyName];
+    
     NSString *cancelTitle = @"取消";
     NSString *ensureTitle = @"确定";
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:context delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
     
     [alert show];
@@ -159,13 +160,29 @@ const int latedRecordSectionIndex = 6;
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
-    {
-        [self postAddStrategyToWishList];
+    @try {
+        
+        if (buttonIndex != 0)
+        {
+            return;
+        }
+        
+        NSError *error = [self postAddStrategyToWishList];
+        
+        if(error != nil)
+        {
+            [FAUtility showAlterView:[error localizedDescription]];
+        }
+        else
+        {
+            [FAUtility showPromptView:nil withContent:@"收藏成功"];
+        }
     }
-    else
-    {
-        return;
+    @catch (NSException *exception) {
+        
+        [FAUtility showAlterViewWithException:exception];
+    }
+    @finally {
     }
 }
 
@@ -173,7 +190,7 @@ const int latedRecordSectionIndex = 6;
 {
 }
 
-- (void)postAddStrategyToWishList
+- (NSError *)postAddStrategyToWishList
 {
     NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/wishlist",WEB_URL];
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
@@ -182,26 +199,8 @@ const int latedRecordSectionIndex = 6;
     FAHttpHead *head = [FAHttpHead defaultInstance];
     head.Method = @"POST";
     
-    @try
-    {
-        [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:collectionModel error:&error];
-        
-        if(error == nil)
-        {
-            return;
-        }
-        else
-        {
-            [FAUtility showAlterView:[error localizedDescription]];
-        }
-    }
-    @catch (NSException *exception)
-    {
-        [FAUtility showAlterViewWithException:exception];
-    }
-    @finally
-    {
-    }
+    [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:collectionModel error:&error];
+    return error;
 }
 
 -(void) LoadDataFromServer

@@ -18,4 +18,7 @@
 
 //异常提示对话框
 +(void) showAlterViewWithException:(NSException *) exception;
+
+//提示对话框（确定）
++(void) showPromptView:(NSString *)title withContent:(NSString *)content;
 @end

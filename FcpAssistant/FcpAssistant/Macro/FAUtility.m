@@ -43,4 +43,10 @@
     UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"擎天期顾助手" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alter show];
 }
+
++(void) showPromptView:(NSString *)title withContent:(NSString *)content
+{
+    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:title message:content delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alter show];
+}
 @end
