@@ -36,7 +36,7 @@
     [self.imgLargeProfitView setNeedsDisplay];
     
     // double click
-    UITapGestureRecognizer *doubleClickGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doDoubleClick:)];
+    doubleClickGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doDoubleClick:)];
     doubleClickGR.numberOfTouchesRequired = 1;
     doubleClickGR.numberOfTapsRequired = 2;
 }

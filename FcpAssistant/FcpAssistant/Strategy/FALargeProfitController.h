@@ -11,6 +11,9 @@
 #import "FAChartDto.h"
 
 @interface FALargeProfitController : UIViewController
+{
+    UITapGestureRecognizer *doubleClickGR;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgLargeProfit;
 
@@ -19,4 +22,5 @@
 @property (weak, nonatomic) FAChartDto *profitChartDto;
 
 @property (assign, nonatomic) int strategyId;
+
 @end
