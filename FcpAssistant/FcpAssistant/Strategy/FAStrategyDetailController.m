@@ -28,7 +28,6 @@
 #import "FAWinLossViewModel.h"
 #import "FAMeberLoginController.h"
 #import "FALargeProfitController.h"
-#import "FALargeWinLossController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -105,12 +104,6 @@ const int latedRecordSectionIndex = 6;
         largeProfitController.profitChartDto = profitChartDto;
     
         [self presentViewController:largeProfitController animated:YES completion:nil];
-    }
-    else if ([view isKindOfClass:[FAWinLossView class]])
-    {
-        FALargeWinLossController *largeWinLossController = [[FALargeWinLossController alloc] init];
-        
-        [self presentViewController:largeWinLossController animated:YES completion:nil];
     }
 }
 

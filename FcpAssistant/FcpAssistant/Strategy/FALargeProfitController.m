@@ -26,7 +26,7 @@
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:YES];
     
-    FAStrategyDetailProfitView *profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, self.view.window.bounds.size.width,self.view.window.bounds.size.height)];
+    FAStrategyDetailProfitView *profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,self.view.bounds.size.height)];
     
 //    NSLog(@"LargeSize:%@",		)
     [self.view addSubview:profitView];
@@ -53,7 +53,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft));
 }
 
 /*
