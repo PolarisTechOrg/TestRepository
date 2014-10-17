@@ -27,6 +27,8 @@
 #import "FAWinLossView.h"
 #import "FAWinLossViewModel.h"
 #import "FAMeberLoginController.h"
+#import "FALargeProfitController.h"
+#import "FALargeWinLossController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -58,6 +60,7 @@ const int latedRecordSectionIndex = 6;
     [self initializeData];
     [self registerXibFile];
     
+    // navigation
     self.navigationItem.title = @"策略详情";
     
     UIImage *shareButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_share_white"];
@@ -68,6 +71,12 @@ const int latedRecordSectionIndex = 6;
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:shareButton, collectionButton, nil];
     
+    // double click
+    doubleClickGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doDoubleClick:)];
+    doubleClickGR.numberOfTouchesRequired = 1;
+    doubleClickGR.numberOfTapsRequired = 2;
+    
+    // data
     [self LoadDataFromServer];
     if(dataSource == nil)
     {
@@ -83,6 +92,26 @@ const int latedRecordSectionIndex = 6;
     
     collectionModel = [[FAStrategyCollectionModel alloc] init];
     collectionModel.StrategyId = strategyId;
+}
+
+- (void) doDoubleClick:(id)sender
+{
+    UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
+    UIView *view = recongnizer.view.subviews[0];
+    
+    if([view isKindOfClass:[FAStrategyDetailProfitView class]])
+    {
+        FALargeProfitController *largeProfitController = [[FALargeProfitController alloc] init];
+        largeProfitController.profitChartDto = profitChartDto;
+    
+        [self presentViewController:largeProfitController animated:YES completion:nil];
+    }
+    else if ([view isKindOfClass:[FAWinLossView class]])
+    {
+        FALargeWinLossController *largeWinLossController = [[FALargeWinLossController alloc] init];
+        
+        [self presentViewController:largeWinLossController animated:YES completion:nil];
+    }
 }
 
 -(void)initializeData
@@ -147,11 +176,12 @@ const int latedRecordSectionIndex = 6;
     NSString *strategyName = strategy.StrategyName;
     
     NSString *title = @"添加收藏";
-    NSString *context = [NSString stringWithFormat:@"是否收藏%@", strategyName];
+    NSString *content = [NSString stringWithFormat:@"是否收藏%@", strategyName];
+    
     NSString *cancelTitle = @"取消";
     NSString *ensureTitle = @"确定";
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:context delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
     
     [alert show];
@@ -159,13 +189,29 @@ const int latedRecordSectionIndex = 6;
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
-    {
-        [self postAddStrategyToWishList];
+    @try {
+        
+        if (buttonIndex != 0)
+        {
+            return;
+        }
+        
+        NSError *error = [self postAddStrategyToWishList];
+        
+        if(error != nil)
+        {
+            [FAUtility showAlterView:[error localizedDescription]];
+        }
+        else
+        {
+            [FAUtility showPromptView:nil withContent:@"收藏成功"];
+        }
     }
-    else
-    {
-        return;
+    @catch (NSException *exception) {
+        
+        [FAUtility showAlterViewWithException:exception];
+    }
+    @finally {
     }
 }
 
@@ -173,7 +219,7 @@ const int latedRecordSectionIndex = 6;
 {
 }
 
-- (void)postAddStrategyToWishList
+- (NSError *)postAddStrategyToWishList
 {
     NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/wishlist",WEB_URL];
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
@@ -182,26 +228,8 @@ const int latedRecordSectionIndex = 6;
     FAHttpHead *head = [FAHttpHead defaultInstance];
     head.Method = @"POST";
     
-    @try
-    {
-        [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:collectionModel error:&error];
-        
-        if(error == nil)
-        {
-            return;
-        }
-        else
-        {
-            [FAUtility showAlterView:[error localizedDescription]];
-        }
-    }
-    @catch (NSException *exception)
-    {
-        [FAUtility showAlterViewWithException:exception];
-    }
-    @finally
-    {
-    }
+    [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:collectionModel error:&error];
+    return error;
 }
 
 -(void) LoadDataFromServer
@@ -417,6 +445,7 @@ const int latedRecordSectionIndex = 6;
     [cell.imgWinLoss setNeedsDisplay];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     switch (indexPath.section)
@@ -468,7 +497,12 @@ const int latedRecordSectionIndex = 6;
             {
                 cell = [[FAStrategyDetailProfitViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:profitCellIdentifier];
             }
+            
             [self showProfitViewCell:cell rowIndex:indexPath.row];
+            
+            cell.imgStrategyDetailProfit.userInteractionEnabled = YES;
+            [cell.imgStrategyDetailProfit addGestureRecognizer:doubleClickGR];
+            
             return cell;
         }
         case latedRecordHeaderSectionIndex:

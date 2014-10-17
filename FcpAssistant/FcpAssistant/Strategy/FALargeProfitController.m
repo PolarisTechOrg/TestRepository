@@ -7,6 +7,7 @@
 //
 
 #import "FALargeProfitController.h"
+#import "FAStrategyDetailProfitViewCell.h"
 
 @interface FALargeProfitController ()
 
@@ -14,9 +15,33 @@
 
 @implementation FALargeProfitController
 
-- (void)viewDidLoad {
+@synthesize strategyId;
+@synthesize profitChartDto;
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.wantsFullScreenLayout = YES;
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.tabBarController.tabBar setHidden:YES];
+    
+    FAStrategyDetailProfitView *profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, 470, 310)];
+    [self.imgLargeProfit addSubview:profitView];
+    self.imgLargeProfitView = profitView;
+    
+    self.imgLargeProfitView.dataSource = profitChartDto.Items;
+    [self.imgLargeProfitView setNeedsDisplay];
+    
+    // double click
+    UITapGestureRecognizer *doubleClickGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doDoubleClick:)];
+    doubleClickGR.numberOfTouchesRequired = 1;
+    doubleClickGR.numberOfTapsRequired = 2;
+}
+
+- (void)doDoubleClick:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
