@@ -23,4 +23,6 @@
 @synthesize TradePrice;
 // 委托时间。
 @synthesize OrderTime;
+// 委托状态
+@synthesize OrderStatus;
 @end

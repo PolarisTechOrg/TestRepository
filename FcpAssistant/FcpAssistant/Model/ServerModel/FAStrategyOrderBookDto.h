@@ -23,4 +23,6 @@
 @property(nonatomic,assign) double TradePrice;
 // 委托时间。
 @property(nonatomic,copy) NSDate *OrderTime;
+// 委托状态
+@property(nonatomic,assign) int OrderStatus;
 @end

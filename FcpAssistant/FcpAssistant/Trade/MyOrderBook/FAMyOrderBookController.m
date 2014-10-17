@@ -129,12 +129,26 @@
         cell.lblInstrumentCode.text = item.InstrumentCode;
         cell.lblOrderQtyAndTradeQty.text = [[NSString alloc] initWithFormat:@"%d/%d",item.TradeQty,item.OrderQty];
         cell.lblTradePrice.text = [FAFormater toDecimalStringWithDouble:item.TradePrice decimalPlace:2];
-        cell.lblOrderStatus.text = @"";
+        cell.lblOrderStatus.text = [self toOrderStateDescription:item.OrderStatus];
         cell.lblOrderTime.text = [FAFormater toShortTimeStringWithNSDate:item.OrderTime];
         cell.indentationWidth =0;
     }
     
     return cell;
+}
+
+-(NSString *) toOrderStateDescription:(int) orderState
+{
+    switch (orderState)
+    {
+        case 1:return @"未成交";
+        case 2:return @"部撤";
+        case 3:return @"全撤";
+        case 4:return @"部成";
+        case 5 :return @"全成";
+        case 6:return @"废单";
+        default:return @"未知";
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
