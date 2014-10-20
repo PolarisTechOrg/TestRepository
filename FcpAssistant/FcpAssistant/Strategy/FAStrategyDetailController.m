@@ -96,13 +96,15 @@ const int latedRecordSectionIndex = 6;
 - (void) doDoubleClick:(id)sender
 {
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
-    UIView *view = recongnizer.view.subviews[0];
+    UIView *view = recongnizer.view;
+    UIView *subView = recongnizer.view.subviews[0];
     
-    if([view isKindOfClass:[FAStrategyDetailProfitView class]])
+    if([subView isKindOfClass:[FAStrategyDetailProfitView class]])
     {
         FALargeProfitController *largeProfitController = [[FALargeProfitController alloc] init];
         largeProfitController.profitChartDto = profitChartDto;
-    
+        largeProfitController.strategyId = strategyId;
+        
         [self presentViewController:largeProfitController animated:YES completion:nil];
     }
 }

@@ -12,7 +12,7 @@
 
 @interface FALargeProfitController : UIViewController
 {
-    UITapGestureRecognizer *doubleClickGR;
+    UITapGestureRecognizer *doubleClickExitGR;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgLargeProfit;

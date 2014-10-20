@@ -8,6 +8,7 @@
 
 #import "FALargeProfitController.h"
 #import "FAStrategyDetailProfitViewCell.h"
+#import "FAStrategyDetailController.h"
 
 @interface FALargeProfitController ()
 
@@ -25,10 +26,10 @@
     self.wantsFullScreenLayout = YES;
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-    FAStrategyDetailProfitView *profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,self.view.bounds.size.height)];
+    FAStrategyDetailProfitView *profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     
-//    NSLog(@"LargeSize:%@",		)
     [self.view addSubview:profitView];
     self.imgLargeProfitView = profitView;
     
@@ -36,14 +37,17 @@
     [self.imgLargeProfitView setNeedsDisplay];
     
     // double click
-    doubleClickGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doDoubleClick:)];
-    doubleClickGR.numberOfTouchesRequired = 1;
-    doubleClickGR.numberOfTapsRequired = 2;
+    doubleClickExitGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doDoubleClickExit:)];
+    doubleClickExitGR.numberOfTouchesRequired = 1;
+    doubleClickExitGR.numberOfTapsRequired = 2;
+    
+    self.imgLargeProfitView.userInteractionEnabled = YES;
+    [self.imgLargeProfitView addGestureRecognizer:doubleClickExitGR];
 }
 
-- (void)doDoubleClick:(id)sender
+- (void)doDoubleClickExit:(id)sender
 {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
