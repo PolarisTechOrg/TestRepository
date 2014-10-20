@@ -28,7 +28,7 @@
     [self.tabBarController.tabBar setHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
-    FAStrategyDetailProfitView *profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    profitView = [[FAStrategyDetailProfitView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     
     [self.view addSubview:profitView];
     self.imgLargeProfitView = profitView;
@@ -58,6 +58,27 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft));
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    CGRect rect = profitView.frame;
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        rect.size.width = self.view.frame.size.height;
+        rect.size.height = self.view.frame.size.width;
+    }
+    else
+    {
+        rect.size.width = self.view.frame.size.width;
+        rect.size.height = self.view.frame.size.height;
+    }
+    
+    profitView.frame = rect;
+    profitView.clipsToBounds = YES;
+    profitView.contentMode = UIViewContentModeScaleToFill;
 }
 
 /*
