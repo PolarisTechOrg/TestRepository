@@ -161,7 +161,7 @@ const int latedRecordSectionIndex = 6;
             NSLog(@"FINISH LOGIN VIEW");
             }];
             
-        [self viewDidAppear:YES];
+            [self viewDidAppear:YES];
         }
         
         return;
