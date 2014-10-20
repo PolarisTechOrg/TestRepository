@@ -62,7 +62,7 @@
     [self initializeData];
     [self registerXibFile];
     
-    self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
+    self.navigationItem.title = unReadCount == 0 ? @"消息" : [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
     
     dataSource = [[NSMutableArray alloc] init];
     NSArray *messageList = [self LoadMessageDataFromServer];
@@ -398,9 +398,16 @@
 
 - (void)refreshUnReadCount
 {
-    self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
-    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
-    
+    if(unReadCount == 0)
+    {
+        self.navigationItem.title = @"消息";
+        self.tabBarItem.badgeValue = nil;
+    }
+    else
+    {
+        self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
+    }
 }
 
 @end
