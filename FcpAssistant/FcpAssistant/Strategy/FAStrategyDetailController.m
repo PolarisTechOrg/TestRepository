@@ -37,6 +37,7 @@
 #import "FAUtility.h"
 #import "FAAccountManager.h"
 
+#import <ShareSDK/ShareSDK.h>
 
 @interface FAStrategyDetailController ()
 
@@ -147,41 +148,6 @@ const int latedRecordSectionIndex = 6;
     [self.tableView reloadData];
 }
 
-- (void)doCollection
-{
-    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
-    
-    if (!hasLogin)
-    {
-        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
-        
-        if (!hasLogin)
-        {
-            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
-            NSLog(@"FINISH LOGIN VIEW");
-            }];
-            
-            [self viewDidAppear:YES];
-        }
-        
-        return;
-    }
-    
-    FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
-    NSString *strategyName = strategy.StrategyName;
-    
-    NSString *title = @"添加收藏";
-    NSString *content = [NSString stringWithFormat:@"是否收藏%@", strategyName];
-    
-    NSString *cancelTitle = @"取消";
-    NSString *ensureTitle = @"确定";
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
-    alert.alertViewStyle = UIAlertViewStyleDefault;
-    
-    [alert show];
-}
-
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     @try {
@@ -210,8 +176,63 @@ const int latedRecordSectionIndex = 6;
     }
 }
 
+- (void)checkLoginStatus
+{
+    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+    
+    if (!hasLogin)
+    {
+        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+        
+        if (!hasLogin)
+        {
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
+                NSLog(@"FINISH LOGIN VIEW");
+            }];
+            
+            [self viewDidAppear:YES];
+        }
+        
+        return;
+    }
+}
+
+- (void)doCollection
+{
+    [self checkLoginStatus];
+    
+    FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
+    NSString *strategyName = strategy.StrategyName;
+    
+    NSString *title = @"添加收藏";
+    NSString *content = [NSString stringWithFormat:@"是否收藏%@", strategyName];
+    
+    NSString *cancelTitle = @"取消";
+    NSString *ensureTitle = @"确定";
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
+    alert.alertViewStyle = UIAlertViewStyleDefault;
+    
+    [alert show];
+}
+
 - (void)doShare
 {
+    [self checkLoginStatus];
+    
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+    
+    id<ISSContent> publishContent = [ShareSDK content:@"" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title:@"" url:@"" description:@"" mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK showShareActionSheet:nil shareList:nil content:publishContent statusBarTips:YES authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+        if (state == SSResponseStateSuccess) {
+            NSLog(@"");
+        }
+        else if (state == SSResponseStateFail)
+        {
+            NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"error code == %d, error desc = %@"), [error errorCode], [error errorDescription]);
+        }
+    }];    
 }
 
 - (NSError *)postAddStrategyToWishList

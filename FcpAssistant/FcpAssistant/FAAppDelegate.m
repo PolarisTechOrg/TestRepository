@@ -14,11 +14,18 @@
 #import "FAMessageController.h"
 #import "FAMoreController.h"
 #import "FAFoundation.h"
+#import "WXApi.h"
+
+#import <ShareSDK/ShareSDK.h>
 
 @implementation FAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [ShareSDK registerApp:@"3e1d7841faa0"];
+    
+    [ShareSDK connectWeChatWithAppId:@"wxb9642874c48edc0c" wechatCls:[WXApi class]];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
