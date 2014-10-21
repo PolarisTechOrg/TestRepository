@@ -232,7 +232,7 @@ const int latedRecordSectionIndex = 6;
         {
             NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"error code == %d, error desc = %@"), [error errorCode], [error errorDescription]);
         }
-    }];    
+    }];
 }
 
 - (NSError *)postAddStrategyToWishList
