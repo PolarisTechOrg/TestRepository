@@ -15,6 +15,9 @@
 #import "FAMoreProductController.h"
 #import "FAAbountProductController.h"
 #import "FAAccountManager.h"
+#import "FAUtility.h"
+
+#import <ShareSDK/ShareSDK.h>
 
 @interface FAMoreController ()
 
@@ -148,6 +151,7 @@
     else if(indexPath.section == 1 && indexPath.row ==0)
     {
         //分享产品
+        [self doShare];
     }
     else if(indexPath.section == 1 && indexPath.row == 1)
     {
@@ -169,6 +173,55 @@
     {
         [self pushNewViewController:[[FAAbountProductController alloc] init]];
     }
+}
+
+- (void)doShare
+{
+    if(![self checkLoginStatus])
+    {
+        return;
+    }
+    
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+    
+    // share content
+    id<ISSContent> publishContent = [ShareSDK content:@"擎研期股助手"
+                                       defaultContent:@"擎研期股助手"
+                                                image:nil title:@"产品分享" url:nil description:nil mediaType:SSPublishContentMediaTypeNews];
+    
+    // share menu
+    [ShareSDK showShareActionSheet:nil
+                         shareList:nil content:publishContent statusBarTips:YES authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                             if (state == SSResponseStateSuccess)
+                             {
+                                 [FAUtility showAlterView:@"分享成功"];
+                             }
+                             else if (state == SSResponseStateFail)
+                             {
+                                 [FAUtility showAlterView:[NSString stringWithFormat:@"发送失败 %ld error desc =%@", [error errorCode], [error errorDescription]]];
+                             }
+                         }];
+}
+
+- (BOOL)checkLoginStatus
+{
+    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+    
+    if (!hasLogin)
+    {
+        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+        
+        if (!hasLogin)
+        {
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
+                NSLog(@"FINISH LOGIN VIEW");
+            }];
+            
+            [self viewDidAppear:YES];
+        }
+    }
+    
+    return hasLogin;
 }
 
 - (void)pushNewViewController:(UIViewController *)newViewController

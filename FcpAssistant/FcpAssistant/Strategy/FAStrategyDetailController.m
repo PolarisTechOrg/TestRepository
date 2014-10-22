@@ -241,7 +241,7 @@ const int latedRecordSectionIndex = 6;
         }
         else if (state == SSResponseStateFail)
         {
-            [FAUtility showAlterView:[NSString stringWithFormat:@"发送失败 error code =%ld error desc =%@", [error errorCode], [error errorDescription]]];
+            [FAUtility showAlterView:[NSString stringWithFormat:@"发送失败 %ld error desc =%@", [error errorCode], [error errorDescription]]];
         }
     }];
 }
