@@ -175,7 +175,7 @@ const int latedRecordSectionIndex = 6;
     }
 }
 
-- (void)checkLoginStatus
+- (BOOL)checkLoginStatus
 {
     BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
     
@@ -191,14 +191,17 @@ const int latedRecordSectionIndex = 6;
             
             [self viewDidAppear:YES];
         }
-        
-        return;
     }
+    
+    return hasLogin;
 }
 
 - (void)doCollection
 {
-    [self checkLoginStatus];
+    if(![self checkLoginStatus])
+    {
+        return;
+    }
     
     FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
     NSString *strategyName = strategy.StrategyName;
@@ -217,7 +220,10 @@ const int latedRecordSectionIndex = 6;
 
 - (void)doShare
 {
-    [self checkLoginStatus];
+    if(![self checkLoginStatus])
+    {
+        return;
+    }
     
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
     
@@ -231,11 +237,11 @@ const int latedRecordSectionIndex = 6;
                          shareList:nil content:publishContent statusBarTips:YES authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
         if (state == SSResponseStateSuccess)
         {
-            NSLog(@"分享成功");
+            [FAUtility showAlterView:@"分享成功"];
         }
         else if (state == SSResponseStateFail)
         {
-            NSLog(@"发送失败 error code =%ld error desc =%@", [error errorCode], [error errorDescription]);
+            [FAUtility showAlterView:[NSString stringWithFormat:@"发送失败 error code =%ld error desc =%@", [error errorCode], [error errorDescription]]];
         }
     }];
 }
