@@ -225,12 +225,16 @@ const int latedRecordSectionIndex = 6;
         return;
     }
     
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
     
     // share content
-    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
-                                       defaultContent:@"默认分享内容，没有内容时显示"
-                                                image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:@"http://www.sharesdk.cn" description:@"这是一条测试信息" mediaType:SSPublishContentMediaTypeNews];
+    id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"%d", dataSource. StrategySelection.StrategyId]
+                                       defaultContent:@"暂无内容"
+                                                image:nil //[ShareSDK imageWithPath:imagePath]
+                                                title:dataSource.StrategySelection.StrategyName
+                                                  url:nil
+                                          description:@"这是一条分享信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
     
     // share menu
     [ShareSDK showShareActionSheet:nil
