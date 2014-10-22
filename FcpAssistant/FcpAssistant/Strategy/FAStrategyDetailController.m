@@ -97,7 +97,6 @@ const int latedRecordSectionIndex = 6;
 - (void) doDoubleClick:(id)sender
 {
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
-    UIView *view = recongnizer.view;
     UIView *subView = recongnizer.view.subviews[0];
     
     if([subView isKindOfClass:[FAStrategyDetailProfitView class]])
@@ -222,15 +221,21 @@ const int latedRecordSectionIndex = 6;
     
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
     
-    id<ISSContent> publishContent = [ShareSDK content:@"" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title:@"" url:@"" description:@"" mediaType:SSPublishContentMediaTypeNews];
+    // share content
+    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+                                       defaultContent:@"默认分享内容，没有内容时显示"
+                                                image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:@"http://www.sharesdk.cn" description:@"这是一条测试信息" mediaType:SSPublishContentMediaTypeNews];
     
-    [ShareSDK showShareActionSheet:nil shareList:nil content:publishContent statusBarTips:YES authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-        if (state == SSResponseStateSuccess) {
-            NSLog(@"");
+    // share menu
+    [ShareSDK showShareActionSheet:nil
+                         shareList:nil content:publishContent statusBarTips:YES authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+        if (state == SSResponseStateSuccess)
+        {
+            NSLog(@"分享成功");
         }
         else if (state == SSResponseStateFail)
         {
-            NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"error code == %d, error desc = %@"), [error errorCode], [error errorDescription]);
+            NSLog(@"发送失败 error code =%ld error desc =%@", [error errorCode], [error errorDescription]);
         }
     }];
 }

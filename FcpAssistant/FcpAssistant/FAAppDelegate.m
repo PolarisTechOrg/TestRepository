@@ -25,6 +25,8 @@
     [ShareSDK registerApp:@"3e1d7841faa0"];
     
     [ShareSDK connectWeChatWithAppId:@"wxb9642874c48edc0c" wechatCls:[WXApi class]];
+    [ShareSDK connectSinaWeiboWithAppKey:@"1224842810" appSecret:@"364cd352be2ac3f03c7d15a656bacb23" redirectUri:@"http://www.sharesdk.cn"];
+    // ShareSDK setup
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -69,6 +71,17 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+// handleOpenURL with ShareSDK
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self];
 }
 
 @end
