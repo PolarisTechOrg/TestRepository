@@ -228,7 +228,7 @@ const int latedRecordSectionIndex = 6;
 //    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
     
     // share content
-    id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"%d", dataSource. StrategySelection.StrategyId]
+    id<ISSContent> publishContent = [ShareSDK content:dataSource.StrategySelection.description
                                        defaultContent:@"暂无内容"
                                                 image:nil //[ShareSDK imageWithPath:imagePath]
                                                 title:dataSource.StrategySelection.StrategyName
