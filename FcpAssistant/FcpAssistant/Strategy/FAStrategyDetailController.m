@@ -28,7 +28,6 @@
 #import "FAWinLossViewModel.h"
 #import "FAMeberLoginController.h"
 #import "FALargeProfitController.h"
-#import "FALargeWinLossController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -38,6 +37,7 @@
 #import "FAUtility.h"
 #import "FAAccountManager.h"
 
+#import <ShareSDK/ShareSDK.h>
 
 @interface FAStrategyDetailController ()
 
@@ -97,20 +97,15 @@ const int latedRecordSectionIndex = 6;
 - (void) doDoubleClick:(id)sender
 {
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
-    UIView *view = recongnizer.view.subviews[0];
+    UIView *subView = recongnizer.view.subviews[0];
     
-    if([view isKindOfClass:[FAStrategyDetailProfitView class]])
+    if([subView isKindOfClass:[FAStrategyDetailProfitView class]])
     {
         FALargeProfitController *largeProfitController = [[FALargeProfitController alloc] init];
         largeProfitController.profitChartDto = profitChartDto;
-    
-        [self presentViewController:largeProfitController animated:YES completion:nil];
-    }
-    else if ([view isKindOfClass:[FAWinLossView class]])
-    {
-        FALargeWinLossController *largeWinLossController = [[FALargeWinLossController alloc] init];
+        largeProfitController.strategyId = strategyId;
         
-        [self presentViewController:largeWinLossController animated:YES completion:nil];
+        [self presentViewController:largeProfitController animated:YES completion:nil];
     }
 }
 
@@ -152,41 +147,6 @@ const int latedRecordSectionIndex = 6;
     [self.tableView reloadData];
 }
 
-- (void)doCollection
-{
-    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
-    
-    if (!hasLogin)
-    {
-        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
-        
-        if (!hasLogin)
-        {
-            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
-            NSLog(@"FINISH LOGIN VIEW");
-            }];
-            
-        [self viewDidAppear:YES];
-        }
-        
-        return;
-    }
-    
-    FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
-    NSString *strategyName = strategy.StrategyName;
-    
-    NSString *title = @"添加收藏";
-    NSString *content = [NSString stringWithFormat:@"是否收藏%@", strategyName];
-    
-    NSString *cancelTitle = @"取消";
-    NSString *ensureTitle = @"确定";
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
-    alert.alertViewStyle = UIAlertViewStyleDefault;
-    
-    [alert show];
-}
-
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     @try {
@@ -215,8 +175,75 @@ const int latedRecordSectionIndex = 6;
     }
 }
 
+- (BOOL)checkLoginStatus
+{
+    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+    
+    if (!hasLogin)
+    {
+        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+        
+        if (!hasLogin)
+        {
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
+                NSLog(@"FINISH LOGIN VIEW");
+            }];
+            
+            [self viewDidAppear:YES];
+        }
+    }
+    
+    return hasLogin;
+}
+
+- (void)doCollection
+{
+    if(![self checkLoginStatus])
+    {
+        return;
+    }
+    
+    FADummieStrategyDetail2ViewModel *strategy = dataSource.StrategySelection;
+    NSString *strategyName = strategy.StrategyName;
+    
+    NSString *title = @"添加收藏";
+    NSString *content = [NSString stringWithFormat:@"是否收藏%@", strategyName];
+    
+    NSString *cancelTitle = @"取消";
+    NSString *ensureTitle = @"确定";
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:ensureTitle otherButtonTitles:cancelTitle, nil];
+    alert.alertViewStyle = UIAlertViewStyleDefault;
+    
+    [alert show];
+}
+
 - (void)doShare
 {
+    if(![self checkLoginStatus])
+    {
+        return;
+    }
+    
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+    
+    // share content
+    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+                                       defaultContent:@"默认分享内容，没有内容时显示"
+                                                image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:@"http://www.sharesdk.cn" description:@"这是一条测试信息" mediaType:SSPublishContentMediaTypeNews];
+    
+    // share menu
+    [ShareSDK showShareActionSheet:nil
+                         shareList:nil content:publishContent statusBarTips:YES authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+        if (state == SSResponseStateSuccess)
+        {
+            [FAUtility showAlterView:@"分享成功"];
+        }
+        else if (state == SSResponseStateFail)
+        {
+            [FAUtility showAlterView:[NSString stringWithFormat:@"发送失败 error code =%ld error desc =%@", [error errorCode], [error errorDescription]]];
+        }
+    }];
 }
 
 - (NSError *)postAddStrategyToWishList
