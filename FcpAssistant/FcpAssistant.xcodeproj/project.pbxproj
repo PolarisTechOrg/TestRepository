@@ -185,6 +185,8 @@
 		59D53D1919DBF5240070C644 /* FAMyHoldingPositionDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D53D1819DBF5240070C644 /* FAMyHoldingPositionDto.m */; };
 		59D53D1C19DBF6680070C644 /* FAMyOrderBookDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D53D1B19DBF6680070C644 /* FAMyOrderBookDto.m */; };
 		59D53D1F19DBFD190070C644 /* FAMyStrategySignalDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D53D1E19DBFD190070C644 /* FAMyStrategySignalDto.m */; };
+		59E5F18819F7A23700024D3D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E5F18619F7A23700024D3D /* Default-568h@2x.png */; };
+		59E5F18919F7A23700024D3D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E5F18719F7A23700024D3D /* Default@2x.png */; };
 		59EC7EE419B8122100972C0A /* FAStrategyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC7EE219B8122100972C0A /* FAStrategyController.m */; };
 		59EC7EE519B8122100972C0A /* FAStrategyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59EC7EE319B8122100972C0A /* FAStrategyController.xib */; };
 		59EC7EE919B8129200972C0A /* FAMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EC7EE719B8129200972C0A /* FAMainController.m */; };
@@ -607,6 +609,8 @@
 		59D53D1B19DBF6680070C644 /* FAMyOrderBookDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyOrderBookDto.m; path = Model/ServerModel/FAMyOrderBookDto.m; sourceTree = "<group>"; };
 		59D53D1D19DBFD190070C644 /* FAMyStrategySignalDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyStrategySignalDto.h; path = Model/ServerModel/FAMyStrategySignalDto.h; sourceTree = "<group>"; };
 		59D53D1E19DBFD190070C644 /* FAMyStrategySignalDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyStrategySignalDto.m; path = Model/ServerModel/FAMyStrategySignalDto.m; sourceTree = "<group>"; };
+		59E5F18619F7A23700024D3D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		59E5F18719F7A23700024D3D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		59EC7EE119B8122100972C0A /* FAStrategyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyController.h; path = Strategy/FAStrategyController.h; sourceTree = "<group>"; };
 		59EC7EE219B8122100972C0A /* FAStrategyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyController.m; path = Strategy/FAStrategyController.m; sourceTree = "<group>"; };
 		59EC7EE319B8122100972C0A /* FAStrategyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategyController.xib; path = Strategy/FAStrategyController.xib; sourceTree = "<group>"; };
@@ -931,6 +935,8 @@
 		5903746619B80E8200F5B0C3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				59E5F18619F7A23700024D3D /* Default-568h@2x.png */,
+				59E5F18719F7A23700024D3D /* Default@2x.png */,
 				5903746719B80E8200F5B0C3 /* FcpAssistant-Info.plist */,
 				5903746819B80E8200F5B0C3 /* InfoPlist.strings */,
 				5903746B19B80E8200F5B0C3 /* main.m */,
@@ -2343,6 +2349,7 @@
 				84C4CB4419DA74B400C36159 /* FAMessageViewCell2.xib in Resources */,
 				5918C00219EB809A00A1193B /* btn_change_num.png in Resources */,
 				846C482919D7A93B00B456A4 /* Strategy_icon_strategy_menu_white.png in Resources */,
+				59E5F18819F7A23700024D3D /* Default-568h@2x.png in Resources */,
 				594FB08319C81C44008EA26F /* mypurchase_profit_red.png in Resources */,
 				592735E019C2A1A100FF42A1 /* FAMemberRegisterController.xib in Resources */,
 				849C562D19D55F8E0057C158 /* Strategy_bg_list_green.png in Resources */,
@@ -2440,6 +2447,7 @@
 				593EA6AF19BFF9F100E9F2BC /* FAMyPurchaseDetailOrderViewCell.xib in Resources */,
 				593EA6CE19C0386C00E9F2BC /* FAMyPositionStrategyHeaderView.xib in Resources */,
 				591B218C19C17FCB00064F24 /* moreItem_contractUs.png in Resources */,
+				59E5F18919F7A23700024D3D /* Default@2x.png in Resources */,
 				594FB08219C81C44008EA26F /* mypurchase_profit_green.png in Resources */,
 				8473D3BB19DD59E3009A2D4D /* tmp_strtegy_lasted.png in Resources */,
 				84BB86EC19F5E332001E04A3 /* Resource.bundle in Resources */,
