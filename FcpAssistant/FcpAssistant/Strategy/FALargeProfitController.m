@@ -57,26 +57,35 @@
 
 //- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 //{
-//    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
-////    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft));
+//    return YES;
+//    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight));
 //}
-//
-//- (NSUInteger)supportedInterfaceOrientations
-//{
-//    return UIInterfaceOrientationMaskPortrait;
-//}
-//
-//- (BOOL)shouldAutorotate
-//{
-//    return NO;
-//}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    // before rotate
+}
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    // rotating
     CGRect rect = profitView.frame;
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     
-    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    UIDeviceOrientation curInterfaceOrientation = [[UIDevice currentDevice] orientation];
+    
+    if(curInterfaceOrientation == UIDeviceOrientationPortrait || curInterfaceOrientation == UIDeviceOrientationUnknown)
     {
         rect.size.width = self.view.frame.size.height;
         rect.size.height = self.view.frame.size.width;
@@ -86,10 +95,16 @@
         rect.size.width = self.view.frame.size.width;
         rect.size.height = self.view.frame.size.height;
     }
+        
     
     profitView.frame = rect;
     profitView.clipsToBounds = YES;
     profitView.contentMode = UIViewContentModeScaleToFill;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    // after rotate
 }
 
 /*

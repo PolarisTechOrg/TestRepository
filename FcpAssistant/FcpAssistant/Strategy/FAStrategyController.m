@@ -457,7 +457,7 @@
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
--(void) viewWillAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     [self.tableView reloadData];
 }
