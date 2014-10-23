@@ -55,19 +55,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft));
-}
-
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+//{
+//    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+////    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft));
+//}
+//
 //- (NSUInteger)supportedInterfaceOrientations
 //{
-//    return UIInterfaceOrientationMaskLandscape;
+//    return UIInterfaceOrientationMaskPortrait;
 //}
-
+//
 //- (BOOL)shouldAutorotate
 //{
-//    return YES;
+//    return NO;
 //}
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
