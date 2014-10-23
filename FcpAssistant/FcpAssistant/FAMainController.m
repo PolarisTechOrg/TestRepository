@@ -122,6 +122,10 @@
     self.selectedIndex = 0;
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

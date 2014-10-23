@@ -83,19 +83,21 @@
     CGRect rect = profitView.frame;
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     
-    UIDeviceOrientation curInterfaceOrientation = [[UIDevice currentDevice] orientation];
+//    UIDeviceOrientation curInterfaceOrientation = [[UIDevice currentDevice] orientation];
+//    
+//    if(curInterfaceOrientation == UIDeviceOrientationPortrait || curInterfaceOrientation == UIDeviceOrientationUnknown)
+//    {
+//        rect.size.width = self.view.frame.size.height;
+//        rect.size.height = self.view.frame.size.width;
+//    }
+//    else
+//    {
+//        rect.size.width = self.view.frame.size.width;
+//        rect.size.height = self.view.frame.size.height;
+//    }
     
-    if(curInterfaceOrientation == UIDeviceOrientationPortrait || curInterfaceOrientation == UIDeviceOrientationUnknown)
-    {
-        rect.size.width = self.view.frame.size.height;
-        rect.size.height = self.view.frame.size.width;
-    }
-    else
-    {
-        rect.size.width = self.view.frame.size.width;
-        rect.size.height = self.view.frame.size.height;
-    }
-        
+    rect.size.width = self.view.frame.size.height;
+    rect.size.height = self.view.frame.size.width;
     
     profitView.frame = rect;
     profitView.clipsToBounds = YES;
