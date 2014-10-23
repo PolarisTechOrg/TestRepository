@@ -60,6 +60,16 @@
     return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft));
 }
 
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskLandscape;
+//}
+
+//- (BOOL)shouldAutorotate
+//{
+//    return YES;
+//}
+
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     CGRect rect = profitView.frame;
