@@ -23,7 +23,6 @@
 {
     [super viewDidLoad];
     
-    self.wantsFullScreenLayout = YES;
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -55,12 +54,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-//{
-//    return YES;
-//    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight));
-//}
-
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscape;
@@ -79,7 +72,7 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    // rotating
+    // rotating(set UIInterfaceOrientationMaskPortrait in rootViewController)
     CGRect rect = profitView.frame;
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
     
