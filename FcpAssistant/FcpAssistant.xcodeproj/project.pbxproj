@@ -1870,9 +1870,9 @@
 		840DD87D19CD76D10023885D /* ProfitHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				840DD88E19CD790A0023885D /* FAStrategyDetailProfitHeaderView.xib */,
 				840DD89019CD79440023885D /* FAStrategyDetailProfitHeaderView.h */,
 				840DD89119CD79440023885D /* FAStrategyDetailProfitHeaderView.m */,
+				840DD88E19CD790A0023885D /* FAStrategyDetailProfitHeaderView.xib */,
 			);
 			name = ProfitHeaderView;
 			sourceTree = "<group>";
