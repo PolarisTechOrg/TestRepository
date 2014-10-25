@@ -13,6 +13,7 @@
 #import "FAClientMessageDto.h"
 #import "FAMessage.h"
 #import "FAMainController.h"
+#import "FAMeberLoginController.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -20,6 +21,7 @@
 #import "FAHttpHead.h"
 #import "FAFormater.h"
 #import "FAUtility.h"
+#import "FAAccountManager.h"
 
 @interface FAMessageController ()
 
@@ -33,12 +35,33 @@
 {
     if ([super init])
     {
-        unReadCount = [self loadUnReadMessageCount];
+        [self loadUnReadMessageCount];
     }
     return self;
 }
 
-- (int)loadUnReadMessageCount
+- (BOOL)checkLoginStatus
+{
+    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+    
+    if (!hasLogin)
+    {
+        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+        
+        if (!hasLogin)
+        {
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
+                NSLog(@"FINISH LOGIN VIEW");
+            }];
+            
+            [self viewDidAppear:YES];
+        }
+    }
+    
+    return hasLogin;
+}
+
+- (void)loadUnReadMessageCount
 {NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?unRead", WEB_URL];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
@@ -48,16 +71,16 @@
     
     if(error == nil)
     {
-        return [[FAJSONSerialization toObject:nil fromData:replyData] intValue];
+        unReadCount = [[FAJSONSerialization toObject:nil fromData:replyData] intValue];
     }
     else
     {
-        return 0;
+        unReadCount = 0;
     }
 }
 
 - (void)viewDidLoad
-{
+{    
     [super viewDidLoad];
     [self initializeData];
     [self registerXibFile];
@@ -120,7 +143,7 @@
         
         // sort
 //        [messageArray sortUsingSelector:@selector(compareDate:)];
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:YES];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:NO];
         [messageArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
         
         return  messageArray;
@@ -135,6 +158,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if(![self checkLoginStatus])
+    {
+        return;
+    }
+    
+    if (dataSource == nil || dataSource.count == 0)
+    {
+        [self loadUnReadMessageCount];
+        [self viewDidLoad];
+    }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

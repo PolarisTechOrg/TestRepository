@@ -73,7 +73,7 @@
         NSArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
         
         // sort
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:YES];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:NO];
         [messageArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
         
         return  messageArray;
