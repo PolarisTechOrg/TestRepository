@@ -230,6 +230,8 @@
 		840DD89D19CD7CF90023885D /* FAMessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD89B19CD7CF90023885D /* FAMessageDetailViewController.xib */; };
 		840DD8A019CD7D470023885D /* FAMessageDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD89F19CD7D470023885D /* FAMessageDetailHeaderView.m */; };
 		840DD8A219CD7D650023885D /* FAMessageDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD8A119CD7D650023885D /* FAMessageDetailHeaderView.xib */; };
+		8418087819FB944900AE68DE /* FAMessageDetailHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418087619FB944900AE68DE /* FAMessageDetailHeaderViewCell.m */; };
+		8418087919FB944900AE68DE /* FAMessageDetailHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418087719FB944900AE68DE /* FAMessageDetailHeaderViewCell.xib */; };
 		841D29FB19E4EA7D00BA4AE6 /* message_icon_dot_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 841D29FA19E4EA7D00BA4AE6 /* message_icon_dot_red.png */; };
 		84450C2219D7EEC200BF942A /* FAErrorExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 84450C2119D7EEC200BF942A /* FAErrorExtractor.m */; };
 		84490BA219D3BA7F00EA1850 /* FADummieStrategyDetailDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84490BA119D3BA7F00EA1850 /* FADummieStrategyDetailDto.m */; };
@@ -675,6 +677,9 @@
 		840DD89E19CD7D470023885D /* FAMessageDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailHeaderView.h; path = Message/DetailView/FAMessageDetailHeaderView.h; sourceTree = "<group>"; };
 		840DD89F19CD7D470023885D /* FAMessageDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailHeaderView.m; path = Message/DetailView/FAMessageDetailHeaderView.m; sourceTree = "<group>"; };
 		840DD8A119CD7D650023885D /* FAMessageDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailHeaderView.xib; path = Message/DetailView/FAMessageDetailHeaderView.xib; sourceTree = "<group>"; };
+		8418087519FB944900AE68DE /* FAMessageDetailHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageDetailHeaderViewCell.h; path = Message/DetailView/FAMessageDetailHeaderViewCell.h; sourceTree = "<group>"; };
+		8418087619FB944900AE68DE /* FAMessageDetailHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageDetailHeaderViewCell.m; path = Message/DetailView/FAMessageDetailHeaderViewCell.m; sourceTree = "<group>"; };
+		8418087719FB944900AE68DE /* FAMessageDetailHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMessageDetailHeaderViewCell.xib; path = Message/DetailView/FAMessageDetailHeaderViewCell.xib; sourceTree = "<group>"; };
 		841D29FA19E4EA7D00BA4AE6 /* message_icon_dot_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_icon_dot_red.png; sourceTree = "<group>"; };
 		84450C2019D7EEC200BF942A /* FAErrorExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAErrorExtractor.h; path = Http/FAErrorExtractor.h; sourceTree = "<group>"; };
 		84450C2119D7EEC200BF942A /* FAErrorExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAErrorExtractor.m; path = Http/FAErrorExtractor.m; sourceTree = "<group>"; };
@@ -2021,6 +2026,9 @@
 				84C4CB4519DA7E4E00C36159 /* FAMessageDetailViewCell2.h */,
 				84C4CB4619DA7E4E00C36159 /* FAMessageDetailViewCell2.m */,
 				84C4CB4719DA7E4E00C36159 /* FAMessageDetailViewCell2.xib */,
+				8418087519FB944900AE68DE /* FAMessageDetailHeaderViewCell.h */,
+				8418087619FB944900AE68DE /* FAMessageDetailHeaderViewCell.m */,
+				8418087719FB944900AE68DE /* FAMessageDetailHeaderViewCell.xib */,
 			);
 			name = CellView;
 			sourceTree = "<group>";
@@ -2377,6 +2385,7 @@
 				593EA6DD19C038EE00E9F2BC /* FAMyPositionStrategyViewCell.xib in Resources */,
 				591BB2C019E773D2000AF684 /* FAMyPurchaseDetailSignalHeaderViewCell.xib in Resources */,
 				84BB86F119F5E333001E04A3 /* WeiboSDK.bundle in Resources */,
+				8418087919FB944900AE68DE /* FAMessageDetailHeaderViewCell.xib in Resources */,
 				849C564219D598BC0057C158 /* FAStrategyFilterHeaderView.xib in Resources */,
 				592735E619C2A37600FF42A1 /* FAForgetPasswordController.xib in Resources */,
 				59137A3A19BE8C10001F4977 /* FAMyPositionController.xib in Resources */,
@@ -2530,6 +2539,7 @@
 				594FB07619C7FC81008EA26F /* FAAccountManager.m in Sources */,
 				592735CD19C292F000FF42A1 /* FAMoreProductViewCell.m in Sources */,
 				59137A4819BE9800001F4977 /* FAMyPurchaseViewCell.m in Sources */,
+				8418087819FB944900AE68DE /* FAMessageDetailHeaderViewCell.m in Sources */,
 				591BB2C419E77406000AF684 /* FAMyPurchaseDetailProfitHeaderViewCell.m in Sources */,
 				592735BB19C28EB900FF42A1 /* FAFeddbackController.m in Sources */,
 				591B218019C16AB800064F24 /* FAMoreViewCell.m in Sources */,

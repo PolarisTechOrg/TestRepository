@@ -8,6 +8,7 @@
 
 #import "FAMessageDetailViewController.h"
 #import "FAMessageDetailViewCell2.h"
+#import "FAMessageDetailHeaderViewCell.h"
 #import "FAClientMessageDto.h"
 #import "FAMessageDetail.h"
 #import "FAMessage.h"
@@ -26,7 +27,6 @@
 @implementation FAMessageDetailViewController
 
 @synthesize SendId;
-
 @synthesize MessageType;
 
 
@@ -44,11 +44,16 @@
 
 -(void)initializeData
 {
+    itemHeaderCellIdentifier = @"FAMessageDetailHeaderCell";
+    
     itemCellIdentifier = @"FAMessageDetailCell";
 }
 
 -(void)registerXibFile
 {
+    UINib *headerCellNib = [UINib nibWithNibName:@"FAMessageDetailHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:headerCellNib forCellReuseIdentifier:itemHeaderCellIdentifier];
+    
     UINib *cellNib = [UINib nibWithNibName:@"FAMessageDetailViewCell2" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:itemCellIdentifier];
 }
@@ -84,6 +89,16 @@
     }
 }
 
+- (CGSize)getDescriptionHeight:(NSString *)content
+{
+    UIFont *font = [UIFont systemFontOfSize:12];
+    CGSize size = CGSizeMake(320, 100);
+    
+    CGSize labelSize = [content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeCharacterWrap];
+    
+    return labelSize;
+}
+
 - (NSArray *)analyzeDataFromServer:(NSArray *)data
 {
     if(data == nil || data.count == 0)
@@ -109,6 +124,7 @@
         message.SenderId = dtoMessage.SenderId;
         message.SenderName = dtoMessage.SenderName;
         message.MessageTime = dtoMessage.MessageTime;
+        message.MessageTimeString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
         message.Context = dtoMessage.Context;
         
         NSString *dateString = [self generateDate:dtoMessage.MessageTime];
@@ -155,86 +171,140 @@
     return [[date description] substringToIndex:10];
 }
 
-- (BOOL)compareDate:(NSDate *)first withAnother:(NSDate *)last
-{
-    bool isEquel = YES;
-    
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *comps1 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:first];
-    
-    NSDateComponents *comps2 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:last];
-    
-    if([comps1 year] != [comps2 year])
-    {
-        return NO;
-    }
-    if([comps1 month] != [comps2 month])
-    {
-        return NO;
-    }
-    if([comps1 day] != [comps2 day])
-    {
-        return NO;
-    }
-    
-    return isEquel;
-}
+//- (BOOL)compareDate:(NSDate *)first withAnother:(NSDate *)last
+//{
+//    bool isEquel = YES;
+//    
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    
+//    NSDateComponents *comps1 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:first];
+//    
+//    NSDateComponents *comps2 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:last];
+//    
+//    if([comps1 year] != [comps2 year])
+//    {
+//        return NO;
+//    }
+//    if([comps1 month] != [comps2 month])
+//    {
+//        return NO;
+//    }
+//    if([comps1 day] != [comps2 day])
+//    {
+//        return NO;
+//    }
+//    
+//    return isEquel;
+//}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     // Return the number of sections.
-    return dataSource.count;
+    return dataSource.count*2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    FAMessageDetail *detail = (FAMessageDetail *)dataSource[section];
-    return detail.DetailList.count;
+    int curSection = section % 2;
+    
+    if (curSection == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        FAMessageDetail *detail = (FAMessageDetail *)dataSource[section-1];
+        return detail.DetailList.count;
+    }
 }
 
+- (void)showHeader:(FAMessageDetailHeaderViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FAMessageDetail *detail;
+    
+    if(indexPath.section == 0)
+    {
+        detail = (FAMessageDetail *)dataSource[indexPath.section];
+    }
+    else
+    {
+        detail = (FAMessageDetail *)dataSource[indexPath.section-1];
+    }
+    
+    cell.lblMessageDate.text = detail.DateString;
+}
+
+- (void)showContent:(FAMessageDetailViewCell2 *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FAMessageDetail *detail = (FAMessageDetail *)dataSource[indexPath.section-1]; // section > 0
+    FAMessage *message = (FAMessage *)detail.DetailList[indexPath.row];
+    
+    cell.lblTextBody.text = message.Context;
+    cell.lblLatedReceiveTime.text = message.MessageTimeString;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    tableView.separatorStyle = UITableViewCellEditingStyleNone;
+    int curSection = indexPath.section % 2;
     
-    FAMessageDetailViewCell2 *cell= (FAMessageDetailViewCell2*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
-    
-    if (!cell)
+    if (curSection == 0)
     {
-        cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
-        cell.lblTextBody.numberOfLines = 0;
-        cell.lblTextBody.adjustsFontSizeToFitWidth = YES;
+        FAMessageDetailHeaderViewCell *cell = (FAMessageDetailHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:itemHeaderCellIdentifier];
         
+        if(!cell)
+        {
+            cell = [[FAMessageDetailHeaderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemHeaderCellIdentifier];
+        }
+        
+        [self showHeader:cell cellForRowAtIndexPath:indexPath];
+        return cell;
+    }
+    else
+    {
+        FAMessageDetailViewCell2 *cell= (FAMessageDetailViewCell2*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+        
+        if (!cell)
+        {
+            cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        }
+        
+        [self showContent:cell cellForRowAtIndexPath:indexPath];
+        return cell;
     }
     
-    return cell;
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 38;
+    return 0.1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    FAMessageDetailViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-//    CGFloat height = cell.lblTextBody.frame.size.height + cell.lblLatedReceiveTime.frame.size.height;
+    int curSection = indexPath.section % 2;
     
-    return 81;
+    if (curSection == 0)
+    {
+        return 38;
+    }
+    else
+    {
+        return 81;
+    }
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMessageDetailHeaderView" owner:self options:nil];
-    
-    UIView *headerView = (UIView *) [nib objectAtIndex:0];
-    headerView.frame = CGRectMake(0, 0, 320, 50);
-    return headerView;
-}
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMessageDetailHeaderView" owner:self options:nil];
+//    
+//    UIView *headerView = (UIView *) [nib objectAtIndex:0];
+//    headerView.frame = CGRectMake(0, 0, 320, 50);
+//    return headerView;
+//}
 
 /*
 // Override to support conditional editing of the table view.

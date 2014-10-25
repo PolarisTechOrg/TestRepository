@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface FAMessageDetailViewController : UITableViewController
-{    
+{
+    NSString *itemHeaderCellIdentifier;
     NSString *itemCellIdentifier;
     
     NSArray *dataSource;
