@@ -153,49 +153,8 @@
 
 - (NSString *)generateDate:(NSDate *)date
 {
-    //    NSMutableString *retString = nil;
-    //
-//        NSCalendar *calendar = [NSCalendar currentCalendar];
-//        unsigned units = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
-//        NSDateComponents *comps = [calendar components:units fromDate:date];
-//    //
-//        NSInteger year = [comps year];
-    //    [retString appendFormat:@"%ld", [comps year]];
-    //    [retString appendString:@"-"];
-    //    [retString appendFormat:@"%ld", [comps month]];
-    //    [retString appendString:@"-"];
-    //    [retString appendFormat:@"%ld", [comps day]];
-    //    
-    //    return retString;
-    
     return [[date description] substringToIndex:10];
 }
-
-//- (BOOL)compareDate:(NSDate *)first withAnother:(NSDate *)last
-//{
-//    bool isEquel = YES;
-//    
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    
-//    NSDateComponents *comps1 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:first];
-//    
-//    NSDateComponents *comps2 = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:last];
-//    
-//    if([comps1 year] != [comps2 year])
-//    {
-//        return NO;
-//    }
-//    if([comps1 month] != [comps2 month])
-//    {
-//        return NO;
-//    }
-//    if([comps1 day] != [comps2 day])
-//    {
-//        return NO;
-//    }
-//    
-//    return isEquel;
-//}
 
 #pragma mark - Table view data source
 
@@ -294,6 +253,9 @@
     else
     {
         return 81;
+//        FAMessageDetail *detail = (FAMessageDetail *)dataSource[indexPath.section-1]; // section > 0
+//        FAMessage *message = (FAMessage *)detail.DetailList[indexPath.row];
+//        return [self getDescriptionHeight:message.Context].height;
     }
 }
 
