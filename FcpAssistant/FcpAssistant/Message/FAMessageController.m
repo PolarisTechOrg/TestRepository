@@ -77,6 +77,8 @@
     {
         unReadCount = 0;
     }
+    
+    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
 }
 
 - (void)viewDidLoad
