@@ -69,6 +69,7 @@
 		591BB2C519E77406000AF684 /* FAMyPurchaseDetailProfitHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591BB2C319E77406000AF684 /* FAMyPurchaseDetailProfitHeaderViewCell.xib */; };
 		591BB2C919E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BB2C719E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.m */; };
 		591BB2CA19E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591BB2C819E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.xib */; };
+		591CF12319FE43F50051F12F /* libGexinSdk-1.0.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 591CF12219FE43F50051F12F /* libGexinSdk-1.0.6.a */; };
 		591EA2DA19BEDCCB00EED52C /* FAMyPurchaseDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591EA2D819BEDCCB00EED52C /* FAMyPurchaseDetailController.m */; };
 		591EA2DB19BEDCCB00EED52C /* FAMyPurchaseDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591EA2D919BEDCCB00EED52C /* FAMyPurchaseDetailController.xib */; };
 		591EA2DF19BEDE4F00EED52C /* FAMyPurchaseDetailTopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 591EA2DD19BEDE4F00EED52C /* FAMyPurchaseDetailTopViewCell.m */; };
@@ -438,6 +439,9 @@
 		591BB2C619E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPurchaseDetailOrderHeaderViewCell.h; path = Trade/MyPurchase/FAMyPurchaseDetailOrderHeaderViewCell.h; sourceTree = "<group>"; };
 		591BB2C719E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPurchaseDetailOrderHeaderViewCell.m; path = Trade/MyPurchase/FAMyPurchaseDetailOrderHeaderViewCell.m; sourceTree = "<group>"; };
 		591BB2C819E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailOrderHeaderViewCell.xib; path = Trade/MyPurchase/FAMyPurchaseDetailOrderHeaderViewCell.xib; sourceTree = "<group>"; };
+		591CF12019FE43F50051F12F /* GexinSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GexinSdk.h; sourceTree = "<group>"; };
+		591CF12119FE43F50051F12F /* GXSdkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXSdkError.h; sourceTree = "<group>"; };
+		591CF12219FE43F50051F12F /* libGexinSdk-1.0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGexinSdk-1.0.6.a"; sourceTree = "<group>"; };
 		591EA2D719BEDCCB00EED52C /* FAMyPurchaseDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMyPurchaseDetailController.h; path = Trade/MyPurchase/FAMyPurchaseDetailController.h; sourceTree = "<group>"; };
 		591EA2D819BEDCCB00EED52C /* FAMyPurchaseDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMyPurchaseDetailController.m; path = Trade/MyPurchase/FAMyPurchaseDetailController.m; sourceTree = "<group>"; };
 		591EA2D919BEDCCB00EED52C /* FAMyPurchaseDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAMyPurchaseDetailController.xib; path = Trade/MyPurchase/FAMyPurchaseDetailController.xib; sourceTree = "<group>"; };
@@ -851,6 +855,7 @@
 				84BB86EE19F5E332001E04A3 /* TencentOpenAPI.framework in Frameworks */,
 				84BB86E719F5E332001E04A3 /* SinaWeiboConnection.framework in Frameworks */,
 				84BB86FF19F5E333001E04A3 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
+				591CF12319FE43F50051F12F /* libGexinSdk-1.0.6.a in Frameworks */,
 				84BB86F219F5E333001E04A3 /* libTCWeiboSDK.a in Frameworks */,
 				84BB86FA19F5E333001E04A3 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				84BB86FD19F5E333001E04A3 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
@@ -877,6 +882,7 @@
 		5903745319B80E8200F5B0C3 = {
 			isa = PBXGroup;
 			children = (
+				591CF11F19FE43F50051F12F /* dist */,
 				84BB86BA19F5E332001E04A3 /* ShareSDK */,
 				5903746519B80E8200F5B0C3 /* FcpAssistant */,
 				5903747E19B80E8200F5B0C3 /* FcpAssistantTests */,
@@ -1072,6 +1078,16 @@
 				591BB2C319E77406000AF684 /* FAMyPurchaseDetailProfitHeaderViewCell.xib */,
 			);
 			name = ProfitHeaderCellView;
+			sourceTree = "<group>";
+		};
+		591CF11F19FE43F50051F12F /* dist */ = {
+			isa = PBXGroup;
+			children = (
+				591CF12019FE43F50051F12F /* GexinSdk.h */,
+				591CF12119FE43F50051F12F /* GXSdkError.h */,
+				591CF12219FE43F50051F12F /* libGexinSdk-1.0.6.a */,
+			);
+			path = dist;
 			sourceTree = "<group>";
 		};
 		5921B94319C6BDA300ACD5C4 /* Macro */ = {
@@ -2784,6 +2800,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/dist",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2823,6 +2840,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/dist",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
