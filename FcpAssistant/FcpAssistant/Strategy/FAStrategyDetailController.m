@@ -225,8 +225,6 @@ const int latedRecordSectionIndex = 6;
         return;
     }
     
-//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
-    
     // share content
     id<ISSContent> publishContent = [ShareSDK content:dataSource.StrategySelection.description
                                        defaultContent:@"暂无内容"

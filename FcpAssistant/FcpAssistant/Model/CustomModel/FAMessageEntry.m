@@ -16,8 +16,12 @@
 
 @synthesize ReadFlag;
 
+@synthesize Date;
+
 @synthesize DateString;
 
-@synthesize LatedMessage;
+@synthesize SenderName;
+
+@synthesize Context;
 
 @end

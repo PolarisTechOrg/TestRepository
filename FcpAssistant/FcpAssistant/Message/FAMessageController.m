@@ -14,6 +14,7 @@
 #import "FAMessage.h"
 #import "FAMainController.h"
 #import "FAMeberLoginController.h"
+#import "FAMessageEntry.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -122,7 +123,7 @@
     {
         NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
         
-        NSMutableArray *messageArray = [NSMutableArray arrayWithCapacity:128];
+        NSMutableArray *dtoMessageArray = [NSMutableArray arrayWithCapacity:128];
         for(id dto in dtoObjArray)
         {
             if(!dto)
@@ -131,20 +132,13 @@
             }
             
             FAClientMessageDto *dtoMessage = (FAClientMessageDto *)dto;
-            FAMessage *message = [[FAMessage alloc] init];
-            message.ReadFlag = dtoMessage.ReadFlag;
-            message.MessageId = dtoMessage.MessageId;
-            message.MessageType = dtoMessage.MessageType;
-            message.SenderId = dtoMessage.SenderId;
-            message.SenderName = dtoMessage.SenderName;
-            message.MessageTime = dtoMessage.MessageTime;
-            message.Context = dtoMessage.Context;
-            
-            [messageArray addObject:message];
+            [dtoMessageArray addObject:dtoMessage];
         }
         
+        NSMutableArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
+        
         // sort
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:NO];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Date" ascending:NO];
         [messageArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
         
         return  messageArray;
@@ -155,13 +149,14 @@
     }
 }
 
-- (NSArray *)analyzeDataFromServer:(NSArray *)data
+- (NSMutableArray *)analyzeDataFromServer:(NSArray *)data
 {
     if(data == nil || data.count == 0)
     {
         return nil;
     }
     
+    NSMutableArray *entryArray = [NSMutableArray arrayWithCapacity:32];
     NSMutableDictionary *typeDict = [NSMutableDictionary dictionaryWithCapacity:8];
     
     for(id item in data)
@@ -171,49 +166,70 @@
             continue;
         }
         
+        FAMessageEntry *entry = nil;
+        NSMutableDictionary *senderDict = nil;
         FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
-        FAMessage *message = [[FAMessage alloc] init];
+        NSNumber *typeKey = [NSNumber numberWithInt:(int)dtoMessage.MessageType];
         
-        message.ReadFlag = dtoMessage.ReadFlag;
-        message.MessageId = dtoMessage.MessageId;
-        message.MessageType = dtoMessage.MessageType;
-        message.SenderId = dtoMessage.SenderId;
-        message.SenderName = dtoMessage.SenderName;
-        message.MessageTime = dtoMessage.MessageTime;
-        message.MessageTimeString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
-        message.Context = dtoMessage.Context;
-        
-        NSNumber *typeKey = [NSNumber numberWithInt:(int)message.MessageType];
-        
-//        if([typeDict objectForKey:typeKey])
-//        {
-//            NSMutableDictionary *senderDict = (NSMutableDictionary *)[typeDict objectForKey:typeKey];
-//            
-//            NSNumber *senderKey
-//            
-//            if ([senderDict objectForKey:<#(id)#>]) {
-//                <#statements#>
-//            }
-//            
-//            
-//            FAMessageDetail *detailTemp = (FAMessageDetail *)[detailDict objectForKey:dateString];
-//            [detailTemp.DetailList addObject:message];
-//        }
-//        else
-//        {
-//            FAMessageDetail *detail = [[FAMessageDetail alloc] init];
-//            detail.SenderId = message.SenderId;
-//            detail.MessageType = message.MessageType;
-//            detail.Date = message.MessageTime;
-//            detail.DateString = dateString;
-//            detail.DetailList = [[NSMutableArray alloc] init];
-//            [detail.DetailList addObject:message];
-//            
-//            [detailDict setObject:detail forKey:dateString];
-//        }
+        if([typeDict objectForKey:typeKey])
+        {
+            senderDict = (NSMutableDictionary *)[typeDict objectForKey:typeKey];
+            
+            entry = (FAMessageEntry *)[senderDict objectForKey:dtoMessage.SenderId];
+            if (entry)
+            {
+                if(dtoMessage.MessageTime > entry.Date)
+                {
+                    [self updateEntry:entry withDtoMessage:dtoMessage];
+                    
+                    [senderDict setObject:entry forKey:entry.SenderId];
+                    [entryArray addObject:entry];
+                }
+            }
+            else
+            {
+                entry = [self createEntry:dtoMessage];
+                senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
+                
+                [senderDict setObject:entry forKey:entry.SenderId];
+                [entryArray addObject:entry];
+            }
+        }
+        else
+        {
+            entry = [self createEntry:dtoMessage];
+            senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
+            
+            [senderDict setObject:entry forKey:entry.SenderId];
+            [entryArray addObject:entry];
+            
+            [typeDict setObject:senderDict forKey:typeKey];
+        }
     }
     
-    return [typeDict allValues];
+    return entryArray;
+}
+
+- (FAMessageEntry *)createEntry:(FAClientMessageDto *)dtoMessage
+{
+    FAMessageEntry *entry = [[FAMessageEntry alloc] init];
+    entry.SenderId = dtoMessage.SenderId;
+    entry.MessageType = dtoMessage.MessageType;
+    entry.Date = dtoMessage.MessageTime;
+    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
+    entry.SenderName = dtoMessage.SenderName;
+    entry.Context= dtoMessage.Context;
+    
+    return entry;
+}
+
+- (void)updateEntry:(FAMessageEntry *)entry withDtoMessage:(FAClientMessageDto *)dtoMessage
+{
+    entry.SenderName = dtoMessage.SenderName;
+    entry.Context = dtoMessage.Context;
+    entry.ReadFlag = dtoMessage.ReadFlag;
+    entry.Date = dtoMessage.MessageTime;
+    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
 }
 
 - (void)didReceiveMemoryWarning

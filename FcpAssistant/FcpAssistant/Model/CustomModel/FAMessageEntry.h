@@ -17,8 +17,12 @@
 
 @property(nonatomic, assign) BOOL ReadFlag;
 
+@property(nonatomic, copy) NSDate *Date;
+
 @property(nonatomic, copy) NSString *DateString;
 
-@property(nonatomic, retain) FAMessage *LatedMessage;
+@property(nonatomic, copy) NSString *SenderName;
+
+@property(nonatomic, copy) NSString *Context;
 
 @end
