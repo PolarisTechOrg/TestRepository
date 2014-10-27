@@ -65,7 +65,7 @@
 
 -(NSArray *)LoadDataFromServer:(int)sendId withType:(int)messageType
 {
-    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?sendId=%d&messageType=%d", WEB_URL, sendId, messageType];
+    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?senderId=%d&messageType=%d", WEB_URL, sendId, messageType];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     

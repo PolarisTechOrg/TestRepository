@@ -111,7 +111,7 @@
 
 -(NSArray *)LoadMessageDataFromServer
 {
-    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message", WEB_URL];
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?all=", WEB_URL];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
@@ -463,6 +463,8 @@
     cell.iconMessageReadFlag.image = nil;
     
     FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];subController.hidesBottomBarWhenPushed = YES;
+    subController.SendId = item.SenderId;
+    subController.MessageType = item.MessageType;
     [self pushNewViewController:subController];
     
 }
