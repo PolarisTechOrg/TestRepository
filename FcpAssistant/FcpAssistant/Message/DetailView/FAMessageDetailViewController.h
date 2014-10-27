@@ -18,7 +18,7 @@
     int totalSecitonIndex;
 }
 
-@property(nonatomic, assign) int SendId;
+@property(nonatomic, copy) NSString *SendId;
 
 @property(nonatomic, assign) int MessageType;
 

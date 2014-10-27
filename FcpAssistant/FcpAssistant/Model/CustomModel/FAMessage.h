@@ -17,7 +17,7 @@
 
 @property(nonatomic, assign) ClientMessageType MessageType;
 
-@property(nonatomic, assign) int SenderId;
+@property(nonatomic, assign) NSString *SenderId;
 
 @property(nonatomic, copy) NSString *SenderName;
 

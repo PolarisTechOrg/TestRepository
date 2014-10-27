@@ -63,9 +63,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSArray *)LoadDataFromServer:(int)sendId withType:(int)messageType
+-(NSArray *)LoadDataFromServer:(NSString *)sendId withType:(int)messageType
 {
-    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?senderId=%d&messageType=%d", WEB_URL, sendId, messageType];
+    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?senderId=%@&messageType=%d", WEB_URL, sendId, messageType];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
