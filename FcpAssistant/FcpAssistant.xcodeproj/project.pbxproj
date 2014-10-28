@@ -109,6 +109,7 @@
 		592B87C419C7BEC900B6EDF9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C219C7BEC900B6EDF9 /* icon.png */; };
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		592C1EF519DD27E100D984B9 /* FAStrategyProfitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592C1EF419DD27E100D984B9 /* FAStrategyProfitView.m */; };
+		5937B5E619FF1CAC002E3B54 /* FAGeTuiReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5937B5E519FF1CAC002E3B54 /* FAGeTuiReceiver.m */; };
 		5938186C19CFC44000AF8A46 /* FAWishlistDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938186B19CFC44000AF8A46 /* FAWishlistDto.m */; };
 		5938187219CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938187119CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.m */; };
 		5938187519D006A800AF8A46 /* FADummieStrategyViewModelDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938187419D006A800AF8A46 /* FADummieStrategyViewModelDto.m */; };
@@ -504,6 +505,8 @@
 		592B87C319C7BEC900B6EDF9 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "ImageSource/icon@2x.png"; sourceTree = "<group>"; };
 		592C1EF319DD27E100D984B9 /* FAStrategyProfitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyProfitView.h; path = CustomView/FAStrategyProfitView.h; sourceTree = "<group>"; };
 		592C1EF419DD27E100D984B9 /* FAStrategyProfitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyProfitView.m; path = CustomView/FAStrategyProfitView.m; sourceTree = "<group>"; };
+		5937B5E419FF1CAC002E3B54 /* FAGeTuiReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAGeTuiReceiver.h; path = GeTui/FAGeTuiReceiver.h; sourceTree = "<group>"; };
+		5937B5E519FF1CAC002E3B54 /* FAGeTuiReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAGeTuiReceiver.m; path = GeTui/FAGeTuiReceiver.m; sourceTree = "<group>"; };
 		5938186A19CFC44000AF8A46 /* FAWishlistDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAWishlistDto.h; path = Model/ServerModel/FAWishlistDto.h; sourceTree = "<group>"; };
 		5938186B19CFC44000AF8A46 /* FAWishlistDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAWishlistDto.m; path = Model/ServerModel/FAWishlistDto.m; sourceTree = "<group>"; };
 		5938187019CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FADummieStrategyDetailViewModel.h; path = Model/ServerModel/FADummieStrategyDetailViewModel.h; sourceTree = "<group>"; };
@@ -920,6 +923,7 @@
 		5903746519B80E8200F5B0C3 /* FcpAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				5937B5E319FF1C7C002E3B54 /* GeTui */,
 				594DD2C619CAC6F7009D4A48 /* CustomView */,
 				592A83EA19C9255400DDE1B5 /* Json */,
 				592A83E919C9254C00DDE1B5 /* Http */,
@@ -1232,6 +1236,15 @@
 				592A83FB19C97AEB00DDE1B5 /* tmp_purchase_profit.png */,
 			);
 			name = temp;
+			sourceTree = "<group>";
+		};
+		5937B5E319FF1C7C002E3B54 /* GeTui */ = {
+			isa = PBXGroup;
+			children = (
+				5937B5E419FF1CAC002E3B54 /* FAGeTuiReceiver.h */,
+				5937B5E519FF1CAC002E3B54 /* FAGeTuiReceiver.m */,
+			);
+			name = GeTui;
 			sourceTree = "<group>";
 		};
 		5938186919CFC3B200AF8A46 /* ServerModel */ = {
@@ -2569,6 +2582,7 @@
 				84956F9519D9845A0001E78C /* MJRefreshConst.m in Sources */,
 				84956F9919D9845A0001E78C /* UIScrollView+MJRefresh.m in Sources */,
 				592735E519C2A37600FF42A1 /* FAForgetPasswordController.m in Sources */,
+				5937B5E619FF1CAC002E3B54 /* FAGeTuiReceiver.m in Sources */,
 				5982A30B19D11FDD009EADD1 /* FAStrategyProfitDto.m in Sources */,
 				594DD2C919CAC7C1009D4A48 /* FAPurchaseProfitView.m in Sources */,
 				59137A4319BE8C57001F4977 /* FAMySignalController.m in Sources */,
@@ -2791,7 +2805,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FcpAssistant/ShareSDK/Extend/SinaWeiboSDK",
@@ -2831,7 +2845,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FcpAssistant/ShareSDK/Extend/SinaWeiboSDK",
