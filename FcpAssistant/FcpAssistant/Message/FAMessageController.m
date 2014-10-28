@@ -23,6 +23,7 @@
 #import "FAFormater.h"
 #import "FAUtility.h"
 #import "FAAccountManager.h"
+#import "FAGeTuiReceiver.h"
 
 @interface FAMessageController ()
 
@@ -32,56 +33,21 @@
 
 @synthesize unReadCount;
 
+@synthesize maxMessageId;
+
+
 - (id)init
 {
     if ([super init])
     {
         unReadCount = 0;
+        maxMessageId = 0;
+        
         [self loadUnReadMessageCount];
+        
+        [[FAGeTuiReceiver shareInstance] registerMessageReceiver:self]; // register push
     }
     return self;
-}
-
-- (BOOL)checkLoginStatus
-{
-    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
-    
-    if (!hasLogin)
-    {
-        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
-        
-        if (!hasLogin)
-        {
-            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
-                NSLog(@"FINISH LOGIN VIEW");
-            }];
-            
-            [self viewDidAppear:YES];
-        }
-    }
-    
-    return hasLogin;
-}
-
-- (void)loadUnReadMessageCount
-{
-    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?unRead", WEB_URL];
-    
-    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-    
-    NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-    
-    if(error == nil)
-    {
-        unReadCount = [[FAJSONSerialization toObject:nil fromData:replyData] intValue];
-    }
-    else
-    {
-        unReadCount = 0;
-    }
-    
-    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
 }
 
 - (void)viewDidLoad
@@ -92,150 +58,13 @@
     
     self.navigationItem.title = unReadCount == 0 ? @"消息" : [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
     
+    dataDictionary = [NSMutableDictionary dictionaryWithCapacity:8];
     dataSource = [[NSMutableArray alloc] init];
-    NSArray *messageList = [self LoadMessageDataFromServer];
-    if(messageList != nil && messageList.count > 0)
-    {
-        [dataSource addObjectsFromArray:messageList];
-    }
-}
-
-
--(void)initializeData
-{
-    itemCellIdentifier = @"FAMessageCell";
-}
-
--(void)registerXibFile
-{
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAMessageViewCell2" bundle:nil];
     
-    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
-}
-
--(NSArray *)LoadMessageDataFromServer
-{
-    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?all=", WEB_URL];
+    NSMutableArray *messageList = [self LoadMessageDataFromServer];
     
-    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-    
-    NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-    
-    if(error == nil)
-    {
-        NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
-        
-        NSMutableArray *dtoMessageArray = [NSMutableArray arrayWithCapacity:128];
-        for(id dto in dtoObjArray)
-        {
-            if(!dto)
-            {
-                continue;
-            }
-            
-            FAClientMessageDto *dtoMessage = (FAClientMessageDto *)dto;
-            [dtoMessageArray addObject:dtoMessage];
-        }
-        
-        NSMutableArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
-        
-        // sort
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Date" ascending:NO];
-        [messageArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
-        
-        return  messageArray;
-    }
-    else
-    {
-        return nil;
-    }
-}
-
-- (NSMutableArray *)analyzeDataFromServer:(NSArray *)data
-{
-    if(data == nil || data.count == 0)
-    {
-        return nil;
-    }
-    
-    NSMutableArray *entryArray = [NSMutableArray arrayWithCapacity:32];
-    NSMutableDictionary *typeDict = [NSMutableDictionary dictionaryWithCapacity:8];
-    
-    for(id item in data)
-    {
-        if(!item)
-        {
-            continue;
-        }
-        
-        FAMessageEntry *entry = nil;
-        NSMutableDictionary *senderDict = nil;
-        FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
-        NSNumber *typeKey = [NSNumber numberWithInt:(int)dtoMessage.MessageType];
-        
-        if([typeDict objectForKey:typeKey])
-        {
-            senderDict = (NSMutableDictionary *)[typeDict objectForKey:typeKey];
-            
-            entry = (FAMessageEntry *)[senderDict objectForKey:dtoMessage.SenderId];
-            if (entry)
-            {
-                if(dtoMessage.MessageTime > entry.Date)
-                {
-                    [self updateEntry:entry withDtoMessage:dtoMessage];
-                    
-                    [senderDict setObject:entry forKey:entry.SenderId];
-                    [entryArray addObject:entry];
-                }
-            }
-            else
-            {
-                entry = [self createEntry:dtoMessage];
-                senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
-                
-                [senderDict setObject:entry forKey:entry.SenderId];
-                [entryArray addObject:entry];
-            }
-        }
-        else
-        {
-            entry = [self createEntry:dtoMessage];
-            senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
-            
-            [senderDict setObject:entry forKey:entry.SenderId];
-            [entryArray addObject:entry];
-            
-            [typeDict setObject:senderDict forKey:typeKey];
-        }
-    }
-    
-    return entryArray;
-}
-
-- (FAMessageEntry *)createEntry:(FAClientMessageDto *)dtoMessage
-{
-    FAMessageEntry *entry = [[FAMessageEntry alloc] init];
-    entry.SenderId = dtoMessage.SenderId;
-    entry.MessageType = dtoMessage.MessageType;
-    entry.MessageId = dtoMessage.MessageId;
-    entry.Date = dtoMessage.MessageTime;
-    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
-    entry.SenderName = dtoMessage.SenderName;
-    entry.Context= dtoMessage.Context;
-    entry.ReadFlag = dtoMessage.ReadFlag;
-    
-    return entry;
-}
-
-- (void)updateEntry:(FAMessageEntry *)entry withDtoMessage:(FAClientMessageDto *)dtoMessage
-{
-    entry.MessageId = dtoMessage.MessageId;
-    entry.ReadFlag = dtoMessage.ReadFlag;
-    entry.Date = dtoMessage.MessageTime;
-    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
-    entry.SenderName = dtoMessage.SenderName;
-    entry.Context = dtoMessage.Context;
+    [dataSource removeAllObjects];
+    [dataSource addObjectsFromArray:messageList];
 }
 
 - (void)didReceiveMemoryWarning
@@ -259,6 +88,7 @@
     
     [self.tableView reloadData];
 }
+
 
 #pragma mark - Table view data source
 
@@ -343,16 +173,6 @@
     return cell;
 }
 
-//- (NSString *)localizateMessageTime:(NSDate *)messageTime
-//{
-//    NSString *des = [messageTime description];
-//    
-//    NSRange range = NSMakeRange(11, 8);
-//    des = [des substringWithRange:range];
-//    
-//    return des;
-//}
-
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
@@ -408,6 +228,252 @@
     return YES;
 }
 */
+
+
+#pragma mark - Table view delegate
+
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Navigation logic may go here, for example:
+//    // Create the next view controller.
+//    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+//    
+//    // Pass the selected object to the new view controller.
+//    
+//    // Push the view controller.
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+//}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    FAMessageEntry *item = dataSource[indexPath.row];
+    if([self readAllMessage:item.SenderId withType:item.MessageType])
+    {
+        item.ReadFlag = YES;
+        
+        [self loadUnReadMessageCount];
+        [self refreshUnReadCount];
+    }
+    
+    FAMessageViewCell2 *cell = (FAMessageViewCell2 *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.iconMessageReadFlag.image = nil;
+    
+    FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];subController.hidesBottomBarWhenPushed = YES;
+    subController.SendId = item.SenderId;
+    subController.MessageType = item.MessageType;
+    [self pushNewViewController:subController];
+    
+}
+
+- (void)pushNewViewController:(UIViewController *)newViewController {
+    [self.navigationController pushViewController:newViewController animated:YES];
+}
+
+
+#pragma mark - Private tool function
+
+-(void)initializeData
+{
+    itemCellIdentifier = @"FAMessageCell";
+}
+
+-(void)registerXibFile
+{
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAMessageViewCell2" bundle:nil];
+    
+    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
+}
+
+-(NSMutableArray *)LoadMessageDataFromServer
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?all=&beginId=%d", WEB_URL, maxMessageId];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
+        
+        NSMutableArray *dtoMessageArray = [NSMutableArray arrayWithCapacity:128];
+        for(id dto in dtoObjArray)
+        {
+            if(!dto)
+            {
+                continue;
+            }
+            
+            FAClientMessageDto *dtoMessage = (FAClientMessageDto *)dto;
+            [dtoMessageArray addObject:dtoMessage];
+        }
+        
+        NSMutableArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
+        
+        // sort
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Date" ascending:NO];
+        [messageArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+        
+        return  messageArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (NSMutableArray *)analyzeDataFromServer:(NSArray *)data
+{
+    if(data == nil || data.count == 0)
+    {
+        return nil;
+    }
+    
+    NSMutableArray *entryArray = [NSMutableArray arrayWithCapacity:32];
+//    NSMutableDictionary *typeDict = [NSMutableDictionary dictionaryWithCapacity:8];
+    
+    for(id item in data)
+    {
+        if(!item)
+        {
+            continue;
+        }
+        
+        FAMessageEntry *entry = nil;
+        NSMutableDictionary *senderDict = nil;
+        FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
+        NSNumber *typeKey = [NSNumber numberWithInt:(int)dtoMessage.MessageType];
+        
+        // update maxMessageId
+        if (maxMessageId < dtoMessage.MessageId)
+        {
+            maxMessageId = dtoMessage.MessageId;
+        }
+        
+        // update dictionary and array
+        if([dataDictionary objectForKey:typeKey])
+        {
+            senderDict = (NSMutableDictionary *)[dataDictionary objectForKey:typeKey];
+            
+            entry = (FAMessageEntry *)[senderDict objectForKey:dtoMessage.SenderId];
+            if (entry)
+            {
+                if(dtoMessage.MessageTime > entry.Date)
+                {
+                    [self updateEntry:entry withDtoMessage:dtoMessage];
+                    
+                    [senderDict setObject:entry forKey:entry.SenderId];
+                    [entryArray addObject:entry];
+                }
+            }
+            else
+            {
+                entry = [self createEntry:dtoMessage];
+                senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
+                
+                [senderDict setObject:entry forKey:entry.SenderId];
+                [entryArray addObject:entry];
+            }
+        }
+        else
+        {
+            entry = [self createEntry:dtoMessage];
+            senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
+            
+            [senderDict setObject:entry forKey:entry.SenderId];
+            [entryArray addObject:entry];
+            
+            [dataDictionary setObject:senderDict forKey:typeKey];
+        }
+    }
+    
+    return entryArray;
+}
+
+- (FAMessageEntry *)createEntry:(FAClientMessageDto *)dtoMessage
+{
+    FAMessageEntry *entry = [[FAMessageEntry alloc] init];
+    entry.SenderId = dtoMessage.SenderId;
+    entry.MessageType = dtoMessage.MessageType;
+    entry.MessageId = dtoMessage.MessageId;
+    entry.Date = dtoMessage.MessageTime;
+    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
+    entry.SenderName = dtoMessage.SenderName;
+    entry.Context= dtoMessage.Context;
+    entry.ReadFlag = dtoMessage.ReadFlag;
+    
+    return entry;
+}
+
+- (void)updateEntry:(FAMessageEntry *)entry withDtoMessage:(FAClientMessageDto *)dtoMessage
+{
+    entry.MessageId = dtoMessage.MessageId;
+    entry.ReadFlag = dtoMessage.ReadFlag;
+    entry.Date = dtoMessage.MessageTime;
+    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
+    entry.SenderName = dtoMessage.SenderName;
+    entry.Context = dtoMessage.Context;
+}
+
+- (BOOL)checkLoginStatus
+{
+    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+    
+    if (!hasLogin)
+    {
+        BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+        
+        if (!hasLogin)
+        {
+            [self presentViewController:[[FAMeberLoginController alloc] init] animated:YES completion:^{
+                NSLog(@"FINISH LOGIN VIEW");
+            }];
+            
+            [self viewDidAppear:YES];
+        }
+    }
+    
+    return hasLogin;
+}
+
+- (void)loadUnReadMessageCount
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?unRead", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        unReadCount = [[FAJSONSerialization toObject:nil fromData:replyData] intValue];
+    }
+    else
+    {
+        unReadCount = 0;
+    }
+    
+    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
+}
+
+- (void)refreshUnReadCount
+{
+    if(unReadCount == 0)
+    {
+        self.navigationItem.title = @"消息";
+        self.tabBarItem.badgeValue = nil;
+    }
+    else
+    {
+        self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
+    }
+}
 
 -(BOOL) deleteMessageItem:(int) messageId
 {
@@ -513,7 +579,7 @@
     @try
     {
         NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?read=&senderId=%@&messageType=%d", WEB_URL, senderId, messageType];
-
+        
         NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
         
         NSError *error;
@@ -542,61 +608,9 @@
     }
 }
 
-
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Navigation logic may go here, for example:
-//    // Create the next view controller.
-//    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-//    
-//    // Pass the selected object to the new view controller.
-//    
-//    // Push the view controller.
-//    [self.navigationController pushViewController:detailViewController animated:YES];
-//}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)receivePushMessage:(NSString *)message
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    FAMessageEntry *item = dataSource[indexPath.row];
-    if([self readAllMessage:item.SenderId withType:item.MessageType])
-    {
-        item.ReadFlag = YES;
-        
-        [self loadUnReadMessageCount];
-        [self refreshUnReadCount];
-    }
-    
-    FAMessageViewCell2 *cell = (FAMessageViewCell2 *)[tableView cellForRowAtIndexPath:indexPath];
-    cell.iconMessageReadFlag.image = nil;
-    
-    FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];subController.hidesBottomBarWhenPushed = YES;
-    subController.SendId = item.SenderId;
-    subController.MessageType = item.MessageType;
-    [self pushNewViewController:subController];
-    
-}
-
-- (void)pushNewViewController:(UIViewController *)newViewController {
-    [self.navigationController pushViewController:newViewController animated:YES];
-}
-
-- (void)refreshUnReadCount
-{
-    if(unReadCount == 0)
-    {
-        self.navigationItem.title = @"消息";
-        self.tabBarItem.badgeValue = nil;
-    }
-    else
-    {
-        self.navigationItem.title = [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
-        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
-    }
 }
 
 @end
