@@ -14,6 +14,7 @@
 #import "FAMessage.h"
 #import "FAMainController.h"
 #import "FAMeberLoginController.h"
+#import "FAMessageEntry.h"
 
 #import "FAFoundation.h"
 #import "FAJSONSerialization.h"
@@ -122,7 +123,7 @@
     {
         NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
         
-        NSMutableArray *messageArray = [NSMutableArray arrayWithCapacity:128];
+        NSMutableArray *dtoMessageArray = [NSMutableArray arrayWithCapacity:128];
         for(id dto in dtoObjArray)
         {
             if(!dto)
@@ -131,21 +132,13 @@
             }
             
             FAClientMessageDto *dtoMessage = (FAClientMessageDto *)dto;
-            FAMessage *message = [[FAMessage alloc] init];
-            message.ReadFlag = dtoMessage.ReadFlag;
-            message.MessageId = dtoMessage.MessageId;
-            message.MessageType = dtoMessage.MessageType;
-            message.SenderId = dtoMessage.SenderId;
-            message.SenderName = dtoMessage.SenderName;
-            message.MessageTime = dtoMessage.MessageTime;
-            message.Context = dtoMessage.Context;
-            
-            [messageArray addObject:message];
+            [dtoMessageArray addObject:dtoMessage];
         }
         
+        NSMutableArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
+        
         // sort
-//        [messageArray sortUsingSelector:@selector(compareDate:)];
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:NO];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Date" ascending:NO];
         [messageArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
         
         return  messageArray;
@@ -154,6 +147,89 @@
     {
         return nil;
     }
+}
+
+- (NSMutableArray *)analyzeDataFromServer:(NSArray *)data
+{
+    if(data == nil || data.count == 0)
+    {
+        return nil;
+    }
+    
+    NSMutableArray *entryArray = [NSMutableArray arrayWithCapacity:32];
+    NSMutableDictionary *typeDict = [NSMutableDictionary dictionaryWithCapacity:8];
+    
+    for(id item in data)
+    {
+        if(!item)
+        {
+            continue;
+        }
+        
+        FAMessageEntry *entry = nil;
+        NSMutableDictionary *senderDict = nil;
+        FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
+        NSNumber *typeKey = [NSNumber numberWithInt:(int)dtoMessage.MessageType];
+        
+        if([typeDict objectForKey:typeKey])
+        {
+            senderDict = (NSMutableDictionary *)[typeDict objectForKey:typeKey];
+            
+            entry = (FAMessageEntry *)[senderDict objectForKey:dtoMessage.SenderId];
+            if (entry)
+            {
+                if(dtoMessage.MessageTime > entry.Date)
+                {
+                    [self updateEntry:entry withDtoMessage:dtoMessage];
+                    
+                    [senderDict setObject:entry forKey:entry.SenderId];
+                    [entryArray addObject:entry];
+                }
+            }
+            else
+            {
+                entry = [self createEntry:dtoMessage];
+                senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
+                
+                [senderDict setObject:entry forKey:entry.SenderId];
+                [entryArray addObject:entry];
+            }
+        }
+        else
+        {
+            entry = [self createEntry:dtoMessage];
+            senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
+            
+            [senderDict setObject:entry forKey:entry.SenderId];
+            [entryArray addObject:entry];
+            
+            [typeDict setObject:senderDict forKey:typeKey];
+        }
+    }
+    
+    return entryArray;
+}
+
+- (FAMessageEntry *)createEntry:(FAClientMessageDto *)dtoMessage
+{
+    FAMessageEntry *entry = [[FAMessageEntry alloc] init];
+    entry.SenderId = dtoMessage.SenderId;
+    entry.MessageType = dtoMessage.MessageType;
+    entry.Date = dtoMessage.MessageTime;
+    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
+    entry.SenderName = dtoMessage.SenderName;
+    entry.Context= dtoMessage.Context;
+    
+    return entry;
+}
+
+- (void)updateEntry:(FAMessageEntry *)entry withDtoMessage:(FAClientMessageDto *)dtoMessage
+{
+    entry.SenderName = dtoMessage.SenderName;
+    entry.Context = dtoMessage.Context;
+    entry.ReadFlag = dtoMessage.ReadFlag;
+    entry.Date = dtoMessage.MessageTime;
+    entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
 }
 
 - (void)didReceiveMemoryWarning
@@ -219,14 +295,14 @@
     
     if(indexPath.row < dataSource.count)
     {
-        FAClientMessageDto *dto = dataSource[indexPath.row];
+        FAMessage *message = dataSource[indexPath.row];
        
-        if(!dto)
+        if(!message)
         {
             return cell;
         }
 
-        if(dto.ReadFlag)
+        if(message.ReadFlag)
         {
             cell.iconMessageReadFlag.image = [UIImage imageNamed:nil];
         }
@@ -234,7 +310,7 @@
         {
             cell.iconMessageReadFlag.image = [UIImage imageNamed:@"message_icon_dot_red.png"];
         }
-        switch (dto.MessageType) {
+        switch (message.MessageType) {
                 
             case SystemMessage:
                 cell.imgMessageType.image = [UIImage imageNamed:@"message_icon_message_03.png"];
@@ -251,11 +327,11 @@
             default:
                 break;
         }
-        cell.lblMessageProvider.text = dto.SenderName;
-        cell.lblMessageDetail.text = dto.Context;
-        cell.lblMessageArriveTime.text = [self localizateMessageTime:dto.MessageTime];
-        cell.SenderId = dto.SenderId;
-        cell.MessageId = dto.MessageId;
+        cell.lblMessageProvider.text = message.SenderName;
+        cell.lblMessageDetail.text = message.Context;
+        cell.lblMessageArriveTime.text = [self localizateMessageTime:message.MessageTime];
+        cell.SenderId = message.SenderId;
+        cell.MessageId = message.MessageId;
     }
     
     return cell;
@@ -395,11 +471,11 @@
     }
 }
 
-- (BOOL)readAllMessage:(int)senderId withType:(int)messageType
+- (BOOL)readAllMessage:(NSString *)senderId withType:(int)messageType
 {
     @try
     {
-        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?read=&senderId=%d&messageType=%d",WEB_URL, senderId, messageType];
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?read=&senderId=%@&messageType=%d",WEB_URL, senderId, messageType];
         NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
         
         NSError *error;
@@ -449,9 +525,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
     FAMessage* item = dataSource[indexPath.row];
-    if([self readMessage:item.MessageId])
+    if([self readAllMessage:item.SenderId withType:item.MessageType])
     {
         item.ReadFlag = YES;
         

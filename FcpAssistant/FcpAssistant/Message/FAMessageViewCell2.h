@@ -20,7 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblMessageDetail;
 
-@property (nonatomic, assign) int SenderId;
+@property (nonatomic, copy) NSString *SenderId;
 
 @property (nonatomic, assign) int MessageId;
 

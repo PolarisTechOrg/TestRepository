@@ -287,6 +287,7 @@
 		849C564219D598BC0057C158 /* FAStrategyFilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C564119D598BC0057C158 /* FAStrategyFilterHeaderView.xib */; };
 		849C564519D598E00057C158 /* FAStrategyFilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */; };
 		849D177219E6376E00606066 /* FAQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D177119E6376D00606066 /* FAQueue.m */; };
+		84B7256219FE126500886D4A /* FAMessageEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7256119FE126500886D4A /* FAMessageEntry.m */; };
 		84BB86E519F5E332001E04A3 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB86BC19F5E332001E04A3 /* QQConnection.framework */; };
 		84BB86E619F5E332001E04A3 /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB86BD19F5E332001E04A3 /* QZoneConnection.framework */; };
 		84BB86E719F5E332001E04A3 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB86BE19F5E332001E04A3 /* SinaWeiboConnection.framework */; };
@@ -766,6 +767,8 @@
 		849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyFilterHeaderView.m; path = Strategy/Filter/FAStrategyFilterHeaderView.m; sourceTree = "<group>"; };
 		849D177019E6376D00606066 /* FAQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAQueue.h; path = Strategy/Operation/FAQueue.h; sourceTree = "<group>"; };
 		849D177119E6376D00606066 /* FAQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAQueue.m; path = Strategy/Operation/FAQueue.m; sourceTree = "<group>"; };
+		84B7256019FE126500886D4A /* FAMessageEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageEntry.h; path = Model/CustomModel/FAMessageEntry.h; sourceTree = "<group>"; };
+		84B7256119FE126500886D4A /* FAMessageEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageEntry.m; path = Model/CustomModel/FAMessageEntry.m; sourceTree = "<group>"; };
 		84BB86BC19F5E332001E04A3 /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
 		84BB86BD19F5E332001E04A3 /* QZoneConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QZoneConnection.framework; sourceTree = "<group>"; };
 		84BB86BE19F5E332001E04A3 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
@@ -1325,6 +1328,8 @@
 				8473D3B219DCE80D009A2D4D /* FAMessageDetail.m */,
 				8473D3B719DCF390009A2D4D /* FAMessage.h */,
 				8473D3B819DCF390009A2D4D /* FAMessage.m */,
+				84B7256019FE126500886D4A /* FAMessageEntry.h */,
+				84B7256119FE126500886D4A /* FAMessageEntry.m */,
 			);
 			name = CustormModel;
 			sourceTree = "<group>";
@@ -2556,6 +2561,7 @@
 				8403C56B19E95CEF0058B19F /* FALatedRecordHeaderViewCell.m in Sources */,
 				840DD88B19CD78900023885D /* FAStrategyDetailDescribHeaderView.m in Sources */,
 				591B320D19D7BA5400AE9F72 /* FAStationFundAccount.m in Sources */,
+				84B7256219FE126500886D4A /* FAMessageEntry.m in Sources */,
 				84844A4C19C96971001C2EC4 /* FAStrategySearchViewCell.m in Sources */,
 				84490BA819D3BB8000EA1850 /* FAStrategyModel.m in Sources */,
 				591EA2EA19BEED8400EED52C /* FAMyPurchaseDetailPositionHeaderView.m in Sources */,
