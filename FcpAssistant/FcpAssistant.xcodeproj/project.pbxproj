@@ -110,6 +110,9 @@
 		592B87C519C7BEC900B6EDF9 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592B87C319C7BEC900B6EDF9 /* icon@2x.png */; };
 		592C1EF519DD27E100D984B9 /* FAStrategyProfitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 592C1EF419DD27E100D984B9 /* FAStrategyProfitView.m */; };
 		5937B5E619FF1CAC002E3B54 /* FAGeTuiReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5937B5E519FF1CAC002E3B54 /* FAGeTuiReceiver.m */; };
+		5937B5E919FF62EE002E3B54 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5937B5E819FF62EE002E3B54 /* libz.dylib */; };
+		5937B5EB19FF6302002E3B54 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5937B5EA19FF6302002E3B54 /* libsqlite3.0.dylib */; };
+		5937B5EF19FF6F32002E3B54 /* FAGeTuiReceiverDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5937B5EE19FF6F32002E3B54 /* FAGeTuiReceiverDelegate.m */; };
 		5938186C19CFC44000AF8A46 /* FAWishlistDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938186B19CFC44000AF8A46 /* FAWishlistDto.m */; };
 		5938187219CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938187119CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.m */; };
 		5938187519D006A800AF8A46 /* FADummieStrategyViewModelDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5938187419D006A800AF8A46 /* FADummieStrategyViewModelDto.m */; };
@@ -508,6 +511,10 @@
 		592C1EF419DD27E100D984B9 /* FAStrategyProfitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyProfitView.m; path = CustomView/FAStrategyProfitView.m; sourceTree = "<group>"; };
 		5937B5E419FF1CAC002E3B54 /* FAGeTuiReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAGeTuiReceiver.h; path = GeTui/FAGeTuiReceiver.h; sourceTree = "<group>"; };
 		5937B5E519FF1CAC002E3B54 /* FAGeTuiReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAGeTuiReceiver.m; path = GeTui/FAGeTuiReceiver.m; sourceTree = "<group>"; };
+		5937B5E819FF62EE002E3B54 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5937B5EA19FF6302002E3B54 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		5937B5ED19FF6F32002E3B54 /* FAGeTuiReceiverDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAGeTuiReceiverDelegate.h; path = GeTui/FAGeTuiReceiverDelegate.h; sourceTree = "<group>"; };
+		5937B5EE19FF6F32002E3B54 /* FAGeTuiReceiverDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAGeTuiReceiverDelegate.m; path = GeTui/FAGeTuiReceiverDelegate.m; sourceTree = "<group>"; };
 		5938186A19CFC44000AF8A46 /* FAWishlistDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAWishlistDto.h; path = Model/ServerModel/FAWishlistDto.h; sourceTree = "<group>"; };
 		5938186B19CFC44000AF8A46 /* FAWishlistDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAWishlistDto.m; path = Model/ServerModel/FAWishlistDto.m; sourceTree = "<group>"; };
 		5938187019CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FADummieStrategyDetailViewModel.h; path = Model/ServerModel/FADummieStrategyDetailViewModel.h; sourceTree = "<group>"; };
@@ -840,6 +847,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5937B5EB19FF6302002E3B54 /* libsqlite3.0.dylib in Frameworks */,
+				5937B5E919FF62EE002E3B54 /* libz.dylib in Frameworks */,
 				84BB870C19F5E408001E04A3 /* Security.framework in Frameworks */,
 				84BB870A19F5E3FC001E04A3 /* libz.1.2.5.dylib in Frameworks */,
 				84BB870819F5E3EE001E04A3 /* libicucore.dylib in Frameworks */,
@@ -888,6 +897,7 @@
 		5903745319B80E8200F5B0C3 = {
 			isa = PBXGroup;
 			children = (
+				5937B5E719FF2322002E3B54 /* libs */,
 				591CF11F19FE43F50051F12F /* dist */,
 				84BB86BA19F5E332001E04A3 /* ShareSDK */,
 				5903746519B80E8200F5B0C3 /* FcpAssistant */,
@@ -909,6 +919,8 @@
 		5903745E19B80E8200F5B0C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5937B5EA19FF6302002E3B54 /* libsqlite3.0.dylib */,
+				5937B5E819FF62EE002E3B54 /* libz.dylib */,
 				84BB870B19F5E408001E04A3 /* Security.framework */,
 				84BB870919F5E3FC001E04A3 /* libz.1.2.5.dylib */,
 				84BB870719F5E3EE001E04A3 /* libicucore.dylib */,
@@ -1246,8 +1258,17 @@
 			children = (
 				5937B5E419FF1CAC002E3B54 /* FAGeTuiReceiver.h */,
 				5937B5E519FF1CAC002E3B54 /* FAGeTuiReceiver.m */,
+				5937B5ED19FF6F32002E3B54 /* FAGeTuiReceiverDelegate.h */,
+				5937B5EE19FF6F32002E3B54 /* FAGeTuiReceiverDelegate.m */,
 			);
 			name = GeTui;
+			sourceTree = "<group>";
+		};
+		5937B5E719FF2322002E3B54 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = libs;
 			sourceTree = "<group>";
 		};
 		5938186919CFC3B200AF8A46 /* ServerModel */ = {
@@ -2610,6 +2631,7 @@
 				84F2C75619D17420006EBFC4 /* FAStrategyDetailController.m in Sources */,
 				59EC7F1819B8515A00972C0A /* FATradeViewCell.m in Sources */,
 				591BB2C919E77450000AF684 /* FAMyPurchaseDetailOrderHeaderViewCell.m in Sources */,
+				5937B5EF19FF6F32002E3B54 /* FAGeTuiReceiverDelegate.m in Sources */,
 				59D53D1F19DBFD190070C644 /* FAMyStrategySignalDto.m in Sources */,
 				5918BFF819EB637500A1193B /* FAMySignalItemViewCell.m in Sources */,
 				59EC7EE919B8129200972C0A /* FAMainController.m in Sources */,
@@ -2810,6 +2832,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/dist";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -2822,6 +2845,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/dist",
 				);
+				"OTHER_LIBTOOLFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2850,6 +2874,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/dist";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -2862,6 +2887,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/dist",
 				);
+				"OTHER_LIBTOOLFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

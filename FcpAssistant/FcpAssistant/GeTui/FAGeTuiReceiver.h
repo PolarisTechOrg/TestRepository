@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FAGeTuiReceiver : NSObject
 
+@interface FAGeTuiReceiver : NSObject
+{
+    NSMutableArray *receiverList;
+}
+
++(instancetype) shareInstance;
+
+-(void) registerMessageReceiver:(id) receiver;
+-(void) receiveMessage:(NSString *)message;
 @end
