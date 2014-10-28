@@ -36,6 +36,7 @@
 {
     if ([super init])
     {
+        unReadCount = 0;
         [self loadUnReadMessageCount];
     }
     return self;
@@ -232,6 +233,7 @@
     entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
     entry.SenderName = dtoMessage.SenderName;
     entry.Context= dtoMessage.Context;
+    entry.ReadFlag = dtoMessage.ReadFlag;
     
     return entry;
 }
@@ -454,7 +456,7 @@
 {
     @try
     {
-        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?delete=&senderId=%@messageType=%d",WEB_URL, senderId, messageType];
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?delete=&senderId=%@&messageType=%d",WEB_URL, senderId, messageType];
         NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
         
         NSError *error;
@@ -520,7 +522,7 @@
 {
     @try
     {
-        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?readerrr=1&senderIdss=%@&messageType=%d", WEB_URL, senderId, messageType];
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?read=&senderId=%@&messageType=%d", WEB_URL, senderId, messageType];
 
         NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
         
