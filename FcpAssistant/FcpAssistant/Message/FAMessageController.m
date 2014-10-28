@@ -98,18 +98,8 @@
     {
         [dataSource addObjectsFromArray:messageList];
     }
-    
-    // Push Test
-    UIImage *shareButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_menu_white"];
-    UIBarButtonItem *pushButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doPush)];
-    
-    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:pushButton, nil];
 }
 
-- (void)doPush
-{
-    
-}
 
 -(void)initializeData
 {
