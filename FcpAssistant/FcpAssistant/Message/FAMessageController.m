@@ -63,7 +63,8 @@
 }
 
 - (void)loadUnReadMessageCount
-{NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?unRead", WEB_URL];
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?unRead", WEB_URL];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
@@ -215,6 +216,7 @@
     FAMessageEntry *entry = [[FAMessageEntry alloc] init];
     entry.SenderId = dtoMessage.SenderId;
     entry.MessageType = dtoMessage.MessageType;
+    entry.MessageId = dtoMessage.MessageId;
     entry.Date = dtoMessage.MessageTime;
     entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
     entry.SenderName = dtoMessage.SenderName;
@@ -225,11 +227,12 @@
 
 - (void)updateEntry:(FAMessageEntry *)entry withDtoMessage:(FAClientMessageDto *)dtoMessage
 {
-    entry.SenderName = dtoMessage.SenderName;
-    entry.Context = dtoMessage.Context;
+    entry.MessageId = dtoMessage.MessageId;
     entry.ReadFlag = dtoMessage.ReadFlag;
     entry.Date = dtoMessage.MessageTime;
     entry.DateString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
+    entry.SenderName = dtoMessage.SenderName;
+    entry.Context = dtoMessage.Context;
 }
 
 - (void)didReceiveMemoryWarning
@@ -295,14 +298,14 @@
     
     if(indexPath.row < dataSource.count)
     {
-        FAMessage *message = dataSource[indexPath.row];
+        FAMessageEntry *messageEntry = dataSource[indexPath.row];
        
-        if(!message)
+        if(!messageEntry)
         {
             return cell;
         }
 
-        if(message.ReadFlag)
+        if(messageEntry.ReadFlag)
         {
             cell.iconMessageReadFlag.image = [UIImage imageNamed:nil];
         }
@@ -310,7 +313,7 @@
         {
             cell.iconMessageReadFlag.image = [UIImage imageNamed:@"message_icon_dot_red.png"];
         }
-        switch (message.MessageType) {
+        switch (messageEntry.MessageType) {
                 
             case SystemMessage:
                 cell.imgMessageType.image = [UIImage imageNamed:@"message_icon_message_03.png"];
@@ -327,25 +330,25 @@
             default:
                 break;
         }
-        cell.lblMessageProvider.text = message.SenderName;
-        cell.lblMessageDetail.text = message.Context;
-        cell.lblMessageArriveTime.text = [self localizateMessageTime:message.MessageTime];
-        cell.SenderId = message.SenderId;
-        cell.MessageId = message.MessageId;
+        cell.lblMessageProvider.text = messageEntry.SenderName;
+        cell.lblMessageDetail.text = messageEntry.Context;
+        cell.lblMessageArriveTime.text = [FAFormater toShortTimeStringWithNSDate:messageEntry.Date];
+        cell.SenderId = messageEntry.SenderId;
+        cell.MessageId = messageEntry.MessageId;
     }
     
     return cell;
 }
 
-- (NSString *)localizateMessageTime:(NSDate *)messageTime
-{
-    NSString *des = [messageTime description];
-    
-    NSRange range = NSMakeRange(11, 8);
-    des = [des substringWithRange:range];
-    
-    return des;
-}
+//- (NSString *)localizateMessageTime:(NSDate *)messageTime
+//{
+//    NSString *des = [messageTime description];
+//    
+//    NSRange range = NSMakeRange(11, 8);
+//    des = [des substringWithRange:range];
+//    
+//    return des;
+//}
 
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
@@ -353,40 +356,6 @@
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
     return UIInterfaceOrientationPortrait;
-}
-
--(BOOL) deleteMessageItem:(int) messageId
-{
-    @try
-    {
-        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?delete=&messageId=%d",WEB_URL, messageId];
-        NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
-        
-        NSError *error;
-        FAHttpHead *httpHead = [FAHttpHead defaultInstance];
-        httpHead.Method = @"DELETE";
-        
-        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
-        NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
-        if(error == nil)
-        {
-            return YES;
-        }
-        else
-        {
-            NSException *ex = [[NSException alloc] initWithName:@"DeleteException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
-            @throw ex;
-        }
-    }
-    @catch (NSException *exception)
-    {
-        [FAUtility showAlterViewWithException:exception];
-        return NO;
-    }
-    @finally
-    {
-        
-    }
 }
 
 // Override to support conditional editing of the table view.
@@ -401,12 +370,12 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        FAMessage* item = dataSource[indexPath.row];
-        if([self deleteMessageItem:item.MessageId] == YES)
+        FAMessageEntry *item = dataSource[indexPath.row];
+        if([self deleteAllMessage:item.SenderId withType:item.MessageType])
         {
             if (!item.ReadFlag)
             {
-                unReadCount--;
+                [self loadUnReadMessageCount];
                 [self refreshUnReadCount];
             }
             
@@ -437,6 +406,72 @@
 }
 */
 
+-(BOOL) deleteMessageItem:(int) messageId
+{
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?delete=&messageId=%d",WEB_URL, messageId];
+        NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
+        
+        NSError *error;
+        FAHttpHead *httpHead = [FAHttpHead defaultInstance];
+        
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
+        NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
+        if(error == nil)
+        {
+            return YES;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"DeleteException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return NO;
+    }
+    @finally
+    {
+        
+    }
+}
+
+-(BOOL) deleteAllMessage:(NSString *)senderId withType:(int)messageType
+{
+    @try
+    {
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?delete=&senderId=%@messageType=%d",WEB_URL, senderId, messageType];
+        NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
+        
+        NSError *error;
+        FAHttpHead *httpHead = [FAHttpHead defaultInstance];
+        
+        NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
+        NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
+        if(error == nil)
+        {
+            return YES;
+        }
+        else
+        {
+            NSException *ex = [[NSException alloc] initWithName:@"DeleteException" reason: [NSString stringWithFormat:@"%ld",error.code] userInfo:error.userInfo];
+            @throw ex;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        [FAUtility showAlterViewWithException:exception];
+        return NO;
+    }
+    @finally
+    {
+        
+    }
+}
+
 - (BOOL)readMessage:(int)messageId
 {
     @try
@@ -446,7 +481,6 @@
         
         NSError *error;
         FAHttpHead *httpHead = [FAHttpHead defaultInstance];
-        httpHead.Method = @"GET";
         
         NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
         NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
@@ -475,12 +509,12 @@
 {
     @try
     {
-        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?read=&senderId=%@&messageType=%d",WEB_URL, senderId, messageType];
+        NSString * requestUrlStr =[[NSString alloc] initWithFormat:@"%@api/Message?readerrr=1&senderIdss=%@&messageType=%d", WEB_URL, senderId, messageType];
+
         NSURL * requestUrl =[NSURL URLWithString:requestUrlStr];
         
         NSError *error;
         FAHttpHead *httpHead = [FAHttpHead defaultInstance];
-        httpHead.Method = @"GET";
         
         NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHead httpBody:nil error: &error];
         NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding:NSUTF8StringEncoding]);
@@ -525,12 +559,12 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    FAMessage* item = dataSource[indexPath.row];
+    FAMessageEntry *item = dataSource[indexPath.row];
     if([self readAllMessage:item.SenderId withType:item.MessageType])
     {
         item.ReadFlag = YES;
         
-        unReadCount--;
+        [self loadUnReadMessageCount];
         [self refreshUnReadCount];
     }
     

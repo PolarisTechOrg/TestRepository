@@ -13,15 +13,18 @@
 
 @property(nonatomic, assign) NSString *SenderId;
 
+@property(nonatomic, copy) NSString *SenderName;
+
 @property(nonatomic, assign) ClientMessageType MessageType;
 
 @property(nonatomic, assign) BOOL ReadFlag;
 
+
+@property(nonatomic, assign) int MessageId;
+
 @property(nonatomic, copy) NSDate *Date;
 
 @property(nonatomic, copy) NSString *DateString;
-
-@property(nonatomic, copy) NSString *SenderName;
 
 @property(nonatomic, copy) NSString *Context;
 
