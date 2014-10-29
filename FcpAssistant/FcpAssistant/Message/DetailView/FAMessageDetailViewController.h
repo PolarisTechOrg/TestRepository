@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAGeTuiReceiverDelegate.h"
 
-@interface FAMessageDetailViewController : UITableViewController
+@interface FAMessageDetailViewController : UITableViewController<FAGeTuiReceiverDelegate>
 {
     NSString *itemHeaderCellIdentifier;
     NSString *itemCellIdentifier;
     
-    NSArray *dataSource;
+    NSMutableArray *dataSource;
+    NSMutableDictionary *dataDictionary;
     
     int totalSecitonIndex;
 }
@@ -21,5 +23,7 @@
 @property(nonatomic, copy) NSString *SendId;
 
 @property(nonatomic, assign) int MessageType;
+
+@property(nonatomic, assign) int MaxMessageId;
 
 @end

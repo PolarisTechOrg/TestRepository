@@ -28,6 +28,7 @@
 
 @synthesize SendId;
 @synthesize MessageType;
+@synthesize MaxMessageId;
 
 
 - (void)viewDidLoad {
@@ -38,24 +39,27 @@
     
     self.navigationItem.title = @"详情";   
     
-    dataSource = [self LoadDataFromServer:SendId withType:MessageType];
+    NSMutableArray *dtoArray = [self LoadDataFromServer:SendId withType:MessageType withMessageId:MaxMessageId];
+    
+    dataDictionary = [self analyzeDataFromServer:dtoArray];
+    if (dataSource == nil)
+    {
+        [dataSource removeAllObjects];
+    }
+    dataSource = [self formateDataArray:dataDictionary];
+    
+    // push test
+    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
+    UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithImage:collectionButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doCollection)];
+    
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:collectionButton, nil];
 }
 
-
--(void)initializeData
+// test push
+- (void)doCollection
 {
-    itemHeaderCellIdentifier = @"FAMessageDetailHeaderCell";
-    
-    itemCellIdentifier = @"FAMessageDetailCell";
-}
-
--(void)registerXibFile
-{
-    UINib *headerCellNib = [UINib nibWithNibName:@"FAMessageDetailHeaderViewCell" bundle:nil];
-    [self.tableView registerNib:headerCellNib forCellReuseIdentifier:itemHeaderCellIdentifier];
-    
-    UINib *cellNib = [UINib nibWithNibName:@"FAMessageDetailViewCell2" bundle:nil];
-    [self.tableView registerNib:cellNib forCellReuseIdentifier:itemCellIdentifier];
+    [self viewDidLoad];
+    [self viewWillAppear:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,31 +67,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSArray *)LoadDataFromServer:(NSString *)sendId withType:(int)messageType
-{
-    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?senderId=%@&messageType=%d", WEB_URL, sendId, messageType];
-    
-    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-    
-    NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-    
-    if(error == nil)
-    {
-        NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
-        NSArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
-        
-        // sort
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:NO];
-        [messageArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
-        
-        return  messageArray;
-    }
-    else
-    {
-        return nil;
-    }
-}
+
+#pragma mark - Table view data source
+
 
 - (CGSize)getDescriptionHeight:(NSString *)content
 {
@@ -98,65 +80,6 @@
     
     return labelSize;
 }
-
-- (NSArray *)analyzeDataFromServer:(NSArray *)data
-{
-    if(data == nil || data.count == 0)
-    {
-        return nil;
-    }
-    
-//    NSMutableArray *detailArray = [NSMutableArray arrayWithCapacity:128];
-    NSMutableDictionary *detailDict = [NSMutableDictionary dictionaryWithCapacity:128];
-    
-    for(id item in data)
-    {
-        if(!item)
-        {
-            continue;
-        }
-        
-        FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
-        FAMessage *message = [[FAMessage alloc] init];
-        message.ReadFlag = dtoMessage.ReadFlag;
-        message.MessageId = dtoMessage.MessageId;
-        message.MessageType = dtoMessage.MessageType;
-        message.SenderId = dtoMessage.SenderId;
-        message.SenderName = dtoMessage.SenderName;
-        message.MessageTime = dtoMessage.MessageTime;
-        message.MessageTimeString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
-        message.Context = dtoMessage.Context;
-        
-        NSString *dateString = [self generateDate:dtoMessage.MessageTime];
-        
-        if([detailDict objectForKey:dateString])
-        {
-            FAMessageDetail *detailTemp = (FAMessageDetail *)[detailDict objectForKey:dateString];
-            [detailTemp.DetailList addObject:message];
-        }
-        else
-        {
-            FAMessageDetail *detail = [[FAMessageDetail alloc] init];
-            detail.SenderId = message.SenderId;
-            detail.MessageType = message.MessageType;
-            detail.Date = message.MessageTime;
-            detail.DateString = dateString;
-            detail.DetailList = [[NSMutableArray alloc] init];
-            [detail.DetailList addObject:message];
-            
-            [detailDict setObject:detail forKey:dateString];
-        }
-    }
-    
-    return [detailDict allValues];
-}
-
-- (NSString *)generateDate:(NSDate *)date
-{
-    return [[date description] substringToIndex:10];
-}
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
@@ -175,7 +98,7 @@
     }
     else
     {
-        FAMessageDetail *detail = (FAMessageDetail *)dataSource[section-1];
+        FAMessageDetail *detail = (FAMessageDetail *)dataSource[(section-1)/2];
         return detail.DetailList.count;
     }
 }
@@ -198,6 +121,15 @@
 
 - (void)showContent:(FAMessageDetailViewCell2 *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (!indexPath.section > 0)
+    {
+        return;
+    }
+    if (indexPath.section > dataSource.count)
+    {
+        return;
+    }
+    
     FAMessageDetail *detail = (FAMessageDetail *)dataSource[indexPath.section-1]; // section > 0
     FAMessage *message = (FAMessage *)detail.DetailList[indexPath.row];
     
@@ -327,5 +259,142 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+#pragma mark - Private tool function
+-(void)initializeData
+{
+    itemHeaderCellIdentifier = @"FAMessageDetailHeaderCell";
+    
+    itemCellIdentifier = @"FAMessageDetailCell";
+}
+
+-(void)registerXibFile
+{
+    UINib *headerCellNib = [UINib nibWithNibName:@"FAMessageDetailHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:headerCellNib forCellReuseIdentifier:itemHeaderCellIdentifier];
+    
+    UINib *cellNib = [UINib nibWithNibName:@"FAMessageDetailViewCell2" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:itemCellIdentifier];
+}
+
+-(NSMutableArray *)LoadDataFromServer:(NSString *)sendId withType:(int)messageType withMessageId:(int)maxMessageId
+{
+    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?senderId=%@&messageType=%d&beginId=%d", WEB_URL, sendId, messageType, maxMessageId];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoObjArray =[FAJSONSerialization toArray:[FAClientMessageDto class] fromData:replyData];
+        
+        return [NSMutableArray arrayWithArray:dtoObjArray];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (NSMutableDictionary *)analyzeDataFromServer:(NSArray *)data
+{
+    if(dataDictionary == nil)
+    {
+        dataDictionary = [NSMutableDictionary dictionaryWithCapacity:64];
+    }
+    
+    if (data)
+    {
+        for(id item in data)
+        {
+            if(!item)
+            {
+                continue;
+            }
+            
+            FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
+            FAMessage *message = [self createMessage:dtoMessage];
+            
+            NSString *dateString = [FAFormater toShortDateStringWithNSDate:dtoMessage.MessageTime];
+            
+            if([dataDictionary objectForKey:dateString])
+            {
+                FAMessageDetail *detailTemp = (FAMessageDetail *)[dataDictionary objectForKey:dateString];
+                
+                [self updateMessageDetail:detailTemp withMessage:message];
+            }
+            else
+            {
+                FAMessageDetail *detail = [self createMessageDetail:message];
+                
+                [dataDictionary setObject:detail forKey:dateString];
+            }
+        }
+    }
+    
+    return dataDictionary;//[NSMutableArray arrayWithArray:[dataDictionary allValues]];
+}
+
+- (NSMutableArray *)formateDataArray:(NSMutableDictionary *)dataDict
+{
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[dataDictionary allValues]];
+    [self sortArray:array withKey:@"Date" ascending:NO];
+    
+    return array;
+}
+
+- (void)sortArray:(NSArray *)array withKey:(NSString *)key ascending:(BOOL)ascend
+{
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:key ascending:ascend];
+    [array sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+}
+
+- (void)updateMessageDetail:(FAMessageDetail *)detail withMessage:(FAMessage *)message
+{
+    detail.Date = message.MessageTime;
+    detail.DateString = [FAFormater toShortDateStringWithNSDate:message.MessageTime];
+    [detail.DetailList addObject:message];
+    
+    [self sortArray:detail.DetailList withKey:@"MessageTime" ascending:NO];
+}
+
+- (FAMessageDetail *)createMessageDetail:(FAMessage *)message
+{
+    FAMessageDetail *detail = [[FAMessageDetail alloc] init];
+    
+    detail.SenderId = message.SenderId;
+    detail.MessageType = message.MessageType;
+    detail.Date = message.MessageTime;
+    detail.DateString = [FAFormater toShortDateStringWithNSDate:message.MessageTime];
+    detail.DetailList = [[NSMutableArray alloc] init];
+    [detail.DetailList addObject:message];
+    
+    return detail;
+}
+
+- (FAMessage *)createMessage:(FAClientMessageDto *)dtoMessage
+{
+    FAMessage *message = [[FAMessage alloc] init];
+    
+    message.ReadFlag = dtoMessage.ReadFlag;
+    message.MessageId = dtoMessage.MessageId;
+    message.MessageType = dtoMessage.MessageType;
+    message.SenderId = dtoMessage.SenderId;
+    message.SenderName = dtoMessage.SenderName;
+    message.MessageTime = dtoMessage.MessageTime;
+    message.MessageTimeString = [FAFormater toShortTimeStringWithNSDate:dtoMessage.MessageTime];
+    message.Context = dtoMessage.Context;
+    
+    return message;
+}
+
+- (void)receivePushMessage:(NSString *)message
+{
+    [self viewDidLoad];
+    [self viewWillAppear:YES];
+}
 
 @end
