@@ -58,13 +58,29 @@
     
     self.navigationItem.title = unReadCount == 0 ? @"消息" : [NSMutableString stringWithFormat:@"消息(%d)", unReadCount];
     
-    dataDictionary = [NSMutableDictionary dictionaryWithCapacity:8];
+    if(!dataDictionary)
+    {
+        dataDictionary = [NSMutableDictionary dictionaryWithCapacity:8];
+    }
     dataSource = [[NSMutableArray alloc] init];
     
     NSMutableArray *messageList = [self LoadMessageDataFromServer];
+    NSMutableArray *entryList = [self analyzeDataFromServer:messageList];
     
     [dataSource removeAllObjects];
-    [dataSource addObjectsFromArray:messageList];
+    [dataSource addObjectsFromArray:entryList];
+    
+    // push test
+    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
+    UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithImage:collectionButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doCollection)];
+    
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:collectionButton, nil];
+}
+
+// test push
+- (void)doCollection
+{
+    [self viewWillAppear:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,11 +96,8 @@
         return;
     }
     
-    if (dataSource == nil || dataSource.count == 0)
-    {
-        [self loadUnReadMessageCount];
-        [self viewDidLoad];
-    }
+    [self loadUnReadMessageCount];
+    [self viewDidLoad];
     
     [self.tableView reloadData];
 }
@@ -312,13 +325,7 @@
             [dtoMessageArray addObject:dtoMessage];
         }
         
-        NSMutableArray *messageArray = [self analyzeDataFromServer:dtoObjArray];
-        
-        // sort
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Date" ascending:NO];
-        [messageArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
-        
-        return  messageArray;
+        return  dtoMessageArray;
     }
     else
     {
@@ -326,68 +333,104 @@
     }
 }
 
+// <MessageType, <SenderId, FAMessageEntry>>
 - (NSMutableArray *)analyzeDataFromServer:(NSArray *)data
 {
-    if(data == nil || data.count == 0)
+    if(data)
     {
-        return nil;
-    }
-    
-    NSMutableArray *entryArray = [NSMutableArray arrayWithCapacity:32];
-//    NSMutableDictionary *typeDict = [NSMutableDictionary dictionaryWithCapacity:8];
-    
-    for(id item in data)
-    {
-        if(!item)
+        for(id item in data)
         {
-            continue;
-        }
-        
-        FAMessageEntry *entry = nil;
-        NSMutableDictionary *senderDict = nil;
-        FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
-        NSNumber *typeKey = [NSNumber numberWithInt:(int)dtoMessage.MessageType];
-        
-        // update maxMessageId
-        if (maxMessageId < dtoMessage.MessageId)
-        {
-            maxMessageId = dtoMessage.MessageId;
-        }
-        
-        // update dictionary and array
-        if([dataDictionary objectForKey:typeKey])
-        {
-            senderDict = (NSMutableDictionary *)[dataDictionary objectForKey:typeKey];
-            
-            entry = (FAMessageEntry *)[senderDict objectForKey:dtoMessage.SenderId];
-            if (entry)
+            if(!item)
             {
-                if(dtoMessage.MessageTime > entry.Date)
+                continue;
+            }
+            
+            FAMessageEntry *entry = nil;
+            NSMutableDictionary *senderDict = nil;
+            FAClientMessageDto *dtoMessage = (FAClientMessageDto *)item;
+            NSNumber *typeKey = [NSNumber numberWithInt:(int)dtoMessage.MessageType];
+            
+            // update maxMessageId
+            if (maxMessageId < dtoMessage.MessageId)
+            {
+                maxMessageId = dtoMessage.MessageId;
+            }
+            
+            // update dictionary and array
+            if([dataDictionary objectForKey:typeKey])
+            {
+                senderDict = (NSMutableDictionary *)[dataDictionary objectForKey:typeKey];
+                
+                entry = (FAMessageEntry *)[senderDict objectForKey:dtoMessage.SenderId];
+                if (entry)
                 {
-                    [self updateEntry:entry withDtoMessage:dtoMessage];
-                    
+                    if(dtoMessage.MessageTime > entry.Date)
+                    {
+                        [self updateEntry:entry withDtoMessage:dtoMessage];
+                        [senderDict setObject:entry forKey:entry.SenderId];
+                    }
+                }
+                else
+                {
+                    entry = [self createEntry:dtoMessage];
                     [senderDict setObject:entry forKey:entry.SenderId];
-                    [entryArray addObject:entry];
                 }
             }
             else
             {
                 entry = [self createEntry:dtoMessage];
                 senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
-                
                 [senderDict setObject:entry forKey:entry.SenderId];
-                [entryArray addObject:entry];
+                
+                [dataDictionary setObject:senderDict forKey:typeKey];
             }
         }
-        else
+    }
+    
+    // to entryArray
+    NSMutableArray *entryArray = [self formateDataArray:dataDictionary];
+    
+    // sort
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Date" ascending:NO];
+    [entryArray sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    
+    return entryArray;
+}
+
+- (NSMutableArray *)formateDataArray:(NSMutableDictionary *)dataDict
+{
+    NSMutableArray *entryArray = [NSMutableArray arrayWithCapacity:32];
+    
+    NSArray *keys = [dataDict allKeys];
+    if ((NSNull *)keys == [NSNull null])
+    {
+        return entryArray;
+    }
+    
+    for (NSNumber *messageType in keys)
+    {
+        NSMutableDictionary *subDict = (NSMutableDictionary *)[dataDict objectForKey:messageType];
+        
+        if ((NSNull *)subDict == [NSNull null])
         {
-            entry = [self createEntry:dtoMessage];
-            senderDict = [NSMutableDictionary dictionaryWithCapacity:32];
+            continue;
+        }
+        
+        NSArray *subKeys = [subDict allKeys];
+        if((NSNull *)subKeys == [NSNull null])
+        {
+            continue;
+        }
+        
+        for (NSString *senderId in subKeys)
+        {
+            FAMessageEntry *entry = (FAMessageEntry *)[subDict objectForKey:senderId];
+            if (entry == nil)
+            {
+                continue;
+            }
             
-            [senderDict setObject:entry forKey:entry.SenderId];
             [entryArray addObject:entry];
-            
-            [dataDictionary setObject:senderDict forKey:typeKey];
         }
     }
     
@@ -504,7 +547,6 @@
     }
     @finally
     {
-        
     }
 }
 
@@ -537,7 +579,6 @@
     }
     @finally
     {
-        
     }
 }
 
@@ -570,7 +611,6 @@
     }
     @finally
     {
-        
     }
 }
 
@@ -604,13 +644,12 @@
     }
     @finally
     {
-        
     }
 }
 
 - (void)receivePushMessage:(NSString *)message
 {
-    
+    [self viewWillAppear:YES];
 }
 
 @end

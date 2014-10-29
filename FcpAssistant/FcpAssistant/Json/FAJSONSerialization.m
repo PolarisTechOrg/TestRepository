@@ -36,7 +36,7 @@
     
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     
-    if(jsonDict == nil || jsonDict.count == 0)
+    if((NSNull *)jsonDict == [NSNull null])
     {
         return [NSArray array];
     }
