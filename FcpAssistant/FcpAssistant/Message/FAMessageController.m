@@ -501,7 +501,14 @@
         unReadCount = 0;
     }
     
-    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
+    if (unReadCount > 0)
+    {
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", unReadCount];
+    }
+    else
+    {
+        self.tabBarItem.badgeValue = nil;
+    }
 }
 
 - (void)refreshUnReadCount

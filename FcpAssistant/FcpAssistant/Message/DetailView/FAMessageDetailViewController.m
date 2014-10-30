@@ -42,7 +42,7 @@
     NSMutableArray *dtoArray = [self LoadDataFromServer:SendId withType:MessageType withMessageId:MaxMessageId];
     
     dataDictionary = [self analyzeDataFromServer:dtoArray];
-    if (dataSource == nil)
+    if (dataSource != nil)
     {
         [dataSource removeAllObjects];
     }
@@ -59,7 +59,7 @@
 - (void)doCollection
 {
     [self viewDidLoad];
-    [self viewWillAppear:YES];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,16 +105,7 @@
 
 - (void)showHeader:(FAMessageDetailHeaderViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FAMessageDetail *detail;
-    
-    if(indexPath.section == 0)
-    {
-        detail = (FAMessageDetail *)dataSource[indexPath.section];
-    }
-    else if(indexPath.section < dataSource.count)
-    {
-        detail = (FAMessageDetail *)dataSource[indexPath.section-1];
-    }
+    FAMessageDetail *detail = (FAMessageDetail *)dataSource[(indexPath.section)/2];
     
     if(detail)
     {
@@ -124,15 +115,7 @@
 
 - (void)showContent:(FAMessageDetailViewCell2 *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!indexPath.section > 0)
-    {
-        return;
-    }
-    if (indexPath.section > dataSource.count-1)
-    {
-        return;
-    }
-    FAMessageDetail *detail = (FAMessageDetail *)dataSource[indexPath.section-1]; // section > 0
+    FAMessageDetail *detail = (FAMessageDetail *)dataSource[(indexPath.section-1)/2];
     
     if (indexPath.row > detail.DetailList.count-1)
     {
@@ -327,18 +310,22 @@
             
             NSString *dateString = [FAFormater toShortDateStringWithNSDate:dtoMessage.MessageTime];
             
+            FAMessageDetail *detail = nil;
             if([dataDictionary objectForKey:dateString])
             {
-                FAMessageDetail *detailTemp = (FAMessageDetail *)[dataDictionary objectForKey:dateString];
+                detail = (FAMessageDetail *)[dataDictionary objectForKey:dateString];
                 
-                [self updateMessageDetail:detailTemp withMessage:message];
+                [self updateMessageDetail:detail withMessage:message];
             }
             else
             {
-                FAMessageDetail *detail = [self createMessageDetail:message];
+                detail = [self createMessageDetail:message];
                 
                 [dataDictionary setObject:detail forKey:dateString];
             }
+            
+            NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"MessageTime" ascending:NO];
+            [detail.DetailList sortUsingDescriptors:[NSArray arrayWithObject:sort]];
         }
     }
     
@@ -348,7 +335,9 @@
 - (NSMutableArray *)formateDataArray:(NSMutableDictionary *)dataDict
 {
     NSMutableArray *array = [NSMutableArray arrayWithArray:[dataDictionary allValues]];
-    [self sortArray:array withKey:@"Date" ascending:NO];
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Date" ascending:NO];
+    [array sortUsingDescriptors:[NSArray arrayWithObject:sort]];
     
     return array;
 }
