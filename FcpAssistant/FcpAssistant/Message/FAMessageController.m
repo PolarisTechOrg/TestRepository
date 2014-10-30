@@ -62,7 +62,7 @@
     {
         dataDictionary = [NSMutableDictionary dictionaryWithCapacity:8];
     }
-    dataSource = [[NSMutableArray alloc] init];
+    dataSource = [NSMutableArray arrayWithCapacity:32];
     
     NSMutableArray *messageList = [self LoadMessageDataFromServer];
     NSMutableArray *entryList = [self analyzeDataFromServer:messageList];
