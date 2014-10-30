@@ -14,14 +14,19 @@
 
 @implementation FAStrategyFilterController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.title = @"策略筛选";
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    self.navigationItem.rightBarButtonItem = doneButton;
+}
+
+- (void)clickRightButton
+{
+    NSLog(@"click doneButton");
 }
 
 - (void)didReceiveMemoryWarning {
