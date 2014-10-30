@@ -71,15 +71,15 @@
 #pragma mark - Table view data source
 
 
-- (CGSize)getDescriptionHeight:(NSString *)content
-{
-    UIFont *font = [UIFont systemFontOfSize:12];
-    CGSize size = CGSizeMake(320, 100);
-    
-    CGSize labelSize = [content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeCharacterWrap];
-    
-    return labelSize;
-}
+//- (CGSize)getDescriptionHeight:(NSString *)content
+//{
+//    UIFont *font = [UIFont systemFontOfSize:12];
+//    CGSize size = CGSizeMake(320, 100);
+//    
+//    CGSize labelSize = [content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeCharacterWrap];
+//    
+//    return labelSize;
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
@@ -111,12 +111,15 @@
     {
         detail = (FAMessageDetail *)dataSource[indexPath.section];
     }
-    else
+    else if(indexPath.section < dataSource.count)
     {
         detail = (FAMessageDetail *)dataSource[indexPath.section-1];
     }
     
-    cell.lblMessageDate.text = detail.DateString;
+    if(detail)
+    {
+        cell.lblMessageDate.text = detail.DateString;
+    }
 }
 
 - (void)showContent:(FAMessageDetailViewCell2 *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,12 +128,16 @@
     {
         return;
     }
-    if (indexPath.section > dataSource.count)
+    if (indexPath.section > dataSource.count-1)
     {
         return;
     }
-    
     FAMessageDetail *detail = (FAMessageDetail *)dataSource[indexPath.section-1]; // section > 0
+    
+    if (indexPath.row > detail.DetailList.count-1)
+    {
+        return;
+    }
     FAMessage *message = (FAMessage *)detail.DetailList[indexPath.row];
     
     cell.lblTextBody.text = message.Context;
