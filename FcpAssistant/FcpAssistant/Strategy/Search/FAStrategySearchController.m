@@ -25,7 +25,6 @@
 @implementation FAStrategySearchController
 
 @synthesize listTeams;
-@synthesize listFilterTeams;
 @synthesize barStrategySearch;
 
 
@@ -38,6 +37,7 @@
     barStrategySearch.delegate = self;
     
     listTeams = [NSMutableArray arrayWithCapacity:32];
+    [listTeams addObject:@"热搜词"];
     [listTeams addObjectsFromArray:[self loadDataFromServer]];
 }
 
@@ -114,24 +114,9 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSMutableArray *strategySource = [NSMutableArray arrayWithArray:[self searchStrategyData:searchBar.text]];
-    
-    FAStrategyController *controller = [[FAStrategyController alloc] init];
-    controller.dataSource = strategySource;
-    
-//    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
+    [self doSearch:searchBar.text];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -167,21 +152,20 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return;
+    }
     
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self doSearch:listTeams[indexPath.row]];
 }
-*/
+
 
 /*
 #pragma mark - Navigation
@@ -254,6 +238,18 @@
     {
         return nil;
     }
+}
+
+- (void)doSearch:(NSString *)content
+{
+    
+    NSMutableArray *strategySource = [NSMutableArray arrayWithArray:[self searchStrategyData:content]];
+    
+    FAStrategyController *controller = [[FAStrategyController alloc] init];
+    controller.dataSource = strategySource;
+    
+    //    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
