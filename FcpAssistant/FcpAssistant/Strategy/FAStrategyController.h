@@ -15,8 +15,8 @@
     
     NSString *itemCellIdentifier;
     
-    NSMutableArray *dataSource;
-        
+//    NSMutableArray *dataSource;
+    
     FAQueue *dataQueue;
         
     NSMutableDictionary *chartDict;
@@ -27,5 +27,7 @@
     
     BOOL hasLoadStrategyIdList;
 }
+
+@property NSMutableArray *dataSource;
 
 @end

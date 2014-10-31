@@ -6,13 +6,16 @@
 //  Copyright (c) 2014 polaris. All rights reserved.
 //
 
-#import "FAStrategyDetailController.h"
+#import "FAStrategyController.h"
 #import "FAStrategySearchHeaderViewCell.h"
 #import "FAStrategySearchViewCell.h"
 #import "FAStrategySearchController.h"
 #import "FAJSONSerialization.h"
 #import "FAHttpUtility.h"
 #import "FAFoundation.h"
+
+#import "FAStrategySearchDto.h"
+#import "FADummieStrategyDetailViewModel.h"
 
 
 @interface FAStrategySearchController ()
@@ -100,6 +103,7 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
+    searchBar.text = nil;
     return YES;
 }
 
@@ -110,14 +114,13 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSString *text = searchBar.text;
-    NSLog(@"search button pressed! %@", text);
+    NSMutableArray *strategySource = [NSMutableArray arrayWithArray:[self searchStrategyData:searchBar.text]];
     
-    FAStrategyDetailController *detailController = [[FAStrategyDetailController alloc] init];
-    detailController.strategyId = 467;
+    FAStrategyController *controller = [[FAStrategyController alloc] init];
+    controller.dataSource = strategySource;
     
-    detailController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailController animated:YES];
+//    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 /*
@@ -217,7 +220,33 @@
     
     if(error == nil)
     {
-        NSArray *dtoArray =[FAJSONSerialization toArray:[NSArray class] fromData:replyData];
+        NSArray *dtoArray =[FAJSONSerialization toArray:nil fromData:replyData];
+        
+        return  dtoArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (NSArray *)searchStrategyData:(NSString *)content
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?search", WEB_URL];
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    FAHttpHead *head = [FAHttpHead defaultInstance];
+    head.Method = @"POST";
+    
+    FAStrategySearchDto *body = [[FAStrategySearchDto alloc] init];
+    body.SearchText = content;
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoArray =[FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
         
         return  dtoArray;
     }

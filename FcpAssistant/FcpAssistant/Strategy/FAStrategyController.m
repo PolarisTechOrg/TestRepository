@@ -36,7 +36,8 @@
 
 @implementation FAStrategyController
 
-#pragma mark - custom function
+@synthesize dataSource;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -58,11 +59,15 @@
 //    hasLoadStrategyIdList = NO;
     currentPageIndex = 1;
     
-    dataSource = [[NSMutableArray alloc] init];
-    NSArray *strategyList = [self loadDataFromServer:currentPageIndex];
-    if(strategyList != nil && strategyList.count > 0)
+    if (dataSource == nil)
     {
-        [dataSource addObjectsFromArray:strategyList];
+        dataSource = [[NSMutableArray alloc] init];
+        
+        NSArray *strategyList = [self loadDataFromServer:currentPageIndex];
+        if(strategyList != nil && strategyList.count > 0)
+        {
+            [dataSource addObjectsFromArray:strategyList];
+        }
     }
     
     chartDict = [self loadChartData:dataSource];

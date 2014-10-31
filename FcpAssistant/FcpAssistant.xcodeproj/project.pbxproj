@@ -255,6 +255,7 @@
 		8473D3BB19DD59E3009A2D4D /* tmp_strtegy_lasted.png in Resources */ = {isa = PBXBuildFile; fileRef = 8473D3BA19DD59E3009A2D4D /* tmp_strtegy_lasted.png */; };
 		8475AF051A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475AF031A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m */; };
 		8475AF061A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8475AF041A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib */; };
+		8475AF091A031CDE001DD7E4 /* FAStrategySearchDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475AF081A031CDE001DD7E4 /* FAStrategySearchDto.m */; };
 		84763F1719EF533400CF0BBD /* FAStrategyCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84763F1619EF533400CF0BBD /* FAStrategyCollectionModel.m */; };
 		84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A3B19C96899001C2EC4 /* FAStrategyFilterController.m */; };
 		84844A3E19C96899001C2EC4 /* FAStrategyFilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A3C19C96899001C2EC4 /* FAStrategyFilterController.xib */; };
@@ -723,6 +724,8 @@
 		8475AF021A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategySearchHeaderViewCell.h; path = Strategy/Search/FAStrategySearchHeaderViewCell.h; sourceTree = "<group>"; };
 		8475AF031A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategySearchHeaderViewCell.m; path = Strategy/Search/FAStrategySearchHeaderViewCell.m; sourceTree = "<group>"; };
 		8475AF041A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategySearchHeaderViewCell.xib; path = Strategy/Search/FAStrategySearchHeaderViewCell.xib; sourceTree = "<group>"; };
+		8475AF071A031CDE001DD7E4 /* FAStrategySearchDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategySearchDto.h; path = Model/ServerModel/FAStrategySearchDto.h; sourceTree = "<group>"; };
+		8475AF081A031CDE001DD7E4 /* FAStrategySearchDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategySearchDto.m; path = Model/ServerModel/FAStrategySearchDto.m; sourceTree = "<group>"; };
 		84763F1519EF533400CF0BBD /* FAStrategyCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyCollectionModel.h; path = Model/ServerModel/FAStrategyCollectionModel.h; sourceTree = "<group>"; };
 		84763F1619EF533400CF0BBD /* FAStrategyCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyCollectionModel.m; path = Model/ServerModel/FAStrategyCollectionModel.m; sourceTree = "<group>"; };
 		84844A3A19C96899001C2EC4 /* FAStrategyFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyFilterController.h; path = Strategy/Filter/FAStrategyFilterController.h; sourceTree = "<group>"; };
@@ -1343,6 +1346,8 @@
 				59147A2919EE884E009E2128 /* FAForgotPasswordModel.m */,
 				84763F1519EF533400CF0BBD /* FAStrategyCollectionModel.h */,
 				84763F1619EF533400CF0BBD /* FAStrategyCollectionModel.m */,
+				8475AF071A031CDE001DD7E4 /* FAStrategySearchDto.h */,
+				8475AF081A031CDE001DD7E4 /* FAStrategySearchDto.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -2586,6 +2591,7 @@
 				59137A3919BE8C10001F4977 /* FAMyPositionController.m in Sources */,
 				591B321019D7D8C200AE9F72 /* FAStationAccount.m in Sources */,
 				840DD89C19CD7CF90023885D /* FAMessageDetailViewController.m in Sources */,
+				8475AF091A031CDE001DD7E4 /* FAStrategySearchDto.m in Sources */,
 				5903746C19B80E8200F5B0C3 /* main.m in Sources */,
 				5938187219CFC7D200AF8A46 /* FADummieStrategyDetailViewModel.m in Sources */,
 				8403C56B19E95CEF0058B19F /* FALatedRecordHeaderViewCell.m in Sources */,
