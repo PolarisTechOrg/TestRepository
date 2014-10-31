@@ -7,12 +7,17 @@
 //
 
 #import "FAStrategyFilterController.h"
+#import "FAJSONSerialization.h"
 
 @interface FAStrategyFilterController ()
 
 @end
 
 @implementation FAStrategyFilterController
+
+@synthesize pricePartenSource;
+@synthesize varietiesSource;
+
 
 - (void)viewDidLoad
 {
@@ -117,5 +122,42 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Private tool function
+-(void)initializeData
+{
+    itemCellIdentifier = @"FAStrategyFilterCell";
+    itemHeaderCellIdentifier = @"FAStrategyFilterHeaderCell";
+}
+
+-(void)registerXibFile
+{
+    UINib *itemHeaderCellNib = [UINib nibWithNibName:@"FAStrategySearchHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:itemHeaderCellNib forCellReuseIdentifier:itemHeaderCellIdentifier];
+    
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategySearchViewCell" bundle:nil];
+    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
+}
+
+//- (NSArray *)loadDataFromServer
+//{
+//    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/StrategySearch?hotwords", WEB_URL];
+//    
+//    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+//    
+//    NSError *error;
+//    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+//    
+//    if(error == nil)
+//    {
+//        NSArray *dtoArray =[FAJSONSerialization toArray:nil fromData:replyData];
+//        
+//        return  dtoArray;
+//    }
+//    else
+//    {
+//        return nil;
+//    }
+//}
 
 @end
