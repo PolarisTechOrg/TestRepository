@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAGeTuiReceiverDelegate.h"
 
-@interface FAMessageController : UITableViewController
+@interface FAMessageController : UITableViewController<FAGeTuiReceiverDelegate>
 {
     NSString *itemCellIdentifier;
     
     NSMutableArray *dataSource;
+    
+    NSMutableDictionary *dataDictionary;
 }
 
 @property(nonatomic, assign) int unReadCount;
+
+@property(nonatomic, assign) int maxMessageId;
 
 @end

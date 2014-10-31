@@ -6,7 +6,14 @@
 //  Copyright (c) 2014 polaris. All rights reserved.
 //
 
+#import "FAStrategyDetailController.h"
+#import "FAStrategySearchHeaderViewCell.h"
+#import "FAStrategySearchViewCell.h"
 #import "FAStrategySearchController.h"
+#import "FAJSONSerialization.h"
+#import "FAHttpUtility.h"
+#import "FAFoundation.h"
+
 
 @interface FAStrategySearchController ()
 
@@ -14,122 +21,104 @@
 
 @implementation FAStrategySearchController
 
+@synthesize listTeams;
+@synthesize listFilterTeams;
+@synthesize barStrategySearch;
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initializeData];
+    [self registerXibFile];
     
-    // 设定搜索栏ScopeBar
-    [self.barStrategySearch setShowsScopeBar:YES];
-//    [self.barSearchStrategy sizeToFit];
-    [self.barStrategySearch becomeFirstResponder];
-//    NSBundle *bundle = [NSBundle mainBundle];
-//    NSString *plistPath = [bundle pathForResource:@"team" ofType:@"plist"];
-    //获取属性列表文件中的全部数据
-//    self.listTeams = [[NSArray alloc] initWithContentsOfFile:plistPath];
+    barStrategySearch.delegate = self;
     
-    //初次进入查询所有数据
-//    [self filterContentForSearchText:@"" scope:-1];
+    listTeams = [NSMutableArray arrayWithCapacity:32];
+    [listTeams addObjectsFromArray:[self loadDataFromServer]];
 }
 
-- (void)viewDidUnload
+
+#pragma mark --Table View data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super viewDidUnload];
+    return 1;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-
-#pragma mark Content Filtering
-- (void)filterContentForSearchText:(NSString*)searchText  scope:(NSUInteger)scope
-{
-    
-    if([searchText length]==0)
-    {
-        //查询所有
-        self.listFilterTeams = [NSMutableArray arrayWithArray:self.listTeams];
-        return;
-    }
-    
-    NSPredicate *scopePredicate;
-    NSArray *tempArray ;
-    
-    switch (scope) {
-        case 0: //英文
-            scopePredicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@",searchText];
-            tempArray =[self.listTeams filteredArrayUsingPredicate:scopePredicate];
-            self.listFilterTeams = [NSMutableArray arrayWithArray:tempArray];
-            
-            break;
-        case 1:
-            scopePredicate = [NSPredicate predicateWithFormat:@"SELF.image contains[c] %@",searchText];
-            tempArray =[self.listTeams filteredArrayUsingPredicate:scopePredicate];
-            self.listFilterTeams = [NSMutableArray arrayWithArray:tempArray];
-            
-            break;
-        default:
-            //查询所有
-            self.listFilterTeams = [NSMutableArray arrayWithArray:self.listTeams];
-            break;
-    }
-    
-}
-
-#pragma mark --UITableViewDataSource 协议方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.listFilterTeams count];
+    return [self.listTeams count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return 35;
+    }
+    else
+    {
+        return 40;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    if (indexPath.row == 0)
+    {
+        FAStrategySearchHeaderViewCell *headerCell = (FAStrategySearchHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:itemHeaderCellIdentifier];
+        
+        if(headerCell == nil)
+        {
+            headerCell = [(FAStrategySearchHeaderViewCell *)[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemHeaderCellIdentifier];
+        }
+        
+        return headerCell;
     }
-    
-    NSUInteger row = [indexPath row];
-    NSDictionary *rowDict = [self.listFilterTeams objectAtIndex:row];
-    cell.textLabel.text =  [rowDict objectForKey:@"name"];
-    cell.detailTextLabel.text = [rowDict objectForKey:@"image"];
-    
-    NSString *imagePath = [rowDict objectForKey:@"image"];
-    imagePath = [imagePath stringByAppendingString:@".png"];
-    cell.imageView.image = [UIImage imageNamed:imagePath];
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    return cell;
+    else
+    {
+        FAStrategySearchViewCell *cell = (FAStrategySearchViewCell *)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = (FAStrategySearchViewCell *)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+        }
+        
+        cell.lblStrategyHotSearchContext.text = listTeams[indexPath.row];
+        cell.lblStrategyHotSearchContext.textAlignment = NSTextAlignmentLeft;
+        
+        return cell;
+    }
 }
 
 #pragma mark --UISearchBarDelegate 协议方法
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    //查询所有
-    [self filterContentForSearchText:@"" scope:-1];
-}
 
-
-#pragma mark - UISearchDisplayController Delegate Methods
-//当文本内容发生改变时候，向表视图数据源发出重新加载消息
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    [self filterContentForSearchText:searchString scope:self.barStrategySearch.selectedScopeButtonIndex];
-    //YES情况下表视图可以重新加载
     return YES;
 }
 
-// 当Scope Bar选择发送变化时候，向表视图数据源发出重新加载消息
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
 {
-    [self filterContentForSearchText:self.barStrategySearch.text  scope:searchOption];
-    // YES情况下表视图可以重新加载
     return YES;
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *text = searchBar.text;
+    NSLog(@"search button pressed! %@", text);
+    
+    FAStrategyDetailController *detailController = [[FAStrategyDetailController alloc] init];
+    detailController.strategyId = 467;
+    
+    detailController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailController animated:YES];
+}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -200,5 +189,42 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Private tool function
+-(void)initializeData
+{
+    itemCellIdentifier = @"FAStrategySearchCell";
+    itemHeaderCellIdentifier = @"FAStrategySearchHeaderCell";
+}
+
+-(void)registerXibFile
+{    
+    UINib *itemHeaderCellNib = [UINib nibWithNibName:@"FAStrategySearchHeaderViewCell" bundle:nil];
+    [self.tableView registerNib:itemHeaderCellNib forCellReuseIdentifier:itemHeaderCellIdentifier];
+    
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategySearchViewCell" bundle:nil];
+    [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
+}
+
+- (NSArray *)loadDataFromServer
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/StrategySearch?hotwords", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoArray =[FAJSONSerialization toArray:[NSArray class] fromData:replyData];
+        
+        return  dtoArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
 
 @end

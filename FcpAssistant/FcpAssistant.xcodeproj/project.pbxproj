@@ -253,6 +253,8 @@
 		8473D3B319DCE80D009A2D4D /* FAMessageDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473D3B219DCE80D009A2D4D /* FAMessageDetail.m */; };
 		8473D3B919DCF390009A2D4D /* FAMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473D3B819DCF390009A2D4D /* FAMessage.m */; };
 		8473D3BB19DD59E3009A2D4D /* tmp_strtegy_lasted.png in Resources */ = {isa = PBXBuildFile; fileRef = 8473D3BA19DD59E3009A2D4D /* tmp_strtegy_lasted.png */; };
+		8475AF051A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475AF031A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m */; };
+		8475AF061A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8475AF041A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib */; };
 		84763F1719EF533400CF0BBD /* FAStrategyCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84763F1619EF533400CF0BBD /* FAStrategyCollectionModel.m */; };
 		84844A3D19C96899001C2EC4 /* FAStrategyFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84844A3B19C96899001C2EC4 /* FAStrategyFilterController.m */; };
 		84844A3E19C96899001C2EC4 /* FAStrategyFilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84844A3C19C96899001C2EC4 /* FAStrategyFilterController.xib */; };
@@ -718,6 +720,9 @@
 		8473D3B719DCF390009A2D4D /* FAMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessage.h; path = Model/CustomModel/FAMessage.h; sourceTree = "<group>"; };
 		8473D3B819DCF390009A2D4D /* FAMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessage.m; path = Model/CustomModel/FAMessage.m; sourceTree = "<group>"; };
 		8473D3BA19DD59E3009A2D4D /* tmp_strtegy_lasted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmp_strtegy_lasted.png; path = ImageSource/temp/tmp_strtegy_lasted.png; sourceTree = "<group>"; };
+		8475AF021A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategySearchHeaderViewCell.h; path = Strategy/Search/FAStrategySearchHeaderViewCell.h; sourceTree = "<group>"; };
+		8475AF031A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategySearchHeaderViewCell.m; path = Strategy/Search/FAStrategySearchHeaderViewCell.m; sourceTree = "<group>"; };
+		8475AF041A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FAStrategySearchHeaderViewCell.xib; path = Strategy/Search/FAStrategySearchHeaderViewCell.xib; sourceTree = "<group>"; };
 		84763F1519EF533400CF0BBD /* FAStrategyCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyCollectionModel.h; path = Model/ServerModel/FAStrategyCollectionModel.h; sourceTree = "<group>"; };
 		84763F1619EF533400CF0BBD /* FAStrategyCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAStrategyCollectionModel.m; path = Model/ServerModel/FAStrategyCollectionModel.m; sourceTree = "<group>"; };
 		84844A3A19C96899001C2EC4 /* FAStrategyFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAStrategyFilterController.h; path = Strategy/Filter/FAStrategyFilterController.h; sourceTree = "<group>"; };
@@ -2044,6 +2049,9 @@
 				84844A4919C96971001C2EC4 /* FAStrategySearchViewCell.h */,
 				84844A4A19C96971001C2EC4 /* FAStrategySearchViewCell.m */,
 				84844A4B19C96971001C2EC4 /* FAStrategySearchViewCell.xib */,
+				8475AF021A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.h */,
+				8475AF031A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m */,
+				8475AF041A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib */,
 			);
 			name = CellView;
 			sourceTree = "<group>";
@@ -2507,6 +2515,7 @@
 				84844A4D19C96971001C2EC4 /* FAStrategySearchViewCell.xib in Resources */,
 				84F2C75719D17420006EBFC4 /* FAStrategyDetailController.xib in Resources */,
 				591B218F19C17FCB00064F24 /* moreItem_myFcp.png in Resources */,
+				8475AF061A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.xib in Resources */,
 				5903747219B80E8200F5B0C3 /* Images.xcassets in Resources */,
 				593EA6AF19BFF9F100E9F2BC /* FAMyPurchaseDetailOrderViewCell.xib in Resources */,
 				593EA6CE19C0386C00E9F2BC /* FAMyPositionStrategyHeaderView.xib in Resources */,
@@ -2641,6 +2650,7 @@
 				84844A4719C96952001C2EC4 /* FAStrategySearchController.m in Sources */,
 				593EA6A919BFF9A300E9F2BC /* FAMyPurchaseDetailSignalViewCell.m in Sources */,
 				591B217619C14F8C00064F24 /* FAMyCollectItem.m in Sources */,
+				8475AF051A022F76001DD7E4 /* FAStrategySearchHeaderViewCell.m in Sources */,
 				59EC7EF419B82B4600972C0A /* FAJingXuanController.m in Sources */,
 				8473D3B319DCE80D009A2D4D /* FAMessageDetail.m in Sources */,
 				5938187819D019D400AF8A46 /* FABuyedStrategyDto.m in Sources */,
@@ -2834,7 +2844,7 @@
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/dist";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FcpAssistant/ShareSDK/Extend/SinaWeiboSDK",
@@ -2876,7 +2886,7 @@
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/dist";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FcpAssistant/ShareSDK/Extend/SinaWeiboSDK",

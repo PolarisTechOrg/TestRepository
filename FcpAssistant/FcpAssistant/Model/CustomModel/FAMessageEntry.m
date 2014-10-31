@@ -12,15 +12,18 @@
 
 @synthesize SenderId;
 
+@synthesize SenderName;
+
 @synthesize MessageType;
 
 @synthesize ReadFlag;
 
+
+@synthesize MessageId;
+
 @synthesize Date;
 
 @synthesize DateString;
-
-@synthesize SenderName;
 
 @synthesize Context;
 
