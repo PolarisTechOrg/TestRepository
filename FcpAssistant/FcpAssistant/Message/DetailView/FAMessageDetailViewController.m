@@ -390,7 +390,7 @@
 - (void)receivePushMessage:(NSString *)message
 {
     [self viewDidLoad];
-    [self viewWillAppear:YES];
+    [self.tableView reloadData];
 }
 
 @end
