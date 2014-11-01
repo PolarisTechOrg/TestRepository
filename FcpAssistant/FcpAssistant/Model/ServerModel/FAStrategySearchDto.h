@@ -16,4 +16,10 @@
 
 @property (nonatomic, retain) NSArray *SearchVarieties;
 
+@property (nonatomic, assign) short OnlineStatus;
+
+@property (nonatomic, assign) int PageSize;
+
+@property (nonatomic, assign) int PageIndex;
+
 @end

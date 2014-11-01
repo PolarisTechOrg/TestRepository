@@ -7,7 +7,13 @@
 //
 
 #import "FAStrategyFilterController.h"
+#import "FAPricePartenDto.h"
+#import "FAVarietiesDto.h"
+
 #import "FAJSONSerialization.h"
+#import "FAFoundation.h"
+#import "FAHttpUtility.h"
+#import "FAHttpHead.h"
 
 @interface FAStrategyFilterController ()
 
@@ -139,25 +145,46 @@
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
-//- (NSArray *)loadDataFromServer
-//{
-//    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/StrategySearch?hotwords", WEB_URL];
-//    
-//    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-//    
-//    NSError *error;
-//    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-//    
-//    if(error == nil)
-//    {
-//        NSArray *dtoArray =[FAJSONSerialization toArray:nil fromData:replyData];
-//        
-//        return  dtoArray;
-//    }
-//    else
-//    {
-//        return nil;
-//    }
-//}
+- (NSArray *)loadPricePartenDataFromServer
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/StrategySearch?priceParten", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoArray =[FAJSONSerialization toArray:[FAPricePartenDto class] fromData:replyData];
+        
+        return  dtoArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (NSArray *)loadVarietiesDataFromServer
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/StrategySearch?varieies", WEB_URL];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoArray =[FAJSONSerialization toArray:[FAVarietiesDto class] fromData:replyData];
+        
+        return  dtoArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
 
 @end

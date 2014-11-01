@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FAQueue.h"
+#import "FAStrategySearchDto.h"
 
 @interface FAStrategyController : UITableViewController
 {
@@ -26,8 +27,12 @@
     NSDictionary *collectionIdDict;
     
     BOOL hasLoadStrategyIdList;
+    
+    FAStrategySearchDto *searchDto;
 }
 
 @property NSMutableArray *dataSource;
+
+- (void)searchData:(FAStrategySearchDto *)search;
 
 @end

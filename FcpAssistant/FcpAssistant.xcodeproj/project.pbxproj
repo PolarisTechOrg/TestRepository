@@ -296,6 +296,8 @@
 		849C564519D598E00057C158 /* FAStrategyFilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */; };
 		849D177219E6376E00606066 /* FAQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D177119E6376D00606066 /* FAQueue.m */; };
 		84B7256219FE126500886D4A /* FAMessageEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7256119FE126500886D4A /* FAMessageEntry.m */; };
+		84BA32D61A04760C00B56B39 /* FAPricePartenDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA32D51A04760C00B56B39 /* FAPricePartenDto.m */; };
+		84BA32D91A0476AD00B56B39 /* FAVarietiesDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA32D81A0476AD00B56B39 /* FAVarietiesDto.m */; };
 		84BB86E519F5E332001E04A3 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB86BC19F5E332001E04A3 /* QQConnection.framework */; };
 		84BB86E619F5E332001E04A3 /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB86BD19F5E332001E04A3 /* QZoneConnection.framework */; };
 		84BB86E719F5E332001E04A3 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB86BE19F5E332001E04A3 /* SinaWeiboConnection.framework */; };
@@ -789,6 +791,10 @@
 		849D177119E6376D00606066 /* FAQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAQueue.m; path = Strategy/Operation/FAQueue.m; sourceTree = "<group>"; };
 		84B7256019FE126500886D4A /* FAMessageEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageEntry.h; path = Model/CustomModel/FAMessageEntry.h; sourceTree = "<group>"; };
 		84B7256119FE126500886D4A /* FAMessageEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageEntry.m; path = Model/CustomModel/FAMessageEntry.m; sourceTree = "<group>"; };
+		84BA32D41A04760C00B56B39 /* FAPricePartenDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAPricePartenDto.h; path = Model/ServerModel/FAPricePartenDto.h; sourceTree = "<group>"; };
+		84BA32D51A04760C00B56B39 /* FAPricePartenDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAPricePartenDto.m; path = Model/ServerModel/FAPricePartenDto.m; sourceTree = "<group>"; };
+		84BA32D71A0476AD00B56B39 /* FAVarietiesDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAVarietiesDto.h; path = Model/ServerModel/FAVarietiesDto.h; sourceTree = "<group>"; };
+		84BA32D81A0476AD00B56B39 /* FAVarietiesDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAVarietiesDto.m; path = Model/ServerModel/FAVarietiesDto.m; sourceTree = "<group>"; };
 		84BB86BC19F5E332001E04A3 /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
 		84BB86BD19F5E332001E04A3 /* QZoneConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QZoneConnection.framework; sourceTree = "<group>"; };
 		84BB86BE19F5E332001E04A3 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
@@ -1353,6 +1359,10 @@
 				84763F1619EF533400CF0BBD /* FAStrategyCollectionModel.m */,
 				8475AF071A031CDE001DD7E4 /* FAStrategySearchDto.h */,
 				8475AF081A031CDE001DD7E4 /* FAStrategySearchDto.m */,
+				84BA32D41A04760C00B56B39 /* FAPricePartenDto.h */,
+				84BA32D51A04760C00B56B39 /* FAPricePartenDto.m */,
+				84BA32D71A0476AD00B56B39 /* FAVarietiesDto.h */,
+				84BA32D81A0476AD00B56B39 /* FAVarietiesDto.m */,
 			);
 			name = ServerModel;
 			sourceTree = "<group>";
@@ -2583,6 +2593,7 @@
 				5982A2FF19D10AEF009EADD1 /* FABuyedStrategyDetailDto.m in Sources */,
 				593EA6A019BFF8AD00E9F2BC /* FAMyPurchaseDetailProfitHeaderView.m in Sources */,
 				594FB07919C7FCA7008EA26F /* FAMember.m in Sources */,
+				84BA32D61A04760C00B56B39 /* FAPricePartenDto.m in Sources */,
 				59FB1C1819E50EE6006A648C /* FAChartDto.m in Sources */,
 				840DD88719CD77920023885D /* FAStrategyDetailProfitViewCell.m in Sources */,
 				591BB2B719E76EC6000AF684 /* FAMyPurchaseDetailPositionHeaderViewCell.m in Sources */,
@@ -2686,6 +2697,7 @@
 				840DD87A19CD767D0023885D /* FAStrategyDetailLatedRecordViewCell.m in Sources */,
 				5982A30E19D151FB009EADD1 /* FAFormater.m in Sources */,
 				84844A5F19C96A9F001C2EC4 /* FAJingXuanViewCell.m in Sources */,
+				84BA32D91A0476AD00B56B39 /* FAVarietiesDto.m in Sources */,
 				592ABF9819CBBFEB002F0A8E /* FAMyCollectItemViewCell.m in Sources */,
 				593EA6E919C0495300E9F2BC /* FAMySignalItemHeaderView.m in Sources */,
 				84C4CB4819DA7E4E00C36159 /* FAMessageDetailViewCell2.m in Sources */,

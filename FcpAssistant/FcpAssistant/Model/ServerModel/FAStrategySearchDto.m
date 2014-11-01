@@ -16,4 +16,10 @@
 
 @synthesize SearchVarieties;
 
+@synthesize OnlineStatus;
+
+@synthesize PageSize;
+
+@synthesize PageIndex;
+
 @end
