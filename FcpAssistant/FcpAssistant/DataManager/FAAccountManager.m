@@ -27,6 +27,8 @@
 @synthesize currentMember;
 //当前交易账号
 @synthesize selectFundAccount;
+@synthesize geTuiClientId;
+@synthesize deviceToken;
 
 +(instancetype) shareInstance
 {
@@ -41,7 +43,7 @@
 }
 
 //
--(void) Login:(NSString*) account withPassword:(NSString*) password clientId:(NSString *) clientId
+-(void) Login:(NSString*) account withPassword:(NSString*) password
 {
     @try
     {
@@ -60,7 +62,8 @@
         loginDto.RememberMe = YES;
         loginDto.Auto = NO;
         loginDto.Sign = saltDto.Sign;
-        loginDto.MobileClientId = clientId;
+        loginDto.MobileClientId = geTuiClientId;
+        loginDto.DeviceToken = deviceToken;
         loginDto.DeviceType = 2;
         
         FAHttpHead *httpHeader = [FAHttpHead defaultInstance];

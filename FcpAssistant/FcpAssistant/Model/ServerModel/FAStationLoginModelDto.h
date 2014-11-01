@@ -30,4 +30,6 @@
 @property(nonatomic,copy) NSString *MobileClientId;
 //设备类型
 @property(nonatomic,assign) int DeviceType;
+//设备凭证
+@property(nonatomic,copy) NSString *DeviceToken;
 @end

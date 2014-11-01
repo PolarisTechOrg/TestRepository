@@ -18,7 +18,7 @@
 #import "FAHttpHead.h"
 #import "FAFormater.h"
 #import "FAUtility.h"
-
+#import "FAGeTuiReceiver.h"
 @interface FAJingXuanController ()
 
 @end
@@ -38,6 +38,7 @@
     [self loadDataFromServer];
     [self loadChartData:chartIdArray];
     
+    [[FAGeTuiReceiver shareInstance] registerMessageReceiver:self];
 }
 
 - (void)initializeData
@@ -52,6 +53,10 @@
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
+- (void)receivePushMessage:(NSString *)message
+{
+    NSLog(@"ReceiveMessage:%@",message);
+}
 -(void) loadChartData:(NSArray *) strategies
 {
     chartDic = [[NSMutableDictionary alloc]initWithCapacity:10];

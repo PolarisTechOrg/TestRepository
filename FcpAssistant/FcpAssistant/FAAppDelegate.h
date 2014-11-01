@@ -17,7 +17,7 @@ typedef enum {
 
 @interface FAAppDelegate : UIResponder <UIApplicationDelegate,GexinSdkDelegate>
 {
-        NSString *_deviceToken;
+//        NSString *_deviceToken;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -28,7 +28,7 @@ typedef enum {
 @property (retain, nonatomic) NSString *appKey;
 @property (retain, nonatomic) NSString *appSecret;
 @property (retain, nonatomic) NSString *appID;
-@property (retain, nonatomic) NSString *clientId;
+//@property (retain, nonatomic) NSString *clientId;
 @property (assign, nonatomic) SdkStatus sdkStatus;
 
 @property (assign, nonatomic) int lastPayloadIndex;

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAGeTuiReceiverDelegate.h"
 
-@interface FAJingXuanController : UITableViewController
+@interface FAJingXuanController : UITableViewController<FAGeTuiReceiverDelegate>
 {
     NSArray *dataSourceJingXuan;
     NSArray *dataSourceQuShi;

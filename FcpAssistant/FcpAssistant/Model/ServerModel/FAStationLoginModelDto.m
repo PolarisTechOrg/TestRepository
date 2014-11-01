@@ -29,4 +29,6 @@
 @synthesize MobileClientId;
 //设备类型
 @synthesize DeviceType;
+//设备凭证
+@synthesize DeviceToken;
 @end

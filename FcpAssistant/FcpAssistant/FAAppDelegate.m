@@ -18,6 +18,7 @@
 #import "FAGeTuiReceiver.h"
 #import <ShareSDK/ShareSDK.h>
 #import "FAUtility.h"
+#import "FAAccountManager.h"
 #define kAppId           @"xvCjiiXt6l5mRuOnwPHIE2"
 #define kAppKey          @"ckYFmh6xik8zSRKud5rTv1"
 #define kAppSecret       @"sUjtC4k1MW8bYr7bNpSOe7"
@@ -28,7 +29,7 @@
 @synthesize appKey = _appKey;
 @synthesize appSecret = _appSecret;
 @synthesize appID = _appID;
-@synthesize clientId = _clientId;
+//@synthesize clientId = _clientId;
 @synthesize sdkStatus = _sdkStatus;
 @synthesize lastPayloadIndex = _lastPaylodIndex;
 @synthesize payloadId = _payloadId;
@@ -181,20 +182,21 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    _deviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"deviceToken:%@", _deviceToken);
+    NSString *deviceTokenStr =[token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [FAAccountManager shareInstance].deviceToken = deviceTokenStr;
+    NSLog(@"deviceToken:%@", deviceTokenStr);
     
     // [3]:向个推服务器注册deviceToken
     @try
     {
         if (_gexinPusher)
         {
-            [_gexinPusher registerDeviceToken:_deviceToken];
+            [_gexinPusher registerDeviceToken:deviceTokenStr];
         }
     }
     @catch (NSException *exception)
     {
-        NSLog(@"deviceToken:%@", @"ddfdfdfdfdf");
+        NSLog(@"RegisterForRemoteNotificationsWithDeviceToken failed:%@", exception.description);
     }
     @finally
     {
@@ -219,10 +221,11 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     // [4-EXT]:处理APN
-    NSString *payloadMsg = [userinfo objectForKey:@"payload"];
-    NSString *record = [NSString stringWithFormat:@"[APN]%@, %@", [NSDate date], payloadMsg];
+//    NSString *payloadMsg = [userinfo objectForKey:@"payload"];
+//    NSString *record = [NSString stringWithFormat:@"[APN]%@, %@", [NSDate date], payloadMsg];
     
-    [[FAGeTuiReceiver shareInstance] receiveMessage:record];
+    //程序处于运行状态不转发APN消息
+//    [[FAGeTuiReceiver shareInstance] receiveMessage:record];
 }
 
 - (void)startSdkWith:(NSString *)appID appKey:(NSString *)appKey appSecret:(NSString *)appSecret
@@ -235,7 +238,7 @@
         self.appKey = appKey;
         self.appSecret = appSecret;
         
-        _clientId = nil;
+
         
         NSError *err = nil;
         _gexinPusher = [GexinSdk createSdkWithAppId:_appID appKey:_appKey appSecret:_appSecret
@@ -258,7 +261,6 @@
         [_gexinPusher destroy];
         _gexinPusher = nil;
         _sdkStatus = SdkStatusStoped;
-        _clientId = nil;
     }
 }
 
@@ -309,7 +311,7 @@
 {
     // [4-EXT-1]: 个推SDK已注册
     _sdkStatus = SdkStatusStarted;
-    _clientId = clientId;
+    [FAAccountManager shareInstance].geTuiClientId = clientId;
     
     NSLog(@"GexinSdkDidRegisterClient ClientID:%@",clientId);
 }

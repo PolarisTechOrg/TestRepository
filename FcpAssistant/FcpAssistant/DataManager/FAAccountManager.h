@@ -20,8 +20,11 @@
 //当前选择交易账号
 @property(nonatomic,strong) FAStationFundAccount *selectFundAccount;
 
+@property(nonatomic,copy) NSString *geTuiClientId;
+@property(nonatomic,copy) NSString *deviceToken;
+
 //用户登陆
--(void) Login:(NSString *) account  withPassword:(NSString *) password clientId:(NSString *) clientId;
+-(void) Login:(NSString *) account  withPassword:(NSString *) password;
 
 //交易账户选中变更
 -(void) changeFundAccount:(NSString *) fundAccount fundAccountType:(int) fundAccountType;

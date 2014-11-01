@@ -76,12 +76,11 @@
     
     NSString *account = self.txtAccount.text;
     NSString *password = self.txtPassword.text;
-    NSString *clientId = @"ios1234455";
     
     //账户密码校验
     @try
     {
-        [[FAAccountManager shareInstance] Login:account withPassword:password clientId:clientId];
+        [[FAAccountManager shareInstance] Login:account withPassword:password];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     @catch (NSException *exception)
