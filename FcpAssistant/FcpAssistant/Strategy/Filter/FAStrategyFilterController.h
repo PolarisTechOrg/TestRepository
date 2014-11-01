@@ -9,5 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface FAStrategyFilterController : UITableViewController
+{
+    NSString *itemHeaderCellIdentifier;
+    NSString *itemCellIdentifier;
+    
+    NSMutableDictionary *selectPricePartenDict;
+    NSMutableDictionary *selectVarietiesDict;
+}
+
+
+@property NSMutableArray *pricePartenSource;
+
+@property NSMutableArray *varietiesSource;
 
 @end

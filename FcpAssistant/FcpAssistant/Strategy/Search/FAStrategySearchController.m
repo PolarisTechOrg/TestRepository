@@ -6,13 +6,16 @@
 //  Copyright (c) 2014 polaris. All rights reserved.
 //
 
-#import "FAStrategyDetailController.h"
+#import "FAStrategyController.h"
 #import "FAStrategySearchHeaderViewCell.h"
 #import "FAStrategySearchViewCell.h"
 #import "FAStrategySearchController.h"
 #import "FAJSONSerialization.h"
 #import "FAHttpUtility.h"
 #import "FAFoundation.h"
+
+#import "FAStrategySearchDto.h"
+#import "FADummieStrategyDetailViewModel.h"
 
 
 @interface FAStrategySearchController ()
@@ -22,7 +25,6 @@
 @implementation FAStrategySearchController
 
 @synthesize listTeams;
-@synthesize listFilterTeams;
 @synthesize barStrategySearch;
 
 
@@ -35,6 +37,7 @@
     barStrategySearch.delegate = self;
     
     listTeams = [NSMutableArray arrayWithCapacity:32];
+    [listTeams addObject:@"热搜词"];
     [listTeams addObjectsFromArray:[self loadDataFromServer]];
 }
 
@@ -100,6 +103,7 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
+    searchBar.text = nil;
     return YES;
 }
 
@@ -110,25 +114,9 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSString *text = searchBar.text;
-    NSLog(@"search button pressed! %@", text);
-    
-    FAStrategyDetailController *detailController = [[FAStrategyDetailController alloc] init];
-    detailController.strategyId = 467;
-    
-    detailController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailController animated:YES];
+    [self doSearch:searchBar.text];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -164,21 +152,20 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return;
+    }
     
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self doSearch:listTeams[indexPath.row]];
 }
-*/
+
 
 /*
 #pragma mark - Navigation
@@ -217,7 +204,7 @@
     
     if(error == nil)
     {
-        NSArray *dtoArray =[FAJSONSerialization toArray:[NSArray class] fromData:replyData];
+        NSArray *dtoArray =[FAJSONSerialization toArray:nil fromData:replyData];
         
         return  dtoArray;
     }
@@ -225,6 +212,44 @@
     {
         return nil;
     }
+}
+
+- (NSArray *)searchStrategyData:(NSString *)content
+{
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?search", WEB_URL];
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    FAHttpHead *head = [FAHttpHead defaultInstance];
+    head.Method = @"POST";
+    
+    FAStrategySearchDto *body = [[FAStrategySearchDto alloc] init];
+    body.SearchText = content;
+    
+    NSError *error;
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
+    
+    if(error == nil)
+    {
+        NSArray *dtoArray =[FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
+        
+        return  dtoArray;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- (void)doSearch:(NSString *)content
+{
+    
+    NSMutableArray *strategySource = [NSMutableArray arrayWithArray:[self searchStrategyData:content]];
+    
+    FAStrategyController *controller = [[FAStrategyController alloc] init];
+    controller.dataSource = strategySource;
+    
+    //    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

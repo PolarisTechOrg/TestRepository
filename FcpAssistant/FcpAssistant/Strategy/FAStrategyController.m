@@ -21,6 +21,7 @@
 #import "FAAccountManager.h"
 #import "FAStationFundAccount.h"
 #import "FAWishlistDto.h"
+#import "FAStrategySearchDto.h"
 
 #import "FAQueue.h"
 #import "FAFoundation.h"
@@ -36,7 +37,9 @@
 
 @implementation FAStrategyController
 
-#pragma mark - custom function
+@synthesize dataSource;
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,13 +59,17 @@
     
     // Load data
 //    hasLoadStrategyIdList = NO;
-    currentPageIndex = 1;
+//    currentPageIndex = 1;
     
-    dataSource = [[NSMutableArray alloc] init];
-    NSArray *strategyList = [self loadDataFromServer:currentPageIndex];
-    if(strategyList != nil && strategyList.count > 0)
+    if (dataSource == nil)
     {
-        [dataSource addObjectsFromArray:strategyList];
+        dataSource = [[NSMutableArray alloc] init];
+        
+        NSArray *strategyList = [self loadDataFromServer:searchDto];
+        if(strategyList != nil && strategyList.count > 0)
+        {
+            [dataSource addObjectsFromArray:strategyList];
+        }
     }
     
     chartDict = [self loadChartData:dataSource];
@@ -81,6 +88,10 @@
     [self setupRefresh];
 }
 
+- (void)searchData:(FAStrategySearchDto *)search
+{
+    
+}
 /*
 // fill chart
 - (void)loadChartData
@@ -112,9 +123,9 @@
 - (void)footerRereshing
 {
     // 添加新数据
-    currentPageIndex++;
+    searchDto.PageIndex++;
     
-    NSArray *strategyList = [self loadDataFromServer:currentPageIndex];
+    NSArray *strategyList = [self loadDataFromServer:searchDto];
     if(strategyList != nil && strategyList.count > 0)
     {
         [dataSource addObjectsFromArray:strategyList];
@@ -156,20 +167,49 @@
 }
 
 // load data
-- (NSArray *)loadDataFromServer:(int)pageIndex
+- (NSArray *)loadDataFromServer:(FAStrategySearchDto *)search
 {
-    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=%@", WEB_URL, [NSNumber numberWithInt:pageIndex]];
+//    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=%@", WEB_URL, [NSNumber numberWithInt:pageIndex]];
+//    
+//    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+//    
+//    NSError *error;
+//    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+//    
+//    if(error == nil)
+//    {
+//        FAPaginatedDto *dtoObj =[FAJSONSerialization toObject:[FAPaginatedDto class] fromData:replyData];
+//        
+//        return  dtoObj.Items;
+//    }
+//    else
+//    {
+//        return nil;
+//    }
     
+    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?search", WEB_URL];
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
+    FAHttpHead *head = [FAHttpHead defaultInstance];
+    head.Method = @"POST";
+    
+    if (search == nil)
+    {
+        search = [[FAStrategySearchDto alloc] init];
+        
+        search.OnlineStatus = 1;
+        search.PageSize = 10;
+        search.PageIndex = 1;
+    }
+    
     NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:search error:&error];
     
     if(error == nil)
     {
-        FAPaginatedDto *dtoObj =[FAJSONSerialization toObject:[FAPaginatedDto class] fromData:replyData];
+        NSArray *dtoArray =[FAJSONSerialization toArray:[FAPaginatedDto class] fromData:replyData];
         
-        return  dtoObj.Items;
+        return  dtoArray;
     }
     else
     {

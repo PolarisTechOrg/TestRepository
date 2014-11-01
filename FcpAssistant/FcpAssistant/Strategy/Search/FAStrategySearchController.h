@@ -15,7 +15,6 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *listTeams;
-@property (nonatomic, strong) NSMutableArray *listFilterTeams;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *barStrategySearch;
 
