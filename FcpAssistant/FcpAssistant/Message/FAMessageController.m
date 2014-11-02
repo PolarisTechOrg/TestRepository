@@ -656,6 +656,12 @@
 
 - (void)receivePushMessage:(NSString *)message
 {
+    BOOL hasLogin = [[FAAccountManager shareInstance] hasLogin];
+    if (!hasLogin)
+    {
+        return;
+    }
+    
     [self viewWillAppear:YES];
 }
 
