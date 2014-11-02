@@ -11,6 +11,7 @@
 #import "FAMemberRegisterController.h"
 #import "FAForgetPasswordController.h"
 #import "FAUtility.h"
+#import "FAFoundation.h"
 
 @implementation FAMeberLoginController
 
@@ -42,6 +43,16 @@
 
     self.txtAccount.text = @"100411";
     self.txtPassword.text = @"100411";
+    
+    if (CURRENT_SYS_VERSION >= 7.0)
+    {
+//        self.view.frame = CGRectMake(0,20,self.n .view..frame.size.width,self.window.frame.size.height-20);
+    }
+    else
+    {
+
+    }
+    
 }
 
 -(void)cancelLogin:(id)sender

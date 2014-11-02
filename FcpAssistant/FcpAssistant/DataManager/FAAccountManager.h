@@ -20,8 +20,8 @@
 //当前选择交易账号
 @property(nonatomic,strong) FAStationFundAccount *selectFundAccount;
 
-@property(nonatomic,copy) NSString *geTuiClientId;
-@property(nonatomic,copy) NSString *deviceToken;
+@property(nonatomic,retain) NSString *geTuiClientId;
+@property(nonatomic,retain) NSString *deviceToken;
 
 //用户登陆
 -(void) Login:(NSString *) account  withPassword:(NSString *) password;

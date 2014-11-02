@@ -2872,7 +2872,7 @@
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/dist";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FcpAssistant/ShareSDK/Extend/SinaWeiboSDK",
@@ -2914,7 +2914,7 @@
 				GCC_PREFIX_HEADER = "FcpAssistant/FcpAssistant-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/dist";
 				INFOPLIST_FILE = "FcpAssistant/FcpAssistant-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FcpAssistant/ShareSDK/Extend/SinaWeiboSDK",
