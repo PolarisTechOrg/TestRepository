@@ -26,6 +26,7 @@
 
 @synthesize listTeams;
 @synthesize barStrategySearch;
+@synthesize strategyController;
 
 
 - (void)viewDidLoad
@@ -39,6 +40,8 @@
     listTeams = [NSMutableArray arrayWithCapacity:32];
     [listTeams addObject:@"热搜词"];
     [listTeams addObjectsFromArray:[self loadDataFromServer]];
+    
+    searchDto = [FAStrategySearchDto instance];
 }
 
 
@@ -114,7 +117,13 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self doSearch:searchBar.text];
+    if (searchBar.text && searchBar.text.length > 0)
+    {
+        searchDto.RacerType = 0;
+    }
+    searchDto.SearchText = searchBar.text;
+    [strategyController searchData:searchDto];
+    [self.navigationController popToViewController:strategyController animated:YES];
 }
 
 
@@ -163,7 +172,14 @@
         return;
     }
     
-    [self doSearch:listTeams[indexPath.row]];
+    NSString *searchText = listTeams[indexPath.row];
+    if (searchText && searchText.length > 0)
+    {
+        searchDto.RacerType = 0;
+    }
+    searchDto.SearchText = searchText;
+    [strategyController searchData:searchDto];
+    [self.navigationController popToViewController:strategyController animated:YES];
 }
 
 
@@ -214,42 +230,42 @@
     }
 }
 
-- (NSArray *)searchStrategyData:(NSString *)content
-{
-    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?search", WEB_URL];
-    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-    
-    FAHttpHead *head = [FAHttpHead defaultInstance];
-    head.Method = @"POST";
-    
-    FAStrategySearchDto *body = [[FAStrategySearchDto alloc] init];
-    body.SearchText = content;
-    
-    NSError *error;
-    NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
-    
-    if(error == nil)
-    {
-        NSArray *dtoArray =[FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
-        
-        return  dtoArray;
-    }
-    else
-    {
-        return nil;
-    }
-}
+//- (NSArray *)searchStrategyData:(NSString *)content
+//{
+//    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?search", WEB_URL];
+//    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+//    
+//    FAHttpHead *head = [FAHttpHead defaultInstance];
+//    head.Method = @"POST";
+//    
+//    FAStrategySearchDto *body = [[FAStrategySearchDto alloc] init];
+//    body.SearchText = content;
+//    
+//    NSError *error;
+//    NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:body error:&error];
+//    
+//    if(error == nil)
+//    {
+//        NSArray *dtoArray =[FAJSONSerialization toArray:[FADummieStrategyDetailViewModel class] fromData:replyData];
+//        
+//        return  dtoArray;
+//    }
+//    else
+//    {
+//        return nil;
+//    }
+//}
 
-- (void)doSearch:(NSString *)content
-{
-    
-    NSMutableArray *strategySource = [NSMutableArray arrayWithArray:[self searchStrategyData:content]];
-    
-    FAStrategyController *controller = [[FAStrategyController alloc] init];
-    controller.dataSource = strategySource;
-    
-    //    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
-}
+//- (void)doSearch:(NSString *)content
+//{
+//    
+//    NSMutableArray *strategySource = [NSMutableArray arrayWithArray:[self searchStrategyData:content]];
+//    
+//    FAStrategyController *controller = [[FAStrategyController alloc] init];
+//    controller.dataSource = strategySource;
+//    
+//    //    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
+//}
 
 @end

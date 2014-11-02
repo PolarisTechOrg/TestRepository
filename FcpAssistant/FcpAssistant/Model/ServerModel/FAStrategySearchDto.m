@@ -24,4 +24,17 @@
 
 @synthesize RacerType;
 
+
++(id)instance
+{
+    FAStrategySearchDto *dto = [[FAStrategySearchDto alloc] init];
+    
+    dto.OnlineStatus = 1;
+    dto.RacerType = 1;
+    dto.PageSize = 10;
+    dto.PageIndex = 1;
+    
+    return dto;
+}
+
 @end

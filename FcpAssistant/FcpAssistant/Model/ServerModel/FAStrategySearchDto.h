@@ -24,4 +24,7 @@
 
 @property (nonatomic, assign) int RacerType;
 
+
++(id)instance;
+
 @end

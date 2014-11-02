@@ -63,27 +63,21 @@
     
     if (searchDto == nil)
     {
-        searchDto = [[FAStrategySearchDto alloc] init];
-        
-        searchDto.OnlineStatus = 1;
-        searchDto.PageSize = 10;
-        searchDto.PageIndex = 1;
-        searchDto.RacerType = 1;
+        searchDto = [FAStrategySearchDto instance];
     }
     
     if (dataSource == nil)
     {
         dataSource = [[NSMutableArray alloc] init];
-        
-        NSArray *strategyList = [self loadDataFromServer:searchDto];
-        if(strategyList != nil && strategyList.count > 0)
-        {
-            [dataSource addObjectsFromArray:strategyList];
-        }
     }
     else
     {
         [dataSource removeAllObjects];
+    }
+    NSArray *strategyList = [self loadDataFromServer:searchDto];
+    if(strategyList != nil && strategyList.count > 0)
+    {
+        [dataSource addObjectsFromArray:strategyList];
     }
     
     chartDict = [self loadChartData:dataSource];
@@ -161,6 +155,7 @@
 - (void)doSearch
 {
     FAStrategySearchController *controller = [[FAStrategySearchController alloc] init];
+    controller.strategyController = self;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }

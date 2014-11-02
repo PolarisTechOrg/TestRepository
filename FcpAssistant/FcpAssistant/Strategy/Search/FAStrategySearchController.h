@@ -7,15 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAStrategyController.h"
+#import "FAStrategySearchDto.h"
 
 @interface FAStrategySearchController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITextFieldDelegate>
 {
     NSString *itemHeaderCellIdentifier;
     NSString *itemCellIdentifier;
+    
+    FAStrategyController *strategyController;
+    FAStrategySearchDto *searchDto;
 }
 
 @property (nonatomic, strong) NSMutableArray *listTeams;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *barStrategySearch;
+
+@property (nonatomic, retain) FAStrategyController *strategyController;
 
 @end
