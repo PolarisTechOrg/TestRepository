@@ -9,11 +9,16 @@
 #import "FAStrategyFilterController.h"
 #import "FAPricePartenDto.h"
 #import "FAVarietiesDto.h"
+#import "FAStrategyFilterHeaderViewCell.h"
+#import "FAStrategyFilterViewCell.h"
+#import "FAPriceParten.h"
+#import "FAVarieties.h"
 
 #import "FAJSONSerialization.h"
 #import "FAFoundation.h"
 #import "FAHttpUtility.h"
 #import "FAHttpHead.h"
+#import "math.h"
 
 @interface FAStrategyFilterController ()
 
@@ -28,14 +33,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initializeData];
+    [self registerXibFile];
     
     self.navigationItem.title = @"策略筛选";
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
     self.navigationItem.rightBarButtonItem = doneButton;
+    
+    pricePartenSource = [self loadPricePartenDataFromServer];
+    varietiesSource = [self loadVarietiesDataFromServer];
+    
 }
 
-- (void)clickRightButton
+- (void)clickRightButton:(id)sender
 {
     NSLog(@"click doneButton");
 }
@@ -47,27 +58,160 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
-    return 0;
+    if (section == 0)
+    {
+        return ceil(varietiesSource.count/4)+1;
+    }
+    else if(section == 1)
+    {
+        return ceil(pricePartenSource.count/4)+1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (UITableViewCell *)showHeader:(UITableView *)tableView withContent:(NSString *)title
+{
+    FAStrategyFilterHeaderViewCell *headerCell = (FAStrategyFilterHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:itemHeaderCellIdentifier];
     
-    // Configure the cell...
+    if(!headerCell)
+    {
+        headerCell = [(FAStrategyFilterHeaderViewCell *)[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemHeaderCellIdentifier];
+    }
+    
+    headerCell.lblTitle.text = title;
+    
+    return headerCell;
+}
+
+- (UITableViewCell *)showPricePatenCell:(UITableView *)tableView withSource:(NSMutableDictionary *)source inLocation:(NSIndexPath *)indexPath
+{
+    FAStrategyFilterViewCell *cell = (FAStrategyFilterViewCell *)[tableView dequeueReusableCellWithIdentifier:itemHeaderCellIdentifier];
+    
+    if(cell == nil)
+    {
+        cell = [(FAStrategyFilterViewCell *)[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+    }
+    
+    CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
+    CGFloat ox = cellRect.origin.x;
+    CGFloat oy = cellRect.origin.y;
+    CGFloat width = 70;
+    CGFloat height = 36;
+    
+    NSArray *array = source.allValues;
+    for (int i = 0; i < array.count; i++)
+    {
+        FAPriceParten *p = array[i];
+        if (!p)
+        {
+            continue;
+        }
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = [self getCGRect:i orignX:ox orignY:oy rectWidth:width rectHeight:height];
+        btn.tag = p.seqId;
+        btn.titleLabel.text = p.PartenName;
+        [btn addTarget:self action:@selector(choiceUp:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell.contentView addSubview:btn];
+    }
     
     return cell;
 }
-*/
+
+- (UITableViewCell *)showVaritiesCell:(UITableView *)tableView withSource:(NSMutableDictionary *)source inLocation:(NSIndexPath *)indexPath
+{
+    FAStrategyFilterViewCell *cell = (FAStrategyFilterViewCell *)[tableView dequeueReusableCellWithIdentifier:itemHeaderCellIdentifier];
+    
+    if(cell == nil)
+    {
+        cell = [(FAStrategyFilterViewCell *)[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
+    }
+    
+    CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
+    CGFloat ox = cellRect.origin.x;
+    CGFloat oy = cellRect.origin.y;
+    CGFloat width = 70;
+    CGFloat height = 36;
+    
+    NSArray *array = source.allValues;
+    for (int i = 0; i < array.count; i++)
+    {
+        FAVarieties *p = array[i];
+        if (!p)
+        {
+            continue;
+        }
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = [self getCGRect:i orignX:ox orignY:oy rectWidth:width rectHeight:height];
+        btn.tag = p.seqId;
+        btn.titleLabel.text = p.Name;
+        [btn addTarget:self action:@selector(choiceUp:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell.contentView addSubview:btn];
+    }
+    
+    return cell;
+}
+
+- (void)choiceUp:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    NSLog(@"%ld", btn.tag);
+}
+
+- (CGRect)getCGRect:(int)index orignX:(CGFloat)x orignY:(CGFloat)y rectWidth:(CGFloat)width rectHeight:(CGFloat)height
+{
+    double row = floor(index/4);
+    
+    CGFloat currX = x * index * 75;
+    CGFloat currY = y * row * 40;
+    
+    return CGRectMake(currX, currY, width, height);
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            cell = [self showHeader:tableView withContent:@"按品种筛选"];
+        }
+        else
+        {
+            cell = [self showPricePatenCell:tableView withSource:pricePartenSource inLocation:indexPath];
+        }
+    }
+    else if(indexPath.section == 1)
+    {
+        if (indexPath.row == 0)
+        {
+            cell = [self showHeader:tableView withContent:@"按策略趋势筛选"];
+        }
+        else
+        {
+            cell = [self showVaritiesCell:tableView withSource:varietiesSource inLocation:indexPath];
+        }
+    }
+    
+    return cell;
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -138,18 +282,19 @@
 
 -(void)registerXibFile
 {
-    UINib *itemHeaderCellNib = [UINib nibWithNibName:@"FAStrategySearchHeaderViewCell" bundle:nil];
+    UINib *itemHeaderCellNib = [UINib nibWithNibName:@"FAStrategyFilterHeaderViewCell" bundle:nil];
     [self.tableView registerNib:itemHeaderCellNib forCellReuseIdentifier:itemHeaderCellIdentifier];
     
-    UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategySearchViewCell" bundle:nil];
+    UINib *itemCellNib = [UINib nibWithNibName:@"FAStrategyFilterViewCell" bundle:nil];
     [self.tableView registerNib:itemCellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
-- (NSArray *)loadPricePartenDataFromServer
+- (NSMutableDictionary *)loadPricePartenDataFromServer
 {
     NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/StrategySearch?priceParten", WEB_URL];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    NSMutableDictionary *dtoDict = [NSMutableDictionary dictionaryWithCapacity:32];
     
     NSError *error;
     NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
@@ -158,19 +303,43 @@
     {
         NSArray *dtoArray =[FAJSONSerialization toArray:[FAPricePartenDto class] fromData:replyData];
         
-        return  dtoArray;
+        if (!dtoArray || dtoArray.count == 0)
+        {
+            return dtoDict;
+        }
+        
+        for (int i = 0; i < dtoArray.count; i++)
+        {
+            if (!dtoArray[i])
+            {
+                continue;
+            }
+            
+            FAPricePartenDto *dto = dtoArray[i];
+            FAPriceParten *priceParten = [[FAPriceParten alloc] init];
+            
+            priceParten.PartenID = dto.PartenID;
+            priceParten.PartenName = dto.PartenName;
+            priceParten.includeFlag = false;
+            priceParten.seqId = i;
+            
+            [dtoDict setObject:priceParten forKey:[NSNumber numberWithInt:priceParten.PartenID]];
+        }
+        
+        return dtoDict;
     }
     else
     {
-        return nil;
+        return dtoDict;
     }
 }
 
-- (NSArray *)loadVarietiesDataFromServer
+- (NSMutableDictionary *)loadVarietiesDataFromServer
 {
     NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/StrategySearch?varieies", WEB_URL];
     
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    NSMutableDictionary *dtoDict = [NSMutableDictionary dictionaryWithCapacity:32];
     
     NSError *error;
     NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
@@ -179,7 +348,30 @@
     {
         NSArray *dtoArray =[FAJSONSerialization toArray:[FAVarietiesDto class] fromData:replyData];
         
-        return  dtoArray;
+        if (!dtoArray || dtoArray.count == 0)
+        {
+            return dtoDict;
+        }
+        
+        for (int i = 0; i < dtoArray.count; i++)
+        {
+            if (!dtoArray[i])
+            {
+                continue;
+            }
+            
+            FAVarietiesDto *dto = dtoArray[i];
+            FAVarieties *varieties = [[FAVarieties alloc] init];
+            
+            varieties.Code = dto.Code;
+            varieties.Name = dto.Name;
+            varieties.includeFlag = false;
+            varieties.seqId = i;
+            
+            [dtoDict setObject:varieties forKey:varieties.Code];
+        }
+        
+        return dtoDict;
     }
     else
     {

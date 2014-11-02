@@ -18,8 +18,8 @@
 }
 
 
-@property NSMutableArray *pricePartenSource;
+@property NSMutableDictionary *pricePartenSource;
 
-@property NSMutableArray *varietiesSource;
+@property NSMutableDictionary *varietiesSource;
 
 @end

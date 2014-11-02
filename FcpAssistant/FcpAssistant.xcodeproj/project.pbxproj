@@ -296,6 +296,8 @@
 		849C564519D598E00057C158 /* FAStrategyFilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C564419D598E00057C158 /* FAStrategyFilterHeaderView.m */; };
 		849D177219E6376E00606066 /* FAQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D177119E6376D00606066 /* FAQueue.m */; };
 		84B7256219FE126500886D4A /* FAMessageEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7256119FE126500886D4A /* FAMessageEntry.m */; };
+		84B89B1F1A06367A0038B34B /* FAPriceParten.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B89B1E1A06367A0038B34B /* FAPriceParten.m */; };
+		84B89B221A06369B0038B34B /* FAVarieties.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B89B211A06369B0038B34B /* FAVarieties.m */; };
 		84BA32D61A04760C00B56B39 /* FAPricePartenDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA32D51A04760C00B56B39 /* FAPricePartenDto.m */; };
 		84BA32D91A0476AD00B56B39 /* FAVarietiesDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA32D81A0476AD00B56B39 /* FAVarietiesDto.m */; };
 		84BB86E519F5E332001E04A3 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BB86BC19F5E332001E04A3 /* QQConnection.framework */; };
@@ -791,6 +793,10 @@
 		849D177119E6376D00606066 /* FAQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAQueue.m; path = Strategy/Operation/FAQueue.m; sourceTree = "<group>"; };
 		84B7256019FE126500886D4A /* FAMessageEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAMessageEntry.h; path = Model/CustomModel/FAMessageEntry.h; sourceTree = "<group>"; };
 		84B7256119FE126500886D4A /* FAMessageEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAMessageEntry.m; path = Model/CustomModel/FAMessageEntry.m; sourceTree = "<group>"; };
+		84B89B1D1A06367A0038B34B /* FAPriceParten.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAPriceParten.h; path = Model/CustomModel/FAPriceParten.h; sourceTree = "<group>"; };
+		84B89B1E1A06367A0038B34B /* FAPriceParten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAPriceParten.m; path = Model/CustomModel/FAPriceParten.m; sourceTree = "<group>"; };
+		84B89B201A06369B0038B34B /* FAVarieties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAVarieties.h; path = Model/CustomModel/FAVarieties.h; sourceTree = "<group>"; };
+		84B89B211A06369B0038B34B /* FAVarieties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAVarieties.m; path = Model/CustomModel/FAVarieties.m; sourceTree = "<group>"; };
 		84BA32D41A04760C00B56B39 /* FAPricePartenDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAPricePartenDto.h; path = Model/ServerModel/FAPricePartenDto.h; sourceTree = "<group>"; };
 		84BA32D51A04760C00B56B39 /* FAPricePartenDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAPricePartenDto.m; path = Model/ServerModel/FAPricePartenDto.m; sourceTree = "<group>"; };
 		84BA32D71A0476AD00B56B39 /* FAVarietiesDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAVarietiesDto.h; path = Model/ServerModel/FAVarietiesDto.h; sourceTree = "<group>"; };
@@ -1376,6 +1382,10 @@
 				8473D3B819DCF390009A2D4D /* FAMessage.m */,
 				84B7256019FE126500886D4A /* FAMessageEntry.h */,
 				84B7256119FE126500886D4A /* FAMessageEntry.m */,
+				84B89B1D1A06367A0038B34B /* FAPriceParten.h */,
+				84B89B1E1A06367A0038B34B /* FAPriceParten.m */,
+				84B89B201A06369B0038B34B /* FAVarieties.h */,
+				84B89B211A06369B0038B34B /* FAVarieties.m */,
 			);
 			name = CustormModel;
 			sourceTree = "<group>";
@@ -2709,6 +2719,7 @@
 				592735DF19C2A1A100FF42A1 /* FAMemberRegisterController.m in Sources */,
 				84C4CB4319DA74B400C36159 /* FAMessageViewCell2.m in Sources */,
 				592A83F019C9256500DDE1B5 /* FAHttpUtility.m in Sources */,
+				84B89B221A06369B0038B34B /* FAVarieties.m in Sources */,
 				849C563E19D574DA0057C158 /* FAStrategySearchHeaderView.m in Sources */,
 				8473D3B919DCF390009A2D4D /* FAMessage.m in Sources */,
 				84F2C75A19D2C98C006EBFC4 /* FADummieStrategyDetail2ViewModel.m in Sources */,
@@ -2722,6 +2733,7 @@
 				5982A31119D15AFF009EADD1 /* FAUnderlyingViewModel.m in Sources */,
 				84490BA519D3BAD000EA1850 /* FAStrategyDescriptionViewModel.m in Sources */,
 				592C1EF519DD27E100D984B9 /* FAStrategyProfitView.m in Sources */,
+				84B89B1F1A06367A0038B34B /* FAPriceParten.m in Sources */,
 				8403C57019E95D200058B19F /* FAProfitHeaderViewCell.m in Sources */,
 				593EA69619BFF50700E9F2BC /* FAMyPurchaseDetailSignalHeaderView.m in Sources */,
 				592735D919C2950900FF42A1 /* FAModifyPasswordController.m in Sources */,

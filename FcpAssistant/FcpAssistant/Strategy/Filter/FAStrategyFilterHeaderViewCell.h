@@ -10,4 +10,6 @@
 
 @interface FAStrategyFilterHeaderViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+
 @end
