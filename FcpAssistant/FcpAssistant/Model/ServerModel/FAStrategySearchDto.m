@@ -22,4 +22,6 @@
 
 @synthesize PageIndex;
 
+@synthesize RacerType;
+
 @end

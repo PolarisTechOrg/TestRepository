@@ -22,4 +22,6 @@
 
 @property (nonatomic, assign) int PageIndex;
 
+@property (nonatomic, assign) int RacerType;
+
 @end

@@ -61,6 +61,16 @@
 //    hasLoadStrategyIdList = NO;
 //    currentPageIndex = 1;
     
+    if (searchDto == nil)
+    {
+        searchDto = [[FAStrategySearchDto alloc] init];
+        
+        searchDto.OnlineStatus = 1;
+        searchDto.PageSize = 10;
+        searchDto.PageIndex = 1;
+        searchDto.RacerType = 1;
+    }
+    
     if (dataSource == nil)
     {
         dataSource = [[NSMutableArray alloc] init];
@@ -70,6 +80,10 @@
         {
             [dataSource addObjectsFromArray:strategyList];
         }
+    }
+    else
+    {
+        [dataSource removeAllObjects];
     }
     
     chartDict = [self loadChartData:dataSource];
@@ -90,7 +104,11 @@
 
 - (void)searchData:(FAStrategySearchDto *)search
 {
+    searchDto = search;
     
+    [self viewDidLoad];
+    
+    [self.tableView reloadData];
 }
 /*
 // fill chart
@@ -169,47 +187,22 @@
 // load data
 - (NSArray *)loadDataFromServer:(FAStrategySearchDto *)search
 {
-//    NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?strategyName=&racerType=1&onlineStatus=1&isOpen=&tradingDirection=&transactionFrequency=&tradeType=&winningProbability=&pageSize=10&pageIndex=%@", WEB_URL, [NSNumber numberWithInt:pageIndex]];
-//    
-//    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
-//    
-//    NSError *error;
-//    NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
-//    
-//    if(error == nil)
-//    {
-//        FAPaginatedDto *dtoObj =[FAJSONSerialization toObject:[FAPaginatedDto class] fromData:replyData];
-//        
-//        return  dtoObj.Items;
-//    }
-//    else
-//    {
-//        return nil;
-//    }
-    
     NSString * requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/strategy?search", WEB_URL];
     NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
     
     FAHttpHead *head = [FAHttpHead defaultInstance];
     head.Method = @"POST";
     
-    if (search == nil)
-    {
-        search = [[FAStrategySearchDto alloc] init];
-        
-        search.OnlineStatus = 1;
-        search.PageSize = 10;
-        search.PageIndex = 1;
-    }
-    
     NSError *error;
     NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:search error:&error];
     
+    NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding: NSUTF8StringEncoding]);
+    
     if(error == nil)
     {
-        NSArray *dtoArray =[FAJSONSerialization toArray:[FAPaginatedDto class] fromData:replyData];
+        FAPaginatedDto *dtoObj =[FAJSONSerialization toObject:[FAPaginatedDto class] fromData:replyData];
         
-        return  dtoArray;
+        return  dtoObj.Items;
     }
     else
     {
@@ -232,6 +225,7 @@
     
     NSError *error;
     NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+    
     
     if(error == nil)
     {
@@ -309,6 +303,8 @@
             
             NSError *error;
             NSData *replyData = [FAHttpUtility sendRequest:requestUrl error:&error];
+            
+            NSLog(@"%@",[[NSString alloc] initWithData:replyData encoding: NSUTF8StringEncoding]);
             
             if(error == nil)
             {
