@@ -99,7 +99,6 @@
     {
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:106.0/255 green:68.0/255 blue:209.0/255 alpha:1.0]];
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        
     }
     else
     {
