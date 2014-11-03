@@ -38,7 +38,7 @@
     
     self.navigationItem.title = @"策略筛选";
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(clickRightButton:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     
     pricePartenSource = [self loadPricePartenDataFromServer];
@@ -66,18 +66,36 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    if (section == 0)
+    return 2;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section ==0)
     {
-        return ceil(varietiesSource.count/4)+1;
-    }
-    else if(section == 1)
+    if (indexPath.row == 0)
     {
-        return ceil(pricePartenSource.count/4)+1;
+        return 35;
     }
     else
     {
-        return 0;
+        return ceil(varietiesSource.count/4)*40;
+    }
+    }
+    else
+    {
+        if (indexPath.row == 0)
+        {
+            return 35;
+        }
+        else
+        {
+            return ceil(pricePartenSource.count/4)*40;
+        }
     }
 }
 
@@ -90,7 +108,7 @@
         headerCell = [(FAStrategyFilterHeaderViewCell *)[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemHeaderCellIdentifier];
     }
     
-    headerCell.lblTitle.text = title;
+//    headerCell.lblTitle.text = title;
     
     return headerCell;
 }
@@ -105,28 +123,32 @@
     }
     
     CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
-    CGFloat ox = cellRect.origin.x;
-    CGFloat oy = cellRect.origin.y;
-    CGFloat width = 70;
-    CGFloat height = 36;
-    
-    NSArray *array = source.allValues;
-    for (int i = 0; i < array.count; i++)
-    {
-        FAPriceParten *p = array[i];
-        if (!p)
-        {
-            continue;
-        }
-        
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = [self getCGRect:i orignX:ox orignY:oy rectWidth:width rectHeight:height];
-        btn.tag = p.seqId;
-        btn.titleLabel.text = p.PartenName;
-        [btn addTarget:self action:@selector(choiceUp:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [cell.contentView addSubview:btn];
-    }
+//    CGFloat ox = cellRect.origin.x;
+//    CGFloat oy = cellRect.origin.y;
+//    CGFloat width = 70;
+//    CGFloat height = 36;
+//    
+//    NSArray *array = source.allValues;
+//    for (int i = 0; i < array.count; i++)
+//    {
+//        FAPriceParten *p = array[i];
+//        if (!p)
+//        {
+//            continue;
+//        }
+//        
+//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        btn.frame = [self getCGRect:i orignX:ox orignY:oy rectWidth:width rectHeight:height];
+//        [btn setBackgroundImage:[UIImage imageNamed:@"Strategy_bg_select_single"] forState:UIControlStateNormal];
+//        btn.backgroundColor = [UIColor clearColor];
+//        
+//        btn.tag = p.seqId;
+//        [btn setTitle:p.PartenName forState:UIControlStateNormal];
+//        
+//        [btn addTarget:self action:@selector(choiceUp:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [cell.contentView addSubview:btn];
+//    }
     
     return cell;
 }
@@ -140,29 +162,33 @@
         cell = [(FAStrategyFilterViewCell *)[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
     }
     
-    CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
-    CGFloat ox = cellRect.origin.x;
-    CGFloat oy = cellRect.origin.y;
-    CGFloat width = 70;
-    CGFloat height = 36;
-    
-    NSArray *array = source.allValues;
-    for (int i = 0; i < array.count; i++)
-    {
-        FAVarieties *p = array[i];
-        if (!p)
-        {
-            continue;
-        }
-        
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = [self getCGRect:i orignX:ox orignY:oy rectWidth:width rectHeight:height];
-        btn.tag = p.seqId;
-        btn.titleLabel.text = p.Name;
-        [btn addTarget:self action:@selector(choiceUp:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [cell.contentView addSubview:btn];
-    }
+//    CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
+//    CGFloat ox = cellRect.origin.x;
+//    CGFloat oy = cellRect.origin.y;
+//    CGFloat width = 70;
+//    CGFloat height = 36;
+//    
+//    NSArray *array = source.allValues;
+//    for (int i = 0; i < array.count; i++)
+//    {
+//        FAVarieties *p = array[i];
+//        if (!p)
+//        {
+//            continue;
+//        }
+//        
+//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        btn.frame = [self getCGRect:i orignX:ox orignY:oy rectWidth:width rectHeight:height];
+//        [btn setBackgroundImage:[UIImage imageNamed:@"Strategy_bg_select_single"] forState:UIControlStateNormal];
+//        btn.backgroundColor = [UIColor clearColor];
+//        
+//        btn.tag = p.seqId;
+//        [btn setTitle:p.Name forState:UIControlStateNormal];
+//        
+//        [btn addTarget:self action:@selector(choiceUp:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [cell.contentView addSubview:btn];
+//    }
     
     return cell;
 }
@@ -176,9 +202,10 @@
 - (CGRect)getCGRect:(int)index orignX:(CGFloat)x orignY:(CGFloat)y rectWidth:(CGFloat)width rectHeight:(CGFloat)height
 {
     double row = floor(index/4);
+    double column = floor(index%4);
     
-    CGFloat currX = x * index * 75;
-    CGFloat currY = y * row * 40;
+    CGFloat currX = x + (column * 75);
+    CGFloat currY = y + (row * 40);
     
     return CGRectMake(currX, currY, width, height);
 }
@@ -323,7 +350,7 @@
             priceParten.includeFlag = false;
             priceParten.seqId = i;
             
-            [dtoDict setObject:priceParten forKey:[NSNumber numberWithInt:priceParten.PartenID]];
+            [dtoDict setObject:priceParten forKey:[NSNumber numberWithInt:priceParten.seqId]];
         }
         
         return dtoDict;
@@ -368,7 +395,7 @@
             varieties.includeFlag = false;
             varieties.seqId = i;
             
-            [dtoDict setObject:varieties forKey:varieties.Code];
+            [dtoDict setObject:varieties forKey:[NSNumber numberWithInt:varieties.seqId]];
         }
         
         return dtoDict;
