@@ -1,14 +1,14 @@
 //
-//  FAStrategyFilterViewCell.m
+//  FAStrategyHeadingViewCell.m
 //  FcpAssistant
 //
-//  Created by admin on 9/17/14.
+//  Created by admin on 11/3/14.
 //  Copyright (c) 2014 polaris. All rights reserved.
 //
 
-#import "FAStrategyFilterViewCell.h"
+#import "FAStrategyHeadingViewCell.h"
 
-@implementation FAStrategyFilterViewCell
+@implementation FAStrategyHeadingViewCell
 
 - (void)awakeFromNib {
     // Initialization code

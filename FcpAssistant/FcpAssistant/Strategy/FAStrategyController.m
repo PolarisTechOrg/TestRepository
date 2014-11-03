@@ -57,9 +57,6 @@
 
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];
     
-    // Load data
-//    hasLoadStrategyIdList = NO;
-//    currentPageIndex = 1;
     
     if (searchDto == nil)
     {
