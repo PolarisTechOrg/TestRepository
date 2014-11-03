@@ -55,7 +55,7 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btn.frame = frame;
     btn.backgroundColor = [UIColor clearColor];
-    [btn.layer setBorderWidth:1.0];
+    [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     
     btn.tag = tag;
     [btn setTitle:title forState:UIControlStateNormal];
@@ -113,8 +113,7 @@
         {
             [btn setBackgroundImage:[UIImage imageNamed:@"Strategy_bg_select_single"] forState:UIControlStateNormal];
             v.includeFlag = true;
-        }
-           
+        }           
     }
 }
 
@@ -127,5 +126,57 @@
     CGFloat currY = 15 + row * 40;
     
     return CGRectMake(currX, currY, 70, 35);
+}
+
+- (NSMutableArray *)searchPricePartenList
+{
+    NSIndexPath *indexPath = [parentTableView indexPathForCell:self];
+    if (indexPath.row != 3)
+    {
+        return nil;
+    }
+    if(pricePartenSource == nil || pricePartenSource.count == 0)
+    {
+        return nil;
+    }
+    
+    NSMutableArray *partens = [NSMutableArray arrayWithCapacity:32];
+    NSArray *partenArray = [pricePartenSource allValues];
+    for (FAPriceParten *p in partenArray)
+    {
+        if (p.includeFlag == false)
+        {
+            continue;
+        }
+        [partens addObject:[NSNumber numberWithInt:p.PartenID]];
+    }
+    
+    return partens;
+}
+
+- (NSMutableArray *)searchVarietiesList
+{
+    NSIndexPath *indexPath = [parentTableView indexPathForCell:self];
+    if (indexPath.row != 1)
+    {
+        return nil;
+    }
+    if(varietiesSource == nil || varietiesSource.count == 0)
+    {
+        return nil;
+    }
+    
+    NSMutableArray *varieties = [NSMutableArray arrayWithCapacity:32];
+    NSArray *varArray = [varietiesSource allValues];
+    for (FAVarieties *p in varArray)
+    {
+        if (p.includeFlag == false)
+        {
+            continue;
+        }
+        [varieties addObject:p.Code];
+    }
+    
+    return varieties;
 }
 @end

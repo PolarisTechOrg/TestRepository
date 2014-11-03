@@ -17,6 +17,7 @@
 #import "FAHttpUtility.h"
 #import "FAPricePartenDto.h"
 #import "FAVarietiesDto.h"
+#import "FAStrategySearchDto.h"
 #import "FAHttpHead.h"
 #import "math.h"
 
@@ -43,11 +44,27 @@
     
     pricePartenSource = [self loadPricePartenDataFromServer];
     varietiesSource = [self loadVarietiesDataFromServer];
+    
+    searchDto = [FAStrategySearchDto instance];
+    dataCellArray = [NSMutableArray arrayWithCapacity:4];
 }
 
 - (void)clickRightButton:(id)sender
 {
+    NSMutableArray *partens = [NSMutableArray arrayWithCapacity:32];
+    NSMutableArray *varieties = [NSMutableArray arrayWithCapacity:32];
     
+    for (FAStrategyFilteringViewCell *cell in dataCellArray)
+    {
+        [partens addObjectsFromArray:[cell searchPricePartenList]];
+        [varieties addObjectsFromArray:[cell searchVarietiesList]];
+    }
+    
+    searchDto.SearchPriceParten = partens;
+    searchDto.SearchVarieties = varieties;
+    
+    [strategyController searchData:searchDto];
+    [self.navigationController popToViewController:strategyController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,6 +134,8 @@
         cell.parentTableView = tableView;
         [cell fillingData];
         
+        [dataCellArray addObject:cell];
+        
         return cell;
     }
     else if (indexPath.row == 2)
@@ -144,6 +163,8 @@
         cell.pricePartenSource = pricePartenSource;
         cell.parentTableView = tableView;
         [cell fillingData];
+        
+        [dataCellArray addObject:cell];
         
         return cell;
     }

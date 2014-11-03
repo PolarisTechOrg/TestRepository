@@ -160,6 +160,7 @@
 - (void)doFilter
 {
     FAStrategyFilterController *controller = [[FAStrategyFilterController alloc] init];
+    controller.strategyController = self;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }

@@ -18,4 +18,8 @@
 
 - (void)fillingData;
 
+- (NSMutableArray *)searchPricePartenList;
+
+- (NSMutableArray *)searchVarietiesList;
+
 @end

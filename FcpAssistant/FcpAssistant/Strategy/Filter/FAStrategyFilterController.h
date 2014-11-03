@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FAStrategyController.h"
+#import "FAStrategySearchDto.h"
 
 @interface FAStrategyFilterController : UITableViewController
 {
@@ -16,6 +17,9 @@
     
     NSMutableDictionary *selectPricePartenDict;
     NSMutableDictionary *selectVarietiesDict;
+    
+    NSMutableArray *dataCellArray;
+    FAStrategySearchDto *searchDto;
 }
 
 @property NSMutableDictionary *pricePartenSource;
