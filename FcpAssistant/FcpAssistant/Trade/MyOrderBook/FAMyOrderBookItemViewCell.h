@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblOrderQtyAndTradeQty;
 @property (weak, nonatomic) IBOutlet UILabel *lblTradePrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblOrderStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrderDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblOrderTime;
 @end
