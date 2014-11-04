@@ -69,7 +69,7 @@
     }
     else
     {
-        return 40;
+        return 30;
     }
 }
 
@@ -104,15 +104,30 @@
 
 #pragma mark --UISearchBarDelegate 协议方法
 
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return YES;
+}
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    searchBar.text = nil;
+    searchBar.text = @" ";
     return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
 {
     return YES;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

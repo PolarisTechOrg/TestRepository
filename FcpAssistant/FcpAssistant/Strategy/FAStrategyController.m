@@ -58,7 +58,7 @@
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:filterButton, searchButton, nil];
     
     
-    if (searchDto == nil)
+    if (searchDto == nil || [searchDto.SearchText isEqual:@" "])
     {
         searchDto = [FAStrategySearchDto instance];
         searchDto.RacerType = 1;

@@ -10,7 +10,7 @@
 #import "FAStrategyController.h"
 #import "FAStrategySearchDto.h"
 
-@interface FAStrategySearchController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITextFieldDelegate>
+@interface FAStrategySearchController : UITableViewController <UISearchBarDelegate,  UISearchDisplayDelegate, UITextFieldDelegate, UITextViewDelegate>
 {
     NSString *itemHeaderCellIdentifier;
     NSString *itemCellIdentifier;
