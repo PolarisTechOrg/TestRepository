@@ -130,6 +130,7 @@
         cell.lblOrderQtyAndTradeQty.text = [[NSString alloc] initWithFormat:@"%d/%d",item.TradeQty,item.OrderQty];
         cell.lblTradePrice.text = [FAFormater toDecimalStringWithDouble:item.TradePrice decimalPlace:2];
         cell.lblOrderStatus.text = [self toOrderStateDescription:item.OrderStatus];
+        cell.lblOrderDate.text =[FAFormater toShortDateStringWithNSDate:item.OrderTime];
         cell.lblOrderTime.text = [FAFormater toShortTimeStringWithNSDate:item.OrderTime];
         cell.indentationWidth =0;
     }
