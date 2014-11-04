@@ -68,6 +68,7 @@
         
         FAHttpHead *httpHeader = [FAHttpHead defaultInstance];
         httpHeader.Method = @"POST";
+        httpHeader.ContentType = @"application/json;charset=UTF-8";
         
         NSError *error;
         NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:loginDto error:&error];
@@ -169,7 +170,7 @@
         
         FAHttpHead *httpHeader = [FAHttpHead defaultInstance];
         httpHeader.Method = @"POST";
-        
+        httpHeader.ContentType = @"application/json;charset=UTF-8";
         NSError *error;
         NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:httpHeader httpBody:modifyPwdModel error:&error];
         
