@@ -61,6 +61,7 @@
     if (searchDto == nil)
     {
         searchDto = [FAStrategySearchDto instance];
+        searchDto.RacerType = 1;
     }
     
     if (dataSource == nil)
