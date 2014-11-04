@@ -62,26 +62,41 @@
     {
         dataDictionary = [NSMutableDictionary dictionaryWithCapacity:8];
     }
-    dataSource = [NSMutableArray arrayWithCapacity:32];
+    else
+    {
+        [dataDictionary removeAllObjects];
+    }
+    
+    if (!dataSource)
+    {
+        dataSource = [NSMutableArray arrayWithCapacity:32];
+    }
+    else
+    {
+        [dataSource removeAllObjects];
+    }
+    
+    unReadCount = 0;
+    maxMessageId = 0;
+    [self loadUnReadMessageCount];
     
     NSMutableArray *messageList = [self LoadMessageDataFromServer];
     NSMutableArray *entryList = [self analyzeDataFromServer:messageList];
-    
-    [dataSource removeAllObjects];
     [dataSource addObjectsFromArray:entryList];
     
+    
     // push test
-//    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
-//    UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithImage:collectionButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doCollection)];
-//    
-//    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:collectionButton, nil];
+    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
+    UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithImage:collectionButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doCollection)];
+    
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:collectionButton, nil];
 }
 
 // test push
-//- (void)doCollection
-//{
-//    [self viewWillAppear:YES];
-//}
+- (void)doCollection
+{
+    [self viewWillAppear:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -216,7 +231,7 @@
             }
             
             [dataSource removeObject:item];
-            // Delete the row from the data source
+            
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }
     }
