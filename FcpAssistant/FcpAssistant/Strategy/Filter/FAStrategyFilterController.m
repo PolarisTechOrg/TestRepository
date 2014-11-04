@@ -62,6 +62,7 @@
     
     searchDto.SearchPriceParten = partens;
     searchDto.SearchVarieties = varieties;
+    searchDto.RacerType = 0;
     
     [strategyController searchData:searchDto];
     [self.navigationController popToViewController:strategyController animated:YES];

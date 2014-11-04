@@ -185,6 +185,7 @@
     
     FAHttpHead *head = [FAHttpHead defaultInstance];
     head.Method = @"POST";
+    head.ContentType = @"application/json;charset=UTF-8";
     
     NSError *error;
     NSData *replyData = [FAHttpUtility sendRequest:requestUrl withHead:head httpBody:search error:&error];

@@ -13,7 +13,7 @@
 @synthesize TimeOut;
 @synthesize Method;
 @synthesize headeDic;
-
+@synthesize ContentType;
 +(instancetype) defaultInstance
 {
     return [[FAHttpHead alloc] initDefault];

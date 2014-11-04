@@ -28,6 +28,17 @@
     return [FAHttpUtility sendRequest:url withHead:defalutHeader httpBody:nil error:error];
 }
 
++(NSString *)JSONStringify:(id) jsonObje
+{
+    NSError *e;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObje options:0 error:&e];
+    if(e != nil)
+    {
+        return @"";
+    }
+    NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return result;
+}
 // 同步发送请求
 + (NSData *)sendRequest:(NSURL *)url withHead:(FAHttpHead *)head httpBody:(id)body error:(NSError **)error
 {
@@ -39,6 +50,10 @@
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     [urlRequest setTimeoutInterval:head.TimeOut];
     [urlRequest setHTTPMethod:head.Method];
+    if(head.ContentType.length >0)
+    {
+    [urlRequest setValue:head.ContentType forHTTPHeaderField:@"Content-type"];
+    }
 
     if(head.headeDic != nil)
     {
@@ -50,23 +65,24 @@
     
     if(body != nil)
     {
-        NSMutableString *bodyString = [[NSMutableString alloc] init];
+//        NSMutableString *bodyString = [[NSMutableString alloc] init];
         
         NSDictionary *bodyDict = [FAJSONSerialization toDictionary:body];
-        
-        for(NSString* key in bodyDict.allKeys)
-        {
-            [bodyString appendString:key];
-            [bodyString appendString:@"="];
-            [bodyString appendFormat:@"%@", [self urlEncoding:[bodyDict valueForKey:key]]];
-            [bodyString appendString:@"&"];
-        }
-        NSUInteger length = [bodyString length];
-        if(length > 0)
-        {
-            [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
-        }
-        
+//        
+//        for(NSString* key in bodyDict.allKeys)
+//        {
+//            [bodyString appendString:key];
+//            [bodyString appendString:@"="];
+//            [bodyString appendFormat:@"%@", [self urlEncoding:[bodyDict valueForKey:key]]];
+//            [bodyString appendString:@"&"];
+//        }
+        NSString *bodyString = [FAHttpUtility JSONStringify:bodyDict];
+//        NSUInteger length = [bodyString length];
+//        if(length > 0)
+//        {
+//            [bodyString deleteCharactersInRange:NSMakeRange(length-1, 1)];
+//        }
+//        bodyString =@"{\"OnlineStatus\":1,\"PageSize\":10,\"PageIndex\":1,\"SearchVarieties\":[\"IF\"],\"RacerType\":1,\"SearchPriceParten\":[]}";
         [urlRequest setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     

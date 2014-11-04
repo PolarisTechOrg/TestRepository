@@ -25,6 +25,10 @@
 @property (nonatomic, assign) int RacerType;
 
 
++(Class)SearchPriceParten_class;
+
++(Class)SearchVarieties_class;
+
 +(id)instance;
 
 @end

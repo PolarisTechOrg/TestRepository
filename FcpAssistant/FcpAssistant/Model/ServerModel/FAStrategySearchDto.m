@@ -7,6 +7,8 @@
 //
 
 #import "FAStrategySearchDto.h"
+#import "FAPricePartenDto.h";
+#import "FAVarietiesDto.h"
 
 @implementation FAStrategySearchDto
 
@@ -35,6 +37,16 @@
     dto.PageIndex = 1;
     
     return dto;
+}
+
++(Class)SearchPriceParten_class
+{
+    return [FAPricePartenDto class];
+}
+
++(Class)SearchVarieties_class
+{
+    return [FAVarietiesDto class];
 }
 
 @end

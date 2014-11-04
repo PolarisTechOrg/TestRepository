@@ -148,7 +148,8 @@
         {
             continue;
         }
-        [partens addObject:[NSNumber numberWithInt:p.PartenID]];
+//        [partens addObject:[NSNumber numberWithInt:p.PartenID]];
+        [partens addObject:p];
     }
     
     return partens;
@@ -174,7 +175,8 @@
         {
             continue;
         }
-        [varieties addObject:p.Code];
+//        [varieties addObject:p.Code];
+        [varieties addObject:p];
     }
     
     return varieties;

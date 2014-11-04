@@ -11,6 +11,7 @@
 @interface FAHttpHead : NSObject
 @property NSTimeInterval TimeOut;
 @property NSString *Method;
+@property NSString *ContentType;
 @property NSDictionary *headeDic;
 
 +(instancetype) defaultInstance;
