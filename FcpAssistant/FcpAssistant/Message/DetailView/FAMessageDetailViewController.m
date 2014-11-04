@@ -18,7 +18,7 @@
 #import "FAHttpUtility.h"
 #import "FAHttpHead.h"
 #import "FAFormater.h"
-
+#import "FAGeTuiReceiver.h"
 
 @interface FAMessageDetailViewController ()
 
@@ -30,6 +30,14 @@
 @synthesize MessageType;
 @synthesize MaxMessageId;
 
+- (id)init
+{
+    if ([super init])
+    {
+        [[FAGeTuiReceiver shareInstance] registerMessageReceiver:self]; // register push
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     
@@ -61,18 +69,18 @@
     dataSource = [self formateDataArray:dataDictionary];
     
     // push test
-//    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
-//    UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithImage:collectionButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doCollection)];
-//    
-//    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:collectionButton, nil];
+    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
+    UIBarButtonItem *collectionButton = [[UIBarButtonItem alloc] initWithImage:collectionButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(doCollection)];
+    
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:collectionButton, nil];
 }
 
 // test push
-//- (void)doCollection
-//{
-//    [self viewDidLoad];
-//    [self.tableView reloadData];
-//}
+- (void)doCollection
+{
+    [self viewDidLoad];
+    [self.tableView reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
