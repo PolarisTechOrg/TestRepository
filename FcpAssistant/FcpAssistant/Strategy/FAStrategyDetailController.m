@@ -226,13 +226,17 @@ const int latedRecordSectionIndex = 6;
     }
     
     // share content
-    id<ISSContent> publishContent = [ShareSDK content:dataSource.StrategySelection.description
-                                       defaultContent:@"暂无内容"
-                                                image:nil //[ShareSDK imageWithPath:imagePath]
-                                                title:dataSource.StrategySelection.StrategyName
-                                                  url:nil
-                                          description:@"这是一条分享信息"
-                                            mediaType:SSPublishContentMediaTypeNews];
+//    id<ISSContent> publishContent = [ShareSDK content:dataSource.StrategySelection.description
+//                                       defaultContent:@"暂无内容"
+//                                                image:nil //[ShareSDK imageWithPath:imagePath]
+//                                                title:dataSource.StrategySelection.StrategyName
+//                                                  url:nil
+//                                          description:@"这是一条分享信息"
+//                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+    
+    id<ISSContent> publishContent = [ShareSDK content:@"分享内容" defaultContent:@"擎研信息" image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:nil description:@"擎研期顾测试分享信息" mediaType:SSPublishContentMediaTypeNews];
     
     // share menu
     [ShareSDK showShareActionSheet:nil
