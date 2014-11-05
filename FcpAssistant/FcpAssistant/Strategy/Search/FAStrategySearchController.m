@@ -37,6 +37,10 @@
     
     barStrategySearch.delegate = self;
     
+    UITapGestureRecognizer *tapGaesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    tapGaesture.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGaesture];
+    
     listTeams = [NSMutableArray arrayWithCapacity:32];
     [listTeams addObject:@"热搜词"];
     [listTeams addObjectsFromArray:[self loadDataFromServer]];
@@ -127,7 +131,6 @@
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -243,6 +246,11 @@
     {
         return nil;
     }
+}
+
+- (void)viewTapped:(UITapGestureRecognizer *)tapGesture
+{
+    [self.barStrategySearch resignFirstResponder];
 }
 
 //- (NSArray *)searchStrategyData:(NSString *)content
