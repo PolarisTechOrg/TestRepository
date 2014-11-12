@@ -150,33 +150,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     int curSection = indexPath.section % 2;
+    UITableViewCell *cell;
     
     if (curSection == 0)
     {
-        FAMessageDetailHeaderViewCell *cell = (FAMessageDetailHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:itemHeaderCellIdentifier];
+        cell = (FAMessageDetailHeaderViewCell *)[tableView dequeueReusableCellWithIdentifier:itemHeaderCellIdentifier];
         
         if(!cell)
         {
             cell = [[FAMessageDetailHeaderViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemHeaderCellIdentifier];
         }
         
-        [self showHeader:cell cellForRowAtIndexPath:indexPath];
-        return cell;
+        [self showHeader:(FAMessageDetailHeaderViewCell *)cell cellForRowAtIndexPath:indexPath];
     }
     else
     {
-        FAMessageDetailViewCell2 *cell= (FAMessageDetailViewCell2*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
+        cell= (FAMessageDetailViewCell2*)[tableView dequeueReusableCellWithIdentifier:itemCellIdentifier];
         
         if (!cell)
         {
             cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
         }
         
-        [self showContent:cell cellForRowAtIndexPath:indexPath];
-        return cell;
+        [self showContent:(FAMessageDetailViewCell2*)cell cellForRowAtIndexPath:indexPath];
     }
     
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -244,21 +243,19 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    // accessory check
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
 
 /*
 #pragma mark - Navigation
