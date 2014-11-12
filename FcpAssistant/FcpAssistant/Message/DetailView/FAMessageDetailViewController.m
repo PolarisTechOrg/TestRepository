@@ -212,6 +212,8 @@
 - (void)doMore:(id)sender
 {
     NSLog(@"do delete cell");
+    
+    [self.tableView setEditing:YES animated:YES];
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -241,14 +243,6 @@
     }
 }
 
-//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FAMessageDetailHeaderView" owner:self options:nil];
-//    
-//    UIView *headerView = (UIView *) [nib objectAtIndex:0];
-//    headerView.frame = CGRectMake(0, 0, 320, 50);
-//    return headerView;
-//}
 
 /*
 // Override to support conditional editing of the table view.
@@ -284,19 +278,29 @@
 }
 */
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+}
+
 
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // accessory check
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    
-//    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
-//    
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // accessory check
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 /*
 #pragma mark - Navigation
