@@ -175,7 +175,48 @@
         [self showContent:(FAMessageDetailViewCell2*)cell cellForRowAtIndexPath:indexPath];
     }
     
+    // long press gesture
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellLongPress:)];
+    [cell addGestureRecognizer:longPressGesture];
+    
     return cell;
+}
+
+- (void)cellLongPress:(UIGestureRecognizer *)recognizer
+{
+    if (recognizer.state != UIGestureRecognizerStateBegan)
+    {
+        return;
+    }
+    
+//    CGPoint location = [recognizer locationInView:self.tableView];
+//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    
+    FAMessageDetailViewCell2 *cell = (FAMessageDetailViewCell2 *)recognizer.view;
+    [cell becomeFirstResponder];
+    
+    UIMenuItem *itCopy = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(doCopy:)];
+    UIMenuItem *itDelete = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(doDelete:)];
+    
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    [menuController setMenuItems:[NSArray arrayWithObjects:itCopy, itDelete, nil]];
+    [menuController setTargetRect:cell.frame inView:self.tableView];
+    [menuController setMenuVisible:YES animated:YES];
+}
+
+- (void)doCopy:(id)sender
+{
+    NSLog(@"do copy cell");
+}
+
+- (void)doDelete:(id)sender
+{
+    NSLog(@"do delete cell");
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -247,15 +288,15 @@
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
 //    // accessory check
 //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 //    
 //    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
 //    
 //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+//}
 
 /*
 #pragma mark - Navigation
