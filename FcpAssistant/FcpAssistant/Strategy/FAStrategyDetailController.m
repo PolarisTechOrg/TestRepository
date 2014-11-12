@@ -236,7 +236,7 @@ const int latedRecordSectionIndex = 6;
     
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
     
-    id<ISSContent> publishContent = [ShareSDK content:@"分享内容" defaultContent:@"擎研信息" image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:nil description:@"擎研期顾测试分享信息" mediaType:SSPublishContentMediaTypeNews];
+    id<ISSContent> publishContent = [ShareSDK content:@"分享内容" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:@"http://m.thepaper.cn/newsDetail_forward_1274214" description:NSLocalizedString(@"TEXT_TEST_MSG", @"测试分享信息") mediaType:SSPublishContentMediaTypeNews];
     
     // share menu
     [ShareSDK showShareActionSheet:nil
