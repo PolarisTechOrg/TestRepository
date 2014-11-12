@@ -195,8 +195,8 @@
     FAMessageDetailViewCell2 *cell = (FAMessageDetailViewCell2 *)recognizer.view;
     [cell becomeFirstResponder];
     
-    UIMenuItem *itCopy = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(doCopy:)];
-    UIMenuItem *itDelete = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(doDelete:)];
+    UIMenuItem *itCopy = [[UIMenuItem alloc] initWithTitle:@"拷贝" action:@selector(doCopy:)];
+    UIMenuItem *itDelete = [[UIMenuItem alloc] initWithTitle:@"更多..." action:@selector(doMore:)];
     
     UIMenuController *menuController = [UIMenuController sharedMenuController];
     [menuController setMenuItems:[NSArray arrayWithObjects:itCopy, itDelete, nil]];
@@ -209,7 +209,7 @@
     NSLog(@"do copy cell");
 }
 
-- (void)doDelete:(id)sender
+- (void)doMore:(id)sender
 {
     NSLog(@"do delete cell");
 }
