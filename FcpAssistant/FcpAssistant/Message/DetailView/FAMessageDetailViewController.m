@@ -216,7 +216,8 @@
     
     self.editing = YES;
     [self.tableView allowsMultipleSelection];
-    [self setEditing:YES animated:YES];
+    [self.tableView setEditing:YES animated:YES];
+    
 }
 
 - (void)cancelAction
@@ -276,14 +277,6 @@
 //        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 //    }   
 //}
-
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
-{
-    [super setEditing:editing animated:animated];
-    
-    [self.tableView setEditing:editing animated:animated];
-    [self.tableView reloadData];
-}
 
 /*
 // Override to support rearranging the table view.
