@@ -211,8 +211,6 @@
 
 - (void)doMore:(id)sender
 {
-    NSLog(@"do delete cell");
-    
     [self.tableView setEditing:YES animated:YES];
 }
 
@@ -280,7 +278,16 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+    int curSection = indexPath.section % 2;
+    
+    if (curSection == 0)
+    {
+        return UITableViewCellEditingStyleNone;
+    }
+    else
+    {
+        return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+    }
 }
 
 
@@ -290,11 +297,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // accessory check
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
