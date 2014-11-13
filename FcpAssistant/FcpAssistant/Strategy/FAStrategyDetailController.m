@@ -225,18 +225,20 @@ const int latedRecordSectionIndex = 6;
         return;
     }
     
-    // share content
-//    id<ISSContent> publishContent = [ShareSDK content:dataSource.StrategySelection.description
-//                                       defaultContent:@"暂无内容"
-//                                                image:nil //[ShareSDK imageWithPath:imagePath]
-//                                                title:dataSource.StrategySelection.StrategyName
-//                                                  url:nil
-//                                          description:@"这是一条分享信息"
-//                                            mediaType:SSPublishContentMediaTypeNews];
+    // standard test code
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+//    
+//    id<ISSContent> publishContent = [ShareSDK content:@"分享内容" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:@"http://m.thepaper.cn/newsDetail_forward_1274214" description:NSLocalizedString(@"TEXT_TEST_MSG", @"测试分享信息") mediaType:SSPublishContentMediaTypeNews];
     
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+    UIWindow *screen = [[UIApplication sharedApplication] keyWindow];
+    UIImage *image = [self imageFromView:screen];
     
-    id<ISSContent> publishContent = [ShareSDK content:@"分享内容" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title:@"ShareSDK" url:@"http://m.thepaper.cn/newsDetail_forward_1274214" description:NSLocalizedString(@"TEXT_TEST_MSG", @"测试分享信息") mediaType:SSPublishContentMediaTypeNews];
+    id<ISSContent> publishContent = [ShareSDK content:@"" defaultContent:@""
+                                     image:[ShareSDK pngImageWithImage:image]
+                                     title:@"擎研期股分享"
+                                     url:@""
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"")
+                                            mediaType:SSPublishContentMediaTypeNews];
     
     // share menu
     [ShareSDK showShareActionSheet:nil
@@ -250,6 +252,19 @@ const int latedRecordSectionIndex = 6;
             [FAUtility showAlterView:[NSString stringWithFormat:@"发送失败 %ld error desc =%@", [error errorCode], [error errorDescription]]];
         }
     }];
+}
+
+- (UIImage *)imageFromView:(UIView *)view
+{
+    UIGraphicsBeginImageContext(view.frame.size);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (NSError *)postAddStrategyToWishList
