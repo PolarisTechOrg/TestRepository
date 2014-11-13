@@ -211,7 +211,18 @@
 
 - (void)doMore:(id)sender
 {
-    [self.tableView setEditing:YES animated:YES];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAction)];
+    self.navigationItem.rightBarButtonItem = cancelButton;
+    
+    self.editing = YES;
+    [self.tableView allowsMultipleSelection];
+    [self setEditing:YES animated:YES];
+}
+
+- (void)cancelAction
+{
+    [self setEditing:NO animated:YES];
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -242,25 +253,37 @@
 }
 
 
-/*
 // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (editingStyle == UITableViewCellEditingStyleDelete)
+//    {
+//        NSLog(@"canEditRow delete");
+//        // Delete the row from the data source
+////        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//    else if (editingStyle == UITableViewCellEditingStyleInsert)
+//    {
+//        NSLog(@"canEditRow insert");
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//    }   
+//}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    [self.tableView setEditing:editing animated:animated];
+    [self.tableView reloadData];
 }
-*/
 
 /*
 // Override to support rearranging the table view.
@@ -302,11 +325,14 @@
 //    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
 //    
 //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    NSLog(@"didSelect");
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSLog(@"didDeselect");
 }
 
 /*
