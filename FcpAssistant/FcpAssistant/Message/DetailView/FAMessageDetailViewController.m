@@ -218,6 +218,10 @@
     self.editing = YES;
     [self.tableView allowsMultipleSelection];
     [self.tableView setEditing:YES animated:YES];
+}
+
+- (void)doDelete
+{
     
 }
 

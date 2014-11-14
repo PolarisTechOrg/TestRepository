@@ -237,7 +237,7 @@ const int latedRecordSectionIndex = 6;
     id<ISSContent> publishContent = [ShareSDK content:@"" defaultContent:@""
                                      image:[ShareSDK jpegImageWithImage:image quality:0]
                                      title:[NSString stringWithFormat:@"策略：%@", title]
-                                     url:nil
+                                     url:@""
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
     

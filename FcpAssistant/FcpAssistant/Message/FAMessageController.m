@@ -289,7 +289,8 @@
     FAMessageViewCell2 *cell = (FAMessageViewCell2 *)[tableView cellForRowAtIndexPath:indexPath];
     cell.iconMessageReadFlag.image = nil;
     
-    FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];subController.hidesBottomBarWhenPushed = YES;
+    FAMessageDetailViewController *subController = [[FAMessageDetailViewController alloc] init];
+    subController.hidesBottomBarWhenPushed = YES;
     subController.SendId = item.SenderId;
     subController.MessageType = item.MessageType;
     [self pushNewViewController:subController];
