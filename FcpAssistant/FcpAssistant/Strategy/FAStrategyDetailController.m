@@ -232,10 +232,10 @@ const int latedRecordSectionIndex = 6;
     
     UIWindow *screen = [[UIApplication sharedApplication] keyWindow];
     UIImage *image = [self imageFromView:screen];
-    NSString *title = dataSource.StrategyDescription.Strategy.StrategyName;
+    NSString *title = dataSource.StrategySelection.StrategyName;
     
     id<ISSContent> publishContent = [ShareSDK content:@"" defaultContent:@""
-                                     image:[ShareSDK pngImageWithImage:image]
+                                     image:[ShareSDK jpegImageWithImage:image quality:0]
                                      title:[NSString stringWithFormat:@"策略：%@", title]
                                      url:@""
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"")

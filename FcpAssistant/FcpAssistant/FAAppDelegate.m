@@ -92,12 +92,14 @@
 {
     //分享设置
     {
+        // ShareSDK
         [ShareSDK registerApp:@"3e1d7841faa0"];
         
-        //    [ShareSDK importWeChatClass:[WXApi class]];
+        // WeChat
         [ShareSDK connectWeChatWithAppId:@"wxb9642874c48edc0c" wechatCls:[WXApi class]];
+        
+        // SinaWeibo
         [ShareSDK connectSinaWeiboWithAppKey:@"1224842810" appSecret:@"364cd352be2ac3f03c7d15a656bacb23" redirectUri:@"http://www.sharesdk.cn"];
-        // ShareSDK setup
     }
     
     {
