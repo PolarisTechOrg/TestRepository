@@ -172,6 +172,7 @@
             cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
         }
         
+        cell.tag = indexPath.row;
         [self showContent:(FAMessageDetailViewCell2*)cell cellForRowAtIndexPath:indexPath];
     }
     
@@ -310,23 +311,23 @@
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // accessory check
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // accessory check
+////    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+////    
+////    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
+////    
+////    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    
-//    [cell setAccessoryType:cell.accessoryType == UITableViewCellAccessoryCheckmark ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark];
 //    
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
-    NSLog(@"didSelect");
-}
+//    NSLog(@"didSelect");
+//}
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"didDeselect");
-}
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"didDeselect");
+//}
 
 /*
 #pragma mark - Navigation

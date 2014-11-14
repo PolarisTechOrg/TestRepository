@@ -14,47 +14,52 @@
     // Initialization code
 }
 
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-//{
-//    [super setSelected:selected animated:animated];
-//
-//    // Configure the view for the selected state
-//    if (self.editing)
-//    {
-//        if (selected)
-//        {
-//        }
-//        else
-//        {
-//            
-//        }
-//    }
-//}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
 
-//- (void)setEditing:(BOOL)editing animated:(BOOL)animated
-//{
-//    if (editing)
-//    {
-//        if(self.editingStyle == (UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete))
-//        {
-//            if (![self viewWithTag:TagValue])
-//            {
-//                UIImage *image = [UIImage imageNamed:@""];
-//                UIImageView *editView = [[UIImageView alloc] initWithImage:image];
-//                editView.tag = TagValue;
-//                editView.frame = CGRectMake(10, 15, 20, 20);
-//                [self addSubview:editView];
-//            }
-//        }
-//    }
-//    else
-//    {
-//        UIView *editView = [self viewWithTag:TagValue];
+    // Configure the view for the selected state
+    if (self.editing)
+    {
+        if (selected)
+        {
+            NSLog(@"cell selected tag:%ld", self.tag);
+        }
+        else
+        {
+            NSLog(@"cell deSelected tag:%ld", self.tag);
+        }
+    }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    if (editing)
+    {
+        if(self.editingStyle == (UITableViewCellEditingStyleInsert | UITableViewCellEditingStyleDelete))
+        {
+            if (![self viewWithTag:self.tag])
+            {
+                UIImage *image = [UIImage imageNamed:@""];
+                UIImageView *editView = [[UIImageView alloc] initWithImage:image];
+                editView.tag = self.tag;
+                editView.frame = CGRectMake(10, 15, 20, 20);
+                [self addSubview:editView];
+            }
+        }
+        NSLog(@"cell editing tag:%ld", self.tag);
+    }
+    else
+    {
+//        UIView *editView = [self viewWithTag:self.tag];
 //        if(editView)
 //        {
 //            [editView removeFromSuperview];
 //        }
-//    }
-//}
+        NSLog(@"cell noEditing tag:%ld", self.tag);
+    }
+}
 
 @end
