@@ -238,7 +238,7 @@ const int latedRecordSectionIndex = 6;
                                      image:[ShareSDK jpegImageWithImage:image quality:0]
                                      title:[NSString stringWithFormat:@"策略：%@", title]
                                      url:@""
-                                          description:nil
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"策略分享")
                                             mediaType:SSPublishContentMediaTypeImage];
     
     // share menu
