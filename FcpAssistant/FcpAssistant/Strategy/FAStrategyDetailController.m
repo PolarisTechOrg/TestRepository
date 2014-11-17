@@ -239,7 +239,7 @@ const int latedRecordSectionIndex = 6;
                                      title:[NSString stringWithFormat:@"策略：%@", title]
                                      url:@""
                                           description:nil
-                                            mediaType:SSPublishContentMediaTypeNews];
+                                            mediaType:SSPublishContentMediaTypeImage];
     
     // share menu
     [ShareSDK showShareActionSheet:nil
