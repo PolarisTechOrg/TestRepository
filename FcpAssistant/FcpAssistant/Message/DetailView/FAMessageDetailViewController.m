@@ -171,6 +171,18 @@
         {
             cell = [[FAMessageDetailViewCell2 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemCellIdentifier];
         }
+        else
+        {
+            UIView *editView = (UIView *)cell.subviews[0];
+            
+            for (UIView *subView in editView.subviews)
+            {
+                if(subView.tag == cell.tag && [subView isKindOfClass:[UIImageView class]])
+                {
+                    [subView removeFromSuperview];
+                }
+            }
+        }
         
         cell.tag = indexPath.row;
         [self showContent:(FAMessageDetailViewCell2*)cell cellForRowAtIndexPath:indexPath];
