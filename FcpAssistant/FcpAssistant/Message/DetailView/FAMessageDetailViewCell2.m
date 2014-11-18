@@ -10,6 +10,9 @@
 
 @implementation FAMessageDetailViewCell2
 
+@synthesize messageId;
+@synthesize deleteFlag;
+
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -34,6 +37,8 @@
                 
                 [self addSubview:editView];
             }
+            
+            deleteFlag = true;
         }
         else
         {
@@ -53,6 +58,7 @@
                 }
             }
             
+            deleteFlag = false;
         }
     }
 }

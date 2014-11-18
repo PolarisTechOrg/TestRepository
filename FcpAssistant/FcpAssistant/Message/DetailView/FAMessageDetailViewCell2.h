@@ -14,4 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTextBody;
 @property (weak, nonatomic) IBOutlet UILabel *lblLatedReceiveTime;
 
+@property (nonatomic, assign) int messageId;
+@property (nonatomic, assign) BOOL deleteFlag;
+
 @end

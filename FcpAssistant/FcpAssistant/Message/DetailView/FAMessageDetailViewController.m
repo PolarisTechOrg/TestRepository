@@ -145,6 +145,9 @@
     
     cell.lblTextBody.text = message.Context;
     cell.lblLatedReceiveTime.text = message.MessageTimeString;
+    
+    cell.messageId = message.MessageId;
+    cell.deleteFlag = false;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -185,6 +188,7 @@
         }
         
         cell.tag = indexPath.row;
+        
         [self showContent:(FAMessageDetailViewCell2*)cell cellForRowAtIndexPath:indexPath];
     }
     
