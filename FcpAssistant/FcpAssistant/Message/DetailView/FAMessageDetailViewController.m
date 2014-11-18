@@ -230,21 +230,40 @@
 {
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAction)];
     self.navigationItem.rightBarButtonItem = cancelButton;
+    // right navigation button
+    
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"message_icon_trash"] style:UIBarButtonItemStyleBordered target:self action:@selector(doDelete)];
+    NSArray *btnArray = [NSArray arrayWithObjects:[self barButtonSystemItem:UIBarButtonSystemItemFlexibleSpace], deleteButton, [self barButtonSystemItem:UIBarButtonSystemItemFlexibleSpace], nil];
+    
+    [self setToolbarItems:btnArray animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:YES];
+    // bottom trash button
     
     self.editing = YES;
     [self.tableView allowsMultipleSelection];
     [self.tableView setEditing:YES animated:YES];
+    // show editing mode
+}
+
+//insert toolbarbutton space item
+- (UIBarButtonItem *)barButtonSystemItem:(UIBarButtonSystemItem)systemItem
+{
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
+    
+    return item;
 }
 
 - (void)doDelete
 {
-    
+    NSLog(@"press delete button");
 }
 
 - (void)cancelAction
 {
     [self setEditing:NO animated:YES];
     self.navigationItem.rightBarButtonItem = nil;
+    self.tableView.tableFooterView = nil;
+    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 - (BOOL)canBecomeFirstResponder
