@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblLatedReceiveTime;
 
 @property (nonatomic, assign) int messageId;
-@property (nonatomic, assign) BOOL deleteFlag;
+@property (nonatomic, retain) NSIndexPath *cellIndexPath;
+
+@property (nonatomic, retain) NSMutableDictionary *deleteIndexDictionary;
 
 @end

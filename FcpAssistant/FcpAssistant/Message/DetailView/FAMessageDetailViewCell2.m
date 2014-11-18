@@ -11,7 +11,8 @@
 @implementation FAMessageDetailViewCell2
 
 @synthesize messageId;
-@synthesize deleteFlag;
+@synthesize cellIndexPath;
+@synthesize deleteIndexDictionary;
 
 - (void)awakeFromNib {
     // Initialization code
@@ -20,6 +21,8 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+    
+    NSNumber *messageIdNumber = [NSNumber numberWithInt:messageId];
 
     // Configure the view for the selected state
     if (self.editing)
@@ -38,7 +41,8 @@
                 [self addSubview:editView];
             }
             
-            deleteFlag = true;
+            
+            [deleteIndexDictionary setObject:cellIndexPath forKey:messageIdNumber];
         }
         else
         {
@@ -58,7 +62,7 @@
                 }
             }
             
-            deleteFlag = false;
+            [deleteIndexDictionary removeObjectForKey:messageIdNumber];
         }
     }
 }

@@ -16,6 +16,7 @@
     
     NSMutableArray *dataSource;
     NSMutableDictionary *dataDictionary;
+    NSMutableDictionary *deleteIndexDictionary;
     
     int totalSecitonIndex;
 }

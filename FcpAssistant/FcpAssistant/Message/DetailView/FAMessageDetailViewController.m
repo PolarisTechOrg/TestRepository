@@ -58,15 +58,25 @@
         [dataDictionary removeAllObjects];
     }
     dataDictionary = [self analyzeDataFromServer:dtoArray];
+    
     if (!dataSource)
     {
-        [dataSource removeAllObjects];
+        dataSource = [NSMutableArray arrayWithCapacity:64];
     }
     else
     {
         [dataSource removeAllObjects];
     }
     dataSource = [self formateDataArray:dataDictionary];
+    
+    if (!deleteIndexDictionary)
+    {
+        deleteIndexDictionary = [NSMutableDictionary dictionaryWithCapacity:32];
+    }
+    else
+    {
+        [deleteIndexDictionary removeAllObjects];
+    }
     
     // push test
 //    UIImage *collectionButtonImage = [UIImage imageNamed:@"Strategy_icon_strategy_detail_collection_white"];
@@ -146,8 +156,10 @@
     cell.lblTextBody.text = message.Context;
     cell.lblLatedReceiveTime.text = message.MessageTimeString;
     
+    cell.tag = indexPath.row;
     cell.messageId = message.MessageId;
-    cell.deleteFlag = false;
+    cell.cellIndexPath = indexPath;
+    cell.deleteIndexDictionary = deleteIndexDictionary;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,8 +199,6 @@
             }
         }
         
-        cell.tag = indexPath.row;
-        
         [self showContent:(FAMessageDetailViewCell2*)cell cellForRowAtIndexPath:indexPath];
     }
     
@@ -221,6 +231,19 @@
     [menuController setMenuVisible:YES animated:YES];
 }
 
+- (void)doDelete
+{
+    for (NSNumber *deleteIndex in [deleteIndexDictionary allKeys])
+    {
+        NSIndexPath *indexPath = (NSIndexPath *)[deleteIndexDictionary objectForKey:deleteIndex];
+        
+        if([self deleteMessage:[deleteIndex intValue]])
+        {
+//            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+}
+
 - (void)doCopy:(id)sender
 {
     NSLog(@"do copy cell");
@@ -251,11 +274,6 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
     
     return item;
-}
-
-- (void)doDelete
-{
-    NSLog(@"press delete button");
 }
 
 - (void)cancelAction
@@ -380,14 +398,14 @@
 
 
 #pragma mark - Private tool function
--(void)initializeData
+- (void)initializeData
 {
     itemHeaderCellIdentifier = @"FAMessageDetailHeaderCell";
     
     itemCellIdentifier = @"FAMessageDetailCell";
 }
 
--(void)registerXibFile
+- (void)registerXibFile
 {
     UINib *headerCellNib = [UINib nibWithNibName:@"FAMessageDetailHeaderViewCell" bundle:nil];
     [self.tableView registerNib:headerCellNib forCellReuseIdentifier:itemHeaderCellIdentifier];
@@ -396,7 +414,7 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:itemCellIdentifier];
 }
 
--(NSMutableArray *)LoadDataFromServer:(NSString *)sendId withType:(int)messageType withMessageId:(int)maxMessageId
+- (NSMutableArray *)LoadDataFromServer:(NSString *)sendId withType:(int)messageType withMessageId:(int)maxMessageId
 {
     NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?senderId=%@&messageType=%d&beginId=%d", WEB_URL, sendId, messageType, maxMessageId];
     
@@ -414,6 +432,25 @@
     else
     {
         return nil;
+    }
+}
+
+- (BOOL)deleteMessage:(int)messageId
+{
+    NSString *requestUrlStr = [[NSString alloc] initWithFormat:@"%@api/Message?delete=&messageId=%d", WEB_URL, messageId];
+    
+    NSURL * requestUrl =[NSURL URLWithString: requestUrlStr];
+    
+    NSError *error;
+    [FAHttpUtility sendRequest:requestUrl error:&error];
+    
+    if(error == nil)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
     }
 }
 
