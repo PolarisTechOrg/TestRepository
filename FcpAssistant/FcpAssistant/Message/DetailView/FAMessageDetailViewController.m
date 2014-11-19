@@ -236,10 +236,15 @@
     for (NSNumber *deleteIndex in [deleteIndexDictionary allKeys])
     {
         NSIndexPath *indexPath = (NSIndexPath *)[deleteIndexDictionary objectForKey:deleteIndex];
+        FAMessageDetail *detail = (FAMessageDetail *)dataSource[(indexPath.section-1)/2];
         
         if([self deleteMessage:[deleteIndex intValue]])
         {
-//            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [detail.DetailList removeObjectAtIndex:indexPath.row];
+            
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            
+            [deleteIndexDictionary removeObjectForKey:deleteIndex];
         }
     }
 }
@@ -262,9 +267,9 @@
     [self.navigationController setToolbarHidden:NO animated:YES];
     // bottom trash button
     
-    self.editing = YES;
     [self.tableView allowsMultipleSelection];
     [self.tableView setEditing:YES animated:YES];
+    self.editing = YES;
     // show editing mode
 }
 
