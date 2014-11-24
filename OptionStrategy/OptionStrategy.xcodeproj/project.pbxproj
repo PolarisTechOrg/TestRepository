@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		596DF4291A22D50F000C1079 /* Quote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596DF4281A22D50F000C1079 /* Quote.storyboard */; };
+		596DF42C1A22D5E5000C1079 /* PTQuoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DF42B1A22D5E5000C1079 /* PTQuoteTableViewController.m */; };
+		596DF4301A22D617000C1079 /* PTQuoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DF42F1A22D617000C1079 /* PTQuoteTableViewCell.m */; };
 		840D8BDE1A1B2C9800376E12 /* Converter.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8BDD1A1B2C9800376E12 /* Converter.m */; };
 		840D8BE81A1B2CA000376E12 /* ColorConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8BE11A1B2CA000376E12 /* ColorConstant.m */; };
 		840D8BE91A1B2CA000376E12 /* StringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8BE31A1B2CA000376E12 /* StringExtension.m */; };
@@ -39,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		596DF4281A22D50F000C1079 /* Quote.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Quote.storyboard; sourceTree = "<group>"; };
+		596DF42A1A22D5E5000C1079 /* PTQuoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTQuoteTableViewController.h; sourceTree = "<group>"; };
+		596DF42B1A22D5E5000C1079 /* PTQuoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTQuoteTableViewController.m; sourceTree = "<group>"; };
+		596DF42E1A22D617000C1079 /* PTQuoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTQuoteTableViewCell.h; sourceTree = "<group>"; };
+		596DF42F1A22D617000C1079 /* PTQuoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTQuoteTableViewCell.m; sourceTree = "<group>"; };
 		840D8BDC1A1B2C9800376E12 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
 		840D8BDD1A1B2C9800376E12 /* Converter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converter.m; sourceTree = "<group>"; };
 		840D8BE01A1B2CA000376E12 /* ColorConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConstant.h; sourceTree = "<group>"; };
@@ -95,6 +103,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		596DF4271A22D4FE000C1079 /* Quote */ = {
+			isa = PBXGroup;
+			children = (
+				596DF42D1A22D5FF000C1079 /* TableCell */,
+				596DF4281A22D50F000C1079 /* Quote.storyboard */,
+				596DF42A1A22D5E5000C1079 /* PTQuoteTableViewController.h */,
+				596DF42B1A22D5E5000C1079 /* PTQuoteTableViewController.m */,
+			);
+			name = Quote;
+			sourceTree = "<group>";
+		};
+		596DF42D1A22D5FF000C1079 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				596DF42E1A22D617000C1079 /* PTQuoteTableViewCell.h */,
+				596DF42F1A22D617000C1079 /* PTQuoteTableViewCell.m */,
+			);
+			name = TableCell;
+			sourceTree = "<group>";
+		};
 		840D8BDB1A1B2C9800376E12 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +174,7 @@
 		84719CC81A1B2B5E0057CC2A /* OptionStrategy */ = {
 			isa = PBXGroup;
 			children = (
+				596DF4271A22D4FE000C1079 /* Quote */,
 				84719CCD1A1B2B5E0057CC2A /* AppDelegate.h */,
 				84719CCE1A1B2B5E0057CC2A /* AppDelegate.m */,
 				844A0B271A1DD4100013DC11 /* PTFcpOrderTesterViewController.h */,
@@ -271,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84719CD81A1B2B5E0057CC2A /* Main.storyboard in Resources */,
+				596DF4291A22D50F000C1079 /* Quote.storyboard in Resources */,
 				84719CDD1A1B2B5E0057CC2A /* LaunchScreen.xib in Resources */,
 				84719CDA1A1B2B5E0057CC2A /* Images.xcassets in Resources */,
 			);
@@ -294,6 +324,7 @@
 				840D8BDE1A1B2C9800376E12 /* Converter.m in Sources */,
 				840D8BE81A1B2CA000376E12 /* ColorConstant.m in Sources */,
 				84719CD21A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld in Sources */,
+				596DF42C1A22D5E5000C1079 /* PTQuoteTableViewController.m in Sources */,
 				844A0B291A1DD4100013DC11 /* PTFcpOrderTesterViewController.m in Sources */,
 				84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */,
 				840D8BE91A1B2CA000376E12 /* StringExtension.m in Sources */,
@@ -301,6 +332,7 @@
 				84719CCC1A1B2B5E0057CC2A /* main.m in Sources */,
 				840FB0A81A1B3BA300007906 /* PTFcpQuoteTesterViewController.m in Sources */,
 				840D8BEA1A1B2CA000376E12 /* UIColorExtension.m in Sources */,
+				596DF4301A22D617000C1079 /* PTQuoteTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
