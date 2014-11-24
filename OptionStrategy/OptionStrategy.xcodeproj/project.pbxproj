@@ -436,7 +436,7 @@
 					"$(PROJECT_DIR)/PolarisCtpDriver",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/Users/admin/Desktop/JackyTong/github/TestRepository/OptionStrategy/PolarisCtpDriver/**";
+				USER_HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/PolarisCtpDriver/**";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -459,7 +459,7 @@
 					"$(PROJECT_DIR)/PolarisCtpDriver",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/Users/admin/Desktop/JackyTong/github/TestRepository/OptionStrategy/PolarisCtpDriver/**";
+				USER_HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/PolarisCtpDriver/**";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

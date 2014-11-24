@@ -24,6 +24,7 @@
 #import "PTCtpDriverCommonFunction.h"
 #import "PTFcpMarketData.h"
 #import "PTFcpInvestorBaseInfo.h"
+#import "PTFcpVarieties.h"
 
 @interface PTCtpDataBuffer : NSObject
 
@@ -54,6 +55,10 @@
 -(NSArray*)getPositionDetails;
 ///成交单
 -(NSArray*)getTradeBooks;
+/// 品种
+-(NSArray*) getOptionVarieties;
+/// 品种
+-(PTFcpVarieties*) getOptionVarieties:(NSString*)code;
 
 
 -(void) updateMarketData:(PTFcpMarketData*) marketData;
@@ -124,5 +129,8 @@
 /// </summary>
 /// <param name="field">CTP 账户资金信息。</param>
 -(void)UpdateFundInfo:(PTFcpFundDetail*) detail;
+
+///品种
+-(void) updateOptionVarieties:(PTFcpVarieties*) varieties;
 
 @end
