@@ -46,6 +46,10 @@
  */
 @property NSString* Varieties;
 
+@property NSString* VarietiesName;
+
+@property NSString* OptionMonth;
+
 /**
  * 交易所多头保证金率。
  */
@@ -59,7 +63,7 @@
 /**
  * 产品类型。FcpProductClass
  */
-@property int ProductClass;
+@property PTFcpProductClass ProductClass;
 
 /**
  * 基础商品代码。
@@ -74,7 +78,7 @@
 /**
  * 期权类型。FcpOptionsType
  */
-@property int OptionsType;
+@property PTFcpOptionsType OptionsType;
 
 /**
  * 合约系列。
