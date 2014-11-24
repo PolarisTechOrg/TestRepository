@@ -15,6 +15,40 @@
 		840D8C361A1B2D2D00376E12 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 840D8C351A1B2D2D00376E12 /* libstdc++.6.dylib */; };
 		840FB0A81A1B3BA300007906 /* PTFcpQuoteTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840FB0A71A1B3BA300007906 /* PTFcpQuoteTesterViewController.m */; };
 		844A0B291A1DD4100013DC11 /* PTFcpOrderTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */; };
+		84554C3D1A22D71200B033FF /* FcpInstrument.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C391A22D71200B033FF /* FcpInstrument.m */; };
+		84554C4B1A22D72A00B033FF /* CombineStrategyOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C3F1A22D72A00B033FF /* CombineStrategyOrder.m */; };
+		84554C4C1A22D72A00B033FF /* OptionDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C411A22D72A00B033FF /* OptionDetail.m */; };
+		84554C4D1A22D72A00B033FF /* OptionStrategyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C431A22D72A00B033FF /* OptionStrategyDetail.m */; };
+		84554C4E1A22D72A00B033FF /* OptionStrategyDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C451A22D72A00B033FF /* OptionStrategyDetailItem.m */; };
+		84554C4F1A22D72A00B033FF /* OptionStrategyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C471A22D72A00B033FF /* OptionStrategyFactory.m */; };
+		84554C501A22D72A00B033FF /* OptionTradeCost.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C4A1A22D72A00B033FF /* OptionTradeCost.m */; };
+		84554C551A22D73C00B033FF /* StrategyOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C521A22D73C00B033FF /* StrategyOrder.m */; };
+		84554C561A22D73C00B033FF /* Ten_WenDieZuoZhuangStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C541A22D73C00B033FF /* Ten_WenDieZuoZhuangStrategy.m */; };
+		84554C711A22D77D00B033FF /* Eight_WenDieStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C5A1A22D77D00B033FF /* Eight_WenDieStrategy.m */; };
+		84554C721A22D77D00B033FF /* Eleven_XianPanZaiZhangStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C5C1A22D77D00B033FF /* Eleven_XianPanZaiZhangStrategy.m */; };
+		84554C731A22D77D00B033FF /* Five_TuPoStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C5E1A22D77D00B033FF /* Five_TuPoStrategy.m */; };
+		84554C741A22D77D00B033FF /* Four_NiuPiPianDanStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C601A22D77D00B033FF /* Four_NiuPiPianDanStrategy.m */; };
+		84554C751A22D77D00B033FF /* Nine_WenZhangZuoZhuangStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C621A22D77D00B033FF /* Nine_WenZhangZuoZhuangStrategy.m */; };
+		84554C761A22D77D00B033FF /* One_DaShengStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C641A22D77D00B033FF /* One_DaShengStrategy.m */; };
+		84554C771A22D77D00B033FF /* OptionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C661A22D77D00B033FF /* OptionStrategy.m */; };
+		84554C781A22D77D00B033FF /* Seven_WenZhangStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C681A22D77D00B033FF /* Seven_WenZhangStrategy.m */; };
+		84554C791A22D77D00B033FF /* Six_NiuPiStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C6A1A22D77D00B033FF /* Six_NiuPiStrategy.m */; };
+		84554C7A1A22D77D00B033FF /* Three_NiuPiPianHaoStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C6C1A22D77D00B033FF /* Three_NiuPiPianHaoStrategy.m */; };
+		84554C7B1A22D77D00B033FF /* Twelve_XianPanZaiDieStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C6E1A22D77D00B033FF /* Twelve_XianPanZaiDieStrategy.m */; };
+		84554C7C1A22D77D00B033FF /* Two_DaDieStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C701A22D77D00B033FF /* Two_DaDieStrategy.m */; };
+		84554C971A22D7B400B033FF /* Eight_WenDieProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C7E1A22D7B400B033FF /* Eight_WenDieProfitPoint.m */; };
+		84554C981A22D7B400B033FF /* Eleven_XianPanZaiZhangProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C801A22D7B400B033FF /* Eleven_XianPanZaiZhangProfitPoint.m */; };
+		84554C991A22D7B400B033FF /* Five_TuPoProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C821A22D7B400B033FF /* Five_TuPoProfitPoint.m */; };
+		84554C9A1A22D7B400B033FF /* Four_NiuPiPianDanProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C841A22D7B400B033FF /* Four_NiuPiPianDanProfitPoint.m */; };
+		84554C9B1A22D7B400B033FF /* Nine_WenZhangZuoZhuangProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C861A22D7B400B033FF /* Nine_WenZhangZuoZhuangProfitPoint.m */; };
+		84554C9C1A22D7B400B033FF /* One_DaShengProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C881A22D7B400B033FF /* One_DaShengProfitPoint.m */; };
+		84554C9D1A22D7B400B033FF /* OptionProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C8A1A22D7B400B033FF /* OptionProfitPoint.m */; };
+		84554C9E1A22D7B400B033FF /* Seven_WenZhangProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C8C1A22D7B400B033FF /* Seven_WenZhangProfitPoint.m */; };
+		84554C9F1A22D7B400B033FF /* Six_NiuPiProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C8E1A22D7B400B033FF /* Six_NiuPiProfitPoint.m */; };
+		84554CA01A22D7B400B033FF /* Ten_WenDieZuoZhuangProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C901A22D7B400B033FF /* Ten_WenDieZuoZhuangProfitPoint.m */; };
+		84554CA11A22D7B400B033FF /* Three_NiuPiPianHaoProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C921A22D7B400B033FF /* Three_NiuPiPianHaoProfitPoint.m */; };
+		84554CA21A22D7B400B033FF /* Twelve_XianPanZaiDieProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C941A22D7B400B033FF /* Twelve_XianPanZaiDieProfitPoint.m */; };
+		84554CA31A22D7B400B033FF /* Two_DaDieProfitPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84554C961A22D7B400B033FF /* Two_DaDieProfitPoint.m */; };
 		84719CCC1A1B2B5E0057CC2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCB1A1B2B5E0057CC2A /* main.m */; };
 		84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCE1A1B2B5E0057CC2A /* AppDelegate.m */; };
 		84719CD21A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84719CD01A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld */; };
@@ -54,6 +88,78 @@
 		840FB0A71A1B3BA300007906 /* PTFcpQuoteTesterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTFcpQuoteTesterViewController.m; sourceTree = "<group>"; };
 		844A0B271A1DD4100013DC11 /* PTFcpOrderTesterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTFcpOrderTesterViewController.h; sourceTree = "<group>"; };
 		844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTFcpOrderTesterViewController.m; sourceTree = "<group>"; };
+		84554C381A22D71200B033FF /* FcpInstrument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FcpInstrument.h; path = Polaris.FCP.Common/FcpInstrument.h; sourceTree = "<group>"; };
+		84554C391A22D71200B033FF /* FcpInstrument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FcpInstrument.m; path = Polaris.FCP.Common/FcpInstrument.m; sourceTree = "<group>"; };
+		84554C3A1A22D71200B033FF /* FcpMarket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FcpMarket.h; path = Polaris.FCP.Common/FcpMarket.h; sourceTree = "<group>"; };
+		84554C3B1A22D71200B033FF /* FcpOptionsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FcpOptionsType.h; path = Polaris.FCP.Common/FcpOptionsType.h; sourceTree = "<group>"; };
+		84554C3C1A22D71200B033FF /* FcpOrderSide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FcpOrderSide.h; path = Polaris.FCP.Common/FcpOrderSide.h; sourceTree = "<group>"; };
+		84554C3E1A22D72A00B033FF /* CombineStrategyOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CombineStrategyOrder.h; path = Polaris.OptionStrategy.Common/CombineStrategyOrder.h; sourceTree = "<group>"; };
+		84554C3F1A22D72A00B033FF /* CombineStrategyOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CombineStrategyOrder.m; path = Polaris.OptionStrategy.Common/CombineStrategyOrder.m; sourceTree = "<group>"; };
+		84554C401A22D72A00B033FF /* OptionDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionDetail.h; path = Polaris.OptionStrategy.Common/OptionDetail.h; sourceTree = "<group>"; };
+		84554C411A22D72A00B033FF /* OptionDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionDetail.m; path = Polaris.OptionStrategy.Common/OptionDetail.m; sourceTree = "<group>"; };
+		84554C421A22D72A00B033FF /* OptionStrategyDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionStrategyDetail.h; path = Polaris.OptionStrategy.Common/OptionStrategyDetail.h; sourceTree = "<group>"; };
+		84554C431A22D72A00B033FF /* OptionStrategyDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionStrategyDetail.m; path = Polaris.OptionStrategy.Common/OptionStrategyDetail.m; sourceTree = "<group>"; };
+		84554C441A22D72A00B033FF /* OptionStrategyDetailItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionStrategyDetailItem.h; path = Polaris.OptionStrategy.Common/OptionStrategyDetailItem.h; sourceTree = "<group>"; };
+		84554C451A22D72A00B033FF /* OptionStrategyDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionStrategyDetailItem.m; path = Polaris.OptionStrategy.Common/OptionStrategyDetailItem.m; sourceTree = "<group>"; };
+		84554C461A22D72A00B033FF /* OptionStrategyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionStrategyFactory.h; path = Polaris.OptionStrategy.Common/OptionStrategyFactory.h; sourceTree = "<group>"; };
+		84554C471A22D72A00B033FF /* OptionStrategyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionStrategyFactory.m; path = Polaris.OptionStrategy.Common/OptionStrategyFactory.m; sourceTree = "<group>"; };
+		84554C481A22D72A00B033FF /* OptionStrategyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionStrategyType.h; path = Polaris.OptionStrategy.Common/OptionStrategyType.h; sourceTree = "<group>"; };
+		84554C491A22D72A00B033FF /* OptionTradeCost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionTradeCost.h; path = Polaris.OptionStrategy.Common/OptionTradeCost.h; sourceTree = "<group>"; };
+		84554C4A1A22D72A00B033FF /* OptionTradeCost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionTradeCost.m; path = Polaris.OptionStrategy.Common/OptionTradeCost.m; sourceTree = "<group>"; };
+		84554C511A22D73C00B033FF /* StrategyOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrategyOrder.h; path = Polaris.OptionStrategy.Common/StrategyOrder.h; sourceTree = "<group>"; };
+		84554C521A22D73C00B033FF /* StrategyOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StrategyOrder.m; path = Polaris.OptionStrategy.Common/StrategyOrder.m; sourceTree = "<group>"; };
+		84554C531A22D73C00B033FF /* Ten_WenDieZuoZhuangStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ten_WenDieZuoZhuangStrategy.h; path = Polaris.OptionStrategy.Common/Ten_WenDieZuoZhuangStrategy.h; sourceTree = "<group>"; };
+		84554C541A22D73C00B033FF /* Ten_WenDieZuoZhuangStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ten_WenDieZuoZhuangStrategy.m; path = Polaris.OptionStrategy.Common/Ten_WenDieZuoZhuangStrategy.m; sourceTree = "<group>"; };
+		84554C591A22D77D00B033FF /* Eight_WenDieStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Eight_WenDieStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Eight_WenDieStrategy.h; sourceTree = "<group>"; };
+		84554C5A1A22D77D00B033FF /* Eight_WenDieStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Eight_WenDieStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Eight_WenDieStrategy.m; sourceTree = "<group>"; };
+		84554C5B1A22D77D00B033FF /* Eleven_XianPanZaiZhangStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Eleven_XianPanZaiZhangStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Eleven_XianPanZaiZhangStrategy.h; sourceTree = "<group>"; };
+		84554C5C1A22D77D00B033FF /* Eleven_XianPanZaiZhangStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Eleven_XianPanZaiZhangStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Eleven_XianPanZaiZhangStrategy.m; sourceTree = "<group>"; };
+		84554C5D1A22D77D00B033FF /* Five_TuPoStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Five_TuPoStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Five_TuPoStrategy.h; sourceTree = "<group>"; };
+		84554C5E1A22D77D00B033FF /* Five_TuPoStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Five_TuPoStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Five_TuPoStrategy.m; sourceTree = "<group>"; };
+		84554C5F1A22D77D00B033FF /* Four_NiuPiPianDanStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Four_NiuPiPianDanStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Four_NiuPiPianDanStrategy.h; sourceTree = "<group>"; };
+		84554C601A22D77D00B033FF /* Four_NiuPiPianDanStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Four_NiuPiPianDanStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Four_NiuPiPianDanStrategy.m; sourceTree = "<group>"; };
+		84554C611A22D77D00B033FF /* Nine_WenZhangZuoZhuangStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Nine_WenZhangZuoZhuangStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Nine_WenZhangZuoZhuangStrategy.h; sourceTree = "<group>"; };
+		84554C621A22D77D00B033FF /* Nine_WenZhangZuoZhuangStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Nine_WenZhangZuoZhuangStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Nine_WenZhangZuoZhuangStrategy.m; sourceTree = "<group>"; };
+		84554C631A22D77D00B033FF /* One_DaShengStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = One_DaShengStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/One_DaShengStrategy.h; sourceTree = "<group>"; };
+		84554C641A22D77D00B033FF /* One_DaShengStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = One_DaShengStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/One_DaShengStrategy.m; sourceTree = "<group>"; };
+		84554C651A22D77D00B033FF /* OptionStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/OptionStrategy.h; sourceTree = "<group>"; };
+		84554C661A22D77D00B033FF /* OptionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/OptionStrategy.m; sourceTree = "<group>"; };
+		84554C671A22D77D00B033FF /* Seven_WenZhangStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Seven_WenZhangStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Seven_WenZhangStrategy.h; sourceTree = "<group>"; };
+		84554C681A22D77D00B033FF /* Seven_WenZhangStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Seven_WenZhangStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Seven_WenZhangStrategy.m; sourceTree = "<group>"; };
+		84554C691A22D77D00B033FF /* Six_NiuPiStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Six_NiuPiStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Six_NiuPiStrategy.h; sourceTree = "<group>"; };
+		84554C6A1A22D77D00B033FF /* Six_NiuPiStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Six_NiuPiStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Six_NiuPiStrategy.m; sourceTree = "<group>"; };
+		84554C6B1A22D77D00B033FF /* Three_NiuPiPianHaoStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Three_NiuPiPianHaoStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Three_NiuPiPianHaoStrategy.h; sourceTree = "<group>"; };
+		84554C6C1A22D77D00B033FF /* Three_NiuPiPianHaoStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Three_NiuPiPianHaoStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Three_NiuPiPianHaoStrategy.m; sourceTree = "<group>"; };
+		84554C6D1A22D77D00B033FF /* Twelve_XianPanZaiDieStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Twelve_XianPanZaiDieStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Twelve_XianPanZaiDieStrategy.h; sourceTree = "<group>"; };
+		84554C6E1A22D77D00B033FF /* Twelve_XianPanZaiDieStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Twelve_XianPanZaiDieStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Twelve_XianPanZaiDieStrategy.m; sourceTree = "<group>"; };
+		84554C6F1A22D77D00B033FF /* Two_DaDieStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Two_DaDieStrategy.h; path = Polaris.OptionStrategy.Common/Strategy/Two_DaDieStrategy.h; sourceTree = "<group>"; };
+		84554C701A22D77D00B033FF /* Two_DaDieStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Two_DaDieStrategy.m; path = Polaris.OptionStrategy.Common/Strategy/Two_DaDieStrategy.m; sourceTree = "<group>"; };
+		84554C7D1A22D7B400B033FF /* Eight_WenDieProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Eight_WenDieProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Eight_WenDieProfitPoint.h; sourceTree = "<group>"; };
+		84554C7E1A22D7B400B033FF /* Eight_WenDieProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Eight_WenDieProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Eight_WenDieProfitPoint.m; sourceTree = "<group>"; };
+		84554C7F1A22D7B400B033FF /* Eleven_XianPanZaiZhangProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Eleven_XianPanZaiZhangProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Eleven_XianPanZaiZhangProfitPoint.h; sourceTree = "<group>"; };
+		84554C801A22D7B400B033FF /* Eleven_XianPanZaiZhangProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Eleven_XianPanZaiZhangProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Eleven_XianPanZaiZhangProfitPoint.m; sourceTree = "<group>"; };
+		84554C811A22D7B400B033FF /* Five_TuPoProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Five_TuPoProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Five_TuPoProfitPoint.h; sourceTree = "<group>"; };
+		84554C821A22D7B400B033FF /* Five_TuPoProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Five_TuPoProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Five_TuPoProfitPoint.m; sourceTree = "<group>"; };
+		84554C831A22D7B400B033FF /* Four_NiuPiPianDanProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Four_NiuPiPianDanProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Four_NiuPiPianDanProfitPoint.h; sourceTree = "<group>"; };
+		84554C841A22D7B400B033FF /* Four_NiuPiPianDanProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Four_NiuPiPianDanProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Four_NiuPiPianDanProfitPoint.m; sourceTree = "<group>"; };
+		84554C851A22D7B400B033FF /* Nine_WenZhangZuoZhuangProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Nine_WenZhangZuoZhuangProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Nine_WenZhangZuoZhuangProfitPoint.h; sourceTree = "<group>"; };
+		84554C861A22D7B400B033FF /* Nine_WenZhangZuoZhuangProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Nine_WenZhangZuoZhuangProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Nine_WenZhangZuoZhuangProfitPoint.m; sourceTree = "<group>"; };
+		84554C871A22D7B400B033FF /* One_DaShengProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = One_DaShengProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/One_DaShengProfitPoint.h; sourceTree = "<group>"; };
+		84554C881A22D7B400B033FF /* One_DaShengProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = One_DaShengProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/One_DaShengProfitPoint.m; sourceTree = "<group>"; };
+		84554C891A22D7B400B033FF /* OptionProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/OptionProfitPoint.h; sourceTree = "<group>"; };
+		84554C8A1A22D7B400B033FF /* OptionProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/OptionProfitPoint.m; sourceTree = "<group>"; };
+		84554C8B1A22D7B400B033FF /* Seven_WenZhangProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Seven_WenZhangProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Seven_WenZhangProfitPoint.h; sourceTree = "<group>"; };
+		84554C8C1A22D7B400B033FF /* Seven_WenZhangProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Seven_WenZhangProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Seven_WenZhangProfitPoint.m; sourceTree = "<group>"; };
+		84554C8D1A22D7B400B033FF /* Six_NiuPiProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Six_NiuPiProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Six_NiuPiProfitPoint.h; sourceTree = "<group>"; };
+		84554C8E1A22D7B400B033FF /* Six_NiuPiProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Six_NiuPiProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Six_NiuPiProfitPoint.m; sourceTree = "<group>"; };
+		84554C8F1A22D7B400B033FF /* Ten_WenDieZuoZhuangProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ten_WenDieZuoZhuangProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Ten_WenDieZuoZhuangProfitPoint.h; sourceTree = "<group>"; };
+		84554C901A22D7B400B033FF /* Ten_WenDieZuoZhuangProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ten_WenDieZuoZhuangProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Ten_WenDieZuoZhuangProfitPoint.m; sourceTree = "<group>"; };
+		84554C911A22D7B400B033FF /* Three_NiuPiPianHaoProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Three_NiuPiPianHaoProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Three_NiuPiPianHaoProfitPoint.h; sourceTree = "<group>"; };
+		84554C921A22D7B400B033FF /* Three_NiuPiPianHaoProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Three_NiuPiPianHaoProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Three_NiuPiPianHaoProfitPoint.m; sourceTree = "<group>"; };
+		84554C931A22D7B400B033FF /* Twelve_XianPanZaiDieProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Twelve_XianPanZaiDieProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Twelve_XianPanZaiDieProfitPoint.h; sourceTree = "<group>"; };
+		84554C941A22D7B400B033FF /* Twelve_XianPanZaiDieProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Twelve_XianPanZaiDieProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Twelve_XianPanZaiDieProfitPoint.m; sourceTree = "<group>"; };
+		84554C951A22D7B400B033FF /* Two_DaDieProfitPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Two_DaDieProfitPoint.h; path = Polaris.OptionStrategy.Common/ProfitPoint/Two_DaDieProfitPoint.h; sourceTree = "<group>"; };
+		84554C961A22D7B400B033FF /* Two_DaDieProfitPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Two_DaDieProfitPoint.m; path = Polaris.OptionStrategy.Common/ProfitPoint/Two_DaDieProfitPoint.m; sourceTree = "<group>"; };
 		84719CC61A1B2B5E0057CC2A /* OptionStrategy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptionStrategy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84719CCA1A1B2B5E0057CC2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84719CCB1A1B2B5E0057CC2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,6 +225,108 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		84554C361A22D6DF00B033FF /* Polaris.FCP.Common */ = {
+			isa = PBXGroup;
+			children = (
+				84554C381A22D71200B033FF /* FcpInstrument.h */,
+				84554C391A22D71200B033FF /* FcpInstrument.m */,
+				84554C3A1A22D71200B033FF /* FcpMarket.h */,
+				84554C3B1A22D71200B033FF /* FcpOptionsType.h */,
+				84554C3C1A22D71200B033FF /* FcpOrderSide.h */,
+			);
+			name = Polaris.FCP.Common;
+			sourceTree = "<group>";
+		};
+		84554C371A22D6F700B033FF /* Polaris.OptionStrategy.Common */ = {
+			isa = PBXGroup;
+			children = (
+				84554C581A22D76100B033FF /* Strategy */,
+				84554C571A22D74F00B033FF /* ProfitPoint */,
+				84554C511A22D73C00B033FF /* StrategyOrder.h */,
+				84554C521A22D73C00B033FF /* StrategyOrder.m */,
+				84554C531A22D73C00B033FF /* Ten_WenDieZuoZhuangStrategy.h */,
+				84554C541A22D73C00B033FF /* Ten_WenDieZuoZhuangStrategy.m */,
+				84554C3E1A22D72A00B033FF /* CombineStrategyOrder.h */,
+				84554C3F1A22D72A00B033FF /* CombineStrategyOrder.m */,
+				84554C401A22D72A00B033FF /* OptionDetail.h */,
+				84554C411A22D72A00B033FF /* OptionDetail.m */,
+				84554C421A22D72A00B033FF /* OptionStrategyDetail.h */,
+				84554C431A22D72A00B033FF /* OptionStrategyDetail.m */,
+				84554C441A22D72A00B033FF /* OptionStrategyDetailItem.h */,
+				84554C451A22D72A00B033FF /* OptionStrategyDetailItem.m */,
+				84554C461A22D72A00B033FF /* OptionStrategyFactory.h */,
+				84554C471A22D72A00B033FF /* OptionStrategyFactory.m */,
+				84554C481A22D72A00B033FF /* OptionStrategyType.h */,
+				84554C491A22D72A00B033FF /* OptionTradeCost.h */,
+				84554C4A1A22D72A00B033FF /* OptionTradeCost.m */,
+			);
+			name = Polaris.OptionStrategy.Common;
+			sourceTree = "<group>";
+		};
+		84554C571A22D74F00B033FF /* ProfitPoint */ = {
+			isa = PBXGroup;
+			children = (
+				84554C7D1A22D7B400B033FF /* Eight_WenDieProfitPoint.h */,
+				84554C7E1A22D7B400B033FF /* Eight_WenDieProfitPoint.m */,
+				84554C7F1A22D7B400B033FF /* Eleven_XianPanZaiZhangProfitPoint.h */,
+				84554C801A22D7B400B033FF /* Eleven_XianPanZaiZhangProfitPoint.m */,
+				84554C811A22D7B400B033FF /* Five_TuPoProfitPoint.h */,
+				84554C821A22D7B400B033FF /* Five_TuPoProfitPoint.m */,
+				84554C831A22D7B400B033FF /* Four_NiuPiPianDanProfitPoint.h */,
+				84554C841A22D7B400B033FF /* Four_NiuPiPianDanProfitPoint.m */,
+				84554C851A22D7B400B033FF /* Nine_WenZhangZuoZhuangProfitPoint.h */,
+				84554C861A22D7B400B033FF /* Nine_WenZhangZuoZhuangProfitPoint.m */,
+				84554C871A22D7B400B033FF /* One_DaShengProfitPoint.h */,
+				84554C881A22D7B400B033FF /* One_DaShengProfitPoint.m */,
+				84554C891A22D7B400B033FF /* OptionProfitPoint.h */,
+				84554C8A1A22D7B400B033FF /* OptionProfitPoint.m */,
+				84554C8B1A22D7B400B033FF /* Seven_WenZhangProfitPoint.h */,
+				84554C8C1A22D7B400B033FF /* Seven_WenZhangProfitPoint.m */,
+				84554C8D1A22D7B400B033FF /* Six_NiuPiProfitPoint.h */,
+				84554C8E1A22D7B400B033FF /* Six_NiuPiProfitPoint.m */,
+				84554C8F1A22D7B400B033FF /* Ten_WenDieZuoZhuangProfitPoint.h */,
+				84554C901A22D7B400B033FF /* Ten_WenDieZuoZhuangProfitPoint.m */,
+				84554C911A22D7B400B033FF /* Three_NiuPiPianHaoProfitPoint.h */,
+				84554C921A22D7B400B033FF /* Three_NiuPiPianHaoProfitPoint.m */,
+				84554C931A22D7B400B033FF /* Twelve_XianPanZaiDieProfitPoint.h */,
+				84554C941A22D7B400B033FF /* Twelve_XianPanZaiDieProfitPoint.m */,
+				84554C951A22D7B400B033FF /* Two_DaDieProfitPoint.h */,
+				84554C961A22D7B400B033FF /* Two_DaDieProfitPoint.m */,
+			);
+			name = ProfitPoint;
+			sourceTree = "<group>";
+		};
+		84554C581A22D76100B033FF /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				84554C591A22D77D00B033FF /* Eight_WenDieStrategy.h */,
+				84554C5A1A22D77D00B033FF /* Eight_WenDieStrategy.m */,
+				84554C5B1A22D77D00B033FF /* Eleven_XianPanZaiZhangStrategy.h */,
+				84554C5C1A22D77D00B033FF /* Eleven_XianPanZaiZhangStrategy.m */,
+				84554C5D1A22D77D00B033FF /* Five_TuPoStrategy.h */,
+				84554C5E1A22D77D00B033FF /* Five_TuPoStrategy.m */,
+				84554C5F1A22D77D00B033FF /* Four_NiuPiPianDanStrategy.h */,
+				84554C601A22D77D00B033FF /* Four_NiuPiPianDanStrategy.m */,
+				84554C611A22D77D00B033FF /* Nine_WenZhangZuoZhuangStrategy.h */,
+				84554C621A22D77D00B033FF /* Nine_WenZhangZuoZhuangStrategy.m */,
+				84554C631A22D77D00B033FF /* One_DaShengStrategy.h */,
+				84554C641A22D77D00B033FF /* One_DaShengStrategy.m */,
+				84554C651A22D77D00B033FF /* OptionStrategy.h */,
+				84554C661A22D77D00B033FF /* OptionStrategy.m */,
+				84554C671A22D77D00B033FF /* Seven_WenZhangStrategy.h */,
+				84554C681A22D77D00B033FF /* Seven_WenZhangStrategy.m */,
+				84554C691A22D77D00B033FF /* Six_NiuPiStrategy.h */,
+				84554C6A1A22D77D00B033FF /* Six_NiuPiStrategy.m */,
+				84554C6B1A22D77D00B033FF /* Three_NiuPiPianHaoStrategy.h */,
+				84554C6C1A22D77D00B033FF /* Three_NiuPiPianHaoStrategy.m */,
+				84554C6D1A22D77D00B033FF /* Twelve_XianPanZaiDieStrategy.h */,
+				84554C6E1A22D77D00B033FF /* Twelve_XianPanZaiDieStrategy.m */,
+				84554C6F1A22D77D00B033FF /* Two_DaDieStrategy.h */,
+				84554C701A22D77D00B033FF /* Two_DaDieStrategy.m */,
+			);
+			name = Strategy;
+			sourceTree = "<group>";
+		};
 		84719CBD1A1B2B5E0057CC2A = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +354,8 @@
 		84719CC81A1B2B5E0057CC2A /* OptionStrategy */ = {
 			isa = PBXGroup;
 			children = (
+				84554C371A22D6F700B033FF /* Polaris.OptionStrategy.Common */,
+				84554C361A22D6DF00B033FF /* Polaris.FCP.Common */,
 				84719CCD1A1B2B5E0057CC2A /* AppDelegate.h */,
 				84719CCE1A1B2B5E0057CC2A /* AppDelegate.m */,
 				844A0B271A1DD4100013DC11 /* PTFcpOrderTesterViewController.h */,
@@ -293,14 +503,48 @@
 				840D8BEB1A1B2CA000376E12 /* UILabelExtension.m in Sources */,
 				840D8BDE1A1B2C9800376E12 /* Converter.m in Sources */,
 				840D8BE81A1B2CA000376E12 /* ColorConstant.m in Sources */,
+				84554CA21A22D7B400B033FF /* Twelve_XianPanZaiDieProfitPoint.m in Sources */,
+				84554C4E1A22D72A00B033FF /* OptionStrategyDetailItem.m in Sources */,
+				84554C9C1A22D7B400B033FF /* One_DaShengProfitPoint.m in Sources */,
+				84554C741A22D77D00B033FF /* Four_NiuPiPianDanStrategy.m in Sources */,
+				84554C561A22D73C00B033FF /* Ten_WenDieZuoZhuangStrategy.m in Sources */,
+				84554CA11A22D7B400B033FF /* Three_NiuPiPianHaoProfitPoint.m in Sources */,
+				84554C4C1A22D72A00B033FF /* OptionDetail.m in Sources */,
 				84719CD21A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld in Sources */,
+				84554CA31A22D7B400B033FF /* Two_DaDieProfitPoint.m in Sources */,
+				84554C3D1A22D71200B033FF /* FcpInstrument.m in Sources */,
 				844A0B291A1DD4100013DC11 /* PTFcpOrderTesterViewController.m in Sources */,
 				84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */,
+				84554CA01A22D7B400B033FF /* Ten_WenDieZuoZhuangProfitPoint.m in Sources */,
+				84554C9B1A22D7B400B033FF /* Nine_WenZhangZuoZhuangProfitPoint.m in Sources */,
+				84554C731A22D77D00B033FF /* Five_TuPoStrategy.m in Sources */,
+				84554C781A22D77D00B033FF /* Seven_WenZhangStrategy.m in Sources */,
+				84554C7B1A22D77D00B033FF /* Twelve_XianPanZaiDieStrategy.m in Sources */,
+				84554C9F1A22D7B400B033FF /* Six_NiuPiProfitPoint.m in Sources */,
+				84554C9A1A22D7B400B033FF /* Four_NiuPiPianDanProfitPoint.m in Sources */,
+				84554C4B1A22D72A00B033FF /* CombineStrategyOrder.m in Sources */,
+				84554C991A22D7B400B033FF /* Five_TuPoProfitPoint.m in Sources */,
+				84554C501A22D72A00B033FF /* OptionTradeCost.m in Sources */,
+				84554C971A22D7B400B033FF /* Eight_WenDieProfitPoint.m in Sources */,
 				840D8BE91A1B2CA000376E12 /* StringExtension.m in Sources */,
+				84554C9E1A22D7B400B033FF /* Seven_WenZhangProfitPoint.m in Sources */,
+				84554C7C1A22D77D00B033FF /* Two_DaDieStrategy.m in Sources */,
 				84719CD51A1B2B5E0057CC2A /* ViewController.m in Sources */,
 				84719CCC1A1B2B5E0057CC2A /* main.m in Sources */,
+				84554C551A22D73C00B033FF /* StrategyOrder.m in Sources */,
+				84554C771A22D77D00B033FF /* OptionStrategy.m in Sources */,
+				84554C721A22D77D00B033FF /* Eleven_XianPanZaiZhangStrategy.m in Sources */,
+				84554C4D1A22D72A00B033FF /* OptionStrategyDetail.m in Sources */,
+				84554C7A1A22D77D00B033FF /* Three_NiuPiPianHaoStrategy.m in Sources */,
+				84554C761A22D77D00B033FF /* One_DaShengStrategy.m in Sources */,
+				84554C751A22D77D00B033FF /* Nine_WenZhangZuoZhuangStrategy.m in Sources */,
+				84554C791A22D77D00B033FF /* Six_NiuPiStrategy.m in Sources */,
 				840FB0A81A1B3BA300007906 /* PTFcpQuoteTesterViewController.m in Sources */,
+				84554C711A22D77D00B033FF /* Eight_WenDieStrategy.m in Sources */,
 				840D8BEA1A1B2CA000376E12 /* UIColorExtension.m in Sources */,
+				84554C9D1A22D7B400B033FF /* OptionProfitPoint.m in Sources */,
+				84554C4F1A22D72A00B033FF /* OptionStrategyFactory.m in Sources */,
+				84554C981A22D7B400B033FF /* Eleven_XianPanZaiZhangProfitPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
