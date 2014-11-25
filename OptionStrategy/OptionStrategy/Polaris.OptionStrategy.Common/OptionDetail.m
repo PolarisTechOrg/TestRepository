@@ -108,7 +108,13 @@
 - (void)ParseCFFEInstrument:(NSString *)instrumentCode
 {
     //产品编码格式:品种+4位月份+'-'+C/P+'-'+执行价格 ,例如：HO1406-C-1450
+    NSArray *codeArray = [instrumentCode componentsSeparatedByString:@"-"];
+    
+    NSString *varieties;
     NSScanner *scanner = [NSScanner scannerWithString:InstrumentCode];
+    
+    OptionTypeStr = [codeArray objectAtIndex:1];
+    StrikePrice = [[codeArray objectAtIndex:2] intValue];
 }
 
 - (void)ParseDCEInstrument:(NSString *)instrumentCode
