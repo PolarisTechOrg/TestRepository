@@ -9,14 +9,16 @@
 #import "PTQuoteTableViewController.h"
 #import "PTQuoteTableViewCell.h"
 #import "PTQuetoHeaderView.h"
+#import "UIColorExtension.h"
+#import "PTTableHeaderDelegate.h"
 
 @implementation PTQuoteTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    leftButtonsArray = [NSMutableDictionary dictionary];
-    rightButtonsArray = [NSMutableDictionary dictionary];
+    itemTableCellIdentifier = @"QuoteTableCell";
+    tableViewCellArray = [NSMutableDictionary dictionary];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -40,30 +42,30 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PTQuoteTableViewCell *cell = (PTQuoteTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"QuoteTableCell" forIndexPath:indexPath];
+    PTQuoteTableViewCell *cell = (PTQuoteTableViewCell *)[tableView dequeueReusableCellWithIdentifier:itemTableCellIdentifier forIndexPath:indexPath];
     
-    NSLog(@"%d",leftButtonsArray.count);
-    if(cell){
-        cell = [[PTQuoteTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"QuoteTableCell"];
+    if(!cell){
+        cell = [[PTQuoteTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemTableCellIdentifier];
     }
+    
     int row = indexPath.row;
     NSString *key = [NSString stringWithFormat:@"%d",row];
 
-    UIButton *button = [[UIButton alloc] init];
-    button.tag = row;
     cell.btCallBackGroud.tag = row;
-    NSMutableDictionary *obj = [leftButtonsArray objectForKey:key];
-    if(obj != nil){
-        [leftButtonsArray removeObjectForKey:key];
-    }
-    [leftButtonsArray setObject:button forKey:key];
-    
     cell.btPutBackGroud.tag = row;
-    NSMutableDictionary *obj1 = [rightButtonsArray objectForKey:key];
-    if(obj1 != nil){
-        [rightButtonsArray removeObjectForKey:key];
+//    if(row%2==1){
+//        cell.btCallBackGroud.backgroundColor = [UIColor fromRGB:255 green:254 blue:233 alpha:1];
+//        cell.btPutBackGroud.backgroundColor = [UIColor fromRGB:255 green:254 blue:233 alpha:1];
+//    }
+    
+    NSMutableDictionary *obj = [tableViewCellArray objectForKey:key];
+    if(obj!=nil){
+        NSLog(@"%d,%d",row,cell.btCallBackGroud.tag);
+        [tableViewCellArray removeObjectForKey:key];
     }
-    [rightButtonsArray setObject:cell.btPutBackGroud forKey:key];
+    
+    [tableViewCellArray setObject:cell forKey:key];
+    
     return cell;
 }
 
@@ -75,30 +77,65 @@
     return 33;
 }
 
+NSString *str = @"2014/11/27▼";
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"QuetoHeaderView" owner:self options:nil];
     
     PTQuetoHeaderView *headView = (PTQuetoHeaderView *)[nib objectAtIndex:0];
+    [headView.btSelectDate setTitle:str forState:UIControlStateNormal];
     
+    headView.headerDelegate = self;
     return headView;
 }
 
+-(void)selectVariety{
+    NSLog(@"点击导航");
+}
+
+-(void)selectExpiredTime{
+    NSLog(@"选择时间");
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-     PTQuoteTableViewCell *cell = (PTQuoteTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"QuoteTableCell" forIndexPath:indexPath];
+     PTQuoteTableViewCell *cell = (PTQuoteTableViewCell *)[tableView dequeueReusableCellWithIdentifier:itemTableCellIdentifier forIndexPath:indexPath];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 //点击按钮，设置其他按钮背景颜色
--(void)setButtonBackGround:(NSMutableDictionary *)array button:(UIButton *)button
+-(void)setLeftButtonBackGround:(UIButton *)button
 {
-    if(array.count>0)
+    for(NSString *key in tableViewCellArray)
     {
-        for(NSString *key in array)
-        {
-            UIButton *b = [array objectForKey:key];
-            NSLog(@"%d",b.tag);
-            b.backgroundColor = [UIColor whiteColor];
-        }
+        PTQuoteTableViewCell *ptCell = (PTQuoteTableViewCell *)[tableViewCellArray objectForKey:key];
+        UIButton *b = ptCell.btCallBackGroud;
+        b.backgroundColor = [UIColor whiteColor];
+//        int tag = b.tag;
+//        NSLog(@"%d,%@",tag,key);
+//        if(tag%2==1){
+//            b.backgroundColor = [UIColor fromRGB:255 green:254 blue:233 alpha:1];
+//        }else{
+//            b.backgroundColor = [UIColor whiteColor];
+//        }
+    }
+
+    button.backgroundColor = [UIColor yellowColor];
+}
+
+//点击按钮，设置其他按钮背景颜色
+-(void)setRightButtonBackGround:(UIButton *)button
+{
+    for(NSString *key in tableViewCellArray)
+    {
+        PTQuoteTableViewCell *ptCell = (PTQuoteTableViewCell *)[tableViewCellArray objectForKey:key];
+        UIButton *b = ptCell.btPutBackGroud;
+        int tag = b.tag;
+        b.backgroundColor = [UIColor whiteColor];
+//        if(tag%2==1){
+//            b.backgroundColor = [UIColor fromRGB:255 green:254 blue:233 alpha:1];
+//        }else{
+//            b.backgroundColor = [UIColor whiteColor];
+//        }
     }
     
     button.backgroundColor = [UIColor yellowColor];
@@ -110,56 +147,12 @@
 
 -(IBAction)leftButtonClick:(id)sender{
     UIButton *button = (UIButton *)sender;
-    
-    [self setButtonBackGround:leftButtonsArray button:button];
+    [self setLeftButtonBackGround:button];
 }
 
 -(IBAction)rightButtonClick:(id)sender{
-    
+    UIButton *button = (UIButton *)sender;
+    [self setRightButtonBackGround:button];
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

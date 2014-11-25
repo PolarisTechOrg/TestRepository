@@ -28,4 +28,6 @@
 -(PTFcpOptionsType) OptionType;
 -(NSString*) InstrumentSerial;
 
++(int) getMonthIndex:(NSString*)instrumentCode;
+
 @end

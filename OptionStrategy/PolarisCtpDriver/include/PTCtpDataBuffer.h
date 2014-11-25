@@ -25,6 +25,8 @@
 #import "PTFcpMarketData.h"
 #import "PTFcpInvestorBaseInfo.h"
 #import "PTFcpVarieties.h"
+#import "PTFcpOptionInstrCommRate.h"
+#import "PTFcpOptionInstrTradeCost.h"
 
 @interface PTCtpDataBuffer : NSObject
 
@@ -34,7 +36,7 @@
 -(NSArray*) getInstruments;
 -(NSArray*) getInstrumentDetails;
 -(void) clear ;
--(PTFcpInstrument*) getInstrumnetByCode:(NSString*) instrumentCode;
+-(PTFcpInstrument*) getInstrumentByCode:(NSString*) instrumentCode;
 ///获取合约乘数。
 -(int) getVolumeMultipleByCode:(NSString*) instrumentCode ;
 ///获取合约乘数。
@@ -45,6 +47,8 @@
 -(PTFcpFee*)getInstrumentFee:(PTFcpInstrument*) instrument;
 /// 获取合约保证金。
 -(PTFcpMargin*) getInstrumentMarginByCode:(NSString*) instrumentCode;
+/// 获取合约保证金(option)。
+-(PTFcpOptionInstrTradeCost*) getOptionMarginByCode:(NSString*) instrumentCode;
 /// 获取合约保证金。
 -(PTFcpMargin*) getInstrumentMargin:(PTFcpInstrument*) instrument;
 /// 帐户基本信息
@@ -111,10 +115,24 @@
 /// <param name="field">CTP 手续费信息。</param>
 -(void) updateInstrumentFee:(PTFcpFee*)fee;
 /// <summary>
+/// 更新合约保证金(Option)。
+/// </summary>
+/// <param name="field">CTP 保证金信息。</param>
+-(void) updateOptionFee:(PTFcpOptionInstrCommRate*) fee;
+
+/// <summary>
 /// 更新合约保证金。
 /// </summary>
 /// <param name="field">CTP 保证金信息。</param>
--(void) updateInstrumentMagin:(PTFcpMargin*) margin;
+-(void) updateInstrumentMargin:(PTFcpMargin*) margin;
+/// <summary>
+/// 更新合约保证金(option)。
+/// </summary>
+/// <param name="field">CTP 保证金信息。</param>
+-(void) updateOptionMargin:(PTFcpOptionInstrTradeCost*) margin;
+
+///获取合约手续费(option)
+-(PTFcpOptionInstrCommRate*)getOptionFeeByCode:(NSString*) instrumentCode;
 
 /// 帐户基本信息
 -(void) updateInvestorInfo:(PTFcpInvestorBaseInfo *)info;

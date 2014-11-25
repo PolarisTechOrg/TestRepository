@@ -16,15 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zx7-cn-w9R">
-                                <rect key="frame" x="29" y="28" width="46" height="30"/>
-                                <state key="normal" title="Quote">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="sWN-44-DF4" kind="show" id="oJj-nT-LR9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ST-Yq-70u">
                                 <rect key="frame" x="29" y="98" width="46" height="30"/>
                                 <state key="normal" title="Order">
@@ -32,6 +23,15 @@
                                 </state>
                                 <connections>
                                     <segue destination="jD7-RE-RcS" kind="show" id="axV-ym-tdE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zx7-cn-w9R">
+                                <rect key="frame" x="29" y="28" width="46" height="30"/>
+                                <state key="normal" title="Quote">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sWN-44-DF4" kind="show" id="oJj-nT-LR9"/>
                                 </connections>
                             </button>
                         </subviews>

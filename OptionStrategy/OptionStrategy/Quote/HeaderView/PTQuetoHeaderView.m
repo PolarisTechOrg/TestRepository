@@ -7,9 +7,11 @@
 //
 
 #import "PTQuetoHeaderView.h"
+#import "PTVarietyViewController.h"
 
 @implementation PTQuetoHeaderView
 
+@synthesize headerDelegate;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -17,5 +19,13 @@
     // Drawing code
 }
 */
+
+-(IBAction)selectVarietyClick:(id)sender{
+    [self.headerDelegate selectVariety];
+}
+
+-(IBAction)selectExpiredTimeClick:(id)sender{
+    [self.headerDelegate selectExpiredTime];
+}
 
 @end

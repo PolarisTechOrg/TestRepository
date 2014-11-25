@@ -76,6 +76,9 @@
 -(int)QryDepthMarketData:(NSString*) instrumentCode error:(NSError**)error;
 ///请求查询投资者持仓明细
 -(int)QryInvestorPositionDetail :(NSError**)error;
-
+///请求查询期权合约手续费
+-(int)QryOptionInstrCommRate:(NSString*)instrumentCode error:(NSError**)error;
+///请求查询期权交易成本
+-(int)QryOptionInstrTradeCost:(NSString*) instrumentCode error:(NSError**) error;
 
 @end

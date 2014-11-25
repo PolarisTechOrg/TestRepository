@@ -10,11 +10,11 @@
 
 @interface PTQuoteTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *btCallBackGroud;
+@property (strong, nonatomic) IBOutlet UIButton *btCallBackGroud;
 @property (weak, nonatomic) IBOutlet UILabel *lblCallBuyOne;
 @property (weak, nonatomic) IBOutlet UILabel *lblCallSaleOne;
 @property (weak, nonatomic) IBOutlet UILabel *lblCallVolatility;
-@property (weak, nonatomic) IBOutlet UIButton *btPutBackGroud;
+@property (strong, nonatomic) IBOutlet UIButton *btPutBackGroud;
 @property (weak, nonatomic) IBOutlet UILabel *lblStrikePrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblPutBuyOne;
 @property (weak, nonatomic) IBOutlet UILabel *lblPutSaleOne;
