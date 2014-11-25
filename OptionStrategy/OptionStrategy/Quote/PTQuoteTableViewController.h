@@ -10,8 +10,8 @@
 
 @interface PTQuoteTableViewController : UITableViewController
 {
-    @private NSMutableDictionary *leftButtonsArray;
-    @private NSMutableDictionary *rightButtonsArray;
+    NSString *itemTableCellIdentifier;
+    @private NSMutableDictionary *tableViewCellArray;
 }
 
 @end
