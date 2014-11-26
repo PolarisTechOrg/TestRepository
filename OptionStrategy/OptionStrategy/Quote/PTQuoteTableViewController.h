@@ -13,7 +13,7 @@
 {
     NSString *itemTableCellIdentifier;
     @private NSMutableDictionary *tableViewCellArray;
-    @private NSArray *instrumentArray;
+    @private NSArray *quoteArray;
 }
 
 @end

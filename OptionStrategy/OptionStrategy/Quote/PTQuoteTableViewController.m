@@ -13,6 +13,8 @@
 #import "PTQuoteHeaderDelegate.h"
 #import "PTCtpQuoteDriver.h"
 #import "PTStrategyService.h"
+#import "PTOptionTPriceItemViewModel.h"
+#import "PTOptionTPrice.h"
 
 @interface PTQuoteTableViewController ()
 @property PTCtpQuoteDriver *driver;
@@ -35,21 +37,26 @@ extern NSString *InvestorId ;
     
     itemTableCellIdentifier = @"QuoteTableCell";
     tableViewCellArray = [NSMutableDictionary dictionary];
-    instrumentArray = [self getOptionInsrument:@"HO"];
+    [self loadData:@"HO"];
     
     NSString* appPath = [self dataFilePath];
     _driver = [[PTCtpQuoteDriver alloc] initWithData:appPath brokerId:BrokerId handler:self];
-    [_driver Connect:quoteFrontIp];
-//    for (PTFcpInstrumentDetail* detail in instrumentArray) {
-//        NSLog(@"code = %@ name = %@ product = %i month = %@", detail.Instrument.instrumentCode, detail.Instrument.instrumentName, detail.ProductClass, detail.OptionMonth);
-//    }
-    _codeArray = [NSMutableArray arrayWithObjects:@"IO1412-C-2100", @"IO1412-P-2100", nil];
 }
 
 -(NSArray *)getOptionInsrument:(NSString *)variyte{
     NSArray *array = [PTStrategyService getOptionInstruments:variyte];
     
     return array;
+}
+
+-(void)loadData:(NSString*)varieties{
+    PTOptionTPrice* tPrice = [[PTOptionTPrice alloc] initWithData:varieties];
+    
+    NSArray* expireDateArray = [tPrice getExpireDates];
+    for (NSDate* date in expireDateArray) {
+        NSLog(@"date = %@", date);
+    }
+    quoteArray = [tPrice getItems:[expireDateArray objectAtIndex:0]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +80,7 @@ extern NSString *InvestorId ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return instrumentArray.count;
+    return quoteArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,6 +89,18 @@ extern NSString *InvestorId ;
     if(!cell){
         cell = [[PTQuoteTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:itemTableCellIdentifier];
     }
+    
+    if(quoteArray.count==0)return cell;
+    PTOptionTPriceItemViewModel *model = (PTOptionTPriceItemViewModel *)quoteArray[indexPath.row];
+    cell.lblCallBuyOne.text = [NSString stringWithFormat:@"%f",model.cBidPrice1];
+    cell.lblCallSaleOne.text = [NSString stringWithFormat:@"%f",model.cAskPrice1];
+    cell.lblCallVolatility.text = [NSString stringWithFormat:@"%f",model.cVolatility];
+    cell.lblStrikePrice.text = [NSString stringWithFormat:@"%d",model.strikePrice];
+    
+    cell.lblPutBuyOne.text = [NSString stringWithFormat:@"%f",model.bBidPrice1];
+    cell.lblPutSaleOne.text = [NSString stringWithFormat:@"%f",model.bAskPrice1];
+    cell.lblPutVolatility.text = [NSString stringWithFormat:@"%f",model.bVolatility];
+
     
     int row = indexPath.row;
     NSString *key = [NSString stringWithFormat:@"%d",row];
