@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PTFcpEnums.h"
 
 @interface PTStrategyService : NSObject
 
@@ -22,5 +23,8 @@
 +(NSArray*) getOptionInstruments;
 /// [OptionInstrument]
 +(NSArray*) getOptionInstruments:(NSString*) varieties;
+
++(PTFcpMarket) ExchangeToFcpMarket:(NSString*) exchange;
++(NSString*) FcpMarketToExchange:(PTFcpMarket) market;
 
 @end

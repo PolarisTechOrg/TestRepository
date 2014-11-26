@@ -10,7 +10,7 @@
 #import "PTQuoteTableViewCell.h"
 #import "PTQuetoHeaderView.h"
 #import "UIColorExtension.h"
-#import "PTTableHeaderDelegate.h"
+#import "PTQuoteHeaderDelegate.h"
 
 @implementation PTQuoteTableViewController
 
@@ -60,7 +60,6 @@
     
     NSMutableDictionary *obj = [tableViewCellArray objectForKey:key];
     if(obj!=nil){
-        NSLog(@"%d,%d",row,cell.btCallBackGroud.tag);
         [tableViewCellArray removeObjectForKey:key];
     }
     

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PTTableHeaderDelegate.h"
+#import "PTQuoteHeaderDelegate.h"
 
 @interface PTQuetoHeaderView : UIView
 
@@ -17,6 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAdd;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 @property (weak, nonatomic) IBOutlet UIButton *btSelectDate;
-@property (weak, nonatomic) id<PTTableHeaderDelegate> headerDelegate;
+@property (weak, nonatomic) id<PTQuoteHeaderDelegate> headerDelegate;
 
 @end
