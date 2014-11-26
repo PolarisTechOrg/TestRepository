@@ -114,6 +114,8 @@
 		84339AC81A2466700076E381 /* NormalDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 84339AC71A2466700076E381 /* NormalDistribution.m */; };
 		844A0B291A1DD4100013DC11 /* PTFcpOrderTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */; };
 		846924771A259CD700C3F2FF /* PTTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 846924761A259CD700C3F2FF /* PTTester.m */; };
+		8469247C1A25A7C600C3F2FF /* PTOptionTPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469247B1A25A7C600C3F2FF /* PTOptionTPrice.m */; };
+		8469247F1A25AD7200C3F2FF /* PTOptionTPriceItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8469247E1A25AD7200C3F2FF /* PTOptionTPriceItemViewModel.m */; };
 		84719CCC1A1B2B5E0057CC2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCB1A1B2B5E0057CC2A /* main.m */; };
 		84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCE1A1B2B5E0057CC2A /* AppDelegate.m */; };
 		84719CD21A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84719CD01A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld */; };
@@ -301,6 +303,10 @@
 		844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTFcpOrderTesterViewController.m; sourceTree = "<group>"; };
 		846924751A259CD700C3F2FF /* PTTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTester.h; sourceTree = "<group>"; };
 		846924761A259CD700C3F2FF /* PTTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTester.m; sourceTree = "<group>"; };
+		8469247A1A25A7C600C3F2FF /* PTOptionTPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTOptionTPrice.h; path = Service/PTOptionTPrice.h; sourceTree = "<group>"; };
+		8469247B1A25A7C600C3F2FF /* PTOptionTPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTOptionTPrice.m; path = Service/PTOptionTPrice.m; sourceTree = "<group>"; };
+		8469247D1A25AD7200C3F2FF /* PTOptionTPriceItemViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTOptionTPriceItemViewModel.h; path = Model/PTOptionTPriceItemViewModel.h; sourceTree = "<group>"; };
+		8469247E1A25AD7200C3F2FF /* PTOptionTPriceItemViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTOptionTPriceItemViewModel.m; path = Model/PTOptionTPriceItemViewModel.m; sourceTree = "<group>"; };
 		84719CC61A1B2B5E0057CC2A /* OptionStrategy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptionStrategy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84719CCA1A1B2B5E0057CC2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84719CCB1A1B2B5E0057CC2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -552,6 +558,8 @@
 			children = (
 				59F048C61A242A500059E191 /* VarietyViewModel.h */,
 				59F048C71A242A500059E191 /* VarietyViewModel.m */,
+				8469247D1A25AD7200C3F2FF /* PTOptionTPriceItemViewModel.h */,
+				8469247E1A25AD7200C3F2FF /* PTOptionTPriceItemViewModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -633,6 +641,15 @@
 			name = Polaris.OptionStrategy.OptionIndicator;
 			sourceTree = "<group>";
 		};
+		846924791A25A79800C3F2FF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8469247A1A25A7C600C3F2FF /* PTOptionTPrice.h */,
+				8469247B1A25A7C600C3F2FF /* PTOptionTPrice.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		84719CBD1A1B2B5E0057CC2A = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +678,7 @@
 		84719CC81A1B2B5E0057CC2A /* OptionStrategy */ = {
 			isa = PBXGroup;
 			children = (
+				846924791A25A79800C3F2FF /* Service */,
 				59F049071A2574280059E191 /* Strategy */,
 				84339ABF1A242D440076E381 /* Polaris.OptionStrategy.OptionIndicator */,
 				847484181A23326700DE211C /* Polaris.OptionStrategy.Common */,
@@ -1011,6 +1029,7 @@
 				847484551A23330D00DE211C /* Four_NiuPiPianDanStrategy.m in Sources */,
 				847484371A2332AA00DE211C /* Ten_WenDieZuoZhuangStrategy.m in Sources */,
 				847484821A23332400DE211C /* Three_NiuPiPianHaoProfitPoint.m in Sources */,
+				8469247C1A25A7C600C3F2FF /* PTOptionTPrice.m in Sources */,
 				8474842D1A23329900DE211C /* OptionDetail.m in Sources */,
 				84339AC51A244AD10076E381 /* OptionIndicator.m in Sources */,
 				59F048261A2338620059E191 /* PTQuetoHeaderView.m in Sources */,
@@ -1051,6 +1070,7 @@
 				847484571A23330D00DE211C /* One_DaShengStrategy.m in Sources */,
 				847484561A23330D00DE211C /* Nine_WenZhangZuoZhuangStrategy.m in Sources */,
 				8474845A1A23330D00DE211C /* Six_NiuPiStrategy.m in Sources */,
+				8469247F1A25AD7200C3F2FF /* PTOptionTPriceItemViewModel.m in Sources */,
 				840FB0A81A1B3BA300007906 /* PTFcpQuoteTesterViewController.m in Sources */,
 				847484521A23330D00DE211C /* Eight_WenDieStrategy.m in Sources */,
 				840D8BEA1A1B2CA000376E12 /* UIColorExtension.m in Sources */,

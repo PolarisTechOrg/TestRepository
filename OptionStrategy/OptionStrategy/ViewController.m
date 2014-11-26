@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "PTOptionTPrice.h"
+#import "PTOptionTPriceItemViewModel.h"
 
 @interface ViewController ()
 
@@ -26,6 +28,25 @@ NSString *InvestorId = @"101301004";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+}
+
+- (IBAction)onTPriceButtonClick:(id)sender {
+    PTOptionTPrice* tPrice = [[PTOptionTPrice alloc] initWithData:@"HO"];
+
+    NSArray* expireDateArray = [tPrice getExpireDates];
+            for (NSDate* date in expireDateArray) {
+                NSLog(@"date = %@", date);
+            }
+    NSArray* items = [tPrice getItems:[expireDateArray objectAtIndex:0]];
+            for (PTOptionTPriceItemViewModel* model in items) {
+                NSString* c = model.cInstrumentCode;
+                NSString* p = model.pInstrumentCode;
+                if(!c) c = @"";
+                if(!p)p = @"";
+    
+                NSLog(@"strikePrice = %i c = %@ p = %@ expire = %@", model.strikePrice, c, p, model.expireDate);
+            }
 }
 
 - (void)didReceiveMemoryWarning {
