@@ -22,6 +22,7 @@
 
 @property(readonly) double StrikePrice;
 
+@property(readonly) PTFcpOptionsType optionType;
 
 //
 - (instancetype)initWithData:(NSString*)instrumentCode market:(PTFcpMarket) market;
