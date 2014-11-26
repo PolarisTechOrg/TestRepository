@@ -120,7 +120,7 @@
 		84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCE1A1B2B5E0057CC2A /* AppDelegate.m */; };
 		84719CD21A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84719CD01A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld */; };
 		84719CD51A1B2B5E0057CC2A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CD41A1B2B5E0057CC2A /* ViewController.m */; };
-		84719CD81A1B2B5E0057CC2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84719CD61A1B2B5E0057CC2A /* Main.storyboard */; };
+		84719CD81A1B2B5E0057CC2A /* MainTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84719CD61A1B2B5E0057CC2A /* MainTest.storyboard */; };
 		84719CDA1A1B2B5E0057CC2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84719CD91A1B2B5E0057CC2A /* Images.xcassets */; };
 		84719CDD1A1B2B5E0057CC2A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84719CDB1A1B2B5E0057CC2A /* LaunchScreen.xib */; };
 		84719CE91A1B2B5E0057CC2A /* OptionStrategyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CE81A1B2B5E0057CC2A /* OptionStrategyTests.m */; };
@@ -161,6 +161,7 @@
 		848E2C9B1A22AF5F008478F5 /* libPolarisCtpDriver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848E2C9A1A22AF5F008478F5 /* libPolarisCtpDriver.a */; };
 		848E2C9F1A22AFC2008478F5 /* libthostmduserapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848E2C9D1A22AFC2008478F5 /* libthostmduserapi.a */; };
 		848E2CA01A22AFC2008478F5 /* libthosttraderapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848E2C9E1A22AFC2008478F5 /* libthosttraderapi.a */; };
+		84C469741A25F2AC005AD7C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C469721A25F2AC005AD7C2 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,7 +316,7 @@
 		84719CD11A1B2B5E0057CC2A /* OptionStrategy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OptionStrategy.xcdatamodel; sourceTree = "<group>"; };
 		84719CD31A1B2B5E0057CC2A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		84719CD41A1B2B5E0057CC2A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		84719CD71A1B2B5E0057CC2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84719CD71A1B2B5E0057CC2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainTest.storyboard; sourceTree = "<group>"; };
 		84719CD91A1B2B5E0057CC2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84719CDC1A1B2B5E0057CC2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		84719CE21A1B2B5E0057CC2A /* OptionStrategyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OptionStrategyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,6 +397,7 @@
 		848E2C9A1A22AF5F008478F5 /* libPolarisCtpDriver.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPolarisCtpDriver.a; path = PolarisCtpDriver/libPolarisCtpDriver.a; sourceTree = "<group>"; };
 		848E2C9D1A22AFC2008478F5 /* libthostmduserapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libthostmduserapi.a; path = traderapi_v6.3.0_ios386/libthostmduserapi.a; sourceTree = "<group>"; };
 		848E2C9E1A22AFC2008478F5 /* libthosttraderapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libthosttraderapi.a; path = traderapi_v6.3.0_ios386/libthosttraderapi.a; sourceTree = "<group>"; };
+		84C469731A25F2AC005AD7C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -693,7 +695,8 @@
 				840FB0A71A1B3BA300007906 /* PTFcpQuoteTesterViewController.m */,
 				84719CD31A1B2B5E0057CC2A /* ViewController.h */,
 				84719CD41A1B2B5E0057CC2A /* ViewController.m */,
-				84719CD61A1B2B5E0057CC2A /* Main.storyboard */,
+				84719CD61A1B2B5E0057CC2A /* MainTest.storyboard */,
+				84C469721A25F2AC005AD7C2 /* Main.storyboard */,
 				84719CD91A1B2B5E0057CC2A /* Images.xcassets */,
 				84719CDB1A1B2B5E0057CC2A /* LaunchScreen.xib */,
 				84719CD01A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld */,
@@ -953,7 +956,7 @@
 				59F049041A249A090059E191 /* strategy_pic_10.png in Resources */,
 				59F048A11A2347C10059E191 /* position_4_2.png in Resources */,
 				59F0488C1A2347C10059E191 /* logo_index.png in Resources */,
-				84719CD81A1B2B5E0057CC2A /* Main.storyboard in Resources */,
+				84719CD81A1B2B5E0057CC2A /* MainTest.storyboard in Resources */,
 				59F048A51A2347C10059E191 /* price_big_2_1.png in Resources */,
 				59F048281A2338980059E191 /* QuetoHeaderView.xib in Resources */,
 				59F048821A2347C10059E191 /* icon_strategy_03.png in Resources */,
@@ -964,6 +967,7 @@
 				59F0488D1A2347C10059E191 /* menu_1_1.png in Resources */,
 				59F048911A2347C10059E191 /* menu_3_1.png in Resources */,
 				59F048811A2347C10059E191 /* icon_strategy_02.png in Resources */,
+				84C469741A25F2AC005AD7C2 /* Main.storyboard in Resources */,
 				59F048941A2347C10059E191 /* menu_4_2.png in Resources */,
 				59F0488E1A2347C10059E191 /* menu_1_2.png in Resources */,
 				84719CDD1A1B2B5E0057CC2A /* LaunchScreen.xib in Resources */,
@@ -1101,12 +1105,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		84719CD61A1B2B5E0057CC2A /* Main.storyboard */ = {
+		84719CD61A1B2B5E0057CC2A /* MainTest.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84719CD71A1B2B5E0057CC2A /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainTest.storyboard;
 			sourceTree = "<group>";
 		};
 		84719CDB1A1B2B5E0057CC2A /* LaunchScreen.xib */ = {
@@ -1115,6 +1119,14 @@
 				84719CDC1A1B2B5E0057CC2A /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		84C469721A25F2AC005AD7C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84C469731A25F2AC005AD7C2 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
