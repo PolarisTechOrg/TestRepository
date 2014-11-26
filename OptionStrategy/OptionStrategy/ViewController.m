@@ -45,7 +45,7 @@ NSString *InvestorId = @"101301004";
                 if(!c) c = @"";
                 if(!p)p = @"";
     
-                NSLog(@"strikePrice = %i c = %@ p = %@ expire = %@", model.strikePrice, c, p, model.expireDate);
+                NSLog(@"strikePrice = %i c = %@ p = %@ expire = %@,cbidPrice1=%f", model.strikePrice, c, p, model.expireDate,model.cBidPrice1);
             }
 }
 

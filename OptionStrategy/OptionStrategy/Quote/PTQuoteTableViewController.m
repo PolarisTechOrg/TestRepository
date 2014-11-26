@@ -17,6 +17,7 @@
 #import "PTOptionTPrice.h"
 
 @interface PTQuoteTableViewController ()
+
 @property PTCtpQuoteDriver *driver;
 @property NSMutableArray* codeArray;
 
