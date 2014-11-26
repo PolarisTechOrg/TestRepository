@@ -41,14 +41,14 @@ extern PTCtpQuoteDriver* quoteDriver;
     @autoreleasepool {
         NSArray* instruments = [PTStrategyService getOptionInstruments:_varieties];
         for (PTFcpInstrumentDetail* detail in instruments) {
-//            NSLog(@"instrument code = %@ ExpireDate = %@", detail.Instrument.instrumentCode, detail.ExpireDate);
+            //            NSLog(@"instrument code = %@ ExpireDate = %@", detail.Instrument.instrumentCode, detail.ExpireDate);
             if(![_expireDateArray containsObject:detail.ExpireDate]) {
                 [_expireDateArray addObject:detail.ExpireDate]; /// 到期日
             }
             
             //
             PTFcpOptionDetail* option = [[PTFcpOptionDetail alloc] initWithData:detail.Instrument.instrumentCode market:detail.Instrument.market];
-//            NSLog(@"strikePrice = %0.4f", option.StrikePrice);
+            //            NSLog(@"strikePrice = %0.4f", option.StrikePrice);
             NSMutableArray* strikeArray = [_priceDic objectForKey:detail.ExpireDate];
             if(strikeArray == nil) {
                 strikeArray = [NSMutableArray array];
@@ -72,19 +72,19 @@ extern PTCtpQuoteDriver* quoteDriver;
         
         /// sort
         [self sortItemDesc];
-//        
-//        for (NSDate* date in _expireDateArray) {
-//            NSLog(@"date = %@", date);
-//        }
-//        
-//        for (PTOptionTPriceItemViewModel* model in _priceArray) {
-//            NSString* c = model.cInstrumentCode;
-//            NSString* p = model.pInstrumentCode;
-//            if(!c) c = @"";
-//            if(!p)p = @"";
-//            
-//            NSLog(@"strikePrice = %i c = %@ p = %@", model.strikePrice, c, p);
-//        }
+        //
+        //        for (NSDate* date in _expireDateArray) {
+        //            NSLog(@"date = %@", date);
+        //        }
+        //
+        //        for (PTOptionTPriceItemViewModel* model in _priceArray) {
+        //            NSString* c = model.cInstrumentCode;
+        //            NSString* p = model.pInstrumentCode;
+        //            if(!c) c = @"";
+        //            if(!p)p = @"";
+        //
+        //            NSLog(@"strikePrice = %i c = %@ p = %@", model.strikePrice, c, p);
+        //        }
     }
 }
 
@@ -131,22 +131,22 @@ extern PTCtpQuoteDriver* quoteDriver;
     
     @autoreleasepool {
         NSString* instrumentCode = data.Instrument.instrumentCode;
-//        PTFcpOptionDetail* option = [[PTFcpOptionDetail alloc] initWithData:instrumentCode market:data.market];
+        //        PTFcpOptionDetail* option = [[PTFcpOptionDetail alloc] initWithData:instrumentCode market:data.market];
         NSMutableArray* array = [_priceDic objectForKey:expireDate];
-
-            long count = [array count];
-            for (int i = 0; i < count; i++) {
-                PTOptionTPriceItemViewModel* model = [array objectAtIndex:i];
-                if([model.cInstrumentCode isEqualToString:instrumentCode]){
-                    model.cBidPrice1 = data.BidPrice1;
-                    model.cAskPrice1 = data.AskPrice1;
-                    return i;
-                } else if ([model.pInstrumentCode isEqualToString:instrumentCode]) {
-                    model.pBidPrice1 = data.BidPrice1;
-                    model.pAskPrice1 = data.AskPrice1;
-                    return i;
-                }
+        
+        long count = [array count];
+        for (int i = 0; i < count; i++) {
+            PTOptionTPriceItemViewModel* model = [array objectAtIndex:i];
+            if([model.cInstrumentCode isEqualToString:instrumentCode]){
+                model.cBidPrice1 = data.BidPrice1;
+                model.cAskPrice1 = data.AskPrice1;
+                return i;
+            } else if ([model.pInstrumentCode isEqualToString:instrumentCode]) {
+                model.pBidPrice1 = data.BidPrice1;
+                model.pAskPrice1 = data.AskPrice1;
+                return i;
             }
+        }
     }
     
     return -1;

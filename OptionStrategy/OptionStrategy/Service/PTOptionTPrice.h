@@ -13,7 +13,7 @@
 
 @property(readonly) NSString* varieties;
 
-
+ 
 - (instancetype)initWithData:(NSString*)varieties;
 
 -(NSArray*)getExpireDates;
