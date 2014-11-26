@@ -95,35 +95,120 @@
     }
 }
 
--(NSUInteger)indexOfFirstNumber:(NSString *)origin
-{
-    NSString *numberString;
-    
-    NSScanner *scanner = [NSScanner scannerWithString:origin];
-    [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&numberString];
-    
-    return scanner.scanLocation;
-}
-
 - (void)ParseCFFEInstrument:(NSString *)instrumentCode
 {
     //产品编码格式:品种+4位月份+'-'+C/P+'-'+执行价格 ,例如：HO1406-C-1450
-    NSScanner *scanner = [NSScanner scannerWithString:InstrumentCode];
+    NSArray *codeArray = [instrumentCode componentsSeparatedByString:@"-"];
+    
+    NSString *varieties;
+    NSScanner *scanner = [NSScanner scannerWithString:[codeArray objectAtIndex:0]];
+    [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&varieties];
+    Varieties = varieties;
+    
+    int month;
+    [scanner scanInt:&month];
+    OptionMonth = [NSString stringWithFormat:@"%d", month];
+    
+    ExchangeOptionMonth = OptionMonth;
+    
+    if ([Varieties isEqualToString:@"HO"] || [Varieties isEqualToString:@"IO"])
+    {
+        UnderlyingInstrument = Varieties;
+    }
+    else
+    {
+        UnderlyingInstrument = [NSString stringWithFormat:@"%@%@", Varieties, OptionMonth];
+    }
+    
+    OptionTypeStr = [codeArray objectAtIndex:1];
+    StrikePrice = [[codeArray objectAtIndex:2] intValue];
 }
 
 - (void)ParseDCEInstrument:(NSString *)instrumentCode
 {
+    //产品编码格式:品种+4位月份+'-'+C/P+'-'+执行价格 ,例如：m1407-C-2850
     
+    NSArray *codeArray = [instrumentCode componentsSeparatedByString:@"-"];
+    
+    NSString *varieties;
+    NSScanner *scanner = [NSScanner scannerWithString:[codeArray objectAtIndex:0]];
+    [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&varieties];
+    Varieties = varieties;
+    
+    int month;
+    [scanner scanInt:&month];
+    OptionMonth = [NSString stringWithFormat:@"%d", month];
+    
+    ExchangeOptionMonth = OptionMonth;
+    UnderlyingInstrument = [NSString stringWithFormat:@"%@%@", Varieties, OptionMonth];
+    OptionTypeStr = [codeArray objectAtIndex:1];
+    StrikePrice = [[codeArray objectAtIndex:2] intValue];
 }
 
 - (void)ParseSFEInstrument:(NSString *)instrumentCode
 {
+    //产品编码格式:品种+4位月份+C/P+执行价格 ,例如：au1408C230
+    NSString *varieties;
+    NSScanner *scanner = [NSScanner scannerWithString:instrumentCode];
+    [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&varieties];
+    Varieties = varieties;
     
+    int month;
+    [scanner scanInt:&month];
+    OptionMonth = [NSString stringWithFormat:@"%d", month];
+    
+    ExchangeOptionMonth = OptionMonth;
+    UnderlyingInstrument = [NSString stringWithFormat:@"%@%@", Varieties, OptionMonth];
+    OptionTypeStr = [instrumentCode substringWithRange:NSMakeRange(scanner.scanLocation, 1)];
+    StrikePrice = [[instrumentCode substringFromIndex:scanner.scanLocation+1] intValue];
 }
 
 - (void)ParseCZCEInstrument:(NSString *)instrumentCode
 {
+    //产品编码格式:品种+4位月份+C/P+执行价格 ,例如：SR407C3900
+    NSString *varieties;
+    NSScanner *scanner = [NSScanner scannerWithString:instrumentCode];
+    [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&varieties];
+    Varieties = varieties;
     
+    int month;
+    [scanner scanInt:&month];
+    NSString *optionMonth = [NSString stringWithFormat:@"%d", month];
+    
+    ExchangeOptionMonth = optionMonth;
+    UnderlyingInstrument = [NSString stringWithFormat:@"%@%@", Varieties, optionMonth];
+    
+    NSString *yearDecade = [self CurrentYearDecade];
+    if ([[optionMonth substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"] && ![[self CurrentYearUnit] isEqualToString:@"0"])
+    {
+        yearDecade = [NSString stringWithFormat:@"%d", ([yearDecade intValue] + 1)];
+    }
+    OptionMonth = [NSString stringWithFormat:@"%@%@", yearDecade, optionMonth];
+    
+    OptionTypeStr = [instrumentCode substringWithRange:NSMakeRange(scanner.scanLocation, 1)];
+    StrikePrice = [[instrumentCode substringFromIndex:scanner.scanLocation+1] intValue];
+}
+
+- (NSString *)CurrentYearDecade
+{
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    [formater setDateStyle:NSDateFormatterShortStyle];
+    [formater setDateFormat:@"YYYY-MM-DD HH:mm"];
+    
+    NSString *current = [formater stringFromDate:[NSDate date]];
+    
+    return [current substringWithRange:NSMakeRange(2, 1)];
+}
+
+- (NSString *)CurrentYearUnit
+{
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    [formater setDateStyle:NSDateFormatterShortStyle];
+    [formater setDateFormat:@"YYYY-MM-DD HH:mm"];
+    
+    NSString *current = [formater stringFromDate:[NSDate date]];
+    
+    return [current substringWithRange:NSMakeRange(3, 1)];
 }
 
 @end

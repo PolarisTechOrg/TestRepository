@@ -10,6 +10,7 @@
 
 @protocol PTCtpSpiHandlerDelegate
 
+@optional
 -(void) handleOrderMessage:(PTMessage*) msg;
 -(void) handleQuoteMessage:(PTMessage*) msg;
 

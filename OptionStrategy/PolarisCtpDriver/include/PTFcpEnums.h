@@ -116,6 +116,45 @@ PTFcpDirectionLong = 0,
 PTFcpDirectionShort = 1,
 } PTFcpDirection;
 
+/// 投机套保标志
+typedef enum : int {
+    
+    /// <summary>
+    /// 投机
+    /// </summary>
+    PTFcpHedgeFlagTypeSpeculation = '1',
+    
+    /// <summary>
+    /// 套利
+    /// </summary>
+    PTFcpHedgeFlagTypeArbitrage = '2',
+    
+    /// <summary>
+    /// 套保
+    /// </summary>
+    PTFcpHedgeFlagTypeHedge = '3',
+    
+} PTFcpHedgeFlagType;
+
+typedef enum : int {
+
+    /// <summary>
+    /// 所有
+    /// </summary>
+    PTFcpInvestorRangeTypeAll = '1',
+    
+    /// <summary>
+    /// 投资者组
+    /// </summary>
+    PTFcpInvestorRangeTypeGroup = '2',
+    
+    /// <summary>
+    /// 单一投资者
+    /// </summary>
+    PTFcpInvestorRangeTypeSingle = '3'
+    
+} PTFcpInvestorRangeType;
+
 
 typedef enum : int {
 PTFcpProductClassUnknow = 0,
