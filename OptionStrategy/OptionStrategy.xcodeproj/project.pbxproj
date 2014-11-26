@@ -109,6 +109,9 @@
 		840D8BEB1A1B2CA000376E12 /* UILabelExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8BE71A1B2CA000376E12 /* UILabelExtension.m */; };
 		840D8C361A1B2D2D00376E12 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 840D8C351A1B2D2D00376E12 /* libstdc++.6.dylib */; };
 		840FB0A81A1B3BA300007906 /* PTFcpQuoteTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840FB0A71A1B3BA300007906 /* PTFcpQuoteTesterViewController.m */; };
+		84339AC21A242FE40076E381 /* OptionIndicatorData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84339AC11A242FE40076E381 /* OptionIndicatorData.m */; };
+		84339AC51A244AD10076E381 /* OptionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84339AC41A244AD10076E381 /* OptionIndicator.m */; };
+		84339AC81A2466700076E381 /* NormalDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 84339AC71A2466700076E381 /* NormalDistribution.m */; };
 		844A0B291A1DD4100013DC11 /* PTFcpOrderTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */; };
 		84719CCC1A1B2B5E0057CC2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCB1A1B2B5E0057CC2A /* main.m */; };
 		84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCE1A1B2B5E0057CC2A /* AppDelegate.m */; };
@@ -287,6 +290,12 @@
 		840D8C351A1B2D2D00376E12 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		840FB0A61A1B3BA300007906 /* PTFcpQuoteTesterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTFcpQuoteTesterViewController.h; sourceTree = "<group>"; };
 		840FB0A71A1B3BA300007906 /* PTFcpQuoteTesterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTFcpQuoteTesterViewController.m; sourceTree = "<group>"; };
+		84339AC01A242FE40076E381 /* OptionIndicatorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionIndicatorData.h; path = Polaris.OptionStrategy.OptionIndicator/OptionIndicatorData.h; sourceTree = "<group>"; };
+		84339AC11A242FE40076E381 /* OptionIndicatorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionIndicatorData.m; path = Polaris.OptionStrategy.OptionIndicator/OptionIndicatorData.m; sourceTree = "<group>"; };
+		84339AC31A244AD10076E381 /* OptionIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionIndicator.h; path = Polaris.OptionStrategy.OptionIndicator/OptionIndicator.h; sourceTree = "<group>"; };
+		84339AC41A244AD10076E381 /* OptionIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionIndicator.m; path = Polaris.OptionStrategy.OptionIndicator/OptionIndicator.m; sourceTree = "<group>"; };
+		84339AC61A2466700076E381 /* NormalDistribution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalDistribution.h; path = Polaris.OptionStrategy.OptionIndicator/NormalDistribution.h; sourceTree = "<group>"; };
+		84339AC71A2466700076E381 /* NormalDistribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NormalDistribution.m; path = Polaris.OptionStrategy.OptionIndicator/NormalDistribution.m; sourceTree = "<group>"; };
 		844A0B271A1DD4100013DC11 /* PTFcpOrderTesterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTFcpOrderTesterViewController.h; sourceTree = "<group>"; };
 		844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTFcpOrderTesterViewController.m; sourceTree = "<group>"; };
 		84719CC61A1B2B5E0057CC2A /* OptionStrategy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptionStrategy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -608,6 +617,19 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		84339ABF1A242D440076E381 /* Polaris.OptionStrategy.OptionIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				84339AC01A242FE40076E381 /* OptionIndicatorData.h */,
+				84339AC11A242FE40076E381 /* OptionIndicatorData.m */,
+				84339AC31A244AD10076E381 /* OptionIndicator.h */,
+				84339AC41A244AD10076E381 /* OptionIndicator.m */,
+				84339AC61A2466700076E381 /* NormalDistribution.h */,
+				84339AC71A2466700076E381 /* NormalDistribution.m */,
+			);
+			name = Polaris.OptionStrategy.OptionIndicator;
+			sourceTree = "<group>";
+		};
 		84719CBD1A1B2B5E0057CC2A = {
 			isa = PBXGroup;
 			children = (
@@ -636,7 +658,7 @@
 		84719CC81A1B2B5E0057CC2A /* OptionStrategy */ = {
 			isa = PBXGroup;
 			children = (
-				59F048CE1A2495600059E191 /* Strategy */,
+				84339ABF1A242D440076E381 /* Polaris.OptionStrategy.OptionIndicator */,
 				847484181A23326700DE211C /* Polaris.OptionStrategy.Common */,
 				847484171A23323E00DE211C /* Polaris.FCP.Common */,
 				59F0479F1A23336A0059E191 /* Images */,
@@ -985,9 +1007,12 @@
 				847484371A2332AA00DE211C /* Ten_WenDieZuoZhuangStrategy.m in Sources */,
 				847484821A23332400DE211C /* Three_NiuPiPianHaoProfitPoint.m in Sources */,
 				8474842D1A23329900DE211C /* OptionDetail.m in Sources */,
+				84339AC51A244AD10076E381 /* OptionIndicator.m in Sources */,
 				59F048261A2338620059E191 /* PTQuetoHeaderView.m in Sources */,
 				84719CD21A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld in Sources */,
 				847484841A23332500DE211C /* Two_DaDieProfitPoint.m in Sources */,
+				84339AC21A242FE40076E381 /* OptionIndicatorData.m in Sources */,
+				84339AC81A2466700076E381 /* NormalDistribution.m in Sources */,
 				8474841E1A23328800DE211C /* FcpInstrument.m in Sources */,
 				844A0B291A1DD4100013DC11 /* PTFcpOrderTesterViewController.m in Sources */,
 				84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */,
