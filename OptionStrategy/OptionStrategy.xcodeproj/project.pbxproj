@@ -113,6 +113,7 @@
 		84339AC51A244AD10076E381 /* OptionIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84339AC41A244AD10076E381 /* OptionIndicator.m */; };
 		84339AC81A2466700076E381 /* NormalDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 84339AC71A2466700076E381 /* NormalDistribution.m */; };
 		844A0B291A1DD4100013DC11 /* PTFcpOrderTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */; };
+		846924771A259CD700C3F2FF /* PTTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 846924761A259CD700C3F2FF /* PTTester.m */; };
 		84719CCC1A1B2B5E0057CC2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCB1A1B2B5E0057CC2A /* main.m */; };
 		84719CCF1A1B2B5E0057CC2A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84719CCE1A1B2B5E0057CC2A /* AppDelegate.m */; };
 		84719CD21A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84719CD01A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld */; };
@@ -298,6 +299,8 @@
 		84339AC71A2466700076E381 /* NormalDistribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NormalDistribution.m; path = Polaris.OptionStrategy.OptionIndicator/NormalDistribution.m; sourceTree = "<group>"; };
 		844A0B271A1DD4100013DC11 /* PTFcpOrderTesterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTFcpOrderTesterViewController.h; sourceTree = "<group>"; };
 		844A0B281A1DD4100013DC11 /* PTFcpOrderTesterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTFcpOrderTesterViewController.m; sourceTree = "<group>"; };
+		846924751A259CD700C3F2FF /* PTTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTester.h; sourceTree = "<group>"; };
+		846924761A259CD700C3F2FF /* PTTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTester.m; sourceTree = "<group>"; };
 		84719CC61A1B2B5E0057CC2A /* OptionStrategy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptionStrategy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84719CCA1A1B2B5E0057CC2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84719CCB1A1B2B5E0057CC2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 				84719CDB1A1B2B5E0057CC2A /* LaunchScreen.xib */,
 				84719CD01A1B2B5E0057CC2A /* OptionStrategy.xcdatamodeld */,
 				84719CC91A1B2B5E0057CC2A /* Supporting Files */,
+				846924751A259CD700C3F2FF /* PTTester.h */,
+				846924761A259CD700C3F2FF /* PTTester.m */,
 			);
 			path = OptionStrategy;
 			sourceTree = "<group>";
@@ -1040,6 +1045,7 @@
 				847484531A23330D00DE211C /* Eleven_XianPanZaiZhangStrategy.m in Sources */,
 				8474842E1A23329900DE211C /* OptionStrategyDetail.m in Sources */,
 				59F049181A2574280059E191 /* PTStrategyTableViewCell.m in Sources */,
+				846924771A259CD700C3F2FF /* PTTester.m in Sources */,
 				8474845B1A23330D00DE211C /* Three_NiuPiPianHaoStrategy.m in Sources */,
 				59F049141A2574280059E191 /* PTStrategyHeaderView.m in Sources */,
 				847484571A23330D00DE211C /* One_DaShengStrategy.m in Sources */,
