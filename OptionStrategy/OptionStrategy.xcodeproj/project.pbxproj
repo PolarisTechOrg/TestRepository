@@ -81,11 +81,6 @@
 		59F048BB1A2421BD0059E191 /* PTVarietyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F048BA1A2421BD0059E191 /* PTVarietyTableViewCell.m */; };
 		59F048C11A2422990059E191 /* PTVarietyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F048C01A2422990059E191 /* PTVarietyViewController.m */; };
 		59F048C81A242A500059E191 /* VarietyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F048C71A242A500059E191 /* VarietyViewModel.m */; };
-		59F048D31A2495B60059E191 /* Strategy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F048D21A2495B60059E191 /* Strategy.storyboard */; };
-		59F048D61A2495DB0059E191 /* PTStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F048D51A2495DB0059E191 /* PTStrategyViewController.m */; };
-		59F048D91A24960A0059E191 /* PTStrategyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F048D81A24960A0059E191 /* PTStrategyTableViewCell.m */; };
-		59F048DB1A2496AA0059E191 /* StrategyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F048DA1A2496AA0059E191 /* StrategyHeaderView.xib */; };
-		59F048E51A2498C20059E191 /* PTStrategyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F048E41A2498C20059E191 /* PTStrategyHeaderView.m */; };
 		59F048F71A249A090059E191 /* bg_call_put_2_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 59F048E71A249A090059E191 /* bg_call_put_2_1.png */; };
 		59F048F81A249A090059E191 /* bg_call_put_2_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 59F048E81A249A090059E191 /* bg_call_put_2_2.png */; };
 		59F048F91A249A090059E191 /* bg_call_put_2_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 59F048E91A249A090059E191 /* bg_call_put_2_3.png */; };
@@ -257,11 +252,6 @@
 		59F048C61A242A500059E191 /* VarietyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VarietyViewModel.h; path = Model/VarietyViewModel.h; sourceTree = "<group>"; };
 		59F048C71A242A500059E191 /* VarietyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VarietyViewModel.m; path = Model/VarietyViewModel.m; sourceTree = "<group>"; };
 		59F048CA1A2456870059E191 /* PTQuoteHeaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTQuoteHeaderDelegate.h; path = Quote/HeaderView/PTQuoteHeaderDelegate.h; sourceTree = "<group>"; };
-		59F048D21A2495B60059E191 /* Strategy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Strategy.storyboard; path = Strategy/Strategy.storyboard; sourceTree = "<group>"; };
-		59F048D51A2495DB0059E191 /* PTStrategyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTStrategyViewController.m; path = Strategy/PTStrategyViewController.m; sourceTree = "<group>"; };
-		59F048D81A24960A0059E191 /* PTStrategyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTStrategyTableViewCell.m; path = Strategy/TableCell/PTStrategyTableViewCell.m; sourceTree = "<group>"; };
-		59F048DA1A2496AA0059E191 /* StrategyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StrategyHeaderView.xib; path = Strategy/HeaderView/StrategyHeaderView.xib; sourceTree = "<group>"; };
-		59F048E41A2498C20059E191 /* PTStrategyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTStrategyHeaderView.m; path = Strategy/HeaderView/PTStrategyHeaderView.m; sourceTree = "<group>"; };
 		59F048E71A249A090059E191 /* bg_call_put_2_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_call_put_2_1.png; path = Images/bg_call_put_2_1.png; sourceTree = "<group>"; };
 		59F048E81A249A090059E191 /* bg_call_put_2_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_call_put_2_2.png; path = Images/bg_call_put_2_2.png; sourceTree = "<group>"; };
 		59F048E91A249A090059E191 /* bg_call_put_2_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_call_put_2_3.png; path = Images/bg_call_put_2_3.png; sourceTree = "<group>"; };
@@ -965,7 +955,6 @@
 				59F048711A2347C10059E191 /* bg_call_put_3.png in Resources */,
 				59F048FE1A249A090059E191 /* strategy_pic_05_2.png in Resources */,
 				59F048FF1A249A090059E191 /* strategy_pic_06_1.png in Resources */,
-				59F048D31A2495B60059E191 /* Strategy.storyboard in Resources */,
 				59F048A41A2347C10059E191 /* price_big_1_2.png in Resources */,
 				59F0487E1A2347C10059E191 /* icon_red_up.png in Resources */,
 				59F0486F1A2347C10059E191 /* bg_call_put_1.png in Resources */,
@@ -973,7 +962,6 @@
 				59F049021A249A090059E191 /* strategy_pic_08.png in Resources */,
 				59F0489E1A2347C10059E191 /* position_3_2.png in Resources */,
 				59F048FB1A249A090059E191 /* strategy_pic_03.png in Resources */,
-				59F048DB1A2496AA0059E191 /* StrategyHeaderView.xib in Resources */,
 				59F0486D1A2347C10059E191 /* arrow_red_right.png in Resources */,
 				59F048F71A249A090059E191 /* bg_call_put_2_1.png in Resources */,
 				59F048971A2347C10059E191 /* position_1_1.png in Resources */,
@@ -1016,7 +1004,6 @@
 				8474842F1A23329900DE211C /* OptionStrategyDetailItem.m in Sources */,
 				8474847D1A23332400DE211C /* One_DaShengProfitPoint.m in Sources */,
 				847484551A23330D00DE211C /* Four_NiuPiPianDanStrategy.m in Sources */,
-				59F048E51A2498C20059E191 /* PTStrategyHeaderView.m in Sources */,
 				847484371A2332AA00DE211C /* Ten_WenDieZuoZhuangStrategy.m in Sources */,
 				847484821A23332400DE211C /* Three_NiuPiPianHaoProfitPoint.m in Sources */,
 				8474842D1A23329900DE211C /* OptionDetail.m in Sources */,
@@ -1043,7 +1030,6 @@
 				847484311A23329900DE211C /* OptionTradeCost.m in Sources */,
 				847484781A23332400DE211C /* Eight_WenDieProfitPoint.m in Sources */,
 				840D8BE91A1B2CA000376E12 /* StringExtension.m in Sources */,
-				59F048D61A2495DB0059E191 /* PTStrategyViewController.m in Sources */,
 				8474847F1A23332400DE211C /* Seven_WenZhangProfitPoint.m in Sources */,
 				59F049161A2574280059E191 /* PTStrategyViewController.m in Sources */,
 				8474845D1A23330D00DE211C /* Two_DaDieStrategy.m in Sources */,
@@ -1052,7 +1038,6 @@
 				847484361A2332AA00DE211C /* StrategyOrder.m in Sources */,
 				847484581A23330D00DE211C /* OptionStrategy.m in Sources */,
 				847484531A23330D00DE211C /* Eleven_XianPanZaiZhangStrategy.m in Sources */,
-				59F048D91A24960A0059E191 /* PTStrategyTableViewCell.m in Sources */,
 				8474842E1A23329900DE211C /* OptionStrategyDetail.m in Sources */,
 				59F049181A2574280059E191 /* PTStrategyTableViewCell.m in Sources */,
 				8474845B1A23330D00DE211C /* Three_NiuPiPianHaoStrategy.m in Sources */,

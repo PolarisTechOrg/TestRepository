@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PTCtpSpiHandlerDelegate.h"
 
-@interface PTQuoteTableViewController : UITableViewController
+@interface PTQuoteTableViewController : UIViewController<PTCtpSpiHandlerDelegate>
 {
     NSString *itemTableCellIdentifier;
     @private NSMutableDictionary *tableViewCellArray;
