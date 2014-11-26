@@ -1,5 +1,5 @@
 //
-//  PTTableHeaderDelegate.h
+//  PTStrategyHeaderDelegate.h
 //  OptionStrategy
 //
 //  Created by user01 on 11/25/14.
@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol PTTableHeaderDelegate
+@protocol PTStrategyHeaderDelegate
 
 -(void)selectVariety;
--(void)selectExpiredTime;
+-(void)selectStrategy;
+-(void)selectLeftExpiredTime;
+-(void)selectRightExpiredTime;
 
 @end

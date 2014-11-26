@@ -14,5 +14,5 @@
 @property NSString* Code;
 @property NSString* Name;
 @property PTFcpProductClass ProductClass;
-
+@property PTFcpMarket market;
 @end;
