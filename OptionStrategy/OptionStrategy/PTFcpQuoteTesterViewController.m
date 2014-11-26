@@ -9,11 +9,12 @@
 #import "PTFcpQuoteTesterViewController.h"
 #import "PTCtpQuoteDriver.h"
 
+extern PTCtpQuoteDriver* quoteDriver;
+
 @interface PTFcpQuoteTesterViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *outputText;
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
 
-@property PTCtpQuoteDriver *driver;
 @property NSMutableArray* codeArray;
 
 @end
@@ -62,9 +63,10 @@ extern NSString *InvestorId ;
 
 - (IBAction)onConnectClick:(UIButton*)sender {
     [sender setEnabled:false];
-    NSString* appPath = [self dataFilePath];
-    _driver = [[PTCtpQuoteDriver alloc] initWithData:appPath brokerId:BrokerId handler:self];
-    [_driver Connect:quoteFrontIp];
+//    NSString* appPath = [self dataFilePath];
+//    _driver = [[PTCtpQuoteDriver alloc] initWithData:appPath brokerId:BrokerId handler:self];
+//    [_driver Connect:quoteFrontIp];
+    [quoteDriver RegisterHandler:self];
 }
 
 
@@ -90,7 +92,7 @@ extern NSString *InvestorId ;
             text = [NSString stringWithFormat:@"%@", @"前置已经连接，发送登录\n"];
             [self appendText:text];
             
-            result = [self.driver Login:@"9093920" password:@"11111"];
+            result = [quoteDriver Login:@"9093920" password:@"11111"];
             if(result != 0) {
                 text = [NSString stringWithFormat:@"%@%i", @"登录失败, result = " , result];
                 [self appendText:text];
@@ -102,7 +104,7 @@ extern NSString *InvestorId ;
             text = [NSString stringWithFormat:@"%@", @"登入成功，订阅深度行情"];
             [self appendText:text];
 
-            result = [self.driver SubscribeMarketData:_codeArray];
+            result = [quoteDriver SubscribeMarketData:_codeArray];
             if(result != 0) {
                 text = [NSString stringWithFormat:@"%@%i", @"订阅深度行情失败, result = " , result];
                 [self appendText:text];

@@ -35,14 +35,14 @@
 /// <summary>
 /// 申卖价一			double
 /// </summary>
-@property double bAskPrice1;
+@property double pAskPrice1;
 /// <summary>
 /// 申买价一			double
 /// </summary>
-@property double bBidPrice1;
+@property double pBidPrice1;
 
 ///波动率
-@property double bVolatility;
+@property double pVolatility;
 
 
 

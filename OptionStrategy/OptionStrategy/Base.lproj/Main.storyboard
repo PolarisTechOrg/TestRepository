@@ -35,12 +35,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOG-ua-vMH">
-                                <rect key="frame" x="161" y="20" width="61" height="30"/>
+                                <rect key="frame" x="145" y="40" width="66" height="30"/>
                                 <state key="normal" title="TPrice">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onTPriceButtonClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qBt-rc-kUP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4F-te-44X">
+                                <rect key="frame" x="152" y="9" width="59" height="30"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onConnectButtonClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ySL-SG-t6G"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PTCtpSpiHandlerDelegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<PTCtpSpiHandlerDelegate>
 
 
 @end

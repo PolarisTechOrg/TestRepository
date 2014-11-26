@@ -12,6 +12,9 @@
 #import "PTOptionTPriceItemViewModel.h"
 #import "PTFcpOptionDetail.h"
 #import "PTOptionTPriceItemViewModel.h"
+#import "PTCtpQuoteDriver.h"
+
+extern PTCtpQuoteDriver* quoteDriver;
 
 @interface PTOptionTPrice()
 
@@ -65,7 +68,6 @@
             }else if (option.optionType == PTFcpOptionsTypePut) {
                 item.pInstrumentCode = detail.Instrument.instrumentCode;
             }
-            
         }
         
         /// sort
@@ -96,6 +98,58 @@
     NSArray* items = [strikeArray copy];
     
     return items;
+}
+
+/// 订阅行情
+-(void)Subscribe:(NSDate*)expireDate {
+    NSMutableArray* strikeArray = [_priceDic objectForKey:expireDate];
+    
+    NSArray* items = [strikeArray copy];
+    NSMutableArray* array = [NSMutableArray array];
+    for (PTOptionTPriceItemViewModel* model in items) {
+        if(model.cInstrumentCode)[array addObject:model.cInstrumentCode];
+        if(model.pInstrumentCode)[array addObject:model.pInstrumentCode];
+    }
+    [quoteDriver SubscribeMarketData:array];
+}
+
+/// 取消订阅
+-(void)Unsubscribe:(NSDate*)expireDate {
+    NSMutableArray* strikeArray = [_priceDic objectForKey:expireDate];
+    
+    NSArray* items = [strikeArray copy];
+    NSMutableArray* array = [NSMutableArray array];
+    for (PTOptionTPriceItemViewModel* model in items) {
+        if(model.cInstrumentCode)[array addObject:model.cInstrumentCode];
+        if(model.pInstrumentCode)[array addObject:model.pInstrumentCode];
+    }
+    [quoteDriver UnSubscribeMarketData:array];
+}
+
+/// 更新T型报价，返回更新的行号。
+-(int)updateMarketData:(NSDate*)expireDate data:(PTFcpMarketData*) data {
+    
+    @autoreleasepool {
+        NSString* instrumentCode = data.Instrument.instrumentCode;
+//        PTFcpOptionDetail* option = [[PTFcpOptionDetail alloc] initWithData:instrumentCode market:data.market];
+        NSMutableArray* array = [_priceDic objectForKey:expireDate];
+
+            long count = [array count];
+            for (int i = 0; i < count; i++) {
+                PTOptionTPriceItemViewModel* model = [array objectAtIndex:i];
+                if([model.cInstrumentCode isEqualToString:instrumentCode]){
+                    model.cBidPrice1 = data.BidPrice1;
+                    model.cAskPrice1 = data.AskPrice1;
+                    return i;
+                } else if ([model.pInstrumentCode isEqualToString:instrumentCode]) {
+                    model.pBidPrice1 = data.BidPrice1;
+                    model.pAskPrice1 = data.AskPrice1;
+                    return i;
+                }
+            }
+    }
+    
+    return -1;
 }
 
 -(void)sortItemDesc {
