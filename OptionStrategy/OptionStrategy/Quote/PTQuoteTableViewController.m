@@ -15,12 +15,13 @@
 #import "PTStrategyService.h"
 #import "PTOptionTPriceItemViewModel.h"
 #import "PTOptionTPrice.h"
+#import "Converter.h"
 
 @interface PTQuoteTableViewController ()
 
 @property PTCtpQuoteDriver *driver;
 @property NSMutableArray* codeArray;
-
+@property NSDate* selectDate;
 @end
 
 @implementation PTQuoteTableViewController
@@ -44,16 +45,11 @@ extern NSString *InvestorId ;
     _driver = [[PTCtpQuoteDriver alloc] initWithData:appPath brokerId:BrokerId handler:self];
 }
 
--(NSArray *)getOptionInsrument:(NSString *)variyte{
-    NSArray *array = [PTStrategyService getOptionInstruments:variyte];
-    
-    return array;
-}
-
 -(void)loadData:(NSString*)varieties{
     PTOptionTPrice* tPrice = [[PTOptionTPrice alloc] initWithData:varieties];
     
     NSArray* expireDateArray = [tPrice getExpireDates];
+    _selectDate = (NSDate*)expireDateArray[0];
     for (NSDate* date in expireDateArray) {
         NSLog(@"date = %@", date);
     }
@@ -66,11 +62,9 @@ extern NSString *InvestorId ;
 }
 
 -(NSString*) dataFilePath {
-    // NSDocumentationDirectory => NSDocumentDirectory
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true);
     NSString *docDirectory = path[0];
     
-    //return [docDirectory stringByAppendingPathComponent:@"OptionLottoProperties.plist"];
     return docDirectory;
 }
 
@@ -131,11 +125,11 @@ extern NSString *InvestorId ;
     return 33;
 }
 
-NSString *str = @"2014/11/27▼";
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"QuetoHeaderView" owner:self options:nil];
     
     PTQuetoHeaderView *headView = (PTQuetoHeaderView *)[nib objectAtIndex:0];
+    NSString* str = [Converter asDateStringWithFormat:_selectDate format:@"yyyy/MM/dd"];
     [headView.btSelectDate setTitle:str forState:UIControlStateNormal];
     
     headView.headerDelegate = self;
