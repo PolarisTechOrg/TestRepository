@@ -67,6 +67,9 @@
             }
             
         }
+        
+        /// sort
+        [self sortItemDesc];
 //        
 //        for (NSDate* date in _expireDateArray) {
 //            NSLog(@"date = %@", date);
@@ -93,6 +96,24 @@
     NSArray* items = [strikeArray copy];
     
     return items;
+}
+
+-(void)sortItemDesc {
+    NSMutableDictionary* dic = [NSMutableDictionary dictionary];
+    
+    NSSortDescriptor* sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"strikePrice" ascending:FALSE];
+    
+    for (NSDate* date in _priceDic) {
+        NSMutableArray* array = [_priceDic objectForKey:date];
+        if(array == nil) continue;
+        NSArray* descriptors = [NSArray arrayWithObject:sortDescriptor];
+        NSArray* sortedArray = [array sortedArrayUsingDescriptors:descriptors];
+        NSMutableArray* items = [NSMutableArray arrayWithArray:sortedArray];
+        [dic setObject:items forKey:date];
+    }
+    
+    _priceDic = dic;
 }
 
 -(PTOptionTPriceItemViewModel*)internalGetPriceItem:(NSArray*)items strikePrice:(int)strikePrice expireDate:(NSDate*)expireDate {
