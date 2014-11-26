@@ -16,12 +16,14 @@
 #import "PTOptionTPriceItemViewModel.h"
 #import "PTOptionTPrice.h"
 #import "Converter.h"
+#import "KxMenu.h"
 
 @interface PTQuoteTableViewController ()
 
 @property PTCtpQuoteDriver *driver;
 @property NSMutableArray* codeArray;
 @property NSDate* selectDate;
+@property NSArray* expireDateArray;
 @end
 
 @implementation PTQuoteTableViewController
@@ -48,12 +50,12 @@ extern NSString *InvestorId ;
 -(void)loadData:(NSString*)varieties{
     PTOptionTPrice* tPrice = [[PTOptionTPrice alloc] initWithData:varieties];
     
-    NSArray* expireDateArray = [tPrice getExpireDates];
-    _selectDate = (NSDate*)expireDateArray[0];
-    for (NSDate* date in expireDateArray) {
+    _expireDateArray = [tPrice getExpireDates];
+    _selectDate = (NSDate*)_expireDateArray[0];
+    for (NSDate* date in _expireDateArray) {
         NSLog(@"date = %@", date);
     }
-    quoteArray = [tPrice getItems:[expireDateArray objectAtIndex:0]];
+    quoteArray = [tPrice getItems:[_expireDateArray objectAtIndex:0]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -141,7 +143,57 @@ extern NSString *InvestorId ;
 }
 
 -(void)selectExpiredTime{
-    NSLog(@"选择时间");
+
+}
+
+- (void)showMenu:(UIButton *)sender
+{
+//    NSArray *menuItems =
+//    @[
+//      
+//      [KxMenuItem menuItem:@"ACTION MENU"
+//                     image:nil
+//                    target:nil
+//                    action:NULL],
+//      
+//      [KxMenuItem menuItem:@"Share this"
+//                     image:[UIImage imageNamed:@"action_icon"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//      
+//      [KxMenuItem menuItem:@"Check menu"
+//                     image:[UIImage imageNamed:@"check_icon"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//      
+//      [KxMenuItem menuItem:@"Reload page"
+//                     image:[UIImage imageNamed:@"reload"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//      
+//      [KxMenuItem menuItem:@"Search"
+//                     image:[UIImage imageNamed:@"search_icon"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//      
+//      [KxMenuItem menuItem:@"Go home"
+//                     image:[UIImage imageNamed:@"home_icon"]
+//                    target:self
+//                    action:@selector(pushMenuItem:)],
+//      ];
+//    
+//    KxMenuItem *first = menuItems[0];
+//    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+//    first.alignment = NSTextAlignmentCenter;
+//    
+//    [KxMenu showMenuInView:self.view
+//                  fromRect:sender.frame
+//                 menuItems:menuItems];
+}
+
+- (void) pushMenuItem:(id)sender
+{
+    NSLog(@"%@", sender);
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -209,6 +261,12 @@ extern NSString *InvestorId ;
     [self setRightButtonBackGround:button];
 }
 
+-(void) appendText:(NSString*) text {
+    //NSString* string = [NSString stringWithFormat:@"%@%@", self.outputText.text, text];
+    //self.outputText.text = string;
+    NSLog(@"%@", text);
+}
+
 // handle message
 -(void)handleOrderMessage:(PTMessage *)msg {
     
@@ -223,48 +281,50 @@ extern NSString *InvestorId ;
         case MSG_FRONT_SUCCESS:
         {
             text = [NSString stringWithFormat:@"%@", @"前置已经连接，发送登录\n"];
+            [self appendText:text];
             
             result = [self.driver Login:@"9093920" password:@"11111"];
             if(result != 0) {
                 text = [NSString stringWithFormat:@"%@%i", @"登录失败, result = " , result];
+                [self appendText:text];
             }
-            NSLog(text);
         }
             break;
         case MSG_LOGIN_SUCCESS:
         {
             text = [NSString stringWithFormat:@"%@", @"登入成功，订阅深度行情"];
-            
+            [self appendText:text];
             result = [self.driver SubscribeMarketData:_codeArray];
             if(result != 0) {
                 text = [NSString stringWithFormat:@"%@%i", @"订阅深度行情失败, result = " , result];
+                [self appendText:text];
             }
-            
-            NSLog(text);
         }
             break;
         case MSG_QUOTE_OnRtnDepthMarketData:
         {
             text = [NSString stringWithFormat:@"%@", @"订阅深度行情，数据返回！"];
+            [self appendText:text];
+            
             [NSThread sleepForTimeInterval:1];
             PTFcpMarketData* data = msg.data;
             
             [self.tableView reloadData];
             double askPrice1 = (data.AskPrice1 > CTP_DBL_MAX)? 0.0:data.AskPrice1;      // deal max value
             text = [NSString stringWithFormat:@"code = %@ name = %@ askPrice = %0.2f\n", data.InstrumentID, data.Instrument.instrumentName, askPrice1];
-            NSLog(text);
+            [self appendText:text];
         }
             break;
         case MSG_ONRSPERR:
         {
             text = [NSString stringWithFormat:@"ONRSPERR: errorId = %i errorMsg = %@", msg.errorId, msg.message ];
-            NSLog(text);
+            [self appendText:text];
         }
             break;
         case MSG_ERROR:
         {
             text = [NSString stringWithFormat:@"ERROR: errorId = %i errorMsg = %@", msg.errorId, msg.message ];
-            NSLog(text);
+            [self appendText:text];
         }
             break;
         default:

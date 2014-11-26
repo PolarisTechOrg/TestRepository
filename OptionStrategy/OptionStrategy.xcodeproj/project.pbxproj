@@ -102,6 +102,10 @@
 		59F049161A2574280059E191 /* PTStrategyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F0490F1A2574280059E191 /* PTStrategyViewController.m */; };
 		59F049171A2574280059E191 /* Strategy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F049101A2574280059E191 /* Strategy.storyboard */; };
 		59F049181A2574280059E191 /* PTStrategyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F049131A2574280059E191 /* PTStrategyTableViewCell.m */; };
+		59F0492B1A25ECE60059E191 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F0492A1A25ECE60059E191 /* UIKit.framework */; };
+		59F0492D1A25ECF20059E191 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F0492C1A25ECF20059E191 /* Foundation.framework */; };
+		59F0492F1A25ECFB0059E191 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F0492E1A25ECFB0059E191 /* CoreGraphics.framework */; };
+		59F049321A25F0E30059E191 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F049311A25F0E30059E191 /* KxMenu.m */; };
 		840D8BDE1A1B2C9800376E12 /* Converter.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8BDD1A1B2C9800376E12 /* Converter.m */; };
 		840D8BE81A1B2CA000376E12 /* ColorConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8BE11A1B2CA000376E12 /* ColorConstant.m */; };
 		840D8BE91A1B2CA000376E12 /* StringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8BE31A1B2CA000376E12 /* StringExtension.m */; };
@@ -280,6 +284,11 @@
 		59F049101A2574280059E191 /* Strategy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Strategy.storyboard; sourceTree = "<group>"; };
 		59F049121A2574280059E191 /* PTStrategyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStrategyTableViewCell.h; sourceTree = "<group>"; };
 		59F049131A2574280059E191 /* PTStrategyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStrategyTableViewCell.m; sourceTree = "<group>"; };
+		59F0492A1A25ECE60059E191 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		59F0492C1A25ECF20059E191 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		59F0492E1A25ECFB0059E191 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		59F049301A25F0E30059E191 /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KxMenu.h; path = ../../../../../Desktop/kxmenu/Source/KxMenu.h; sourceTree = "<group>"; };
+		59F049311A25F0E30059E191 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KxMenu.m; path = ../../../../../Desktop/kxmenu/Source/KxMenu.m; sourceTree = "<group>"; };
 		840D8BDC1A1B2C9800376E12 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
 		840D8BDD1A1B2C9800376E12 /* Converter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converter.m; sourceTree = "<group>"; };
 		840D8BE01A1B2CA000376E12 /* ColorConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConstant.h; sourceTree = "<group>"; };
@@ -403,6 +412,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F0492F1A25ECFB0059E191 /* CoreGraphics.framework in Frameworks */,
+				59F0492D1A25ECF20059E191 /* Foundation.framework in Frameworks */,
+				59F0492B1A25ECE60059E191 /* UIKit.framework in Frameworks */,
 				848E2C9F1A22AFC2008478F5 /* libthostmduserapi.a in Frameworks */,
 				848E2CA01A22AFC2008478F5 /* libthosttraderapi.a in Frameworks */,
 				848E2C9B1A22AF5F008478F5 /* libPolarisCtpDriver.a in Frameworks */,
@@ -604,6 +616,25 @@
 			path = TableCell;
 			sourceTree = "<group>";
 		};
+		59F049201A25E9210059E191 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				59F049301A25F0E30059E191 /* KxMenu.h */,
+				59F049311A25F0E30059E191 /* KxMenu.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		59F049291A25ECCC0059E191 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59F0492E1A25ECFB0059E191 /* CoreGraphics.framework */,
+				59F0492C1A25ECF20059E191 /* Foundation.framework */,
+				59F0492A1A25ECE60059E191 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		840D8BDB1A1B2C9800376E12 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +684,7 @@
 		84719CBD1A1B2B5E0057CC2A = {
 			isa = PBXGroup;
 			children = (
+				59F049201A25E9210059E191 /* Menu */,
 				59F048C21A242A200059E191 /* Model */,
 				848E2C9D1A22AFC2008478F5 /* libthostmduserapi.a */,
 				848E2C9E1A22AFC2008478F5 /* libthosttraderapi.a */,
@@ -663,6 +695,7 @@
 				84719CC81A1B2B5E0057CC2A /* OptionStrategy */,
 				84719CE51A1B2B5E0057CC2A /* OptionStrategyTests */,
 				84719CC71A1B2B5E0057CC2A /* Products */,
+				59F049291A25ECCC0059E191 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1028,6 +1061,7 @@
 				8474847D1A23332400DE211C /* One_DaShengProfitPoint.m in Sources */,
 				847484551A23330D00DE211C /* Four_NiuPiPianDanStrategy.m in Sources */,
 				847484371A2332AA00DE211C /* Ten_WenDieZuoZhuangStrategy.m in Sources */,
+				59F049321A25F0E30059E191 /* KxMenu.m in Sources */,
 				847484821A23332400DE211C /* Three_NiuPiPianHaoProfitPoint.m in Sources */,
 				8469247C1A25A7C600C3F2FF /* PTOptionTPrice.m in Sources */,
 				8474842D1A23329900DE211C /* OptionDetail.m in Sources */,
